@@ -1,4 +1,4 @@
-#include "functions.h"
+#include "functions.hpp"
 
 int main(){
     return 0;

@@ -1,5 +1,5 @@
-#ifndef TASK_1_NEW_FUNCTIONS_H
-#define TASK_1_NEW_FUNCTIONS_H
+#ifndef TASK_1_NEW_FUNCTIONS_HPP
+#define TASK_1_NEW_FUNCTIONS_HPP
 
 #include <cstddef>
 #include <stdexcept>
@@ -7,8 +7,7 @@
 #include <iterator>
 #include <compare>
 #include <iostream>
-
-#include "functions.h"
+#include "functions.hpp"
 
 namespace my_container {
 

@@ -1,66 +1,98 @@
-cmake_minimum_required(VERSION 3.28)
-project(task_1_new)
+cmake_minimum_required(VERSION 3.20)
+project(MyProject)
+set(CMAKE_CXX_STANDARD 20)
 
-set(CMAKE_CXX_STANDARD 23)
-set(COMMON_FLAGS "-Wall -Wextra -Wpedantic -Werror -fsanitize=address -fsanitize=leak")
 
-option(ENABLE_COVERAGE "Enable coverage reporting" OFF)
-option(ENABLE_CPPCHECK "Enable static analysis with Cppcheck" OFF)
 
-# Добавление Cppcheck
-if(ENABLE_CPPCHECK)
-    find_program(CPPCHECK cppcheck)
-    if(CPPCHECK)
-        add_custom_target(cppcheck ALL
-                COMMAND ${CPPCHECK}
-                --enable=all
-                --suppress=missingInclude
-                --std=c++23
-                --inline-suppr
-                -I ${CMAKE_SOURCE_DIR}/include
-                ${CMAKE_SOURCE_DIR}/src/*.cpp
-                ${CMAKE_SOURCE_DIR}/tests/*.cpp
-                COMMENT "Running Cppcheck..."
-        )
-    else()
-        message(WARNING "Cppcheck not found!")
-    endif()
-endif()
+enable_testing()
 
-add_subdirectory(googletest)
 
-add_executable(task_1_new src/main.cpp
-        include/functions.h
-        src/functions.cpp
+set(COMMON_FLAGS
+        -Wall
+        -Wextra
+        -Wpedantic
+        -Werror
 )
 
-include_directories(include)
 
-add_executable(tests include/functions.h src/functions.cpp tests/tests.cpp)
+if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+    set(COVERAGE_FLAGS
+            --coverage
+            -fprofile-arcs
+            -ftest-coverage
+    )
+endif()
 
-target_link_libraries(tests gtest)
 
-if(ENABLE_COVERAGE)
-    # Поиск необходимых утилит
-    find_program(LCOV_PATH lcov)
-    find_program(GENHTML_PATH genhtml)
+include(FetchContent)
+FetchContent_Declare(
+        googletest
+        URL "file://${CMAKE_CURRENT_SOURCE_DIR}/googletest.tar.gz"
+        DOWNLOAD_EXTRACT_TIMESTAMP TRUE
+)
 
-    if(LCOV_PATH AND GENHTML_PATH)
-        # Добавляем флаги компилятора
-        target_compile_options(tests PRIVATE --coverage -O0 -g)
-        target_link_libraries(tests PRIVATE --coverage)
+set(BUILD_GMOCK OFF CACHE BOOL "" FORCE)
+set(INSTALL_GTEST OFF CACHE BOOL "" FORCE)
+FetchContent_MakeAvailable(googletest)
 
-        # Пользовательские цели для coverage
-        add_custom_target(coverage
-                COMMAND ${LCOV_PATH} --directory . --capture --output-file coverage.info
-                COMMAND ${LCOV_PATH} --remove coverage.info '/usr/*' '*/tests/*' --output-file coverage.info
-                COMMAND ${GENHTML_PATH} coverage.info --output-directory coverage-report
-                COMMAND xdg-open coverage-report/index.html
-                WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
-                DEPENDS tests
-                COMMENT "Generating coverage report..."
-        )
-    else()
-        message(WARNING "lcov/genhtml not found! Coverage targets disabled")
-    endif()
+# Основная библиотека
+add_library(my_lib src/functions.cpp
+        include/functions.hpp)
+target_include_directories(my_lib PUBLIC include)
+target_compile_options(my_lib PRIVATE
+        ${COMMON_FLAGS}
+        $<$<CONFIG:Debug>:${COVERAGE_FLAGS}>
+)
+target_link_options(my_lib PRIVATE
+        $<$<CONFIG:Debug>:${COVERAGE_FLAGS}>
+)
+
+
+add_executable(tests tests/tests.cpp)
+target_link_libraries(tests PRIVATE my_lib GTest::gtest_main)
+target_compile_options(tests PRIVATE
+        ${COMMON_FLAGS}
+        $<$<CONFIG:Debug>:${COVERAGE_FLAGS}>
+)
+target_link_options(tests PRIVATE
+        $<$<CONFIG:Debug>:${COVERAGE_FLAGS}>
+)
+
+add_test(NAME MyTests COMMAND tests)
+
+find_program(LCOV lcov)
+find_program(GENHTML genhtml)
+
+if(LCOV AND GENHTML)
+    add_custom_target(coverage
+            COMMAND ${LCOV} --capture --directory . --output-file coverage.info
+            COMMAND ${LCOV} --remove coverage.info '/usr/*' '*/googletest/*' --output-file coverage_filtered.info
+            COMMAND ${GENHTML} coverage_filtered.info --output-directory coverage_report
+            WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+            DEPENDS tests
+            COMMENT "Генерация отчёта покрытия кода..."
+            VERBATIM
+    )
+else()
+    message(WARNING "lcov или genhtml не найдены, цель 'coverage' недоступна.")
+endif()
+
+# Цель для cppcheck с исправленным путем
+find_program(CPPCHECK cppcheck)
+if(CPPCHECK)
+    add_custom_target(cppcheck
+            COMMAND ${CPPCHECK}
+            --enable=all
+            --inconclusive
+            --quiet
+            --suppress=missingIncludeSystem
+            -I include
+            src
+            tests
+            COMMENT "Запуск cppcheck..."
+            WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+            VERBATIM
+    )
+else()
+    message(WARNING "cppcheck не найден, цель 'cppcheck' недоступна.")
 endif()

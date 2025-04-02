@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "functions.hpp"
+#include "functions.h"
 
 using namespace my_container;
 
