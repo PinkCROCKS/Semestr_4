@@ -1,0 +1,6 @@
+/mnt/d/2.txt
+/mnt/d/123.txt
+/mnt/d/Potoshop/456.txt
+/mnt/d/Уник/12.txt
+/mnt/d/huy
+STOP
