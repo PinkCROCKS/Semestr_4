@@ -1,70 +1,64 @@
 #include "utility.h"
 #include "client.h"
 
-struct MsgBuffer {
-    long mtype;
-    char filename[FILENAME_MAX];
-    int is_end;
-} MsgBuffer;
+struct Message_Data {
+    long type;
+    char name[FILENAME_MAX];
+    int quit;
+} Message_Data;
 
 int main(int argc, char* argv[]) {
     if (argc < 2) {
         return amount_of_arguments_error;
     }
 
-    int msg_id_1;
-    int msg_id_2;
+    int message1_queue_id;
+    int message2_queue_id;
 
-    errors errorMsg = init(&msg_id_1, &msg_id_2);
-    if (errorMsg) {
-        return print_error(errorMsg);
+    errors error = start_resourses(&message1_queue_id, &message2_queue_id);
+    if (error) {
+        return print_error(error);
     }
-    // отправляем данные
-    struct MsgBuffer msg = {.mtype = getpid()};
+    struct Message_Data message = {.type = getpid()};
 
-    if(strcmp(argv[1], "STOP") == 0 && argc == 3 ) {
-        strcpy(msg.filename, "STOP");
-        int pass = atoi(argv[2]);
-        msg.is_end = pass;
-        int er = msgsnd(msg_id_1, &msg, sizeof(msg.filename) + sizeof(msg.is_end), 0);
+//    if(strcmp(argv[1], "STOP") == 0 && argc == 3 ) {
+//        strcpy(message.name, "STOP");
+//        int pass = atoi(argv[2]);
+//        message.quit = pass;
+//        int er = messagesnd(message1_queue_id, &message, sizeof(message.name) + sizeof(message.quit), 0);
+//        if (er == -1) {
+//            return ptr_error;
+//        }
+//        return 0;
+//    }
+//
+//    FILE* file = fopen(argv[1], "r");
+//    if (!file) {
+//        return input_error;
+//    }
+
+    for (int i = 1; i < argc; i++) {
+        strcpy(message.name, argv[i]);
+        message.quit = 0;
+        if (i == argc - 1) {
+            message.quit = 1;
+        }
+        int er = msgsnd(message1_queue_id, &message, sizeof(message.name) + sizeof(message.quit), 0);
         if (er == -1) {
             return ptr_error;
         }
-        return 0;
     }
 
-    FILE* file = fopen(argv[1], "r");
-    if (!file) {
-        return input_error;
-    }
-
-    while (!feof(file)) {
-        fscanf(file, "%4096s", msg.filename);
-        msg.is_end = 0;
-        if (feof(file)) {
-            msg.is_end = 1;
-        }
-        int er = msgsnd(msg_id_1, &msg, sizeof(msg.filename) + sizeof(msg.is_end), 0);
+    message.quit = 0;
+    while (!message.quit) {
+        int er = msgrcv(message2_queue_id, &message, sizeof(message.name) + sizeof(message.quit), 0, 0);
         if (er == -1) {
-            fclose(file);
-            return ptr_error;
-        }
-    }
-
-
-    // получаем данные
-    msg.is_end = 0;
-    while (!msg.is_end) {
-        int er = msgrcv(msg_id_2, &msg, sizeof(msg.filename) + sizeof(msg.is_end), 0, 0);
-        if (er == -1) {
-            fclose(file);
             return token_error;
         }
-        if(msg.filename[0] != '/') {
+        if(message.name[0] != '/') {
             printf("\t");
         }
-        printf("%s\n", msg.filename);
+        printf("%s\n", message.name);
     }
-    fclose(file);
     return 0;
 }

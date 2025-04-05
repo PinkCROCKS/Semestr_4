@@ -1,93 +1,89 @@
 #include "server_utility.h"
 
-struct MsgBuffer {
-    long mtype;
+struct Message_Data {
+    long type;
     char filename[FILENAME_MAX];
-    int is_end;
-} MsgBuffer;
+    int quit;
+} Message_Data;
 
 int main() {
-    int msg_id_1;
-    int msg_id_2;
+    int message1_queue_id;
+    int message2_queue_id;
 
-    errors errorMsg = init(&msg_id_1, &msg_id_2);
-    if (errorMsg) {
-        return errorMsg;
+    errors error = start_resourses(&message1_queue_id, &message2_queue_id);
+    if (error) {
+        return error;
     }
 
-    long type_input_msg = 0;
+    long message_type = 0;
 
-    struct MsgBuffer input_msg;
+    struct Message_Data input_message;
     Strings*  strings = (Strings *) malloc(sizeof(Strings));
     if (!strings) {
-        msgctl(msg_id_1, IPC_RMID, 0);
-        msgctl(msg_id_2, IPC_RMID, 0);
+        msgctl(message1_queue_id, IPC_RMID, 0);
+        msgctl(message2_queue_id, IPC_RMID, 0);
         return memory_error;
     }
 
     while (1) {
-        int er = msgrcv(msg_id_1, &input_msg, sizeof(input_msg.filename) + sizeof(input_msg.is_end), 0, 0);
+        int er = msgrcv(message1_queue_id, &input_message, sizeof(input_message.filename) + sizeof(input_message.quit), 0, 0);
         if (er == -1) {
-            msgctl(msg_id_1, IPC_RMID, 0);
-            msgctl(msg_id_2, IPC_RMID, 0);
+            msgctl(message1_queue_id, IPC_RMID, 0);
+            msgctl(message2_queue_id, IPC_RMID, 0);
             return ptr_error;
         }
 
-        if (strcmp("STOP\n", input_msg.filename) == 0 && input_msg.is_end == 12345) {
+        if (strcmp("STOP\n", input_message.filename) == 0 && input_message.quit == 12345) {
             break;
         }
-
-        // Начинаем складывать в массив пути от одного клиента
-        if (type_input_msg == 0) {
+        if (message_type == 0) {
             free_strings(strings);
-            type_input_msg = input_msg.mtype;
+            message_type = input_message.type;
         }
 
-        // Добавляем в путь
-        if (type_input_msg > 0) {
-            if(access(input_msg.filename, F_OK) == 0) {
-                errorMsg = append_str(strings, input_msg.filename);
-                if (errorMsg) {
+        if (message_type > 0) {
+            if(access(input_message.filename, F_OK) == 0) {
+                error = append_str(strings, input_message.filename);
+                if (error) {
                     free_strings(strings);
-                    msgctl(msg_id_1, IPC_RMID, 0);
-                    msgctl(msg_id_2, IPC_RMID, 0);
-                    return errorMsg;
+                    msgctl(message1_queue_id, IPC_RMID, 0);
+                    msgctl(message2_queue_id, IPC_RMID, 0);
+                    return error;
                 }
             }
         }
 
-        // Конец запроса от одного клиента
-        if (input_msg.is_end) {
+        if (input_message.quit) {
             Strings *  output;
-            errorMsg = processing_paths(strings, &output);
-            if (errorMsg) {
+            error = processing_paths(strings, &output);
+            if (error) {
                 free_strings(strings);
-                msgctl(msg_id_1, IPC_RMID, 0);
-                msgctl(msg_id_2, IPC_RMID, 0);
-                return errorMsg;
+                msgctl(message1_queue_id, IPC_RMID, 0);
+                msgctl(message2_queue_id, IPC_RMID, 0);
+                return error;
             }
 
             for (int j = 0; j < output->size; ++j) {
-                struct MsgBuffer output_msg = {.mtype = type_input_msg};
+                struct Message_Data output_msg = {.type = message_type};
                 strncpy(output_msg.filename, output->content[j], FILENAME_MAX);
                 if (j == output->size - 1) {
-                    output_msg.is_end = 1;
+                    output_msg.quit = 1;
                 }
-                er = msgsnd(msg_id_2, &output_msg, sizeof(output_msg.filename) + sizeof(output_msg.is_end), 0);
+                er = msgsnd(message2_queue_id, &output_msg, sizeof(output_msg.filename) + sizeof(output_msg.quit), 0);
                 if (er) {
                     free_strings(strings);
-                    msgctl(msg_id_1, IPC_RMID, 0);
-                    msgctl(msg_id_2, IPC_RMID, 0);
+                    msgctl(message1_queue_id, IPC_RMID, 0);
+                    msgctl(message2_queue_id, IPC_RMID, 0);
                     return memory_error;
                 }
             }
             free_strings(output);
-            type_input_msg = 0;
+            message_type = 0;
         }
     }
 
     free_strings(strings);
-    msgctl(msg_id_1, IPC_RMID, 0);
-    msgctl(msg_id_2, IPC_RMID, 0);
+    msgctl(message1_queue_id, IPC_RMID, 0);
+    msgctl(message2_queue_id, IPC_RMID, 0);
     return 0;
 }

@@ -11,12 +11,6 @@
 #include <unistd.h>
 #include <limits.h>
 
-#define SHM_KEY_PATH "/tmp"
-#define SHM_KEY_ID 1234
-#define MSG_Q_KEY_PATH "/tmp"
-#define MSG_Q_KEY_ID 5678
-#define SEM_KEY_PATH "/tmp"
-#define SEM_KEY_ID 91011
 #define SHM_SIZE (64 * 1024)
 
 struct msg_buffer {

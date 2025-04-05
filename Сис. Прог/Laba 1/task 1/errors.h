@@ -23,7 +23,8 @@ typedef enum errors {
     thread_create_error,
     sem_create_error,
     message_queue_error,
-    socket_error
+    socket_error,
+    fork_error
 } errors;
 
 errors print_error(errors);

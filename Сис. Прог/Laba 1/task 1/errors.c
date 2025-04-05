@@ -29,6 +29,9 @@ errors print_error(errors error){
         case socket_error:
             printf("Socket_error");
             return socket_error;
+        case fork_error:
+            printf("fork_error");
+            return socket_error;
     }
 }
 

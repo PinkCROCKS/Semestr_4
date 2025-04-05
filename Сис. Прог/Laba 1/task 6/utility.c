@@ -1,6 +1,6 @@
 #include "utility.h"
 
-errors init(int *msg_id_1, int *msg_id_2) {
+errors start_resourses(int *msg_id_1, int *msg_id_2) {
     if (!msg_id_1 || !msg_id_2) {
         return ptr_error;
     }

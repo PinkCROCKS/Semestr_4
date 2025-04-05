@@ -26,7 +26,7 @@ typedef struct {
     Strings* files;
 } DirEntry;
 
-errors init(int* msg_id_1, int* msg_id_2);
+errors start_resourses(int* msg_id_1, int* msg_id_2);
 
 errors processing_paths(Strings * input, Strings ** output);
 errors free_strings(Strings * strings);

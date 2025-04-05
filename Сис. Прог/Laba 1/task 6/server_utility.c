@@ -1,33 +1,33 @@
 #include "server_utility.h"
 
-errors init(int *msg_id_1, int *msg_id_2) {
-    if (!msg_id_1 || !msg_id_2) {
+errors start_resourses(int *message1_id, int *message2_id) {
+    if (!message1_id|| !message2_id) {
         return input_error;
     }
-    key_t tmp_key1 = ftok("/tmp", 4);
-    if (tmp_key1 == -1) {
+    key_t key1 = ftok("/tmp", 4);
+    if (key1 == -1) {
         return token_error;
     }
 
-    int tmp_msg_1 = msgget(tmp_key1, IPC_CREAT | 0666);
-    if (tmp_msg_1 == -1) {
+    int message_queue1 = msgget(key1, IPC_CREAT | 0666);
+    if (message_queue1 == -1) {
         return token_error;
     }
 
-    key_t tmp_key2 = ftok("/tmp", 7);
-    if (tmp_key2 == -1) {
-        msgctl(tmp_msg_1, IPC_RMID, 0);
+    key_t key2 = ftok("/tmp", 7);
+    if (key2 == -1) {
+        msgctl(message_queue1, IPC_RMID, 0);
         return token_error;
     }
 
-    int tmp_msg_2 = msgget(tmp_key2, IPC_CREAT | 0666);
-    if (tmp_msg_2 == -1) {
-        msgctl(tmp_msg_1, IPC_RMID, 0);
+    int message_queue2 = msgget(key2, IPC_CREAT | 0666);
+    if (message_queue2 == -1) {
+        msgctl(message_queue1, IPC_RMID, 0);
         return token_error;
     }
 
-    *msg_id_1 = tmp_msg_1;
-    *msg_id_2 = tmp_msg_2;
+    *message1_id= message_queue1;
+    *message2_id = message_queue2;
     return OK;
 }
 
@@ -112,7 +112,7 @@ errors processing_paths(Strings *input, Strings **output_t) {
         return memory_error;
     }
     size_t dir_count = 0;
-    errors errorMsg;
+    errors error;
     for (size_t i = 0; i < input->size; i++) {
 
         char dir[FILENAME_MAX];
@@ -136,13 +136,13 @@ errors processing_paths(Strings *input, Strings **output_t) {
         size_t found = 0;
         for (size_t j = 0; j < dir_count; j++) {
             if (strcmp(dirs[j].dir, dir) == 0) {
-                errorMsg = append_str(dirs[j].files, file);
-                if (errorMsg) {
+                error = append_str(dirs[j].files, file);
+                if (error) {
                     for (int k = 0; k < dir_count; ++k) {
                         free_strings(dirs[k].files);
                     }
                     free(dirs);
-                    return errorMsg;
+                    return error;
                 }
                 found = 1;
                 break;
@@ -158,13 +158,13 @@ errors processing_paths(Strings *input, Strings **output_t) {
                 free(dirs);
                 return memory_error;
             }
-            errorMsg = append_str((dirs[dir_count].files), file);
-            if (errorMsg) {
+            error = append_str((dirs[dir_count].files), file);
+            if (error) {
                 for (int k = 0; k < dir_count; ++k) {
                     free_strings(dirs[k].files);
                 }
                 free(dirs);
-                return errorMsg;
+                return error;
             }
             dir_count++;
         }
@@ -180,25 +180,25 @@ errors processing_paths(Strings *input, Strings **output_t) {
     }
 
     for (size_t i = 0; i < dir_count; i++) {
-        errorMsg = append_str(output, dirs[i].dir);
-        if (errorMsg) {
+        error = append_str(output, dirs[i].dir);
+        if (error) {
             for (int k = 0; k < dir_count; ++k) {
                 free_strings(dirs[k].files);
             }
             free_strings(output);
             free(dirs);
-            return errorMsg;
+            return error;
         }
 
         for (size_t j = 0; j < dirs[i].files->size; j++) {
-            errorMsg = append_str(output, dirs[i].files->content[j]);
-            if (errorMsg) {
+            error = append_str(output, dirs[i].files->content[j]);
+            if (error) {
                 for (int k = 0; k < dir_count; ++k) {
                     free_strings(dirs[k].files);
                 }
                 free(dirs);
                 free_strings(output);
-                return errorMsg;
+                return error;
             }
         }
     }

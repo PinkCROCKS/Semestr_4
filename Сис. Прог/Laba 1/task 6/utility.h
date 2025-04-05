@@ -11,4 +11,4 @@
 
 #include "../task 1/errors.h"
 
-errors init(int* msg_id_1, int* msg_id_2);
+errors start_resourses(int* msg_id_1, int* msg_id_2);
