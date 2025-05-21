@@ -1,0 +1,2265 @@
+        -:    0:Source:/mnt/d/Уник/4 сем/Фунды/number 5/tests/tests.cpp
+        -:    0:Graph:/mnt/d/Уник/4 сем/Фунды/number 5/cmake-build-debug-coverage/CMakeFiles/tests.dir/tests/tests.cpp.gcno
+        -:    0:Data:/mnt/d/Уник/4 сем/Фунды/number 5/cmake-build-debug-coverage/CMakeFiles/tests.dir/tests/tests.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include <gtest/gtest.h>
+        -:    2:#include <stdexcept>
+        -:    3:#include "vector.hpp"
+        -:    4:
+        -:    5:using namespace my_container;
+        -:    6:
+        -:    7:class VectorTest : public ::testing::Test {
+        -:    8:protected:
+        -:    9:    Vector<int> empty_vec;
+        -:   10:    Vector<int> vec_int;
+        -:   11:    Vector<std::string> vec_str;
+function _ZN10VectorTest5SetUpEv called 8 returned 100% blocks executed 46%
+        8:   12:    void SetUp() override {
+        8:   13:        vec_int = {1, 2, 3};
+        8:   13-block  0
+call    0 returned 8
+branch  1 taken 8 (fallthrough)
+branch  2 taken 0 (throw)
+    $$$$$:   13-block  1
+    $$$$$:   13-block  2
+call    3 never executed
+       32:   14:        vec_str = {"a", "b", "c"};
+        8:   14-block  0
+       32:   14-block  1
+branch  0 taken 24 (fallthrough)
+branch  1 taken 8
+       24:   14-block  2
+call    2 returned 24
+    $$$$$:   14-block  3
+    $$$$$:   14-block  4
+branch  3 never executed (fallthrough)
+branch  4 never executed
+    $$$$$:   14-block  5
+call    5 never executed
+    $$$$$:   14-block  6
+       24:   15:    }
+        8:   15-block  0
+        8:   15-block  1
+call    0 returned 8
+branch  1 taken 8 (fallthrough)
+branch  2 taken 0 (throw)
+        8:   15-block  2
+call    3 returned 8
+branch  4 taken 8 (fallthrough)
+branch  5 taken 0 (throw)
+        8:   15-block  3
+call    6 returned 8
+branch  7 taken 8 (fallthrough)
+branch  8 taken 0 (throw)
+        8:   15-block  4
+call    9 returned 8
+branch 10 taken 8 (fallthrough)
+branch 11 taken 0 (throw)
+        8:   15-block  5
+    $$$$$:   15-block  6
+    $$$$$:   15-block  7
+branch 12 never executed (fallthrough)
+branch 13 never executed
+    $$$$$:   15-block  8
+    $$$$$:   15-block  9
+branch 14 never executed (fallthrough)
+branch 15 never executed
+    $$$$$:   15-block 10
+call   16 never executed
+        -:   16:
+        -:   17:};
+        -:   18:
+        -:   19:// Тесты конструкторов
+        4:   20:TEST_F(VectorTest, Constructors) {
+        -:   21:    // Конструктор по умолчанию
+       1*:   22:    EXPECT_EQ(empty_vec.size(), 0);
+       1*:   23:    EXPECT_EQ(empty_vec.capacity(), 2);
+        -:   24:
+        -:   25:    // Конструктор из initializer_list
+       1*:   26:    EXPECT_EQ(vec_int.size(), 3);
+       1*:   27:    EXPECT_EQ(vec_int[0], 1);
+       1*:   28:    EXPECT_EQ(vec_int[2], 3);
+        -:   29:
+        -:   30:    // Конструктор копирования
+        2:   31:    Vector<int> copy(vec_int);
+       1*:   32:    EXPECT_EQ(copy.size(), 3);
+       1*:   33:    EXPECT_EQ(copy[1], 2);
+        1:   34:}
+------------------
+_ZN28VectorTest_Constructors_TestC2Ev:
+function _ZN28VectorTest_Constructors_TestC2Ev called 1 returned 100% blocks executed 100%
+        1:   20:TEST_F(VectorTest, Constructors) {
+        1:   20-block  0
+call    0 returned 1
+------------------
+_ZN28VectorTest_Constructors_TestD0Ev:
+function _ZN28VectorTest_Constructors_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:   20:TEST_F(VectorTest, Constructors) {
+        1:   20-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN28VectorTest_Constructors_TestD2Ev:
+function _ZN28VectorTest_Constructors_TestD2Ev called 1 returned 100% blocks executed 100%
+        1:   20:TEST_F(VectorTest, Constructors) {
+        1:   20-block  0
+call    0 returned 1
+------------------
+_ZN28VectorTest_Constructors_Test8TestBodyEv:
+function _ZN28VectorTest_Constructors_Test8TestBodyEv called 1 returned 100% blocks executed 23%
+        1:   20:TEST_F(VectorTest, Constructors) {
+        -:   21:    // Конструктор по умолчанию
+       1*:   22:    EXPECT_EQ(empty_vec.size(), 0);
+        1:   22-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:   22-block  1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:   22-block  2
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   22-block  3
+call   10 never executed
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    %%%%%:   22-block  4
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   22-block  5
+call   17 never executed
+call   18 never executed
+        1:   22-block  6
+call   19 returned 1
+    $$$$$:   22-block  7
+    $$$$$:   22-block  8
+    $$$$$:   22-block  9
+call   20 never executed
+    $$$$$:   22-block 10
+    $$$$$:   22-block 11
+call   21 never executed
+    $$$$$:   22-block 12
+    $$$$$:   22-block 13
+call   22 never executed
+       1*:   23:    EXPECT_EQ(empty_vec.capacity(), 2);
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:   23-block  0
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:   23-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   23-block  2
+call   10 never executed
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    %%%%%:   23-block  3
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   23-block  4
+call   17 never executed
+call   18 never executed
+        1:   23-block  5
+call   19 returned 1
+    $$$$$:   23-block  6
+    $$$$$:   23-block  7
+    $$$$$:   23-block  8
+call   20 never executed
+    $$$$$:   23-block  9
+    $$$$$:   23-block 10
+call   21 never executed
+    $$$$$:   23-block 11
+    $$$$$:   23-block 12
+call   22 never executed
+        -:   24:
+        -:   25:    // Конструктор из initializer_list
+       1*:   26:    EXPECT_EQ(vec_int.size(), 3);
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:   26-block  0
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:   26-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   26-block  2
+call   10 never executed
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    %%%%%:   26-block  3
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   26-block  4
+call   17 never executed
+call   18 never executed
+        1:   26-block  5
+call   19 returned 1
+    $$$$$:   26-block  6
+    $$$$$:   26-block  7
+    $$$$$:   26-block  8
+call   20 never executed
+    $$$$$:   26-block  9
+    $$$$$:   26-block 10
+call   21 never executed
+    $$$$$:   26-block 11
+    $$$$$:   26-block 12
+call   22 never executed
+       1*:   27:    EXPECT_EQ(vec_int[0], 1);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   27-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   27-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   27-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   27-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   27-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   27-block  5
+call   19 never executed
+call   20 never executed
+        1:   27-block  6
+call   21 returned 1
+    $$$$$:   27-block  7
+    $$$$$:   27-block  8
+    $$$$$:   27-block  9
+call   22 never executed
+    $$$$$:   27-block 10
+    $$$$$:   27-block 11
+call   23 never executed
+    $$$$$:   27-block 12
+    $$$$$:   27-block 13
+call   24 never executed
+       1*:   28:    EXPECT_EQ(vec_int[2], 3);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   28-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   28-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   28-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   28-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   28-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   28-block  5
+call   19 never executed
+call   20 never executed
+        1:   28-block  6
+call   21 returned 1
+    $$$$$:   28-block  7
+    $$$$$:   28-block  8
+    $$$$$:   28-block  9
+call   22 never executed
+    $$$$$:   28-block 10
+    $$$$$:   28-block 11
+call   23 never executed
+    $$$$$:   28-block 12
+    $$$$$:   28-block 13
+call   24 never executed
+        -:   29:
+        -:   30:    // Конструктор копирования
+        2:   31:    Vector<int> copy(vec_int);
+call    0 returned 1
+call    1 returned 1
+    $$$$$:   31-block  0
+call    2 never executed
+       1*:   32:    EXPECT_EQ(copy.size(), 3);
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:   32-block  0
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:   32-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   32-block  2
+call   10 never executed
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    %%%%%:   32-block  3
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   32-block  4
+call   17 never executed
+call   18 never executed
+        1:   32-block  5
+call   19 returned 1
+    $$$$$:   32-block  6
+    $$$$$:   32-block  7
+    $$$$$:   32-block  8
+call   20 never executed
+    $$$$$:   32-block  9
+    $$$$$:   32-block 10
+call   21 never executed
+    $$$$$:   32-block 11
+    $$$$$:   32-block 12
+call   22 never executed
+       1*:   33:    EXPECT_EQ(copy[1], 2);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   33-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   33-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   33-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   33-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   33-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   33-block  5
+call   19 never executed
+call   20 never executed
+        1:   33-block  6
+call   21 returned 1
+    $$$$$:   33-block  7
+    $$$$$:   33-block  8
+    $$$$$:   33-block  9
+call   22 never executed
+    $$$$$:   33-block 10
+    $$$$$:   33-block 11
+call   23 never executed
+    $$$$$:   33-block 12
+    $$$$$:   33-block 13
+call   24 never executed
+        1:   34:}
+------------------
+        -:   35:
+        -:   36:// Тесты операторов присваивания
+        4:   37:TEST_F(VectorTest, AssignmentOperators) {
+        1:   38:    Vector<int> copy;
+        1:   39:    copy = vec_int;
+       1*:   40:    EXPECT_EQ(copy.size(), 3);
+       1*:   41:    EXPECT_EQ(copy[2], 3);
+        1:   42:}
+------------------
+_ZN35VectorTest_AssignmentOperators_TestC2Ev:
+function _ZN35VectorTest_AssignmentOperators_TestC2Ev called 1 returned 100% blocks executed 100%
+        1:   37:TEST_F(VectorTest, AssignmentOperators) {
+        1:   37-block  0
+call    0 returned 1
+------------------
+_ZN35VectorTest_AssignmentOperators_TestD0Ev:
+function _ZN35VectorTest_AssignmentOperators_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:   37:TEST_F(VectorTest, AssignmentOperators) {
+        1:   37-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN35VectorTest_AssignmentOperators_TestD2Ev:
+function _ZN35VectorTest_AssignmentOperators_TestD2Ev called 1 returned 100% blocks executed 100%
+        1:   37:TEST_F(VectorTest, AssignmentOperators) {
+        1:   37-block  0
+call    0 returned 1
+------------------
+_ZN35VectorTest_AssignmentOperators_Test8TestBodyEv:
+function _ZN35VectorTest_AssignmentOperators_Test8TestBodyEv called 1 returned 100% blocks executed 28%
+        1:   37:TEST_F(VectorTest, AssignmentOperators) {
+        1:   38:    Vector<int> copy;
+        1:   38-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   39:    copy = vec_int;
+        1:   39-block  0
+call    0 returned 1
+       1*:   40:    EXPECT_EQ(copy.size(), 3);
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:   40-block  0
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:   40-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   40-block  2
+call   10 never executed
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    %%%%%:   40-block  3
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   40-block  4
+call   17 never executed
+call   18 never executed
+        1:   40-block  5
+call   19 returned 1
+    $$$$$:   40-block  6
+    $$$$$:   40-block  7
+    $$$$$:   40-block  8
+call   20 never executed
+    $$$$$:   40-block  9
+    $$$$$:   40-block 10
+call   21 never executed
+    $$$$$:   40-block 11
+    $$$$$:   40-block 12
+call   22 never executed
+       1*:   41:    EXPECT_EQ(copy[2], 3);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   41-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   41-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   41-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   41-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   41-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   41-block  5
+call   19 never executed
+call   20 never executed
+        1:   41-block  6
+call   21 returned 1
+    $$$$$:   41-block  7
+    $$$$$:   41-block  8
+    $$$$$:   41-block  9
+call   22 never executed
+    $$$$$:   41-block 10
+    $$$$$:   41-block 11
+call   23 never executed
+    $$$$$:   41-block 12
+    $$$$$:   41-block 13
+call   24 never executed
+        1:   42:}
+call    0 returned 1
+    $$$$$:   42-block  0
+call    1 never executed
+------------------
+        -:   43:
+        -:   44:// Тесты операторов сравнения
+        4:   45:TEST_F(VectorTest, ComparisonOperators) {
+        1:   46:    Vector<int> v1 = {1, 2, 3};
+        1:   47:    Vector<int> v2 = {1, 2, 4};
+        1:   48:    Vector<int> v3 = {1, 2};
+        -:   49:
+       1*:   50:    EXPECT_EQ(v1, vec_int);
+       1*:   51:    EXPECT_NE(v1, v2);
+       1*:   52:    EXPECT_LT(v3, v1);
+       1*:   53:    EXPECT_LE(v3, v1);
+       1*:   54:    EXPECT_GT(v2, v1);
+       1*:   55:    EXPECT_GE(v2, v1);
+        1:   56:}
+------------------
+_ZN35VectorTest_ComparisonOperators_TestC2Ev:
+function _ZN35VectorTest_ComparisonOperators_TestC2Ev called 1 returned 100% blocks executed 100%
+        1:   45:TEST_F(VectorTest, ComparisonOperators) {
+        1:   45-block  0
+call    0 returned 1
+------------------
+_ZN35VectorTest_ComparisonOperators_TestD0Ev:
+function _ZN35VectorTest_ComparisonOperators_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:   45:TEST_F(VectorTest, ComparisonOperators) {
+        1:   45-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN35VectorTest_ComparisonOperators_TestD2Ev:
+function _ZN35VectorTest_ComparisonOperators_TestD2Ev called 1 returned 100% blocks executed 100%
+        1:   45:TEST_F(VectorTest, ComparisonOperators) {
+        1:   45-block  0
+call    0 returned 1
+------------------
+_ZN35VectorTest_ComparisonOperators_Test8TestBodyEv:
+function _ZN35VectorTest_ComparisonOperators_Test8TestBodyEv called 1 returned 100% blocks executed 23%
+        1:   45:TEST_F(VectorTest, ComparisonOperators) {
+        1:   46:    Vector<int> v1 = {1, 2, 3};
+        1:   46-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+    $$$$$:   46-block  1
+        1:   47:    Vector<int> v2 = {1, 2, 4};
+        1:   47-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+    $$$$$:   47-block  1
+        1:   48:    Vector<int> v3 = {1, 2};
+        1:   48-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+    $$$$$:   48-block  1
+        -:   49:
+       1*:   50:    EXPECT_EQ(v1, vec_int);
+        1:   50-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   50-block  1
+call    3 returned 1
+branch  4 taken 0 (fallthrough)
+branch  5 taken 1
+    %%%%%:   50-block  2
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:   50-block  3
+call    9 never executed
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   50-block  4
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   50-block  5
+call   16 never executed
+call   17 never executed
+        1:   50-block  6
+call   18 returned 1
+    $$$$$:   50-block  7
+call   19 never executed
+    $$$$$:   50-block  8
+    $$$$$:   50-block  9
+call   20 never executed
+    $$$$$:   50-block 10
+    $$$$$:   50-block 11
+call   21 never executed
+       1*:   51:    EXPECT_NE(v1, v2);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   51-block  0
+call    3 returned 1
+branch  4 taken 0 (fallthrough)
+branch  5 taken 1
+    %%%%%:   51-block  1
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:   51-block  2
+call    9 never executed
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   51-block  3
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   51-block  4
+call   16 never executed
+call   17 never executed
+        1:   51-block  5
+call   18 returned 1
+    $$$$$:   51-block  6
+call   19 never executed
+    $$$$$:   51-block  7
+    $$$$$:   51-block  8
+call   20 never executed
+    $$$$$:   51-block  9
+    $$$$$:   51-block 10
+call   21 never executed
+       1*:   52:    EXPECT_LT(v3, v1);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   52-block  0
+call    3 returned 1
+branch  4 taken 0 (fallthrough)
+branch  5 taken 1
+    %%%%%:   52-block  1
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:   52-block  2
+call    9 never executed
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   52-block  3
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   52-block  4
+call   16 never executed
+call   17 never executed
+        1:   52-block  5
+call   18 returned 1
+    $$$$$:   52-block  6
+call   19 never executed
+    $$$$$:   52-block  7
+    $$$$$:   52-block  8
+call   20 never executed
+    $$$$$:   52-block  9
+    $$$$$:   52-block 10
+call   21 never executed
+       1*:   53:    EXPECT_LE(v3, v1);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   53-block  0
+call    3 returned 1
+branch  4 taken 0 (fallthrough)
+branch  5 taken 1
+    %%%%%:   53-block  1
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:   53-block  2
+call    9 never executed
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   53-block  3
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   53-block  4
+call   16 never executed
+call   17 never executed
+        1:   53-block  5
+call   18 returned 1
+    $$$$$:   53-block  6
+call   19 never executed
+    $$$$$:   53-block  7
+    $$$$$:   53-block  8
+call   20 never executed
+    $$$$$:   53-block  9
+    $$$$$:   53-block 10
+call   21 never executed
+       1*:   54:    EXPECT_GT(v2, v1);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   54-block  0
+call    3 returned 1
+branch  4 taken 0 (fallthrough)
+branch  5 taken 1
+    %%%%%:   54-block  1
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:   54-block  2
+call    9 never executed
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   54-block  3
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   54-block  4
+call   16 never executed
+call   17 never executed
+        1:   54-block  5
+call   18 returned 1
+    $$$$$:   54-block  6
+call   19 never executed
+    $$$$$:   54-block  7
+    $$$$$:   54-block  8
+call   20 never executed
+    $$$$$:   54-block  9
+    $$$$$:   54-block 10
+call   21 never executed
+       1*:   55:    EXPECT_GE(v2, v1);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   55-block  0
+call    3 returned 1
+branch  4 taken 0 (fallthrough)
+branch  5 taken 1
+    %%%%%:   55-block  1
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:   55-block  2
+call    9 never executed
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   55-block  3
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   55-block  4
+call   16 never executed
+call   17 never executed
+        1:   55-block  5
+call   18 returned 1
+    $$$$$:   55-block  6
+call   19 never executed
+    $$$$$:   55-block  7
+    $$$$$:   55-block  8
+call   20 never executed
+    $$$$$:   55-block  9
+    $$$$$:   55-block 10
+call   21 never executed
+        1:   56:}
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+    $$$$$:   56-block  0
+call    3 never executed
+    $$$$$:   56-block  1
+call    4 never executed
+    $$$$$:   56-block  2
+call    5 never executed
+------------------
+        -:   57:
+        -:   58:// Тесты методов доступа
+        4:   59:TEST_F(VectorTest, AccessMethods) {
+       1*:   60:    EXPECT_EQ(vec_int[0], 1);
+        -:   61:
+        -:   62:    // at()
+       1*:   63:    EXPECT_EQ(vec_str.at(1), "b");
+       1*:   64:    EXPECT_THROW(vec_str.at(5), std::out_of_range);
+        -:   65:
+        -:   66:    // front/back
+       1*:   67:    EXPECT_EQ(vec_int.front(), 1);
+       1*:   68:    EXPECT_EQ(vec_int.back(), 3);
+        1:   69:}
+------------------
+_ZN29VectorTest_AccessMethods_TestC2Ev:
+function _ZN29VectorTest_AccessMethods_TestC2Ev called 1 returned 100% blocks executed 100%
+        1:   59:TEST_F(VectorTest, AccessMethods) {
+        1:   59-block  0
+call    0 returned 1
+------------------
+_ZN29VectorTest_AccessMethods_TestD0Ev:
+function _ZN29VectorTest_AccessMethods_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:   59:TEST_F(VectorTest, AccessMethods) {
+        1:   59-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN29VectorTest_AccessMethods_TestD2Ev:
+function _ZN29VectorTest_AccessMethods_TestD2Ev called 1 returned 100% blocks executed 100%
+        1:   59:TEST_F(VectorTest, AccessMethods) {
+        1:   59-block  0
+call    0 returned 1
+------------------
+_ZN29VectorTest_AccessMethods_Test8TestBodyEv:
+function _ZN29VectorTest_AccessMethods_Test8TestBodyEv called 1 returned 100% blocks executed 24%
+        1:   59:TEST_F(VectorTest, AccessMethods) {
+       1*:   60:    EXPECT_EQ(vec_int[0], 1);
+        1:   60-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   60-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   60-block  2
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   60-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   60-block  4
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   60-block  5
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   60-block  6
+call   19 never executed
+call   20 never executed
+        1:   60-block  7
+call   21 returned 1
+    $$$$$:   60-block  8
+    $$$$$:   60-block  9
+    $$$$$:   60-block 10
+call   22 never executed
+    $$$$$:   60-block 11
+    $$$$$:   60-block 12
+call   23 never executed
+    $$$$$:   60-block 13
+    $$$$$:   60-block 14
+call   24 never executed
+        -:   61:
+        -:   62:    // at()
+       1*:   63:    EXPECT_EQ(vec_str.at(1), "b");
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   63-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   63-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   63-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   63-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   63-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   63-block  5
+call   19 never executed
+call   20 never executed
+        1:   63-block  6
+call   21 returned 1
+    $$$$$:   63-block  7
+call   22 never executed
+    $$$$$:   63-block  8
+    $$$$$:   63-block  9
+call   23 never executed
+    $$$$$:   63-block 10
+    $$$$$:   63-block 11
+call   24 never executed
+       1*:   64:    EXPECT_THROW(vec_str.at(5), std::out_of_range);
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0
+        1:   64-block  0
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+        1:   64-block  1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0
+        1:   64-block  2
+call    9 returned 1
+branch 10 taken 0 (fallthrough)
+branch 11 taken 1 (throw)
+        1:   64-block  3
+branch 12 taken 0 (fallthrough)
+branch 13 taken 1
+    %%%%%:   64-block  4
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   64-block  5
+    %%%%%:   64-block  6
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   64-block  7
+call   20 never executed
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:   64-block  8
+call   24 never executed
+branch 25 never executed (fallthrough)
+branch 26 never executed (throw)
+    %%%%%:   64-block  9
+call   27 never executed
+call   28 never executed
+        1:   64-block 10
+call   29 returned 1
+        1:   64-block 11
+branch 30 taken 1
+branch 31 taken 0
+branch 32 taken 0
+        1:   64-block 12
+call   33 returned 1
+call   34 returned 1
+    $$$$$:   64-block 13
+call   35 never executed
+call   36 never executed
+branch 37 never executed (fallthrough)
+branch 38 never executed (throw)
+    $$$$$:   64-block 14
+call   39 never executed
+branch 40 never executed (fallthrough)
+branch 41 never executed (throw)
+    $$$$$:   64-block 15
+call   42 never executed
+branch 43 never executed (fallthrough)
+branch 44 never executed (throw)
+    $$$$$:   64-block 16
+call   45 never executed
+call   46 never executed
+branch 47 never executed (fallthrough)
+branch 48 never executed (throw)
+    $$$$$:   64-block 17
+call   49 never executed
+call   50 never executed
+branch 51 never executed (fallthrough)
+branch 52 never executed (throw)
+    $$$$$:   64-block 18
+call   53 never executed
+branch 54 never executed (fallthrough)
+branch 55 never executed (throw)
+    $$$$$:   64-block 19
+    $$$$$:   64-block 20
+call   56 never executed
+    $$$$$:   64-block 21
+call   57 never executed
+call   58 never executed
+branch 59 never executed (fallthrough)
+branch 60 never executed (throw)
+    $$$$$:   64-block 22
+    $$$$$:   64-block 23
+call   61 never executed
+branch 62 never executed (fallthrough)
+branch 63 never executed (throw)
+    $$$$$:   64-block 24
+call   64 never executed
+    $$$$$:   64-block 25
+    $$$$$:   64-block 26
+call   65 never executed
+    $$$$$:   64-block 27
+call   66 never executed
+    $$$$$:   64-block 28
+call   67 never executed
+    $$$$$:   64-block 29
+    $$$$$:   64-block 30
+call   68 never executed
+    $$$$$:   64-block 31
+    $$$$$:   64-block 32
+call   69 never executed
+        -:   65:
+        -:   66:    // front/back
+       1*:   67:    EXPECT_EQ(vec_int.front(), 1);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   67-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   67-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   67-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   67-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   67-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   67-block  5
+call   19 never executed
+call   20 never executed
+        1:   67-block  6
+call   21 returned 1
+    $$$$$:   67-block  7
+    $$$$$:   67-block  8
+call   22 never executed
+    $$$$$:   67-block  9
+    $$$$$:   67-block 10
+call   23 never executed
+    $$$$$:   67-block 11
+    $$$$$:   67-block 12
+call   24 never executed
+       1*:   68:    EXPECT_EQ(vec_int.back(), 3);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   68-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   68-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   68-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   68-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   68-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   68-block  5
+call   19 never executed
+call   20 never executed
+        1:   68-block  6
+call   21 returned 1
+    $$$$$:   68-block  7
+    $$$$$:   68-block  8
+call   22 never executed
+    $$$$$:   68-block  9
+    $$$$$:   68-block 10
+call   23 never executed
+    $$$$$:   68-block 11
+    $$$$$:   68-block 12
+call   24 never executed
+        1:   69:}
+------------------
+        -:   70:
+        -:   71:// Тесты управления памятью
+        4:   72:TEST_F(VectorTest, MemoryManagement) {
+        -:   73:    // reserve
+        1:   74:    empty_vec.reserve(10);
+       1*:   75:    EXPECT_GE(empty_vec.capacity(), 10);
+        -:   76:
+        1:   77:    vec_int.shrink_to_fit();
+       1*:   78:    EXPECT_EQ(vec_int.capacity(), vec_int.size());
+        -:   79:
+        -:   80:    // max_size
+       1*:   81:    EXPECT_GE(vec_int.max_size(), vec_int.size());
+        1:   82:}
+------------------
+_ZN32VectorTest_MemoryManagement_TestC2Ev:
+function _ZN32VectorTest_MemoryManagement_TestC2Ev called 1 returned 100% blocks executed 100%
+        1:   72:TEST_F(VectorTest, MemoryManagement) {
+        1:   72-block  0
+call    0 returned 1
+------------------
+_ZN32VectorTest_MemoryManagement_TestD0Ev:
+function _ZN32VectorTest_MemoryManagement_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:   72:TEST_F(VectorTest, MemoryManagement) {
+        1:   72-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN32VectorTest_MemoryManagement_TestD2Ev:
+function _ZN32VectorTest_MemoryManagement_TestD2Ev called 1 returned 100% blocks executed 100%
+        1:   72:TEST_F(VectorTest, MemoryManagement) {
+        1:   72-block  0
+call    0 returned 1
+------------------
+_ZN32VectorTest_MemoryManagement_Test8TestBodyEv:
+function _ZN32VectorTest_MemoryManagement_Test8TestBodyEv called 1 returned 100% blocks executed 28%
+        1:   72:TEST_F(VectorTest, MemoryManagement) {
+        -:   73:    // reserve
+        1:   74:    empty_vec.reserve(10);
+        1:   74-block  0
+call    0 returned 1
+       1*:   75:    EXPECT_GE(empty_vec.capacity(), 10);
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:   75-block  0
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:   75-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   75-block  2
+call   10 never executed
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    %%%%%:   75-block  3
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   75-block  4
+call   17 never executed
+call   18 never executed
+        1:   75-block  5
+call   19 returned 1
+    $$$$$:   75-block  6
+    $$$$$:   75-block  7
+    $$$$$:   75-block  8
+call   20 never executed
+    $$$$$:   75-block  9
+    $$$$$:   75-block 10
+call   21 never executed
+    $$$$$:   75-block 11
+    $$$$$:   75-block 12
+call   22 never executed
+        -:   76:
+        1:   77:    vec_int.shrink_to_fit();
+call    0 returned 1
+       1*:   78:    EXPECT_EQ(vec_int.capacity(), vec_int.size());
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+branch  3 taken 1 (fallthrough)
+branch  4 taken 0 (throw)
+        1:   78-block  0
+call    5 returned 1
+branch  6 taken 0 (fallthrough)
+branch  7 taken 1
+    %%%%%:   78-block  1
+call    8 never executed
+branch  9 never executed (fallthrough)
+branch 10 never executed (throw)
+    %%%%%:   78-block  2
+call   11 never executed
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:   78-block  3
+call   15 never executed
+branch 16 never executed (fallthrough)
+branch 17 never executed (throw)
+    %%%%%:   78-block  4
+call   18 never executed
+call   19 never executed
+        1:   78-block  5
+call   20 returned 1
+    $$$$$:   78-block  6
+    $$$$$:   78-block  7
+    $$$$$:   78-block  8
+call   21 never executed
+    $$$$$:   78-block  9
+    $$$$$:   78-block 10
+call   22 never executed
+    $$$$$:   78-block 11
+    $$$$$:   78-block 12
+call   23 never executed
+        -:   79:
+        -:   80:    // max_size
+       1*:   81:    EXPECT_GE(vec_int.max_size(), vec_int.size());
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+branch  3 taken 1 (fallthrough)
+branch  4 taken 0 (throw)
+        1:   81-block  0
+call    5 returned 1
+branch  6 taken 0 (fallthrough)
+branch  7 taken 1
+    %%%%%:   81-block  1
+call    8 never executed
+branch  9 never executed (fallthrough)
+branch 10 never executed (throw)
+    %%%%%:   81-block  2
+call   11 never executed
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:   81-block  3
+call   15 never executed
+branch 16 never executed (fallthrough)
+branch 17 never executed (throw)
+    %%%%%:   81-block  4
+call   18 never executed
+call   19 never executed
+        1:   81-block  5
+call   20 returned 1
+    $$$$$:   81-block  6
+    $$$$$:   81-block  7
+    $$$$$:   81-block  8
+call   21 never executed
+    $$$$$:   81-block  9
+    $$$$$:   81-block 10
+call   22 never executed
+    $$$$$:   81-block 11
+    $$$$$:   81-block 12
+call   23 never executed
+        1:   82:}
+------------------
+        -:   83:
+        -:   84:// Тесты модификации контейнера
+        4:   85:TEST_F(VectorTest, ModificationMethods) {
+        -:   86:    // push_back/pop_back
+        1:   87:    vec_int.push_back(4);
+       1*:   88:    EXPECT_EQ(vec_int.size(), 4);
+        1:   89:    vec_int.pop_back();
+       1*:   90:    EXPECT_EQ(vec_int.size(), 3);
+        -:   91:
+        -:   92:    // insert
+        1:   93:    vec_int.insert(1, 5);
+       1*:   94:    EXPECT_EQ(vec_int[1], 5);
+       1*:   95:    EXPECT_EQ(vec_int.size(), 4);
+        -:   96:
+        -:   97:    // erase
+        1:   98:    vec_int.erase(1);
+       1*:   99:    EXPECT_EQ(vec_int[1], 2);
+       1*:  100:    EXPECT_EQ(vec_int.size(), 3);
+        -:  101:
+        -:  102:    // clear
+        1:  103:    vec_int.clear();
+       1*:  104:    EXPECT_TRUE(vec_int.empty());
+        1:  105:}
+------------------
+_ZN35VectorTest_ModificationMethods_TestC2Ev:
+function _ZN35VectorTest_ModificationMethods_TestC2Ev called 1 returned 100% blocks executed 100%
+        1:   85:TEST_F(VectorTest, ModificationMethods) {
+        1:   85-block  0
+call    0 returned 1
+------------------
+_ZN35VectorTest_ModificationMethods_TestD0Ev:
+function _ZN35VectorTest_ModificationMethods_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:   85:TEST_F(VectorTest, ModificationMethods) {
+        1:   85-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN35VectorTest_ModificationMethods_TestD2Ev:
+function _ZN35VectorTest_ModificationMethods_TestD2Ev called 1 returned 100% blocks executed 100%
+        1:   85:TEST_F(VectorTest, ModificationMethods) {
+        1:   85-block  0
+call    0 returned 1
+------------------
+_ZN35VectorTest_ModificationMethods_Test8TestBodyEv:
+function _ZN35VectorTest_ModificationMethods_Test8TestBodyEv called 1 returned 100% blocks executed 25%
+        1:   85:TEST_F(VectorTest, ModificationMethods) {
+        -:   86:    // push_back/pop_back
+        1:   87:    vec_int.push_back(4);
+        1:   87-block  0
+call    0 returned 1
+       1*:   88:    EXPECT_EQ(vec_int.size(), 4);
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:   88-block  0
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:   88-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   88-block  2
+call   10 never executed
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    %%%%%:   88-block  3
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   88-block  4
+call   17 never executed
+call   18 never executed
+        1:   88-block  5
+call   19 returned 1
+    $$$$$:   88-block  6
+    $$$$$:   88-block  7
+    $$$$$:   88-block  8
+call   20 never executed
+    $$$$$:   88-block  9
+    $$$$$:   88-block 10
+call   21 never executed
+    $$$$$:   88-block 11
+    $$$$$:   88-block 12
+call   22 never executed
+        1:   89:    vec_int.pop_back();
+call    0 returned 1
+       1*:   90:    EXPECT_EQ(vec_int.size(), 3);
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:   90-block  0
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:   90-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   90-block  2
+call   10 never executed
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    %%%%%:   90-block  3
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   90-block  4
+call   17 never executed
+call   18 never executed
+        1:   90-block  5
+call   19 returned 1
+    $$$$$:   90-block  6
+    $$$$$:   90-block  7
+    $$$$$:   90-block  8
+call   20 never executed
+    $$$$$:   90-block  9
+    $$$$$:   90-block 10
+call   21 never executed
+    $$$$$:   90-block 11
+    $$$$$:   90-block 12
+call   22 never executed
+        -:   91:
+        -:   92:    // insert
+        1:   93:    vec_int.insert(1, 5);
+call    0 returned 1
+       1*:   94:    EXPECT_EQ(vec_int[1], 5);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   94-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   94-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   94-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   94-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   94-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   94-block  5
+call   19 never executed
+call   20 never executed
+        1:   94-block  6
+call   21 returned 1
+    $$$$$:   94-block  7
+    $$$$$:   94-block  8
+    $$$$$:   94-block  9
+call   22 never executed
+    $$$$$:   94-block 10
+    $$$$$:   94-block 11
+call   23 never executed
+    $$$$$:   94-block 12
+    $$$$$:   94-block 13
+call   24 never executed
+       1*:   95:    EXPECT_EQ(vec_int.size(), 4);
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:   95-block  0
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:   95-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   95-block  2
+call   10 never executed
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    %%%%%:   95-block  3
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   95-block  4
+call   17 never executed
+call   18 never executed
+        1:   95-block  5
+call   19 returned 1
+    $$$$$:   95-block  6
+    $$$$$:   95-block  7
+    $$$$$:   95-block  8
+call   20 never executed
+    $$$$$:   95-block  9
+    $$$$$:   95-block 10
+call   21 never executed
+    $$$$$:   95-block 11
+    $$$$$:   95-block 12
+call   22 never executed
+        -:   96:
+        -:   97:    // erase
+        1:   98:    vec_int.erase(1);
+call    0 returned 1
+       1*:   99:    EXPECT_EQ(vec_int[1], 2);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   99-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   99-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   99-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   99-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   99-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   99-block  5
+call   19 never executed
+call   20 never executed
+        1:   99-block  6
+call   21 returned 1
+    $$$$$:   99-block  7
+    $$$$$:   99-block  8
+    $$$$$:   99-block  9
+call   22 never executed
+    $$$$$:   99-block 10
+    $$$$$:   99-block 11
+call   23 never executed
+    $$$$$:   99-block 12
+    $$$$$:   99-block 13
+call   24 never executed
+       1*:  100:    EXPECT_EQ(vec_int.size(), 3);
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:  100-block  0
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:  100-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:  100-block  2
+call   10 never executed
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    %%%%%:  100-block  3
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  100-block  4
+call   17 never executed
+call   18 never executed
+        1:  100-block  5
+call   19 returned 1
+    $$$$$:  100-block  6
+    $$$$$:  100-block  7
+    $$$$$:  100-block  8
+call   20 never executed
+    $$$$$:  100-block  9
+    $$$$$:  100-block 10
+call   21 never executed
+    $$$$$:  100-block 11
+    $$$$$:  100-block 12
+call   22 never executed
+        -:  101:
+        -:  102:    // clear
+        1:  103:    vec_int.clear();
+call    0 returned 1
+       1*:  104:    EXPECT_TRUE(vec_int.empty());
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 1
+    %%%%%:  104-block  0
+call    5 never executed
+branch  6 never executed (fallthrough)
+branch  7 never executed (throw)
+    %%%%%:  104-block  1
+call    8 never executed
+branch  9 never executed (fallthrough)
+branch 10 never executed (throw)
+    %%%%%:  104-block  2
+call   11 never executed
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:  104-block  3
+call   15 never executed
+branch 16 never executed (fallthrough)
+branch 17 never executed (throw)
+    %%%%%:  104-block  4
+call   18 never executed
+call   19 never executed
+call   20 never executed
+        1:  104-block  5
+call   21 returned 1
+    $$$$$:  104-block  6
+call   22 never executed
+    $$$$$:  104-block  7
+call   23 never executed
+    $$$$$:  104-block  8
+    $$$$$:  104-block  9
+    $$$$$:  104-block 10
+call   24 never executed
+    $$$$$:  104-block 11
+    $$$$$:  104-block 12
+call   25 never executed
+        1:  105:}
+------------------
+        -:  106:
+        -:  107:// Тесты исключений
+        4:  108:TEST_F(VectorTest, Exceptions) {
+        -:  109:    // at() с неверным индексом
+       1*:  110:    EXPECT_THROW(empty_vec.at(0), std::out_of_range);
+        -:  111:
+        -:  112:    // erase неверного индекса
+       1*:  113:    EXPECT_THROW(empty_vec.erase(0), std::range_error);
+        -:  114:
+        -:  115:    // front/back пустого вектора
+       1*:  116:    EXPECT_THROW(empty_vec.front(), std::out_of_range);
+       1*:  117:    EXPECT_THROW(empty_vec.back(), std::out_of_range);
+        1:  118:}
+------------------
+_ZN26VectorTest_Exceptions_TestC2Ev:
+function _ZN26VectorTest_Exceptions_TestC2Ev called 1 returned 100% blocks executed 100%
+        1:  108:TEST_F(VectorTest, Exceptions) {
+        1:  108-block  0
+call    0 returned 1
+------------------
+_ZN26VectorTest_Exceptions_TestD0Ev:
+function _ZN26VectorTest_Exceptions_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:  108:TEST_F(VectorTest, Exceptions) {
+        1:  108-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN26VectorTest_Exceptions_TestD2Ev:
+function _ZN26VectorTest_Exceptions_TestD2Ev called 1 returned 100% blocks executed 100%
+        1:  108:TEST_F(VectorTest, Exceptions) {
+        1:  108-block  0
+call    0 returned 1
+------------------
+_ZN26VectorTest_Exceptions_Test8TestBodyEv:
+function _ZN26VectorTest_Exceptions_Test8TestBodyEv called 1 returned 100% blocks executed 22%
+        1:  108:TEST_F(VectorTest, Exceptions) {
+        -:  109:    // at() с неверным индексом
+       1*:  110:    EXPECT_THROW(empty_vec.at(0), std::out_of_range);
+        1:  110-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0
+        1:  110-block  1
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+        1:  110-block  2
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0
+        1:  110-block  3
+call    9 returned 1
+branch 10 taken 0 (fallthrough)
+branch 11 taken 1 (throw)
+        1:  110-block  4
+branch 12 taken 0 (fallthrough)
+branch 13 taken 1
+    %%%%%:  110-block  5
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  110-block  6
+    %%%%%:  110-block  7
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  110-block  8
+call   20 never executed
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:  110-block  9
+call   24 never executed
+branch 25 never executed (fallthrough)
+branch 26 never executed (throw)
+    %%%%%:  110-block 10
+call   27 never executed
+call   28 never executed
+        1:  110-block 11
+call   29 returned 1
+        1:  110-block 12
+branch 30 taken 1
+branch 31 taken 0
+branch 32 taken 0
+        1:  110-block 13
+call   33 returned 1
+call   34 returned 1
+    $$$$$:  110-block 14
+call   35 never executed
+call   36 never executed
+branch 37 never executed (fallthrough)
+branch 38 never executed (throw)
+    $$$$$:  110-block 15
+call   39 never executed
+branch 40 never executed (fallthrough)
+branch 41 never executed (throw)
+    $$$$$:  110-block 16
+call   42 never executed
+branch 43 never executed (fallthrough)
+branch 44 never executed (throw)
+    $$$$$:  110-block 17
+call   45 never executed
+call   46 never executed
+branch 47 never executed (fallthrough)
+branch 48 never executed (throw)
+    $$$$$:  110-block 18
+call   49 never executed
+call   50 never executed
+branch 51 never executed (fallthrough)
+branch 52 never executed (throw)
+    $$$$$:  110-block 19
+call   53 never executed
+branch 54 never executed (fallthrough)
+branch 55 never executed (throw)
+    $$$$$:  110-block 20
+    $$$$$:  110-block 21
+call   56 never executed
+    $$$$$:  110-block 22
+call   57 never executed
+call   58 never executed
+branch 59 never executed (fallthrough)
+branch 60 never executed (throw)
+    $$$$$:  110-block 23
+    $$$$$:  110-block 24
+call   61 never executed
+branch 62 never executed (fallthrough)
+branch 63 never executed (throw)
+    $$$$$:  110-block 25
+call   64 never executed
+    $$$$$:  110-block 26
+    $$$$$:  110-block 27
+call   65 never executed
+    $$$$$:  110-block 28
+call   66 never executed
+    $$$$$:  110-block 29
+call   67 never executed
+    $$$$$:  110-block 30
+    $$$$$:  110-block 31
+call   68 never executed
+    $$$$$:  110-block 32
+    $$$$$:  110-block 33
+call   69 never executed
+        -:  111:
+        -:  112:    // erase неверного индекса
+       1*:  113:    EXPECT_THROW(empty_vec.erase(0), std::range_error);
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0
+        1:  113-block  0
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+        1:  113-block  1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0
+        1:  113-block  2
+call    9 returned 1
+branch 10 taken 0 (fallthrough)
+branch 11 taken 1 (throw)
+        1:  113-block  3
+branch 12 taken 0 (fallthrough)
+branch 13 taken 1
+    %%%%%:  113-block  4
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  113-block  5
+    %%%%%:  113-block  6
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  113-block  7
+call   20 never executed
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:  113-block  8
+call   24 never executed
+branch 25 never executed (fallthrough)
+branch 26 never executed (throw)
+    %%%%%:  113-block  9
+call   27 never executed
+call   28 never executed
+        1:  113-block 10
+call   29 returned 1
+        1:  113-block 11
+branch 30 taken 1
+branch 31 taken 0
+branch 32 taken 0
+        1:  113-block 12
+call   33 returned 1
+call   34 returned 1
+    $$$$$:  113-block 13
+call   35 never executed
+call   36 never executed
+branch 37 never executed (fallthrough)
+branch 38 never executed (throw)
+    $$$$$:  113-block 14
+call   39 never executed
+branch 40 never executed (fallthrough)
+branch 41 never executed (throw)
+    $$$$$:  113-block 15
+call   42 never executed
+branch 43 never executed (fallthrough)
+branch 44 never executed (throw)
+    $$$$$:  113-block 16
+call   45 never executed
+call   46 never executed
+branch 47 never executed (fallthrough)
+branch 48 never executed (throw)
+    $$$$$:  113-block 17
+call   49 never executed
+call   50 never executed
+branch 51 never executed (fallthrough)
+branch 52 never executed (throw)
+    $$$$$:  113-block 18
+call   53 never executed
+branch 54 never executed (fallthrough)
+branch 55 never executed (throw)
+    $$$$$:  113-block 19
+    $$$$$:  113-block 20
+call   56 never executed
+    $$$$$:  113-block 21
+call   57 never executed
+call   58 never executed
+branch 59 never executed (fallthrough)
+branch 60 never executed (throw)
+    $$$$$:  113-block 22
+    $$$$$:  113-block 23
+call   61 never executed
+branch 62 never executed (fallthrough)
+branch 63 never executed (throw)
+    $$$$$:  113-block 24
+call   64 never executed
+    $$$$$:  113-block 25
+    $$$$$:  113-block 26
+call   65 never executed
+    $$$$$:  113-block 27
+call   66 never executed
+    $$$$$:  113-block 28
+call   67 never executed
+    $$$$$:  113-block 29
+    $$$$$:  113-block 30
+call   68 never executed
+    $$$$$:  113-block 31
+    $$$$$:  113-block 32
+call   69 never executed
+        -:  114:
+        -:  115:    // front/back пустого вектора
+       1*:  116:    EXPECT_THROW(empty_vec.front(), std::out_of_range);
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0
+        1:  116-block  0
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+        1:  116-block  1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0
+        1:  116-block  2
+call    9 returned 1
+branch 10 taken 0 (fallthrough)
+branch 11 taken 1 (throw)
+        1:  116-block  3
+branch 12 taken 0 (fallthrough)
+branch 13 taken 1
+    %%%%%:  116-block  4
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  116-block  5
+    %%%%%:  116-block  6
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  116-block  7
+call   20 never executed
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:  116-block  8
+call   24 never executed
+branch 25 never executed (fallthrough)
+branch 26 never executed (throw)
+    %%%%%:  116-block  9
+call   27 never executed
+call   28 never executed
+        1:  116-block 10
+call   29 returned 1
+        1:  116-block 11
+branch 30 taken 1
+branch 31 taken 0
+branch 32 taken 0
+        1:  116-block 12
+call   33 returned 1
+call   34 returned 1
+    $$$$$:  116-block 13
+call   35 never executed
+call   36 never executed
+branch 37 never executed (fallthrough)
+branch 38 never executed (throw)
+    $$$$$:  116-block 14
+call   39 never executed
+branch 40 never executed (fallthrough)
+branch 41 never executed (throw)
+    $$$$$:  116-block 15
+call   42 never executed
+branch 43 never executed (fallthrough)
+branch 44 never executed (throw)
+    $$$$$:  116-block 16
+call   45 never executed
+call   46 never executed
+branch 47 never executed (fallthrough)
+branch 48 never executed (throw)
+    $$$$$:  116-block 17
+call   49 never executed
+call   50 never executed
+branch 51 never executed (fallthrough)
+branch 52 never executed (throw)
+    $$$$$:  116-block 18
+call   53 never executed
+branch 54 never executed (fallthrough)
+branch 55 never executed (throw)
+    $$$$$:  116-block 19
+    $$$$$:  116-block 20
+call   56 never executed
+    $$$$$:  116-block 21
+call   57 never executed
+call   58 never executed
+branch 59 never executed (fallthrough)
+branch 60 never executed (throw)
+    $$$$$:  116-block 22
+    $$$$$:  116-block 23
+call   61 never executed
+branch 62 never executed (fallthrough)
+branch 63 never executed (throw)
+    $$$$$:  116-block 24
+call   64 never executed
+    $$$$$:  116-block 25
+    $$$$$:  116-block 26
+call   65 never executed
+    $$$$$:  116-block 27
+call   66 never executed
+    $$$$$:  116-block 28
+call   67 never executed
+    $$$$$:  116-block 29
+    $$$$$:  116-block 30
+call   68 never executed
+    $$$$$:  116-block 31
+    $$$$$:  116-block 32
+call   69 never executed
+       1*:  117:    EXPECT_THROW(empty_vec.back(), std::out_of_range);
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0
+        1:  117-block  0
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+        1:  117-block  1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0
+        1:  117-block  2
+call    9 returned 1
+branch 10 taken 0 (fallthrough)
+branch 11 taken 1 (throw)
+        1:  117-block  3
+branch 12 taken 0 (fallthrough)
+branch 13 taken 1
+    %%%%%:  117-block  4
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  117-block  5
+    %%%%%:  117-block  6
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  117-block  7
+call   20 never executed
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:  117-block  8
+call   24 never executed
+branch 25 never executed (fallthrough)
+branch 26 never executed (throw)
+    %%%%%:  117-block  9
+call   27 never executed
+call   28 never executed
+        1:  117-block 10
+call   29 returned 1
+        1:  117-block 11
+branch 30 taken 1
+branch 31 taken 0
+branch 32 taken 0
+        1:  117-block 12
+call   33 returned 1
+call   34 returned 1
+    $$$$$:  117-block 13
+call   35 never executed
+call   36 never executed
+branch 37 never executed (fallthrough)
+branch 38 never executed (throw)
+    $$$$$:  117-block 14
+call   39 never executed
+branch 40 never executed (fallthrough)
+branch 41 never executed (throw)
+    $$$$$:  117-block 15
+call   42 never executed
+branch 43 never executed (fallthrough)
+branch 44 never executed (throw)
+    $$$$$:  117-block 16
+call   45 never executed
+call   46 never executed
+branch 47 never executed (fallthrough)
+branch 48 never executed (throw)
+    $$$$$:  117-block 17
+call   49 never executed
+call   50 never executed
+branch 51 never executed (fallthrough)
+branch 52 never executed (throw)
+    $$$$$:  117-block 18
+call   53 never executed
+branch 54 never executed (fallthrough)
+branch 55 never executed (throw)
+    $$$$$:  117-block 19
+    $$$$$:  117-block 20
+call   56 never executed
+    $$$$$:  117-block 21
+call   57 never executed
+call   58 never executed
+branch 59 never executed (fallthrough)
+branch 60 never executed (throw)
+    $$$$$:  117-block 22
+    $$$$$:  117-block 23
+call   61 never executed
+branch 62 never executed (fallthrough)
+branch 63 never executed (throw)
+    $$$$$:  117-block 24
+call   64 never executed
+    $$$$$:  117-block 25
+    $$$$$:  117-block 26
+call   65 never executed
+    $$$$$:  117-block 27
+call   66 never executed
+    $$$$$:  117-block 28
+call   67 never executed
+    $$$$$:  117-block 29
+    $$$$$:  117-block 30
+call   68 never executed
+    $$$$$:  117-block 31
+    $$$$$:  117-block 32
+call   69 never executed
+        1:  118:}
+------------------
+        -:  119:
+        -:  120:// Тесты swap
+        4:  121:TEST_F(VectorTest, Swap) {
+        1:  122:    Vector<int> v1 = {1, 2};
+        1:  123:    Vector<int> v2 = {3, 4, 5};
+        -:  124:
+        1:  125:    v1.swap(v2);
+        -:  126:
+       1*:  127:    EXPECT_EQ(v1.size(), 3);
+       1*:  128:    EXPECT_EQ(v2.size(), 2);
+       1*:  129:    EXPECT_EQ(v1[2], 5);
+       1*:  130:    EXPECT_EQ(v2[1], 2);
+        1:  131:}
+------------------
+_ZN20VectorTest_Swap_TestC2Ev:
+function _ZN20VectorTest_Swap_TestC2Ev called 1 returned 100% blocks executed 100%
+        1:  121:TEST_F(VectorTest, Swap) {
+        1:  121-block  0
+call    0 returned 1
+------------------
+_ZN20VectorTest_Swap_TestD0Ev:
+function _ZN20VectorTest_Swap_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:  121:TEST_F(VectorTest, Swap) {
+        1:  121-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN20VectorTest_Swap_TestD2Ev:
+function _ZN20VectorTest_Swap_TestD2Ev called 1 returned 100% blocks executed 100%
+        1:  121:TEST_F(VectorTest, Swap) {
+        1:  121-block  0
+call    0 returned 1
+------------------
+_ZN20VectorTest_Swap_Test8TestBodyEv:
+function _ZN20VectorTest_Swap_Test8TestBodyEv called 1 returned 100% blocks executed 26%
+        1:  121:TEST_F(VectorTest, Swap) {
+        1:  122:    Vector<int> v1 = {1, 2};
+        1:  122-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+    $$$$$:  122-block  1
+        1:  123:    Vector<int> v2 = {3, 4, 5};
+        1:  123-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+    $$$$$:  123-block  1
+        -:  124:
+        1:  125:    v1.swap(v2);
+        1:  125-block  0
+call    0 returned 1
+        -:  126:
+       1*:  127:    EXPECT_EQ(v1.size(), 3);
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:  127-block  0
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:  127-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:  127-block  2
+call   10 never executed
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    %%%%%:  127-block  3
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  127-block  4
+call   17 never executed
+call   18 never executed
+        1:  127-block  5
+call   19 returned 1
+    $$$$$:  127-block  6
+    $$$$$:  127-block  7
+    $$$$$:  127-block  8
+call   20 never executed
+    $$$$$:  127-block  9
+    $$$$$:  127-block 10
+call   21 never executed
+    $$$$$:  127-block 11
+    $$$$$:  127-block 12
+call   22 never executed
+       1*:  128:    EXPECT_EQ(v2.size(), 2);
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:  128-block  0
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:  128-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:  128-block  2
+call   10 never executed
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    %%%%%:  128-block  3
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  128-block  4
+call   17 never executed
+call   18 never executed
+        1:  128-block  5
+call   19 returned 1
+    $$$$$:  128-block  6
+    $$$$$:  128-block  7
+    $$$$$:  128-block  8
+call   20 never executed
+    $$$$$:  128-block  9
+    $$$$$:  128-block 10
+call   21 never executed
+    $$$$$:  128-block 11
+    $$$$$:  128-block 12
+call   22 never executed
+       1*:  129:    EXPECT_EQ(v1[2], 5);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  129-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  129-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:  129-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  129-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:  129-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:  129-block  5
+call   19 never executed
+call   20 never executed
+        1:  129-block  6
+call   21 returned 1
+    $$$$$:  129-block  7
+    $$$$$:  129-block  8
+    $$$$$:  129-block  9
+call   22 never executed
+    $$$$$:  129-block 10
+    $$$$$:  129-block 11
+call   23 never executed
+    $$$$$:  129-block 12
+    $$$$$:  129-block 13
+call   24 never executed
+       1*:  130:    EXPECT_EQ(v2[1], 2);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  130-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  130-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:  130-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  130-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:  130-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:  130-block  5
+call   19 never executed
+call   20 never executed
+        1:  130-block  6
+call   21 returned 1
+    $$$$$:  130-block  7
+    $$$$$:  130-block  8
+    $$$$$:  130-block  9
+call   22 never executed
+    $$$$$:  130-block 10
+    $$$$$:  130-block 11
+call   23 never executed
+    $$$$$:  130-block 12
+    $$$$$:  130-block 13
+call   24 never executed
+        1:  131:}
+call    0 returned 1
+call    1 returned 1
+    $$$$$:  131-block  0
+call    2 never executed
+    $$$$$:  131-block  1
+call    3 never executed
+------------------
+        -:  132:
+function main called 1 returned 100% blocks executed 100%
+        1:  133:int main(int argc, char **argv) {
+        1:  134:    ::testing::InitGoogleTest(&argc, argv);
+        1:  134-block  0
+call    0 returned 1
+        1:  135:    return RUN_ALL_TESTS();
+call    0 returned 1
+        -:  136:}

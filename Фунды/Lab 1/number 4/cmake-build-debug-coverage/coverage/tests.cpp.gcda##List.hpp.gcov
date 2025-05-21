@@ -1,0 +1,486 @@
+        -:    0:Source:/mnt/d/Уник/4 сем/Фунды/number 4/include/List.hpp
+        -:    0:Graph:/mnt/d/Уник/4 сем/Фунды/number 4/cmake-build-debug-coverage/CMakeFiles/tests.dir/tests/tests.cpp.gcno
+        -:    0:Data:/mnt/d/Уник/4 сем/Фунды/number 4/cmake-build-debug-coverage/CMakeFiles/tests.dir/tests/tests.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#ifndef NUMBER_4_LIST_HPP
+        -:    2:#define NUMBER_4_LIST_HPP
+        -:    3:
+        -:    4:#include <iostream>
+        -:    5:#include <algorithm>
+        -:    6:#include <initializer_list>
+        -:    7:#include <iterator>
+        -:    8:#include <memory>
+        -:    9:#include <stdexcept>
+        -:   10:#include <limits>
+        -:   11:#include "Container.hpp"
+        -:   12:
+        -:   13:namespace my_container {
+        -:   14:
+        -:   15:    template <typename T>
+        -:   16:    class List : public Container<T> {
+        -:   17:    protected:
+        -:   18:        struct Node {
+        -:   19:            T data;
+        -:   20:            Node* prev;
+        -:   21:            Node* next;
+        -:   22:
+function _ZN12my_container4ListIiE4NodeC2ERKiPS2_S5_ called 64 returned 100% blocks executed 100%
+       64:   23:            explicit Node(const T& d, Node* prev = nullptr, Node* next = nullptr)
+       64:   24:                    : data(d), prev(prev), next(next) {}
+        -:   25:        };
+        -:   26:
+        -:   27:        size_t size_ = 0;
+        -:   28:        Node* head = nullptr;
+        -:   29:        Node* tail = nullptr;
+        -:   30:
+function _ZN12my_container4ListIiE14init_sentinelsEv called 17 returned 100% blocks executed 100%
+       17:   31:        void init_sentinels() {
+       17:   32:            head = new Node(T{});
+       17:   32-block  0
+call    0 returned 17
+call    1 returned 17
+       17:   33:            tail = new Node(T{});
+call    0 returned 17
+call    1 returned 17
+       17:   34:            head->next = tail;
+       17:   35:            tail->prev = head;
+       17:   36:        }
+        -:   37:
+        -:   38:    public:
+        -:   39:        class iterator {
+        -:   40:        public:
+        -:   41:            using iterator_category = std::bidirectional_iterator_tag;
+        -:   42:            using value_type = T;
+        -:   43:            using difference_type = std::ptrdiff_t;
+        -:   44:            using pointer = T*;
+        -:   45:            using reference = T&;
+        -:   46:
+        -:   47:            Node* node;
+        -:   48:
+function _ZN12my_container4ListIiE8iteratorC2EPNS1_4NodeE called 129 returned 100% blocks executed 100%
+      129:   49:            explicit iterator(Node* node = nullptr) : node(node) {}
+        -:   50:
+function _ZN12my_container4ListIiE8iteratordeEv called 9 returned 100% blocks executed 100%
+        9:   51:            reference operator*() { return node->data; }
+        9:   51-block  0
+        -:   52:            pointer operator->() { return &node->data; }
+        -:   53:
+function _ZN12my_container4ListIiE8iteratorppEv called 0 returned 0% blocks executed 0%
+    #####:   54:            iterator& operator++() {
+    #####:   55:                node = node->next;
+    #####:   56:                return *this;
+    %%%%%:   56-block  0
+        -:   57:            }
+        -:   58:
+        -:   59:            iterator operator++(int) {
+        -:   60:                iterator tmp = *this;
+        -:   61:                ++(*this);
+        -:   62:                return tmp;
+        -:   63:            }
+        -:   64:
+        -:   65:            iterator& operator--() {
+        -:   66:                node = node->prev;
+        -:   67:                return *this;
+        -:   68:            }
+        -:   69:
+        -:   70:            iterator operator--(int) {
+        -:   71:                iterator tmp = *this;
+        -:   72:                --(*this);
+        -:   73:                return tmp;
+        -:   74:            }
+        -:   75:
+        -:   76:            bool operator==(const iterator& other) const { return node == other.node; }
+        -:   77:            bool operator!=(const iterator& other) const { return node != other.node; }
+        -:   78:        };
+        -:   79:
+        -:   80:        class const_iterator {
+        -:   81:        public:
+        -:   82:            using iterator_category = std::bidirectional_iterator_tag;
+        -:   83:            using value_type = const T;
+        -:   84:            using difference_type = std::ptrdiff_t;
+        -:   85:            using pointer = const T*;
+        -:   86:            using reference = const T&;
+        -:   87:
+        -:   88:            const Node* node;
+        -:   89:
+function _ZN12my_container4ListIiE14const_iteratorC2EPKNS1_4NodeE called 40 returned 100% blocks executed 100%
+       40:   90:            explicit const_iterator(const Node* node = nullptr) : node(node) {}
+        -:   91:
+        -:   92:            const_iterator(const iterator& it) : node(it.node) {} // Конвертация
+        -:   93:
+function _ZNK12my_container4ListIiE14const_iteratordeEv called 44 returned 100% blocks executed 100%
+       44:   94:            reference operator*() const { return node->data; }
+       44:   94-block  0
+        -:   95:            pointer operator->() const { return &node->data; }
+        -:   96:
+function _ZN12my_container4ListIiE14const_iteratorppEv called 36 returned 100% blocks executed 100%
+       36:   97:            const_iterator& operator++() {
+       36:   98:                node = node->next;
+       36:   99:                return *this;
+       36:   99-block  0
+        -:  100:            }
+        -:  101:
+        -:  102:            const_iterator operator++(int) {
+        -:  103:                const_iterator tmp = *this;
+        -:  104:                ++(*this);
+        -:  105:                return tmp;
+        -:  106:            }
+        -:  107:
+        -:  108:            const_iterator& operator--() {
+        -:  109:                node = node->prev;
+        -:  110:                return *this;
+        -:  111:            }
+        -:  112:
+        -:  113:            const_iterator operator--(int) {
+        -:  114:                const_iterator tmp = *this;
+        -:  115:                --(*this);
+        -:  116:                return tmp;
+        -:  117:            }
+        -:  118:
+function _ZNK12my_container4ListIiE14const_iteratoreqERKS2_ called 24 returned 100% blocks executed 100%
+       24:  119:            bool operator==(const const_iterator& other) const { return node == other.node; }
+       24:  119-block  0
+function _ZNK12my_container4ListIiE14const_iteratorneERKS2_ called 32 returned 100% blocks executed 100%
+       32:  120:            bool operator!=(const const_iterator& other) const { return node != other.node; }
+       32:  120-block  0
+        -:  121:        };
+        -:  122:
+function _ZN12my_container4ListIiEC2Ev called 15 returned 100% blocks executed 80%
+       15:  123:        List() { init_sentinels(); }
+       15:  123-block  0
+call    0 returned 15
+call    1 returned 15
+branch  2 taken 15 (fallthrough)
+branch  3 taken 0 (throw)
+       15:  123-block  1
+    $$$$$:  123-block  2
+call    4 never executed
+        -:  124:
+function _ZN12my_container4ListIiEC2ERKS1_ called 2 returned 100% blocks executed 83%
+        2:  125:        List(const List<T>& other) : List() {
+        2:  125-block  0
+call    0 returned 2
+        8:  126:            for (const auto& elem : other) {
+call    0 returned 2
+call    1 returned 2
+        6:  126-block  0
+call    2 returned 6
+        6:  126-block  1
+call    3 returned 6
+        8:  126-block  2
+call    4 returned 8
+branch  5 taken 6
+branch  6 taken 2 (fallthrough)
+        6:  127:                push_back(elem);
+call    0 returned 6
+branch  1 taken 6 (fallthrough)
+branch  2 taken 0 (throw)
+        -:  128:            }
+        2:  129:        }
+        2:  129-block  0
+    $$$$$:  129-block  1
+call    0 never executed
+        -:  130:
+function _ZN12my_container4ListIiEC2EOS1_ called 2 returned 100% blocks executed 100%
+        2:  131:        List(List<T>&& other) noexcept {
+        2:  131-block  0
+call    0 returned 2
+        2:  132:            init_sentinels();
+call    0 returned 2
+        2:  133:            swap(other);
+call    0 returned 2
+        2:  134:        }
+        -:  135:
+function _ZN12my_container4ListIiEC2ERKSt16initializer_listIiE called 9 returned 100% blocks executed 89%
+        9:  136:        List(const std::initializer_list<T>& t) : List() {
+        9:  136-block  0
+call    0 returned 9
+       31:  137:            for (auto& elem : t) {
+call    0 returned 9
+call    1 returned 9
+       22:  137-block  0
+       31:  137-block  1
+branch  2 taken 22
+branch  3 taken 9 (fallthrough)
+       22:  138:                push_back(elem);
+       22:  138-block  0
+call    0 returned 22
+branch  1 taken 22 (fallthrough)
+branch  2 taken 0 (throw)
+        -:  139:            }
+        9:  140:        }
+        9:  140-block  0
+    $$$$$:  140-block  1
+call    0 never executed
+        -:  141:
+      17*:  142:        ~List() override {
+       17:  143:            clear();
+       17:  144:            delete head;
+       17:  145:            delete tail;
+      34*:  146:        }
+------------------
+_ZN12my_container4ListIiED0Ev:
+function _ZN12my_container4ListIiED0Ev called 0 returned 0% blocks executed 0%
+    #####:  142:        ~List() override {
+        -:  143:            clear();
+        -:  144:            delete head;
+        -:  145:            delete tail;
+    #####:  146:        }
+    %%%%%:  146-block  0
+call    0 never executed
+call    1 never executed
+------------------
+_ZN12my_container4ListIiED2Ev:
+function _ZN12my_container4ListIiED2Ev called 17 returned 100% blocks executed 100%
+       17:  142:        ~List() override {
+       17:  143:            clear();
+       17:  144:            delete head;
+branch  0 taken 17 (fallthrough)
+branch  1 taken 0
+       17:  144-block  0
+call    2 returned 17
+       17:  145:            delete tail;
+       17:  145-block  0
+branch  0 taken 17 (fallthrough)
+branch  1 taken 0
+       17:  145-block  1
+call    2 returned 17
+       34:  146:        }
+       17:  146-block  0
+call    0 returned 17
+       17:  146-block  1
+call    1 returned 17
+------------------
+        -:  147:
+function _ZN12my_container4ListIiEaSERKS1_ called 1 returned 100% blocks executed 100%
+        1:  148:        List<T>& operator=(const List<T>& other) {
+        1:  149:            List tmp(other);
+        1:  149-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  150:            swap(tmp);
+        1:  150-block  0
+call    0 returned 1
+        1:  151:            return *this;
+        1:  151-block  0
+        1:  152:        }
+call    0 returned 1
+        -:  153:
+function _ZN12my_container4ListIiEaSEOS1_ called 1 returned 100% blocks executed 100%
+        1:  154:        List<T>& operator=(List<T>&& other) noexcept {
+        1:  155:            swap(other);
+        1:  155-block  0
+call    0 returned 1
+        1:  156:            return *this;
+        -:  157:        }
+        -:  158:
+function _ZN12my_container4ListIiE5beginEv called 41 returned 100% blocks executed 100%
+       41:  159:        iterator begin() noexcept { return iterator(head->next); }
+       41:  159-block  0
+call    0 returned 41
+       41:  159-block  1
+function _ZNK12my_container4ListIiE5beginEv called 20 returned 100% blocks executed 100%
+       20:  160:        const_iterator begin() const noexcept { return const_iterator(head->next); }
+       20:  160-block  0
+call    0 returned 20
+       20:  160-block  1
+        -:  161:        const_iterator cbegin() const noexcept { return const_iterator(head->next); }
+        -:  162:
+function _ZN12my_container4ListIiE3endEv called 28 returned 100% blocks executed 100%
+       28:  163:        iterator end() noexcept { return iterator(tail); }
+       28:  163-block  0
+call    0 returned 28
+       28:  163-block  1
+function _ZNK12my_container4ListIiE3endEv called 20 returned 100% blocks executed 100%
+       20:  164:        const_iterator end() const noexcept { return const_iterator(tail); }
+       20:  164-block  0
+call    0 returned 20
+       20:  164-block  1
+        -:  165:        const_iterator cend() const noexcept { return const_iterator(tail); }
+        -:  166:
+        -:  167:        std::reverse_iterator<iterator> rbegin() { return std::reverse_iterator(end()); }
+        -:  168:        std::reverse_iterator<const_iterator> crbegin() const {
+        -:  169:            return std::reverse_iterator(cend());
+        -:  170:        }
+        -:  171:
+        -:  172:        std::reverse_iterator<iterator> rend() { return std::reverse_iterator(begin()); }
+        -:  173:        std::reverse_iterator<const_iterator> crend() const {
+        -:  174:            return std::reverse_iterator(cbegin());
+        -:  175:        }
+        -:  176:
+function _ZNK12my_container4ListIiE5emptyEv called 55 returned 100% blocks executed 100%
+       55:  177:        bool empty() const noexcept override { return size_ == 0; }
+       55:  177-block  0
+function _ZNK12my_container4ListIiE4sizeEv called 7 returned 100% blocks executed 100%
+        7:  178:        size_t size() const noexcept override { return size_; }
+        7:  178-block  0
+function _ZNK12my_container4ListIiE8max_sizeEv called 0 returned 0% blocks executed 0%
+    #####:  179:        size_t max_size() const noexcept override {
+    #####:  180:            return 145674;
+    %%%%%:  180-block  0
+        -:  181:        }
+        -:  182:
+function _ZN12my_container4ListIiE5clearEv called 17 returned 100% blocks executed 100%
+       17:  183:        void clear() {
+       42:  184:            while (!empty()) {
+       17:  184-block  0
+       42:  184-block  1
+call    0 returned 42
+branch  1 taken 25
+branch  2 taken 17 (fallthrough)
+       25:  185:                pop_front();
+       25:  185-block  0
+call    0 returned 25
+        -:  186:            }
+       17:  187:        }
+        -:  188:
+function _ZN12my_container4ListIiE6insertENS1_8iteratorERKi called 30 returned 100% blocks executed 100%
+       30:  189:        iterator insert(iterator pos, const T& value) {
+       30:  190:            Node* new_node = new Node(value, pos.node->prev, pos.node);
+       30:  190-block  0
+call    0 returned 30
+call    1 returned 30
+       30:  191:            pos.node->prev->next = new_node;
+       30:  192:            pos.node->prev = new_node;
+       30:  193:            ++size_;
+       30:  194:            return iterator(new_node);
+call    0 returned 30
+       30:  194-block  0
+        -:  195:        }
+        -:  196:
+        -:  197:        iterator insert(iterator pos, T&& value) {
+        -:  198:            Node* new_node = new Node(std::move(value), pos.node->prev, pos.node);
+        -:  199:            pos.node->prev->next = new_node;
+        -:  200:            pos.node->prev = new_node;
+        -:  201:            ++size_;
+        -:  202:            return iterator(new_node);
+        -:  203:        }
+        -:  204:
+        -:  205:        T& front() { return *begin(); }
+        -:  206:        T& back() { return *(--end()); }
+        -:  207:
+        -:  208:        void push_front(const T& val) { insert(begin(), val); }
+        -:  209:        void push_front(T&& val) { insert(begin(), std::move(val)); }
+function _ZN12my_container4ListIiE9push_backERKi called 28 returned 100% blocks executed 100%
+       28:  210:        void push_back(const T& val) { insert(end(), val); }
+       28:  210-block  0
+call    0 returned 28
+call    1 returned 28
+        -:  211:        void push_back(T&& val) { insert(end(), std::move(val)); }
+        -:  212:
+        -:  213:        void pop_back() {
+        -:  214:            erase(--end());
+        -:  215:        }
+function _ZN12my_container4ListIiE9pop_frontEv called 30 returned 100% blocks executed 100%
+       30:  216:        void pop_front() {
+       30:  217:            erase(begin());
+       30:  217-block  0
+call    0 returned 30
+call    1 returned 30
+       30:  218:        }
+        -:  219:
+function _ZN12my_container4ListIiE5eraseENS1_8iteratorE called 30 returned 100% blocks executed 100%
+       30:  220:        iterator erase(iterator pos) {
+       30:  221:            Node* target = pos.node;
+       30:  222:            iterator next = iterator(target->next);
+       30:  222-block  0
+call    0 returned 30
+       30:  223:            target->prev->next = target->next;
+       30:  224:            target->next->prev = target->prev;
+       30:  225:            delete target;
+branch  0 taken 30 (fallthrough)
+branch  1 taken 0
+       30:  225-block  0
+call    2 returned 30
+       30:  226:            --size_;
+       30:  227:            return next;
+       30:  227-block  0
+        -:  228:        }
+        -:  229:
+        -:  230:        iterator erase(iterator first, iterator last) {
+        -:  231:            while (first != last) {
+        -:  232:                first = erase(first);
+        -:  233:            }
+        -:  234:            return last;
+        -:  235:        }
+        -:  236:
+        -:  237:        void resize(size_t count, const T& value = T()) {
+        -:  238:            while (size_ > count) pop_back();
+        -:  239:            while (size_ < count) push_back(value);
+        -:  240:        }
+        -:  241:
+function _ZN12my_container4ListIiE4swapERS1_ called 5 returned 100% blocks executed 100%
+        5:  242:        void swap(List<T>& rhs) noexcept {
+        5:  243:            std::swap(head, rhs.head);
+        5:  243-block  0
+call    0 returned 5
+        5:  244:            std::swap(tail, rhs.tail);
+call    0 returned 5
+        5:  245:            std::swap(size_, rhs.size_);
+call    0 returned 5
+        5:  246:        }
+        -:  247:
+function _ZNK12my_container4ListIiEssERKS1_ called 9 returned 100% blocks executed 100%
+        9:  248:        std::strong_ordering operator<=>(const List<T>& rhs) const {
+        9:  249:            return std::lexicographical_compare_three_way(
+        9:  249-block  0
+call    0 returned 9
+call    1 returned 9
+call    2 returned 9
+call    3 returned 9
+call    4 returned 9
+        -:  250:                    begin(), end(), rhs.begin(), rhs.end()
+        9:  251:            );
+        -:  252:        }
+        -:  253:
+function _ZNK12my_container4ListIiEeqERKS1_ called 6 returned 100% blocks executed 100%
+        6:  254:        bool operator==(const List<T>& rhs) const {
+        6:  255:            return size_ == rhs.size_ && (*this <=> rhs) == std::strong_ordering::equal;
+        6:  255-block  0
+branch  0 taken 3 (fallthrough)
+branch  1 taken 3
+        3:  255-block  1
+call    2 returned 3
+call    3 returned 3
+branch  4 taken 3 (fallthrough)
+branch  5 taken 0
+        3:  255-block  2
+        3:  255-block  3
+        6:  255-block  4
+        -:  256:        }
+        -:  257:
+        -:  258:        bool operator!=(const List<T>& rhs) const { return !(*this == rhs); }
+function _ZNK12my_container4ListIiEgtERKS1_ called 1 returned 100% blocks executed 100%
+        1:  259:        bool operator>(const List<T>& rhs) const { return (*this <=> rhs) > 0; }
+        1:  259-block  0
+call    0 returned 1
+call    1 returned 1
+function _ZNK12my_container4ListIiEgeERKS1_ called 1 returned 100% blocks executed 100%
+        1:  260:        bool operator>=(const List<T>& rhs) const { return (*this <=> rhs) >= 0; }
+        1:  260-block  0
+call    0 returned 1
+call    1 returned 1
+function _ZNK12my_container4ListIiEltERKS1_ called 1 returned 100% blocks executed 100%
+        1:  261:        bool operator<(const List<T>& rhs) const { return (*this <=> rhs) < 0; }
+        1:  261-block  0
+call    0 returned 1
+call    1 returned 1
+function _ZNK12my_container4ListIiEleERKS1_ called 1 returned 100% blocks executed 100%
+        1:  262:        bool operator<=(const List<T>& rhs) const { return (*this <=> rhs) <= 0; }
+        1:  262-block  0
+call    0 returned 1
+call    1 returned 1
+        -:  263:    };
+        -:  264:
+        -:  265:    template <typename T>
+        -:  266:    std::ostream& operator<<(std::ostream& out, const List<T>& list) {
+        -:  267:        for (auto& el : list) {
+        -:  268:            out << el << " ";
+        -:  269:        }
+        -:  270:        return out << "\n";
+        -:  271:    }
+        -:  272:
+        -:  273:}
+        -:  274:
+        -:  275:#endif //NUMBER_4_LIST_HPP

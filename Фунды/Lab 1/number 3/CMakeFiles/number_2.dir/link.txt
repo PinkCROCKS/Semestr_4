@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/number_2.dir/src/functions.cpp.o CMakeFiles/number_2.dir/src/main.cpp.o -o number_2 

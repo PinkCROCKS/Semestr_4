@@ -1,0 +1,46 @@
+        -:    0:Source:/mnt/d/Уник/4 сем/Фунды/mun 1.1/include/container.hpp
+        -:    0:Graph:/mnt/d/Уник/4 сем/Фунды/mun 1.1/cmake-build-debug-coverage/CMakeFiles/tests.dir/tests/tests.cpp.gcno
+        -:    0:Data:/mnt/d/Уник/4 сем/Фунды/mun 1.1/cmake-build-debug-coverage/CMakeFiles/tests.dir/tests/tests.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#ifndef NUMBER_1_CONTAINER_H
+        -:    2:#define NUMBER_1_CONTAINER_H
+        -:    3:
+        -:    4:#include <algorithm>
+        -:    5:#include <iterator>
+        -:    6:#include <compare>
+        -:    7:#include <iostream>
+        -:    8:
+        -:    9:namespace my_container {
+        -:   10:
+        -:   11:    template<typename type>
+        -:   12:    class Container {
+        -:   13:    public:
+        -:   14:        virtual ~Container() = 0;
+        -:   15:
+        -:   16:        virtual size_t size() const noexcept = 0;
+        -:   17:
+        -:   18:        virtual size_t max_size() const noexcept = 0;
+        -:   19:
+        -:   20:        virtual bool empty() const noexcept = 0;
+        -:   21:
+        -:   22:        virtual bool operator==(const Container &) const = 0;
+        -:   23:
+        -:   24:        virtual bool operator!=(const Container &) const = 0;
+        -:   25:    };
+        -:   26:
+        -:   27:    template<typename type>
+      17*:   28:    Container<type>::~Container() = default;
+------------------
+_ZN12my_container9ContainerIiED0Ev:
+function _ZN12my_container9ContainerIiED0Ev called 0 returned 0% blocks executed 0%
+    #####:   28:    Container<type>::~Container() = default;
+    %%%%%:   28-block  0
+call    0 never executed
+call    1 never executed
+------------------
+_ZN12my_container9ContainerIiED2Ev:
+function _ZN12my_container9ContainerIiED2Ev called 17 returned 100% blocks executed 100%
+       17:   28:    Container<type>::~Container() = default;
+------------------
+        -:   29:}
+        -:   30:#endif //NUMBER_1_CONTAINER_H

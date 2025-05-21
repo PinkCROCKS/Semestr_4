@@ -1,0 +1,1762 @@
+        -:    0:Source:/mnt/d/Уник/4 сем/Фунды/number 4/tests/tests.cpp
+        -:    0:Graph:/mnt/d/Уник/4 сем/Фунды/number 4/cmake-build-debug-coverage/CMakeFiles/tests.dir/tests/tests.cpp.gcno
+        -:    0:Data:/mnt/d/Уник/4 сем/Фунды/number 4/cmake-build-debug-coverage/CMakeFiles/tests.dir/tests/tests.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include "Stack.hpp"
+        -:    2:#include <gtest/gtest.h>
+        -:    3:
+        4:    4:TEST(StackTest, Constructors) {
+        1:    5:    Stack<int> test_stack1;
+       1*:    6:    EXPECT_TRUE(test_stack1.empty());
+       1*:    7:    EXPECT_EQ(test_stack1.size(), 0);
+        -:    8:
+        2:    9:    Stack<int> test_stack2{1, 2, 3};
+       1*:   10:    EXPECT_EQ(test_stack2.size(), 3);
+       1*:   11:    EXPECT_EQ(test_stack2.top(), 1);
+        -:   12:
+        2:   13:    Stack<int> test_stack3(test_stack2);
+       1*:   14:    EXPECT_EQ(test_stack3, test_stack2);
+       1*:   15:    EXPECT_EQ(test_stack3.top(), 1);
+        -:   16:
+        2:   17:    Stack<int> test_stack4(std::move(test_stack2));
+       1*:   18:    EXPECT_EQ(test_stack4.size(), 3);
+       1*:   19:    EXPECT_TRUE(test_stack2.empty());  
+        1:   20:}
+------------------
+_ZN27StackTest_Constructors_TestC2Ev:
+function _ZN27StackTest_Constructors_TestC2Ev called 1 returned 100% blocks executed 100%
+        1:    4:TEST(StackTest, Constructors) {
+        1:    4-block  0
+call    0 returned 1
+------------------
+_ZN27StackTest_Constructors_TestD0Ev:
+function _ZN27StackTest_Constructors_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:    4:TEST(StackTest, Constructors) {
+        1:    4-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN27StackTest_Constructors_TestD2Ev:
+function _ZN27StackTest_Constructors_TestD2Ev called 1 returned 100% blocks executed 100%
+        1:    4:TEST(StackTest, Constructors) {
+        1:    4-block  0
+call    0 returned 1
+------------------
+_ZN27StackTest_Constructors_Test8TestBodyEv:
+function _ZN27StackTest_Constructors_Test8TestBodyEv called 1 returned 100% blocks executed 25%
+        1:    4:TEST(StackTest, Constructors) {
+        1:    5:    Stack<int> test_stack1;
+        1:    5-block  0
+call    0 returned 1
+       1*:    6:    EXPECT_TRUE(test_stack1.empty());
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 1
+    %%%%%:    6-block  0
+call    5 never executed
+branch  6 never executed (fallthrough)
+branch  7 never executed (throw)
+    %%%%%:    6-block  1
+call    8 never executed
+branch  9 never executed (fallthrough)
+branch 10 never executed (throw)
+    %%%%%:    6-block  2
+call   11 never executed
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:    6-block  3
+call   15 never executed
+branch 16 never executed (fallthrough)
+branch 17 never executed (throw)
+    %%%%%:    6-block  4
+call   18 never executed
+call   19 never executed
+call   20 never executed
+        1:    6-block  5
+call   21 returned 1
+    $$$$$:    6-block  6
+call   22 never executed
+    $$$$$:    6-block  7
+call   23 never executed
+    $$$$$:    6-block  8
+    $$$$$:    6-block  9
+    $$$$$:    6-block 10
+call   24 never executed
+    $$$$$:    6-block 11
+    $$$$$:    6-block 12
+call   25 never executed
+       1*:    7:    EXPECT_EQ(test_stack1.size(), 0);
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:    7-block  0
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:    7-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:    7-block  2
+call   10 never executed
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    %%%%%:    7-block  3
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:    7-block  4
+call   17 never executed
+call   18 never executed
+        1:    7-block  5
+call   19 returned 1
+    $$$$$:    7-block  6
+    $$$$$:    7-block  7
+    $$$$$:    7-block  8
+call   20 never executed
+    $$$$$:    7-block  9
+    $$$$$:    7-block 10
+call   21 never executed
+    $$$$$:    7-block 11
+    $$$$$:    7-block 12
+call   22 never executed
+        -:    8:
+        2:    9:    Stack<int> test_stack2{1, 2, 3};
+call    0 returned 1
+call    1 returned 1
+    $$$$$:    9-block  0
+call    2 never executed
+       1*:   10:    EXPECT_EQ(test_stack2.size(), 3);
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:   10-block  0
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:   10-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   10-block  2
+call   10 never executed
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    %%%%%:   10-block  3
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   10-block  4
+call   17 never executed
+call   18 never executed
+        1:   10-block  5
+call   19 returned 1
+    $$$$$:   10-block  6
+    $$$$$:   10-block  7
+    $$$$$:   10-block  8
+call   20 never executed
+    $$$$$:   10-block  9
+    $$$$$:   10-block 10
+call   21 never executed
+    $$$$$:   10-block 11
+    $$$$$:   10-block 12
+call   22 never executed
+       1*:   11:    EXPECT_EQ(test_stack2.top(), 1);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   11-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   11-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   11-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   11-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   11-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   11-block  5
+call   19 never executed
+call   20 never executed
+        1:   11-block  6
+call   21 returned 1
+    $$$$$:   11-block  7
+    $$$$$:   11-block  8
+call   22 never executed
+    $$$$$:   11-block  9
+    $$$$$:   11-block 10
+call   23 never executed
+    $$$$$:   11-block 11
+    $$$$$:   11-block 12
+call   24 never executed
+        -:   12:
+        2:   13:    Stack<int> test_stack3(test_stack2);
+call    0 returned 1
+call    1 returned 1
+    $$$$$:   13-block  0
+call    2 never executed
+       1*:   14:    EXPECT_EQ(test_stack3, test_stack2);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   14-block  0
+call    3 returned 1
+branch  4 taken 0 (fallthrough)
+branch  5 taken 1
+    %%%%%:   14-block  1
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:   14-block  2
+call    9 never executed
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   14-block  3
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   14-block  4
+call   16 never executed
+call   17 never executed
+        1:   14-block  5
+call   18 returned 1
+    $$$$$:   14-block  6
+call   19 never executed
+    $$$$$:   14-block  7
+    $$$$$:   14-block  8
+call   20 never executed
+    $$$$$:   14-block  9
+    $$$$$:   14-block 10
+call   21 never executed
+       1*:   15:    EXPECT_EQ(test_stack3.top(), 1);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   15-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   15-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   15-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   15-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   15-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   15-block  5
+call   19 never executed
+call   20 never executed
+        1:   15-block  6
+call   21 returned 1
+    $$$$$:   15-block  7
+    $$$$$:   15-block  8
+call   22 never executed
+    $$$$$:   15-block  9
+    $$$$$:   15-block 10
+call   23 never executed
+    $$$$$:   15-block 11
+    $$$$$:   15-block 12
+call   24 never executed
+        -:   16:
+        2:   17:    Stack<int> test_stack4(std::move(test_stack2));
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+    $$$$$:   17-block  0
+call    3 never executed
+       1*:   18:    EXPECT_EQ(test_stack4.size(), 3);
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:   18-block  0
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:   18-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   18-block  2
+call   10 never executed
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    %%%%%:   18-block  3
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   18-block  4
+call   17 never executed
+call   18 never executed
+        1:   18-block  5
+call   19 returned 1
+    $$$$$:   18-block  6
+    $$$$$:   18-block  7
+    $$$$$:   18-block  8
+call   20 never executed
+    $$$$$:   18-block  9
+    $$$$$:   18-block 10
+call   21 never executed
+    $$$$$:   18-block 11
+    $$$$$:   18-block 12
+call   22 never executed
+       1*:   19:    EXPECT_TRUE(test_stack2.empty());  
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 1
+    %%%%%:   19-block  0
+call    5 never executed
+branch  6 never executed (fallthrough)
+branch  7 never executed (throw)
+    %%%%%:   19-block  1
+call    8 never executed
+branch  9 never executed (fallthrough)
+branch 10 never executed (throw)
+    %%%%%:   19-block  2
+call   11 never executed
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:   19-block  3
+call   15 never executed
+branch 16 never executed (fallthrough)
+branch 17 never executed (throw)
+    %%%%%:   19-block  4
+call   18 never executed
+call   19 never executed
+call   20 never executed
+        1:   19-block  5
+call   21 returned 1
+    $$$$$:   19-block  6
+call   22 never executed
+    $$$$$:   19-block  7
+call   23 never executed
+    $$$$$:   19-block  8
+    $$$$$:   19-block  9
+    $$$$$:   19-block 10
+call   24 never executed
+    $$$$$:   19-block 11
+    $$$$$:   19-block 12
+call   25 never executed
+        1:   20:}
+call    0 returned 1
+    $$$$$:   20-block  0
+call    1 never executed
+------------------
+        -:   21:
+        4:   22:TEST(StackTest, AssignmentOperators) {
+        1:   23:    Stack<int> test_stack1{1, 2, 3};
+        1:   24:    Stack<int> test_stack2;
+        -:   25:
+        1:   26:    test_stack2 = test_stack1;
+       1*:   27:    EXPECT_EQ(test_stack2, test_stack1);
+       1*:   28:    EXPECT_EQ(test_stack2.top(), 1);
+        -:   29:
+        2:   30:    Stack<int> test_stack3;
+        1:   31:    test_stack3 = std::move(test_stack1);
+       1*:   32:    EXPECT_EQ(test_stack3.size(), 3);
+       1*:   33:    EXPECT_TRUE(test_stack1.empty());  
+        1:   34:}
+------------------
+_ZN34StackTest_AssignmentOperators_TestC2Ev:
+function _ZN34StackTest_AssignmentOperators_TestC2Ev called 1 returned 100% blocks executed 100%
+        1:   22:TEST(StackTest, AssignmentOperators) {
+        1:   22-block  0
+call    0 returned 1
+------------------
+_ZN34StackTest_AssignmentOperators_TestD0Ev:
+function _ZN34StackTest_AssignmentOperators_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:   22:TEST(StackTest, AssignmentOperators) {
+        1:   22-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN34StackTest_AssignmentOperators_TestD2Ev:
+function _ZN34StackTest_AssignmentOperators_TestD2Ev called 1 returned 100% blocks executed 100%
+        1:   22:TEST(StackTest, AssignmentOperators) {
+        1:   22-block  0
+call    0 returned 1
+------------------
+_ZN34StackTest_AssignmentOperators_Test8TestBodyEv:
+function _ZN34StackTest_AssignmentOperators_Test8TestBodyEv called 1 returned 100% blocks executed 28%
+        1:   22:TEST(StackTest, AssignmentOperators) {
+        1:   23:    Stack<int> test_stack1{1, 2, 3};
+        1:   23-block  0
+call    0 returned 1
+        1:   24:    Stack<int> test_stack2;
+call    0 returned 1
+        -:   25:
+        1:   26:    test_stack2 = test_stack1;
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:   27:    EXPECT_EQ(test_stack2, test_stack1);
+        1:   27-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   27-block  1
+call    3 returned 1
+branch  4 taken 0 (fallthrough)
+branch  5 taken 1
+    %%%%%:   27-block  2
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:   27-block  3
+call    9 never executed
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   27-block  4
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   27-block  5
+call   16 never executed
+call   17 never executed
+        1:   27-block  6
+call   18 returned 1
+    $$$$$:   27-block  7
+call   19 never executed
+    $$$$$:   27-block  8
+    $$$$$:   27-block  9
+call   20 never executed
+    $$$$$:   27-block 10
+    $$$$$:   27-block 11
+call   21 never executed
+       1*:   28:    EXPECT_EQ(test_stack2.top(), 1);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   28-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   28-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   28-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   28-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   28-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   28-block  5
+call   19 never executed
+call   20 never executed
+        1:   28-block  6
+call   21 returned 1
+    $$$$$:   28-block  7
+    $$$$$:   28-block  8
+call   22 never executed
+    $$$$$:   28-block  9
+    $$$$$:   28-block 10
+call   23 never executed
+    $$$$$:   28-block 11
+    $$$$$:   28-block 12
+call   24 never executed
+        -:   29:
+        2:   30:    Stack<int> test_stack3;
+call    0 returned 1
+call    1 returned 1
+    $$$$$:   30-block  0
+call    2 never executed
+        1:   31:    test_stack3 = std::move(test_stack1);
+call    0 returned 1
+call    1 returned 1
+       1*:   32:    EXPECT_EQ(test_stack3.size(), 3);
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:   32-block  0
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:   32-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   32-block  2
+call   10 never executed
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    %%%%%:   32-block  3
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   32-block  4
+call   17 never executed
+call   18 never executed
+        1:   32-block  5
+call   19 returned 1
+    $$$$$:   32-block  6
+    $$$$$:   32-block  7
+    $$$$$:   32-block  8
+call   20 never executed
+    $$$$$:   32-block  9
+    $$$$$:   32-block 10
+call   21 never executed
+    $$$$$:   32-block 11
+    $$$$$:   32-block 12
+call   22 never executed
+       1*:   33:    EXPECT_TRUE(test_stack1.empty());  
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 1
+    %%%%%:   33-block  0
+call    5 never executed
+branch  6 never executed (fallthrough)
+branch  7 never executed (throw)
+    %%%%%:   33-block  1
+call    8 never executed
+branch  9 never executed (fallthrough)
+branch 10 never executed (throw)
+    %%%%%:   33-block  2
+call   11 never executed
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:   33-block  3
+call   15 never executed
+branch 16 never executed (fallthrough)
+branch 17 never executed (throw)
+    %%%%%:   33-block  4
+call   18 never executed
+call   19 never executed
+call   20 never executed
+        1:   33-block  5
+call   21 returned 1
+    $$$$$:   33-block  6
+call   22 never executed
+    $$$$$:   33-block  7
+call   23 never executed
+    $$$$$:   33-block  8
+    $$$$$:   33-block  9
+    $$$$$:   33-block 10
+call   24 never executed
+    $$$$$:   33-block 11
+    $$$$$:   33-block 12
+call   25 never executed
+        1:   34:}
+call    0 returned 1
+call    1 returned 1
+    $$$$$:   34-block  0
+call    2 never executed
+    $$$$$:   34-block  1
+call    3 never executed
+------------------
+        -:   35:
+        4:   36:TEST(StackTest, BasicOperations) {
+        1:   37:    Stack<int> test_stack{1, 2};
+        1:   38:    test_stack.push(10);
+       1*:   39:    EXPECT_EQ(test_stack.top(), 10);
+        1:   40:    test_stack.push(20);
+       1*:   41:    EXPECT_EQ(test_stack.top(), 20);
+       1*:   42:    EXPECT_FALSE(test_stack.empty());
+        1:   43:    test_stack.pop();
+       1*:   44:    EXPECT_EQ(test_stack.top(), 10);
+        1:   45:    test_stack.pop();
+        1:   46:    test_stack.pop();
+       1*:   47:    EXPECT_EQ(test_stack.size(), 1);
+        1:   48:    test_stack.pop();
+       1*:   49:    EXPECT_TRUE(test_stack.empty());
+       1*:   50:    EXPECT_THROW(test_stack.pop(), std::out_of_range);
+        1:   51:}
+------------------
+_ZN30StackTest_BasicOperations_TestC2Ev:
+function _ZN30StackTest_BasicOperations_TestC2Ev called 1 returned 100% blocks executed 100%
+        1:   36:TEST(StackTest, BasicOperations) {
+        1:   36-block  0
+call    0 returned 1
+------------------
+_ZN30StackTest_BasicOperations_TestD0Ev:
+function _ZN30StackTest_BasicOperations_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:   36:TEST(StackTest, BasicOperations) {
+        1:   36-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN30StackTest_BasicOperations_TestD2Ev:
+function _ZN30StackTest_BasicOperations_TestD2Ev called 1 returned 100% blocks executed 100%
+        1:   36:TEST(StackTest, BasicOperations) {
+        1:   36-block  0
+call    0 returned 1
+------------------
+_ZN30StackTest_BasicOperations_Test8TestBodyEv:
+function _ZN30StackTest_BasicOperations_Test8TestBodyEv called 1 returned 100% blocks executed 25%
+        1:   36:TEST(StackTest, BasicOperations) {
+        1:   37:    Stack<int> test_stack{1, 2};
+        1:   37-block  0
+call    0 returned 1
+        1:   38:    test_stack.push(10);
+call    0 returned 1
+       1*:   39:    EXPECT_EQ(test_stack.top(), 10);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   39-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   39-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   39-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   39-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   39-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   39-block  5
+call   19 never executed
+call   20 never executed
+        1:   39-block  6
+call   21 returned 1
+    $$$$$:   39-block  7
+    $$$$$:   39-block  8
+call   22 never executed
+    $$$$$:   39-block  9
+    $$$$$:   39-block 10
+call   23 never executed
+    $$$$$:   39-block 11
+    $$$$$:   39-block 12
+call   24 never executed
+        1:   40:    test_stack.push(20);
+call    0 returned 1
+       1*:   41:    EXPECT_EQ(test_stack.top(), 20);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   41-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   41-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   41-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   41-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   41-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   41-block  5
+call   19 never executed
+call   20 never executed
+        1:   41-block  6
+call   21 returned 1
+    $$$$$:   41-block  7
+    $$$$$:   41-block  8
+call   22 never executed
+    $$$$$:   41-block  9
+    $$$$$:   41-block 10
+call   23 never executed
+    $$$$$:   41-block 11
+    $$$$$:   41-block 12
+call   24 never executed
+       1*:   42:    EXPECT_FALSE(test_stack.empty());
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 1
+    %%%%%:   42-block  0
+call    5 never executed
+branch  6 never executed (fallthrough)
+branch  7 never executed (throw)
+    %%%%%:   42-block  1
+call    8 never executed
+branch  9 never executed (fallthrough)
+branch 10 never executed (throw)
+    %%%%%:   42-block  2
+call   11 never executed
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:   42-block  3
+call   15 never executed
+branch 16 never executed (fallthrough)
+branch 17 never executed (throw)
+    %%%%%:   42-block  4
+call   18 never executed
+call   19 never executed
+call   20 never executed
+        1:   42-block  5
+call   21 returned 1
+    $$$$$:   42-block  6
+call   22 never executed
+    $$$$$:   42-block  7
+call   23 never executed
+    $$$$$:   42-block  8
+    $$$$$:   42-block  9
+    $$$$$:   42-block 10
+call   24 never executed
+    $$$$$:   42-block 11
+    $$$$$:   42-block 12
+call   25 never executed
+        1:   43:    test_stack.pop();
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:   44:    EXPECT_EQ(test_stack.top(), 10);
+        1:   44-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   44-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   44-block  2
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   44-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   44-block  4
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   44-block  5
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   44-block  6
+call   19 never executed
+call   20 never executed
+        1:   44-block  7
+call   21 returned 1
+    $$$$$:   44-block  8
+    $$$$$:   44-block  9
+call   22 never executed
+    $$$$$:   44-block 10
+    $$$$$:   44-block 11
+call   23 never executed
+    $$$$$:   44-block 12
+    $$$$$:   44-block 13
+call   24 never executed
+        1:   45:    test_stack.pop();
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   46:    test_stack.pop();
+        1:   46-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:   47:    EXPECT_EQ(test_stack.size(), 1);
+        1:   47-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:   47-block  1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:   47-block  2
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   47-block  3
+call   10 never executed
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    %%%%%:   47-block  4
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   47-block  5
+call   17 never executed
+call   18 never executed
+        1:   47-block  6
+call   19 returned 1
+    $$$$$:   47-block  7
+    $$$$$:   47-block  8
+    $$$$$:   47-block  9
+call   20 never executed
+    $$$$$:   47-block 10
+    $$$$$:   47-block 11
+call   21 never executed
+    $$$$$:   47-block 12
+    $$$$$:   47-block 13
+call   22 never executed
+        1:   48:    test_stack.pop();
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:   49:    EXPECT_TRUE(test_stack.empty());
+        1:   49-block  0
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 1
+    %%%%%:   49-block  1
+call    5 never executed
+branch  6 never executed (fallthrough)
+branch  7 never executed (throw)
+    %%%%%:   49-block  2
+call    8 never executed
+branch  9 never executed (fallthrough)
+branch 10 never executed (throw)
+    %%%%%:   49-block  3
+call   11 never executed
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:   49-block  4
+call   15 never executed
+branch 16 never executed (fallthrough)
+branch 17 never executed (throw)
+    %%%%%:   49-block  5
+call   18 never executed
+call   19 never executed
+call   20 never executed
+        1:   49-block  6
+call   21 returned 1
+    $$$$$:   49-block  7
+call   22 never executed
+    $$$$$:   49-block  8
+call   23 never executed
+    $$$$$:   49-block  9
+    $$$$$:   49-block 10
+    $$$$$:   49-block 11
+call   24 never executed
+    $$$$$:   49-block 12
+    $$$$$:   49-block 13
+call   25 never executed
+       1*:   50:    EXPECT_THROW(test_stack.pop(), std::out_of_range);
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0
+        1:   50-block  0
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+        1:   50-block  1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0
+        1:   50-block  2
+call    9 returned 1
+branch 10 taken 0 (fallthrough)
+branch 11 taken 1 (throw)
+        1:   50-block  3
+branch 12 taken 0 (fallthrough)
+branch 13 taken 1
+    %%%%%:   50-block  4
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   50-block  5
+    %%%%%:   50-block  6
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   50-block  7
+call   20 never executed
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:   50-block  8
+call   24 never executed
+branch 25 never executed (fallthrough)
+branch 26 never executed (throw)
+    %%%%%:   50-block  9
+call   27 never executed
+call   28 never executed
+        1:   50-block 10
+call   29 returned 1
+        1:   50-block 11
+branch 30 taken 1
+branch 31 taken 0
+branch 32 taken 0
+        1:   50-block 12
+call   33 returned 1
+call   34 returned 1
+    $$$$$:   50-block 13
+call   35 never executed
+call   36 never executed
+branch 37 never executed (fallthrough)
+branch 38 never executed (throw)
+    $$$$$:   50-block 14
+call   39 never executed
+branch 40 never executed (fallthrough)
+branch 41 never executed (throw)
+    $$$$$:   50-block 15
+call   42 never executed
+branch 43 never executed (fallthrough)
+branch 44 never executed (throw)
+    $$$$$:   50-block 16
+call   45 never executed
+call   46 never executed
+branch 47 never executed (fallthrough)
+branch 48 never executed (throw)
+    $$$$$:   50-block 17
+call   49 never executed
+call   50 never executed
+branch 51 never executed (fallthrough)
+branch 52 never executed (throw)
+    $$$$$:   50-block 18
+call   53 never executed
+branch 54 never executed (fallthrough)
+branch 55 never executed (throw)
+    $$$$$:   50-block 19
+    $$$$$:   50-block 20
+call   56 never executed
+    $$$$$:   50-block 21
+call   57 never executed
+call   58 never executed
+branch 59 never executed (fallthrough)
+branch 60 never executed (throw)
+    $$$$$:   50-block 22
+    $$$$$:   50-block 23
+call   61 never executed
+branch 62 never executed (fallthrough)
+branch 63 never executed (throw)
+    $$$$$:   50-block 24
+call   64 never executed
+    $$$$$:   50-block 25
+    $$$$$:   50-block 26
+call   65 never executed
+    $$$$$:   50-block 27
+call   66 never executed
+    $$$$$:   50-block 28
+call   67 never executed
+    $$$$$:   50-block 29
+    $$$$$:   50-block 30
+call   68 never executed
+    $$$$$:   50-block 31
+    $$$$$:   50-block 32
+call   69 never executed
+        1:   51:}
+call    0 returned 1
+    $$$$$:   51-block  0
+call    1 never executed
+------------------
+        -:   52:
+        4:   53:TEST(StackTest, Comparisons) {
+        1:   54:    Stack<int> test_stack1{1, 2, 3};
+        1:   55:    Stack<int> test_stack2{1, 2, 3};
+        1:   56:    Stack<int> test_stack3{4, 5};
+        -:   57:
+       1*:   58:    EXPECT_TRUE(test_stack1 == test_stack2);
+       1*:   59:    EXPECT_TRUE(test_stack1 != test_stack3);
+        -:   60:
+       1*:   61:    EXPECT_TRUE(test_stack1 < test_stack3);
+       1*:   62:    EXPECT_TRUE(test_stack3 > test_stack1);
+       1*:   63:    EXPECT_TRUE(test_stack1 <= test_stack2);
+       1*:   64:    EXPECT_TRUE(test_stack3 >= test_stack1);
+        -:   65:
+       1*:   66:    EXPECT_EQ(test_stack1 <=> test_stack2, std::strong_ordering::equal);
+       1*:   67:    EXPECT_EQ(test_stack1 <=> test_stack3, std::strong_ordering::less);
+        1:   68:}
+------------------
+_ZN26StackTest_Comparisons_TestC2Ev:
+function _ZN26StackTest_Comparisons_TestC2Ev called 1 returned 100% blocks executed 100%
+        1:   53:TEST(StackTest, Comparisons) {
+        1:   53-block  0
+call    0 returned 1
+------------------
+_ZN26StackTest_Comparisons_TestD0Ev:
+function _ZN26StackTest_Comparisons_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:   53:TEST(StackTest, Comparisons) {
+        1:   53-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN26StackTest_Comparisons_TestD2Ev:
+function _ZN26StackTest_Comparisons_TestD2Ev called 1 returned 100% blocks executed 100%
+        1:   53:TEST(StackTest, Comparisons) {
+        1:   53-block  0
+call    0 returned 1
+------------------
+_ZN26StackTest_Comparisons_Test8TestBodyEv:
+function _ZN26StackTest_Comparisons_Test8TestBodyEv called 1 returned 100% blocks executed 22%
+        1:   53:TEST(StackTest, Comparisons) {
+        1:   54:    Stack<int> test_stack1{1, 2, 3};
+        1:   54-block  0
+call    0 returned 1
+        1:   55:    Stack<int> test_stack2{1, 2, 3};
+call    0 returned 1
+        1:   56:    Stack<int> test_stack3{4, 5};
+call    0 returned 1
+        -:   57:
+       1*:   58:    EXPECT_TRUE(test_stack1 == test_stack2);
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 1
+    %%%%%:   58-block  0
+call    5 never executed
+branch  6 never executed (fallthrough)
+branch  7 never executed (throw)
+    %%%%%:   58-block  1
+call    8 never executed
+branch  9 never executed (fallthrough)
+branch 10 never executed (throw)
+    %%%%%:   58-block  2
+call   11 never executed
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:   58-block  3
+call   15 never executed
+branch 16 never executed (fallthrough)
+branch 17 never executed (throw)
+    %%%%%:   58-block  4
+call   18 never executed
+call   19 never executed
+call   20 never executed
+        1:   58-block  5
+call   21 returned 1
+    $$$$$:   58-block  6
+call   22 never executed
+    $$$$$:   58-block  7
+call   23 never executed
+    $$$$$:   58-block  8
+    $$$$$:   58-block  9
+    $$$$$:   58-block 10
+call   24 never executed
+    $$$$$:   58-block 11
+    $$$$$:   58-block 12
+call   25 never executed
+       1*:   59:    EXPECT_TRUE(test_stack1 != test_stack3);
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 1
+    %%%%%:   59-block  0
+call    5 never executed
+branch  6 never executed (fallthrough)
+branch  7 never executed (throw)
+    %%%%%:   59-block  1
+call    8 never executed
+branch  9 never executed (fallthrough)
+branch 10 never executed (throw)
+    %%%%%:   59-block  2
+call   11 never executed
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:   59-block  3
+call   15 never executed
+branch 16 never executed (fallthrough)
+branch 17 never executed (throw)
+    %%%%%:   59-block  4
+call   18 never executed
+call   19 never executed
+call   20 never executed
+        1:   59-block  5
+call   21 returned 1
+    $$$$$:   59-block  6
+call   22 never executed
+    $$$$$:   59-block  7
+call   23 never executed
+    $$$$$:   59-block  8
+    $$$$$:   59-block  9
+    $$$$$:   59-block 10
+call   24 never executed
+    $$$$$:   59-block 11
+    $$$$$:   59-block 12
+call   25 never executed
+        -:   60:
+       1*:   61:    EXPECT_TRUE(test_stack1 < test_stack3);
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 1
+    %%%%%:   61-block  0
+call    5 never executed
+branch  6 never executed (fallthrough)
+branch  7 never executed (throw)
+    %%%%%:   61-block  1
+call    8 never executed
+branch  9 never executed (fallthrough)
+branch 10 never executed (throw)
+    %%%%%:   61-block  2
+call   11 never executed
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:   61-block  3
+call   15 never executed
+branch 16 never executed (fallthrough)
+branch 17 never executed (throw)
+    %%%%%:   61-block  4
+call   18 never executed
+call   19 never executed
+call   20 never executed
+        1:   61-block  5
+call   21 returned 1
+    $$$$$:   61-block  6
+call   22 never executed
+    $$$$$:   61-block  7
+call   23 never executed
+    $$$$$:   61-block  8
+    $$$$$:   61-block  9
+    $$$$$:   61-block 10
+call   24 never executed
+    $$$$$:   61-block 11
+    $$$$$:   61-block 12
+call   25 never executed
+       1*:   62:    EXPECT_TRUE(test_stack3 > test_stack1);
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 1
+    %%%%%:   62-block  0
+call    5 never executed
+branch  6 never executed (fallthrough)
+branch  7 never executed (throw)
+    %%%%%:   62-block  1
+call    8 never executed
+branch  9 never executed (fallthrough)
+branch 10 never executed (throw)
+    %%%%%:   62-block  2
+call   11 never executed
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:   62-block  3
+call   15 never executed
+branch 16 never executed (fallthrough)
+branch 17 never executed (throw)
+    %%%%%:   62-block  4
+call   18 never executed
+call   19 never executed
+call   20 never executed
+        1:   62-block  5
+call   21 returned 1
+    $$$$$:   62-block  6
+call   22 never executed
+    $$$$$:   62-block  7
+call   23 never executed
+    $$$$$:   62-block  8
+    $$$$$:   62-block  9
+    $$$$$:   62-block 10
+call   24 never executed
+    $$$$$:   62-block 11
+    $$$$$:   62-block 12
+call   25 never executed
+       1*:   63:    EXPECT_TRUE(test_stack1 <= test_stack2);
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 1
+    %%%%%:   63-block  0
+call    5 never executed
+branch  6 never executed (fallthrough)
+branch  7 never executed (throw)
+    %%%%%:   63-block  1
+call    8 never executed
+branch  9 never executed (fallthrough)
+branch 10 never executed (throw)
+    %%%%%:   63-block  2
+call   11 never executed
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:   63-block  3
+call   15 never executed
+branch 16 never executed (fallthrough)
+branch 17 never executed (throw)
+    %%%%%:   63-block  4
+call   18 never executed
+call   19 never executed
+call   20 never executed
+        1:   63-block  5
+call   21 returned 1
+    $$$$$:   63-block  6
+call   22 never executed
+    $$$$$:   63-block  7
+call   23 never executed
+    $$$$$:   63-block  8
+    $$$$$:   63-block  9
+    $$$$$:   63-block 10
+call   24 never executed
+    $$$$$:   63-block 11
+    $$$$$:   63-block 12
+call   25 never executed
+       1*:   64:    EXPECT_TRUE(test_stack3 >= test_stack1);
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 1
+    %%%%%:   64-block  0
+call    5 never executed
+branch  6 never executed (fallthrough)
+branch  7 never executed (throw)
+    %%%%%:   64-block  1
+call    8 never executed
+branch  9 never executed (fallthrough)
+branch 10 never executed (throw)
+    %%%%%:   64-block  2
+call   11 never executed
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:   64-block  3
+call   15 never executed
+branch 16 never executed (fallthrough)
+branch 17 never executed (throw)
+    %%%%%:   64-block  4
+call   18 never executed
+call   19 never executed
+call   20 never executed
+        1:   64-block  5
+call   21 returned 1
+    $$$$$:   64-block  6
+call   22 never executed
+    $$$$$:   64-block  7
+call   23 never executed
+    $$$$$:   64-block  8
+    $$$$$:   64-block  9
+    $$$$$:   64-block 10
+call   24 never executed
+    $$$$$:   64-block 11
+    $$$$$:   64-block 12
+call   25 never executed
+        -:   65:
+       1*:   66:    EXPECT_EQ(test_stack1 <=> test_stack2, std::strong_ordering::equal);
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:   66-block  0
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:   66-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   66-block  2
+call   10 never executed
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    %%%%%:   66-block  3
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   66-block  4
+call   17 never executed
+call   18 never executed
+        1:   66-block  5
+call   19 returned 1
+    $$$$$:   66-block  6
+    $$$$$:   66-block  7
+call   20 never executed
+    $$$$$:   66-block  8
+    $$$$$:   66-block  9
+call   21 never executed
+    $$$$$:   66-block 10
+    $$$$$:   66-block 11
+call   22 never executed
+       1*:   67:    EXPECT_EQ(test_stack1 <=> test_stack3, std::strong_ordering::less);
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:   67-block  0
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:   67-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   67-block  2
+call   10 never executed
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    %%%%%:   67-block  3
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   67-block  4
+call   17 never executed
+call   18 never executed
+        1:   67-block  5
+call   19 returned 1
+    $$$$$:   67-block  6
+    $$$$$:   67-block  7
+call   20 never executed
+    $$$$$:   67-block  8
+    $$$$$:   67-block  9
+call   21 never executed
+    $$$$$:   67-block 10
+    $$$$$:   67-block 11
+call   22 never executed
+        1:   68:}
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+    $$$$$:   68-block  0
+call    3 never executed
+    $$$$$:   68-block  1
+call    4 never executed
+    $$$$$:   68-block  2
+call    5 never executed
+------------------
+        -:   69:
+        4:   70:TEST(StackTest, Swap) {
+        1:   71:    Stack<int> test_stack1{1, 2};
+        1:   72:    Stack<int> test_stack2{3, 4, 5};
+        -:   73:
+        1:   74:    test_stack1.swap(test_stack2);
+       1*:   75:    EXPECT_EQ(test_stack1.size(), 3);
+       1*:   76:    EXPECT_EQ(test_stack2.size(), 2);
+       1*:   77:    EXPECT_EQ(test_stack1.top(), 3);
+       1*:   78:    EXPECT_EQ(test_stack2.top(), 1);
+        1:   79:}
+------------------
+_ZN19StackTest_Swap_TestC2Ev:
+function _ZN19StackTest_Swap_TestC2Ev called 1 returned 100% blocks executed 100%
+        1:   70:TEST(StackTest, Swap) {
+        1:   70-block  0
+call    0 returned 1
+------------------
+_ZN19StackTest_Swap_TestD0Ev:
+function _ZN19StackTest_Swap_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:   70:TEST(StackTest, Swap) {
+        1:   70-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN19StackTest_Swap_TestD2Ev:
+function _ZN19StackTest_Swap_TestD2Ev called 1 returned 100% blocks executed 100%
+        1:   70:TEST(StackTest, Swap) {
+        1:   70-block  0
+call    0 returned 1
+------------------
+_ZN19StackTest_Swap_Test8TestBodyEv:
+function _ZN19StackTest_Swap_Test8TestBodyEv called 1 returned 100% blocks executed 27%
+        1:   70:TEST(StackTest, Swap) {
+        1:   71:    Stack<int> test_stack1{1, 2};
+        1:   71-block  0
+call    0 returned 1
+        1:   72:    Stack<int> test_stack2{3, 4, 5};
+call    0 returned 1
+        -:   73:
+        1:   74:    test_stack1.swap(test_stack2);
+call    0 returned 1
+       1*:   75:    EXPECT_EQ(test_stack1.size(), 3);
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:   75-block  0
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:   75-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   75-block  2
+call   10 never executed
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    %%%%%:   75-block  3
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   75-block  4
+call   17 never executed
+call   18 never executed
+        1:   75-block  5
+call   19 returned 1
+    $$$$$:   75-block  6
+    $$$$$:   75-block  7
+    $$$$$:   75-block  8
+call   20 never executed
+    $$$$$:   75-block  9
+    $$$$$:   75-block 10
+call   21 never executed
+    $$$$$:   75-block 11
+    $$$$$:   75-block 12
+call   22 never executed
+       1*:   76:    EXPECT_EQ(test_stack2.size(), 2);
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:   76-block  0
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:   76-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   76-block  2
+call   10 never executed
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    %%%%%:   76-block  3
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   76-block  4
+call   17 never executed
+call   18 never executed
+        1:   76-block  5
+call   19 returned 1
+    $$$$$:   76-block  6
+    $$$$$:   76-block  7
+    $$$$$:   76-block  8
+call   20 never executed
+    $$$$$:   76-block  9
+    $$$$$:   76-block 10
+call   21 never executed
+    $$$$$:   76-block 11
+    $$$$$:   76-block 12
+call   22 never executed
+       1*:   77:    EXPECT_EQ(test_stack1.top(), 3);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   77-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   77-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   77-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   77-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   77-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   77-block  5
+call   19 never executed
+call   20 never executed
+        1:   77-block  6
+call   21 returned 1
+    $$$$$:   77-block  7
+    $$$$$:   77-block  8
+call   22 never executed
+    $$$$$:   77-block  9
+    $$$$$:   77-block 10
+call   23 never executed
+    $$$$$:   77-block 11
+    $$$$$:   77-block 12
+call   24 never executed
+       1*:   78:    EXPECT_EQ(test_stack2.top(), 1);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   78-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   78-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   78-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   78-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   78-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   78-block  5
+call   19 never executed
+call   20 never executed
+        1:   78-block  6
+call   21 returned 1
+    $$$$$:   78-block  7
+    $$$$$:   78-block  8
+call   22 never executed
+    $$$$$:   78-block  9
+    $$$$$:   78-block 10
+call   23 never executed
+    $$$$$:   78-block 11
+    $$$$$:   78-block 12
+call   24 never executed
+        1:   79:}
+call    0 returned 1
+call    1 returned 1
+    $$$$$:   79-block  0
+call    2 never executed
+    $$$$$:   79-block  1
+call    3 never executed
+------------------
+        -:   80:
+        4:   81:TEST(StackTest, EdgeCases) {
+        1:   82:    Stack<int> test_stack1{42};
+       1*:   83:    EXPECT_EQ(test_stack1.top(), 42);
+        1:   84:    test_stack1.pop();
+       1*:   85:    EXPECT_TRUE(test_stack1.empty());
+        2:   86:    Stack<int> test_stack2;
+        2:   87:    Stack<int> test_stack3(std::move(test_stack2));
+       1*:   88:    EXPECT_TRUE(test_stack3.empty());
+        1:   89:}
+------------------
+_ZN24StackTest_EdgeCases_TestC2Ev:
+function _ZN24StackTest_EdgeCases_TestC2Ev called 1 returned 100% blocks executed 100%
+        1:   81:TEST(StackTest, EdgeCases) {
+        1:   81-block  0
+call    0 returned 1
+------------------
+_ZN24StackTest_EdgeCases_TestD0Ev:
+function _ZN24StackTest_EdgeCases_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:   81:TEST(StackTest, EdgeCases) {
+        1:   81-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN24StackTest_EdgeCases_TestD2Ev:
+function _ZN24StackTest_EdgeCases_TestD2Ev called 1 returned 100% blocks executed 100%
+        1:   81:TEST(StackTest, EdgeCases) {
+        1:   81-block  0
+call    0 returned 1
+------------------
+_ZN24StackTest_EdgeCases_Test8TestBodyEv:
+function _ZN24StackTest_EdgeCases_Test8TestBodyEv called 1 returned 100% blocks executed 28%
+        1:   81:TEST(StackTest, EdgeCases) {
+        1:   82:    Stack<int> test_stack1{42};
+        1:   82-block  0
+call    0 returned 1
+       1*:   83:    EXPECT_EQ(test_stack1.top(), 42);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   83-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   83-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   83-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   83-block  3
+call   12 never executed
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   83-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   83-block  5
+call   19 never executed
+call   20 never executed
+        1:   83-block  6
+call   21 returned 1
+    $$$$$:   83-block  7
+    $$$$$:   83-block  8
+call   22 never executed
+    $$$$$:   83-block  9
+    $$$$$:   83-block 10
+call   23 never executed
+    $$$$$:   83-block 11
+    $$$$$:   83-block 12
+call   24 never executed
+        1:   84:    test_stack1.pop();
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:   85:    EXPECT_TRUE(test_stack1.empty());
+        1:   85-block  0
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 1
+    %%%%%:   85-block  1
+call    5 never executed
+branch  6 never executed (fallthrough)
+branch  7 never executed (throw)
+    %%%%%:   85-block  2
+call    8 never executed
+branch  9 never executed (fallthrough)
+branch 10 never executed (throw)
+    %%%%%:   85-block  3
+call   11 never executed
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:   85-block  4
+call   15 never executed
+branch 16 never executed (fallthrough)
+branch 17 never executed (throw)
+    %%%%%:   85-block  5
+call   18 never executed
+call   19 never executed
+call   20 never executed
+        1:   85-block  6
+call   21 returned 1
+    $$$$$:   85-block  7
+call   22 never executed
+    $$$$$:   85-block  8
+call   23 never executed
+    $$$$$:   85-block  9
+    $$$$$:   85-block 10
+    $$$$$:   85-block 11
+call   24 never executed
+    $$$$$:   85-block 12
+    $$$$$:   85-block 13
+call   25 never executed
+        2:   86:    Stack<int> test_stack2;
+call    0 returned 1
+call    1 returned 1
+    $$$$$:   86-block  0
+call    2 never executed
+        2:   87:    Stack<int> test_stack3(std::move(test_stack2));
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+    $$$$$:   87-block  0
+call    3 never executed
+       1*:   88:    EXPECT_TRUE(test_stack3.empty());
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 1
+    %%%%%:   88-block  0
+call    5 never executed
+branch  6 never executed (fallthrough)
+branch  7 never executed (throw)
+    %%%%%:   88-block  1
+call    8 never executed
+branch  9 never executed (fallthrough)
+branch 10 never executed (throw)
+    %%%%%:   88-block  2
+call   11 never executed
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:   88-block  3
+call   15 never executed
+branch 16 never executed (fallthrough)
+branch 17 never executed (throw)
+    %%%%%:   88-block  4
+call   18 never executed
+call   19 never executed
+call   20 never executed
+        1:   88-block  5
+call   21 returned 1
+    $$$$$:   88-block  6
+call   22 never executed
+    $$$$$:   88-block  7
+call   23 never executed
+    $$$$$:   88-block  8
+    $$$$$:   88-block  9
+    $$$$$:   88-block 10
+call   24 never executed
+    $$$$$:   88-block 11
+    $$$$$:   88-block 12
+call   25 never executed
+        1:   89:}
+call    0 returned 1
+    $$$$$:   89-block  0
+call    1 never executed
+------------------
+        -:   90:
+function main called 1 returned 100% blocks executed 100%
+        1:   91:int main(int argc, char **argv) {
+        1:   92:    testing::InitGoogleTest(&argc, argv);
+        1:   92-block  0
+call    0 returned 1
+        1:   93:    return RUN_ALL_TESTS();
+call    0 returned 1
+        -:   94:}

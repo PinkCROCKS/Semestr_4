@@ -1,0 +1,3887 @@
+        -:    0:Source:/mnt/d/Уник/4 сем/Фунды/Lab 2/number 1/tests/tests.cpp
+        -:    0:Graph:/mnt/d/Уник/4 сем/Фунды/Lab 2/number 1/cmake-build-debug-coverage/CMakeFiles/tests.dir/tests/tests.cpp.gcno
+        -:    0:Data:/mnt/d/Уник/4 сем/Фунды/Lab 2/number 1/cmake-build-debug-coverage/CMakeFiles/tests.dir/tests/tests.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include <gtest/gtest.h>
+        -:    2:
+        -:    3://#include "../include/bigint.hpp"
+        -:    4:#include "../src/functions.cpp"
+        -:    5:
+        4:    6:TEST(BigIntTests, Constructors) {
+        1:    7:    BigInt a{0};
+       1*:    8:    EXPECT_EQ(a, BigInt(0));
+        2:    9:    BigInt b("1234567890");
+       1*:   10:    EXPECT_EQ(b, BigInt(1234567890));
+        2:   11:    BigInt c("-987654321");
+       1*:   12:    EXPECT_EQ(c, BigInt(-987654321));
+        2:   13:    BigInt r("");
+       1*:   14:    EXPECT_EQ(r, BigInt(0));
+        2:   15:    BigInt d("000123");
+       1*:   16:    EXPECT_EQ(d, BigInt(123));
+        2:   17:    BigInt e("-000456");
+       1*:   18:    EXPECT_EQ(e, BigInt(-456));
+       3*:   19:    EXPECT_THROW(BigInt("12a34"), std::invalid_argument);
+       3*:   20:    EXPECT_THROW(BigInt("--123"), std::invalid_argument);
+        1:   21:}
+------------------
+_ZN29BigIntTests_Constructors_TestC2Ev:
+function _ZN29BigIntTests_Constructors_TestC2Ev called 1 returned 100% blocks executed 100%
+        1:    6:TEST(BigIntTests, Constructors) {
+        1:    6-block  0
+call    0 returned 1
+------------------
+_ZN29BigIntTests_Constructors_TestD0Ev:
+function _ZN29BigIntTests_Constructors_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:    6:TEST(BigIntTests, Constructors) {
+        1:    6-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN29BigIntTests_Constructors_TestD2Ev:
+function _ZN29BigIntTests_Constructors_TestD2Ev called 1 returned 100% blocks executed 100%
+        1:    6:TEST(BigIntTests, Constructors) {
+        1:    6-block  0
+call    0 returned 1
+------------------
+_ZN29BigIntTests_Constructors_Test8TestBodyEv:
+function _ZN29BigIntTests_Constructors_Test8TestBodyEv called 1 returned 100% blocks executed 32%
+        1:    6:TEST(BigIntTests, Constructors) {
+        1:    7:    BigInt a{0};
+        1:    7-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:    8:    EXPECT_EQ(a, BigInt(0));
+        1:    8-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:    8-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:    8-block  2
+call    6 returned 1
+call    7 returned 1
+branch  8 taken 0 (fallthrough)
+branch  9 taken 1
+    %%%%%:    8-block  3
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:    8-block  4
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:    8-block  5
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:    8-block  6
+call   20 never executed
+call   21 never executed
+        1:    8-block  7
+call   22 returned 1
+    $$$$$:    8-block  8
+call   23 never executed
+    $$$$$:    8-block  9
+    $$$$$:    8-block 10
+call   24 never executed
+    $$$$$:    8-block 11
+    $$$$$:    8-block 12
+call   25 never executed
+    $$$$$:    8-block 13
+    $$$$$:    8-block 14
+call   26 never executed
+        2:    9:    BigInt b("1234567890");
+        1:    9-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:    9-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:    9-block  2
+call    6 returned 1
+call    7 returned 1
+    $$$$$:    9-block  3
+call    8 never executed
+    $$$$$:    9-block  4
+    $$$$$:    9-block  5
+    $$$$$:    9-block  6
+call    9 never executed
+       1*:   10:    EXPECT_EQ(b, BigInt(1234567890));
+        1:   10-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   10-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   10-block  2
+call    6 returned 1
+call    7 returned 1
+branch  8 taken 0 (fallthrough)
+branch  9 taken 1
+    %%%%%:   10-block  3
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   10-block  4
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   10-block  5
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   10-block  6
+call   20 never executed
+call   21 never executed
+        1:   10-block  7
+call   22 returned 1
+    $$$$$:   10-block  8
+call   23 never executed
+    $$$$$:   10-block  9
+    $$$$$:   10-block 10
+call   24 never executed
+    $$$$$:   10-block 11
+    $$$$$:   10-block 12
+call   25 never executed
+    $$$$$:   10-block 13
+    $$$$$:   10-block 14
+call   26 never executed
+        2:   11:    BigInt c("-987654321");
+        1:   11-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   11-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   11-block  2
+call    6 returned 1
+call    7 returned 1
+    $$$$$:   11-block  3
+call    8 never executed
+    $$$$$:   11-block  4
+    $$$$$:   11-block  5
+    $$$$$:   11-block  6
+call    9 never executed
+       1*:   12:    EXPECT_EQ(c, BigInt(-987654321));
+        1:   12-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   12-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   12-block  2
+call    6 returned 1
+call    7 returned 1
+branch  8 taken 0 (fallthrough)
+branch  9 taken 1
+    %%%%%:   12-block  3
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   12-block  4
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   12-block  5
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   12-block  6
+call   20 never executed
+call   21 never executed
+        1:   12-block  7
+call   22 returned 1
+    $$$$$:   12-block  8
+call   23 never executed
+    $$$$$:   12-block  9
+    $$$$$:   12-block 10
+call   24 never executed
+    $$$$$:   12-block 11
+    $$$$$:   12-block 12
+call   25 never executed
+    $$$$$:   12-block 13
+    $$$$$:   12-block 14
+call   26 never executed
+        2:   13:    BigInt r("");
+        1:   13-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   13-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   13-block  2
+call    6 returned 1
+call    7 returned 1
+    $$$$$:   13-block  3
+call    8 never executed
+    $$$$$:   13-block  4
+    $$$$$:   13-block  5
+    $$$$$:   13-block  6
+call    9 never executed
+       1*:   14:    EXPECT_EQ(r, BigInt(0));
+        1:   14-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   14-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   14-block  2
+call    6 returned 1
+call    7 returned 1
+branch  8 taken 0 (fallthrough)
+branch  9 taken 1
+    %%%%%:   14-block  3
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   14-block  4
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   14-block  5
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   14-block  6
+call   20 never executed
+call   21 never executed
+        1:   14-block  7
+call   22 returned 1
+    $$$$$:   14-block  8
+call   23 never executed
+    $$$$$:   14-block  9
+    $$$$$:   14-block 10
+call   24 never executed
+    $$$$$:   14-block 11
+    $$$$$:   14-block 12
+call   25 never executed
+    $$$$$:   14-block 13
+    $$$$$:   14-block 14
+call   26 never executed
+        2:   15:    BigInt d("000123");
+        1:   15-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   15-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   15-block  2
+call    6 returned 1
+call    7 returned 1
+    $$$$$:   15-block  3
+call    8 never executed
+    $$$$$:   15-block  4
+    $$$$$:   15-block  5
+    $$$$$:   15-block  6
+call    9 never executed
+       1*:   16:    EXPECT_EQ(d, BigInt(123));
+        1:   16-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   16-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   16-block  2
+call    6 returned 1
+call    7 returned 1
+branch  8 taken 0 (fallthrough)
+branch  9 taken 1
+    %%%%%:   16-block  3
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   16-block  4
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   16-block  5
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   16-block  6
+call   20 never executed
+call   21 never executed
+        1:   16-block  7
+call   22 returned 1
+    $$$$$:   16-block  8
+call   23 never executed
+    $$$$$:   16-block  9
+    $$$$$:   16-block 10
+call   24 never executed
+    $$$$$:   16-block 11
+    $$$$$:   16-block 12
+call   25 never executed
+    $$$$$:   16-block 13
+    $$$$$:   16-block 14
+call   26 never executed
+        2:   17:    BigInt e("-000456");
+        1:   17-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   17-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   17-block  2
+call    6 returned 1
+call    7 returned 1
+    $$$$$:   17-block  3
+call    8 never executed
+    $$$$$:   17-block  4
+    $$$$$:   17-block  5
+    $$$$$:   17-block  6
+call    9 never executed
+       1*:   18:    EXPECT_EQ(e, BigInt(-456));
+        1:   18-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   18-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   18-block  2
+call    6 returned 1
+call    7 returned 1
+branch  8 taken 0 (fallthrough)
+branch  9 taken 1
+    %%%%%:   18-block  3
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   18-block  4
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   18-block  5
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   18-block  6
+call   20 never executed
+call   21 never executed
+        1:   18-block  7
+call   22 returned 1
+    $$$$$:   18-block  8
+call   23 never executed
+    $$$$$:   18-block  9
+    $$$$$:   18-block 10
+call   24 never executed
+    $$$$$:   18-block 11
+    $$$$$:   18-block 12
+call   25 never executed
+    $$$$$:   18-block 13
+    $$$$$:   18-block 14
+call   26 never executed
+       3*:   19:    EXPECT_THROW(BigInt("12a34"), std::invalid_argument);
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0
+        1:   19-block  0
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+        1:   19-block  1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0
+        1:   19-block  2
+call    9 returned 1
+branch 10 taken 1 (fallthrough)
+branch 11 taken 0 (throw)
+        1:   19-block  3
+call   12 returned 1
+branch 13 taken 0 (fallthrough)
+branch 14 taken 1 (throw)
+    %%%%%:   19-block  4
+call   15 never executed
+call   16 never executed
+    %%%%%:   19-block  5
+        1:   19-block  6
+branch 17 taken 0 (fallthrough)
+branch 18 taken 1
+    %%%%%:   19-block  7
+call   19 never executed
+branch 20 never executed (fallthrough)
+branch 21 never executed (throw)
+    %%%%%:   19-block  8
+    %%%%%:   19-block  9
+call   22 never executed
+branch 23 never executed (fallthrough)
+branch 24 never executed (throw)
+    %%%%%:   19-block 10
+call   25 never executed
+call   26 never executed
+branch 27 never executed (fallthrough)
+branch 28 never executed (throw)
+    %%%%%:   19-block 11
+call   29 never executed
+branch 30 never executed (fallthrough)
+branch 31 never executed (throw)
+    %%%%%:   19-block 12
+call   32 never executed
+call   33 never executed
+        1:   19-block 13
+call   34 returned 1
+        1:   19-block 14
+call   35 returned 1
+        1:   19-block 15
+        1:   19-block 16
+        1:   19-block 17
+        1:   19-block 18
+branch 36 taken 1
+branch 37 taken 0
+branch 38 taken 0
+        1:   19-block 19
+call   39 returned 1
+call   40 returned 1
+    $$$$$:   19-block 20
+call   41 never executed
+call   42 never executed
+branch 43 never executed (fallthrough)
+branch 44 never executed (throw)
+    $$$$$:   19-block 21
+call   45 never executed
+branch 46 never executed (fallthrough)
+branch 47 never executed (throw)
+    $$$$$:   19-block 22
+call   48 never executed
+branch 49 never executed (fallthrough)
+branch 50 never executed (throw)
+    $$$$$:   19-block 23
+call   51 never executed
+call   52 never executed
+branch 53 never executed (fallthrough)
+branch 54 never executed (throw)
+    $$$$$:   19-block 24
+call   55 never executed
+call   56 never executed
+branch 57 never executed (fallthrough)
+branch 58 never executed (throw)
+    $$$$$:   19-block 25
+call   59 never executed
+branch 60 never executed (fallthrough)
+branch 61 never executed (throw)
+    $$$$$:   19-block 26
+    $$$$$:   19-block 27
+call   62 never executed
+    $$$$$:   19-block 28
+call   63 never executed
+call   64 never executed
+branch 65 never executed (fallthrough)
+branch 66 never executed (throw)
+    $$$$$:   19-block 29
+    $$$$$:   19-block 30
+call   67 never executed
+branch 68 never executed (fallthrough)
+branch 69 never executed (throw)
+    $$$$$:   19-block 31
+call   70 never executed
+    $$$$$:   19-block 32
+    $$$$$:   19-block 33
+call   71 never executed
+    $$$$$:   19-block 34
+call   72 never executed
+    $$$$$:   19-block 35
+call   73 never executed
+    $$$$$:   19-block 36
+    $$$$$:   19-block 37
+call   74 never executed
+    $$$$$:   19-block 38
+    $$$$$:   19-block 39
+call   75 never executed
+       3*:   20:    EXPECT_THROW(BigInt("--123"), std::invalid_argument);
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0
+        1:   20-block  0
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+        1:   20-block  1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0
+        1:   20-block  2
+call    9 returned 1
+branch 10 taken 1 (fallthrough)
+branch 11 taken 0 (throw)
+        1:   20-block  3
+call   12 returned 1
+branch 13 taken 0 (fallthrough)
+branch 14 taken 1 (throw)
+    %%%%%:   20-block  4
+call   15 never executed
+call   16 never executed
+    %%%%%:   20-block  5
+        1:   20-block  6
+branch 17 taken 0 (fallthrough)
+branch 18 taken 1
+    %%%%%:   20-block  7
+call   19 never executed
+branch 20 never executed (fallthrough)
+branch 21 never executed (throw)
+    %%%%%:   20-block  8
+    %%%%%:   20-block  9
+call   22 never executed
+branch 23 never executed (fallthrough)
+branch 24 never executed (throw)
+    %%%%%:   20-block 10
+call   25 never executed
+call   26 never executed
+branch 27 never executed (fallthrough)
+branch 28 never executed (throw)
+    %%%%%:   20-block 11
+call   29 never executed
+branch 30 never executed (fallthrough)
+branch 31 never executed (throw)
+    %%%%%:   20-block 12
+call   32 never executed
+call   33 never executed
+        1:   20-block 13
+call   34 returned 1
+        1:   20-block 14
+call   35 returned 1
+        1:   20-block 15
+        1:   20-block 16
+        1:   20-block 17
+        1:   20-block 18
+branch 36 taken 1
+branch 37 taken 0
+branch 38 taken 0
+        1:   20-block 19
+call   39 returned 1
+call   40 returned 1
+    $$$$$:   20-block 20
+call   41 never executed
+call   42 never executed
+branch 43 never executed (fallthrough)
+branch 44 never executed (throw)
+    $$$$$:   20-block 21
+call   45 never executed
+branch 46 never executed (fallthrough)
+branch 47 never executed (throw)
+    $$$$$:   20-block 22
+call   48 never executed
+branch 49 never executed (fallthrough)
+branch 50 never executed (throw)
+    $$$$$:   20-block 23
+call   51 never executed
+call   52 never executed
+branch 53 never executed (fallthrough)
+branch 54 never executed (throw)
+    $$$$$:   20-block 24
+call   55 never executed
+call   56 never executed
+branch 57 never executed (fallthrough)
+branch 58 never executed (throw)
+    $$$$$:   20-block 25
+call   59 never executed
+branch 60 never executed (fallthrough)
+branch 61 never executed (throw)
+    $$$$$:   20-block 26
+    $$$$$:   20-block 27
+call   62 never executed
+    $$$$$:   20-block 28
+call   63 never executed
+call   64 never executed
+branch 65 never executed (fallthrough)
+branch 66 never executed (throw)
+    $$$$$:   20-block 29
+    $$$$$:   20-block 30
+call   67 never executed
+branch 68 never executed (fallthrough)
+branch 69 never executed (throw)
+    $$$$$:   20-block 31
+call   70 never executed
+    $$$$$:   20-block 32
+    $$$$$:   20-block 33
+call   71 never executed
+    $$$$$:   20-block 34
+call   72 never executed
+    $$$$$:   20-block 35
+call   73 never executed
+    $$$$$:   20-block 36
+    $$$$$:   20-block 37
+call   74 never executed
+    $$$$$:   20-block 38
+    $$$$$:   20-block 39
+call   75 never executed
+        1:   21:}
+call    0 returned 1
+    $$$$$:   21-block  0
+call    1 never executed
+------------------
+        -:   22:
+        -:   23:
+        4:   24:TEST(BigIntTests, AssignmentOperators) {
+        1:   25:    BigInt a(123);
+        1:   26:    BigInt b = a;
+       1*:   27:    EXPECT_EQ(a, b);
+        -:   28:
+        2:   29:    BigInt c(-456);
+        1:   30:    b = std::move(c);
+       1*:   31:    EXPECT_EQ(b, BigInt(-456));
+       1*:   32:    EXPECT_TRUE(c.empty());
+        1:   33:}
+------------------
+_ZN36BigIntTests_AssignmentOperators_TestC2Ev:
+function _ZN36BigIntTests_AssignmentOperators_TestC2Ev called 1 returned 100% blocks executed 100%
+        1:   24:TEST(BigIntTests, AssignmentOperators) {
+        1:   24-block  0
+call    0 returned 1
+------------------
+_ZN36BigIntTests_AssignmentOperators_TestD0Ev:
+function _ZN36BigIntTests_AssignmentOperators_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:   24:TEST(BigIntTests, AssignmentOperators) {
+        1:   24-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN36BigIntTests_AssignmentOperators_TestD2Ev:
+function _ZN36BigIntTests_AssignmentOperators_TestD2Ev called 1 returned 100% blocks executed 100%
+        1:   24:TEST(BigIntTests, AssignmentOperators) {
+        1:   24-block  0
+call    0 returned 1
+------------------
+_ZN36BigIntTests_AssignmentOperators_Test8TestBodyEv:
+function _ZN36BigIntTests_AssignmentOperators_Test8TestBodyEv called 1 returned 100% blocks executed 29%
+        1:   24:TEST(BigIntTests, AssignmentOperators) {
+        1:   25:    BigInt a(123);
+        1:   25-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   26:    BigInt b = a;
+        1:   26-block  0
+call    0 returned 1
+       1*:   27:    EXPECT_EQ(a, b);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   27-block  0
+call    3 returned 1
+branch  4 taken 0 (fallthrough)
+branch  5 taken 1
+    %%%%%:   27-block  1
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:   27-block  2
+call    9 never executed
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   27-block  3
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   27-block  4
+call   16 never executed
+call   17 never executed
+        1:   27-block  5
+call   18 returned 1
+    $$$$$:   27-block  6
+call   19 never executed
+    $$$$$:   27-block  7
+    $$$$$:   27-block  8
+call   20 never executed
+    $$$$$:   27-block  9
+    $$$$$:   27-block 10
+call   21 never executed
+        -:   28:
+        2:   29:    BigInt c(-456);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+call    3 returned 1
+    $$$$$:   29-block  0
+call    4 never executed
+        1:   30:    b = std::move(c);
+        1:   30-block  0
+call    0 returned 1
+call    1 returned 1
+       1*:   31:    EXPECT_EQ(b, BigInt(-456));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   31-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   31-block  1
+call    6 returned 1
+call    7 returned 1
+branch  8 taken 0 (fallthrough)
+branch  9 taken 1
+    %%%%%:   31-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   31-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   31-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   31-block  5
+call   20 never executed
+call   21 never executed
+        1:   31-block  6
+call   22 returned 1
+    $$$$$:   31-block  7
+call   23 never executed
+    $$$$$:   31-block  8
+    $$$$$:   31-block  9
+call   24 never executed
+    $$$$$:   31-block 10
+    $$$$$:   31-block 11
+call   25 never executed
+    $$$$$:   31-block 12
+    $$$$$:   31-block 13
+call   26 never executed
+       1*:   32:    EXPECT_TRUE(c.empty());
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 1
+    %%%%%:   32-block  0
+call    5 never executed
+branch  6 never executed (fallthrough)
+branch  7 never executed (throw)
+    %%%%%:   32-block  1
+call    8 never executed
+branch  9 never executed (fallthrough)
+branch 10 never executed (throw)
+    %%%%%:   32-block  2
+call   11 never executed
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:   32-block  3
+call   15 never executed
+branch 16 never executed (fallthrough)
+branch 17 never executed (throw)
+    %%%%%:   32-block  4
+call   18 never executed
+call   19 never executed
+call   20 never executed
+        1:   32-block  5
+call   21 returned 1
+    $$$$$:   32-block  6
+call   22 never executed
+    $$$$$:   32-block  7
+call   23 never executed
+    $$$$$:   32-block  8
+    $$$$$:   32-block  9
+    $$$$$:   32-block 10
+call   24 never executed
+    $$$$$:   32-block 11
+    $$$$$:   32-block 12
+call   25 never executed
+        1:   33:}
+call    0 returned 1
+call    1 returned 1
+    $$$$$:   33-block  0
+call    2 never executed
+    $$$$$:   33-block  1
+call    3 never executed
+------------------
+        -:   34:
+        4:   35:TEST(BigIntTests, ArithmeticOperations) {
+        1:   36:    BigInt a(123);
+        1:   37:    BigInt b(456);
+        1:   38:    BigInt u(10000000000000000);
+        1:   39:    BigInt temp(99999);
+        1:   40:    temp += a;
+       1*:   41:    EXPECT_EQ(BigInt(100122), temp);
+       1*:   42:    EXPECT_EQ(a + b, BigInt(579));
+        2:   43:    BigInt minus(-1);
+        2:   44:    BigInt y(12);
+        1:   45:    y -= minus;
+       1*:   46:    EXPECT_EQ(y, BigInt(13));
+        1:   47:    minus -= y;
+       1*:   48:    EXPECT_EQ(minus, BigInt(-14));
+       1*:   49:    EXPECT_EQ(y -= BigInt(13), BigInt(0));
+        2:   50:    BigInt c("-100000000");
+       1*:   51:    EXPECT_EQ(c + a, BigInt(-99999877));
+       1*:   52:    EXPECT_EQ(b - a, BigInt(333));
+       1*:   53:    EXPECT_EQ(a - BigInt(50), BigInt(73));
+        1:   54:    a += BigInt(10000000000000000);
+        1:   55:    u += BigInt(123);
+       1*:   56:    EXPECT_EQ(a, BigInt(10000000000000123));
+       1*:   57:    EXPECT_EQ(u, BigInt(10000000000000123));
+        -:   58:
+        2:   59:    BigInt d(100000);
+       1*:   60:    EXPECT_EQ(d * BigInt(2), BigInt(200000));
+        -:   61:
+        2:   62:    BigInt e(1000);
+       1*:   63:    EXPECT_EQ(e / BigInt(3), BigInt(333));
+       1*:   64:    EXPECT_EQ(e / BigInt(100002), BigInt(0));
+       2*:   65:    EXPECT_THROW(e / BigInt(0), std::invalid_argument);
+        1:   66:}
+------------------
+_ZN37BigIntTests_ArithmeticOperations_TestC2Ev:
+function _ZN37BigIntTests_ArithmeticOperations_TestC2Ev called 1 returned 100% blocks executed 100%
+        1:   35:TEST(BigIntTests, ArithmeticOperations) {
+        1:   35-block  0
+call    0 returned 1
+------------------
+_ZN37BigIntTests_ArithmeticOperations_TestD0Ev:
+function _ZN37BigIntTests_ArithmeticOperations_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:   35:TEST(BigIntTests, ArithmeticOperations) {
+        1:   35-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN37BigIntTests_ArithmeticOperations_TestD2Ev:
+function _ZN37BigIntTests_ArithmeticOperations_TestD2Ev called 1 returned 100% blocks executed 100%
+        1:   35:TEST(BigIntTests, ArithmeticOperations) {
+        1:   35-block  0
+call    0 returned 1
+------------------
+_ZN37BigIntTests_ArithmeticOperations_Test8TestBodyEv:
+function _ZN37BigIntTests_ArithmeticOperations_Test8TestBodyEv called 1 returned 100% blocks executed 30%
+        1:   35:TEST(BigIntTests, ArithmeticOperations) {
+        1:   36:    BigInt a(123);
+        1:   36-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   37:    BigInt b(456);
+        1:   37-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   38:    BigInt u(10000000000000000);
+        1:   38-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   39:    BigInt temp(99999);
+        1:   39-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   40:    temp += a;
+        1:   40-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:   41:    EXPECT_EQ(BigInt(100122), temp);
+        1:   41-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   41-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   41-block  2
+call    6 returned 1
+call    7 returned 1
+branch  8 taken 0 (fallthrough)
+branch  9 taken 1
+    %%%%%:   41-block  3
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   41-block  4
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   41-block  5
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   41-block  6
+call   20 never executed
+call   21 never executed
+        1:   41-block  7
+call   22 returned 1
+    $$$$$:   41-block  8
+call   23 never executed
+    $$$$$:   41-block  9
+    $$$$$:   41-block 10
+call   24 never executed
+    $$$$$:   41-block 11
+    $$$$$:   41-block 12
+call   25 never executed
+    $$$$$:   41-block 13
+    $$$$$:   41-block 14
+call   26 never executed
+       1*:   42:    EXPECT_EQ(a + b, BigInt(579));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   42-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   42-block  1
+call    6 returned 1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0 (throw)
+        1:   42-block  2
+call    9 returned 1
+call   10 returned 1
+call   11 returned 1
+branch 12 taken 0 (fallthrough)
+branch 13 taken 1
+    %%%%%:   42-block  3
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   42-block  4
+call   17 never executed
+call   18 never executed
+branch 19 never executed (fallthrough)
+branch 20 never executed (throw)
+    %%%%%:   42-block  5
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:   42-block  6
+call   24 never executed
+call   25 never executed
+        1:   42-block  7
+call   26 returned 1
+    $$$$$:   42-block  8
+call   27 never executed
+    $$$$$:   42-block  9
+    $$$$$:   42-block 10
+call   28 never executed
+    $$$$$:   42-block 11
+    $$$$$:   42-block 12
+call   29 never executed
+    $$$$$:   42-block 13
+    $$$$$:   42-block 14
+call   30 never executed
+    $$$$$:   42-block 15
+    $$$$$:   42-block 16
+call   31 never executed
+        2:   43:    BigInt minus(-1);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+call    3 returned 1
+    $$$$$:   43-block  0
+call    4 never executed
+        2:   44:    BigInt y(12);
+        1:   44-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+call    3 returned 1
+    $$$$$:   44-block  1
+call    4 never executed
+        1:   45:    y -= minus;
+        1:   45-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:   46:    EXPECT_EQ(y, BigInt(13));
+        1:   46-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   46-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   46-block  2
+call    6 returned 1
+call    7 returned 1
+branch  8 taken 0 (fallthrough)
+branch  9 taken 1
+    %%%%%:   46-block  3
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   46-block  4
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   46-block  5
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   46-block  6
+call   20 never executed
+call   21 never executed
+        1:   46-block  7
+call   22 returned 1
+    $$$$$:   46-block  8
+call   23 never executed
+    $$$$$:   46-block  9
+    $$$$$:   46-block 10
+call   24 never executed
+    $$$$$:   46-block 11
+    $$$$$:   46-block 12
+call   25 never executed
+    $$$$$:   46-block 13
+    $$$$$:   46-block 14
+call   26 never executed
+        1:   47:    minus -= y;
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:   48:    EXPECT_EQ(minus, BigInt(-14));
+        1:   48-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   48-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   48-block  2
+call    6 returned 1
+call    7 returned 1
+branch  8 taken 0 (fallthrough)
+branch  9 taken 1
+    %%%%%:   48-block  3
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   48-block  4
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   48-block  5
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   48-block  6
+call   20 never executed
+call   21 never executed
+        1:   48-block  7
+call   22 returned 1
+    $$$$$:   48-block  8
+call   23 never executed
+    $$$$$:   48-block  9
+    $$$$$:   48-block 10
+call   24 never executed
+    $$$$$:   48-block 11
+    $$$$$:   48-block 12
+call   25 never executed
+    $$$$$:   48-block 13
+    $$$$$:   48-block 14
+call   26 never executed
+       1*:   49:    EXPECT_EQ(y -= BigInt(13), BigInt(0));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   49-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   49-block  1
+call    6 returned 1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0 (throw)
+        1:   49-block  2
+call    9 returned 1
+branch 10 taken 1 (fallthrough)
+branch 11 taken 0 (throw)
+        1:   49-block  3
+call   12 returned 1
+call   13 returned 1
+call   14 returned 1
+branch 15 taken 0 (fallthrough)
+branch 16 taken 1
+    %%%%%:   49-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   49-block  5
+call   20 never executed
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:   49-block  6
+call   24 never executed
+branch 25 never executed (fallthrough)
+branch 26 never executed (throw)
+    %%%%%:   49-block  7
+call   27 never executed
+call   28 never executed
+        1:   49-block  8
+call   29 returned 1
+    $$$$$:   49-block  9
+call   30 never executed
+    $$$$$:   49-block 10
+    $$$$$:   49-block 11
+call   31 never executed
+    $$$$$:   49-block 12
+    $$$$$:   49-block 13
+call   32 never executed
+    $$$$$:   49-block 14
+    $$$$$:   49-block 15
+call   33 never executed
+    $$$$$:   49-block 16
+    $$$$$:   49-block 17
+call   34 never executed
+        2:   50:    BigInt c("-100000000");
+        1:   50-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   50-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   50-block  2
+call    6 returned 1
+call    7 returned 1
+    $$$$$:   50-block  3
+call    8 never executed
+    $$$$$:   50-block  4
+    $$$$$:   50-block  5
+    $$$$$:   50-block  6
+call    9 never executed
+       1*:   51:    EXPECT_EQ(c + a, BigInt(-99999877));
+        1:   51-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   51-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   51-block  2
+call    6 returned 1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0 (throw)
+        1:   51-block  3
+call    9 returned 1
+call   10 returned 1
+call   11 returned 1
+branch 12 taken 0 (fallthrough)
+branch 13 taken 1
+    %%%%%:   51-block  4
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   51-block  5
+call   17 never executed
+call   18 never executed
+branch 19 never executed (fallthrough)
+branch 20 never executed (throw)
+    %%%%%:   51-block  6
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:   51-block  7
+call   24 never executed
+call   25 never executed
+        1:   51-block  8
+call   26 returned 1
+    $$$$$:   51-block  9
+call   27 never executed
+    $$$$$:   51-block 10
+    $$$$$:   51-block 11
+call   28 never executed
+    $$$$$:   51-block 12
+    $$$$$:   51-block 13
+call   29 never executed
+    $$$$$:   51-block 14
+    $$$$$:   51-block 15
+call   30 never executed
+    $$$$$:   51-block 16
+    $$$$$:   51-block 17
+call   31 never executed
+       1*:   52:    EXPECT_EQ(b - a, BigInt(333));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   52-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   52-block  1
+call    6 returned 1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0 (throw)
+        1:   52-block  2
+call    9 returned 1
+call   10 returned 1
+call   11 returned 1
+branch 12 taken 0 (fallthrough)
+branch 13 taken 1
+    %%%%%:   52-block  3
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   52-block  4
+call   17 never executed
+call   18 never executed
+branch 19 never executed (fallthrough)
+branch 20 never executed (throw)
+    %%%%%:   52-block  5
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:   52-block  6
+call   24 never executed
+call   25 never executed
+        1:   52-block  7
+call   26 returned 1
+    $$$$$:   52-block  8
+call   27 never executed
+    $$$$$:   52-block  9
+    $$$$$:   52-block 10
+call   28 never executed
+    $$$$$:   52-block 11
+    $$$$$:   52-block 12
+call   29 never executed
+    $$$$$:   52-block 13
+    $$$$$:   52-block 14
+call   30 never executed
+    $$$$$:   52-block 15
+    $$$$$:   52-block 16
+call   31 never executed
+       1*:   53:    EXPECT_EQ(a - BigInt(50), BigInt(73));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   53-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   53-block  1
+call    6 returned 1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0 (throw)
+        1:   53-block  2
+call    9 returned 1
+branch 10 taken 1 (fallthrough)
+branch 11 taken 0 (throw)
+        1:   53-block  3
+call   12 returned 1
+call   13 returned 1
+call   14 returned 1
+call   15 returned 1
+branch 16 taken 0 (fallthrough)
+branch 17 taken 1
+    %%%%%:   53-block  4
+call   18 never executed
+branch 19 never executed (fallthrough)
+branch 20 never executed (throw)
+    %%%%%:   53-block  5
+call   21 never executed
+call   22 never executed
+branch 23 never executed (fallthrough)
+branch 24 never executed (throw)
+    %%%%%:   53-block  6
+call   25 never executed
+branch 26 never executed (fallthrough)
+branch 27 never executed (throw)
+    %%%%%:   53-block  7
+call   28 never executed
+call   29 never executed
+        1:   53-block  8
+call   30 returned 1
+    $$$$$:   53-block  9
+call   31 never executed
+    $$$$$:   53-block 10
+call   32 never executed
+    $$$$$:   53-block 11
+    $$$$$:   53-block 12
+    $$$$$:   53-block 13
+call   33 never executed
+    $$$$$:   53-block 14
+    $$$$$:   53-block 15
+call   34 never executed
+    $$$$$:   53-block 16
+    $$$$$:   53-block 17
+call   35 never executed
+    $$$$$:   53-block 18
+    $$$$$:   53-block 19
+call   36 never executed
+        1:   54:    a += BigInt(10000000000000000);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   54-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   54-block  1
+call    6 returned 1
+    $$$$$:   54-block  2
+call    7 never executed
+    $$$$$:   54-block  3
+        1:   55:    u += BigInt(123);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   55-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   55-block  1
+call    6 returned 1
+    $$$$$:   55-block  2
+call    7 never executed
+    $$$$$:   55-block  3
+       1*:   56:    EXPECT_EQ(a, BigInt(10000000000000123));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   56-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   56-block  1
+call    6 returned 1
+call    7 returned 1
+branch  8 taken 0 (fallthrough)
+branch  9 taken 1
+    %%%%%:   56-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   56-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   56-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   56-block  5
+call   20 never executed
+call   21 never executed
+        1:   56-block  6
+call   22 returned 1
+    $$$$$:   56-block  7
+call   23 never executed
+    $$$$$:   56-block  8
+    $$$$$:   56-block  9
+call   24 never executed
+    $$$$$:   56-block 10
+    $$$$$:   56-block 11
+call   25 never executed
+    $$$$$:   56-block 12
+    $$$$$:   56-block 13
+call   26 never executed
+       1*:   57:    EXPECT_EQ(u, BigInt(10000000000000123));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   57-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   57-block  1
+call    6 returned 1
+call    7 returned 1
+branch  8 taken 0 (fallthrough)
+branch  9 taken 1
+    %%%%%:   57-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   57-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   57-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   57-block  5
+call   20 never executed
+call   21 never executed
+        1:   57-block  6
+call   22 returned 1
+    $$$$$:   57-block  7
+call   23 never executed
+    $$$$$:   57-block  8
+    $$$$$:   57-block  9
+call   24 never executed
+    $$$$$:   57-block 10
+    $$$$$:   57-block 11
+call   25 never executed
+    $$$$$:   57-block 12
+    $$$$$:   57-block 13
+call   26 never executed
+        -:   58:
+        2:   59:    BigInt d(100000);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+call    3 returned 1
+    $$$$$:   59-block  0
+call    4 never executed
+       1*:   60:    EXPECT_EQ(d * BigInt(2), BigInt(200000));
+        1:   60-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   60-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   60-block  2
+call    6 returned 1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0 (throw)
+        1:   60-block  3
+call    9 returned 1
+branch 10 taken 1 (fallthrough)
+branch 11 taken 0 (throw)
+        1:   60-block  4
+call   12 returned 1
+call   13 returned 1
+call   14 returned 1
+call   15 returned 1
+branch 16 taken 0 (fallthrough)
+branch 17 taken 1
+    %%%%%:   60-block  5
+call   18 never executed
+branch 19 never executed (fallthrough)
+branch 20 never executed (throw)
+    %%%%%:   60-block  6
+call   21 never executed
+call   22 never executed
+branch 23 never executed (fallthrough)
+branch 24 never executed (throw)
+    %%%%%:   60-block  7
+call   25 never executed
+branch 26 never executed (fallthrough)
+branch 27 never executed (throw)
+    %%%%%:   60-block  8
+call   28 never executed
+call   29 never executed
+        1:   60-block  9
+call   30 returned 1
+    $$$$$:   60-block 10
+call   31 never executed
+    $$$$$:   60-block 11
+call   32 never executed
+    $$$$$:   60-block 12
+    $$$$$:   60-block 13
+    $$$$$:   60-block 14
+call   33 never executed
+    $$$$$:   60-block 15
+    $$$$$:   60-block 16
+call   34 never executed
+    $$$$$:   60-block 17
+    $$$$$:   60-block 18
+call   35 never executed
+    $$$$$:   60-block 19
+    $$$$$:   60-block 20
+call   36 never executed
+        -:   61:
+        2:   62:    BigInt e(1000);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+call    3 returned 1
+    $$$$$:   62-block  0
+call    4 never executed
+       1*:   63:    EXPECT_EQ(e / BigInt(3), BigInt(333));
+        1:   63-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   63-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   63-block  2
+call    6 returned 1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0 (throw)
+        1:   63-block  3
+call    9 returned 1
+branch 10 taken 1 (fallthrough)
+branch 11 taken 0 (throw)
+        1:   63-block  4
+call   12 returned 1
+call   13 returned 1
+call   14 returned 1
+call   15 returned 1
+branch 16 taken 0 (fallthrough)
+branch 17 taken 1
+    %%%%%:   63-block  5
+call   18 never executed
+branch 19 never executed (fallthrough)
+branch 20 never executed (throw)
+    %%%%%:   63-block  6
+call   21 never executed
+call   22 never executed
+branch 23 never executed (fallthrough)
+branch 24 never executed (throw)
+    %%%%%:   63-block  7
+call   25 never executed
+branch 26 never executed (fallthrough)
+branch 27 never executed (throw)
+    %%%%%:   63-block  8
+call   28 never executed
+call   29 never executed
+        1:   63-block  9
+call   30 returned 1
+    $$$$$:   63-block 10
+call   31 never executed
+    $$$$$:   63-block 11
+call   32 never executed
+    $$$$$:   63-block 12
+    $$$$$:   63-block 13
+    $$$$$:   63-block 14
+call   33 never executed
+    $$$$$:   63-block 15
+    $$$$$:   63-block 16
+call   34 never executed
+    $$$$$:   63-block 17
+    $$$$$:   63-block 18
+call   35 never executed
+    $$$$$:   63-block 19
+    $$$$$:   63-block 20
+call   36 never executed
+       1*:   64:    EXPECT_EQ(e / BigInt(100002), BigInt(0));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   64-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   64-block  1
+call    6 returned 1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0 (throw)
+        1:   64-block  2
+call    9 returned 1
+branch 10 taken 1 (fallthrough)
+branch 11 taken 0 (throw)
+        1:   64-block  3
+call   12 returned 1
+call   13 returned 1
+call   14 returned 1
+call   15 returned 1
+branch 16 taken 0 (fallthrough)
+branch 17 taken 1
+    %%%%%:   64-block  4
+call   18 never executed
+branch 19 never executed (fallthrough)
+branch 20 never executed (throw)
+    %%%%%:   64-block  5
+call   21 never executed
+call   22 never executed
+branch 23 never executed (fallthrough)
+branch 24 never executed (throw)
+    %%%%%:   64-block  6
+call   25 never executed
+branch 26 never executed (fallthrough)
+branch 27 never executed (throw)
+    %%%%%:   64-block  7
+call   28 never executed
+call   29 never executed
+        1:   64-block  8
+call   30 returned 1
+    $$$$$:   64-block  9
+call   31 never executed
+    $$$$$:   64-block 10
+call   32 never executed
+    $$$$$:   64-block 11
+    $$$$$:   64-block 12
+    $$$$$:   64-block 13
+call   33 never executed
+    $$$$$:   64-block 14
+    $$$$$:   64-block 15
+call   34 never executed
+    $$$$$:   64-block 16
+    $$$$$:   64-block 17
+call   35 never executed
+    $$$$$:   64-block 18
+    $$$$$:   64-block 19
+call   36 never executed
+       2*:   65:    EXPECT_THROW(e / BigInt(0), std::invalid_argument);
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0
+        1:   65-block  0
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+        1:   65-block  1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0
+        1:   65-block  2
+call    9 returned 1
+branch 10 taken 1 (fallthrough)
+branch 11 taken 0 (throw)
+        1:   65-block  3
+call   12 returned 1
+branch 13 taken 0 (fallthrough)
+branch 14 taken 1 (throw)
+    %%%%%:   65-block  4
+call   15 never executed
+call   16 never executed
+        1:   65-block  5
+branch 17 taken 0 (fallthrough)
+branch 18 taken 1
+    %%%%%:   65-block  6
+call   19 never executed
+branch 20 never executed (fallthrough)
+branch 21 never executed (throw)
+    %%%%%:   65-block  7
+    %%%%%:   65-block  8
+call   22 never executed
+branch 23 never executed (fallthrough)
+branch 24 never executed (throw)
+    %%%%%:   65-block  9
+call   25 never executed
+call   26 never executed
+branch 27 never executed (fallthrough)
+branch 28 never executed (throw)
+    %%%%%:   65-block 10
+call   29 never executed
+branch 30 never executed (fallthrough)
+branch 31 never executed (throw)
+    %%%%%:   65-block 11
+call   32 never executed
+call   33 never executed
+        1:   65-block 12
+call   34 returned 1
+        1:   65-block 13
+call   35 returned 1
+        1:   65-block 14
+        1:   65-block 15
+        1:   65-block 16
+branch 36 taken 1
+branch 37 taken 0
+branch 38 taken 0
+        1:   65-block 17
+call   39 returned 1
+call   40 returned 1
+    $$$$$:   65-block 18
+call   41 never executed
+call   42 never executed
+branch 43 never executed (fallthrough)
+branch 44 never executed (throw)
+    $$$$$:   65-block 19
+call   45 never executed
+branch 46 never executed (fallthrough)
+branch 47 never executed (throw)
+    $$$$$:   65-block 20
+call   48 never executed
+branch 49 never executed (fallthrough)
+branch 50 never executed (throw)
+    $$$$$:   65-block 21
+call   51 never executed
+call   52 never executed
+branch 53 never executed (fallthrough)
+branch 54 never executed (throw)
+    $$$$$:   65-block 22
+call   55 never executed
+call   56 never executed
+branch 57 never executed (fallthrough)
+branch 58 never executed (throw)
+    $$$$$:   65-block 23
+call   59 never executed
+branch 60 never executed (fallthrough)
+branch 61 never executed (throw)
+    $$$$$:   65-block 24
+    $$$$$:   65-block 25
+call   62 never executed
+    $$$$$:   65-block 26
+call   63 never executed
+call   64 never executed
+branch 65 never executed (fallthrough)
+branch 66 never executed (throw)
+    $$$$$:   65-block 27
+    $$$$$:   65-block 28
+call   67 never executed
+branch 68 never executed (fallthrough)
+branch 69 never executed (throw)
+    $$$$$:   65-block 29
+call   70 never executed
+    $$$$$:   65-block 30
+    $$$$$:   65-block 31
+call   71 never executed
+    $$$$$:   65-block 32
+call   72 never executed
+    $$$$$:   65-block 33
+call   73 never executed
+    $$$$$:   65-block 34
+    $$$$$:   65-block 35
+call   74 never executed
+    $$$$$:   65-block 36
+    $$$$$:   65-block 37
+call   75 never executed
+        1:   66:}
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+call    3 returned 1
+    $$$$$:   66-block  0
+call    4 never executed
+    $$$$$:   66-block  1
+call    5 never executed
+    $$$$$:   66-block  2
+call    6 never executed
+    $$$$$:   66-block  3
+call    7 never executed
+------------------
+        -:   67:
+        4:   68:TEST(BigIntTests, ComparisonOperators) {
+        1:   69:    BigInt a(100);
+        1:   70:    BigInt b(200);
+        1:   71:    BigInt c(-100);
+        -:   72:
+       1*:   73:    EXPECT_TRUE(a < b);
+       1*:   74:    EXPECT_TRUE(c < a);
+       1*:   75:    EXPECT_TRUE(BigInt(0) > c);
+       1*:   76:    EXPECT_TRUE(a == BigInt(100));
+       1*:   77:    EXPECT_TRUE(b != a);
+        1:   78:}
+------------------
+_ZN36BigIntTests_ComparisonOperators_TestC2Ev:
+function _ZN36BigIntTests_ComparisonOperators_TestC2Ev called 1 returned 100% blocks executed 100%
+        1:   68:TEST(BigIntTests, ComparisonOperators) {
+        1:   68-block  0
+call    0 returned 1
+------------------
+_ZN36BigIntTests_ComparisonOperators_TestD0Ev:
+function _ZN36BigIntTests_ComparisonOperators_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:   68:TEST(BigIntTests, ComparisonOperators) {
+        1:   68-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN36BigIntTests_ComparisonOperators_TestD2Ev:
+function _ZN36BigIntTests_ComparisonOperators_TestD2Ev called 1 returned 100% blocks executed 100%
+        1:   68:TEST(BigIntTests, ComparisonOperators) {
+        1:   68-block  0
+call    0 returned 1
+------------------
+_ZN36BigIntTests_ComparisonOperators_Test8TestBodyEv:
+function _ZN36BigIntTests_ComparisonOperators_Test8TestBodyEv called 1 returned 100% blocks executed 24%
+        1:   68:TEST(BigIntTests, ComparisonOperators) {
+        1:   69:    BigInt a(100);
+        1:   69-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   70:    BigInt b(200);
+        1:   70-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   71:    BigInt c(-100);
+        1:   71-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        -:   72:
+       1*:   73:    EXPECT_TRUE(a < b);
+        1:   73-block  0
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 1
+    %%%%%:   73-block  1
+call    5 never executed
+branch  6 never executed (fallthrough)
+branch  7 never executed (throw)
+    %%%%%:   73-block  2
+call    8 never executed
+branch  9 never executed (fallthrough)
+branch 10 never executed (throw)
+    %%%%%:   73-block  3
+call   11 never executed
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:   73-block  4
+call   15 never executed
+branch 16 never executed (fallthrough)
+branch 17 never executed (throw)
+    %%%%%:   73-block  5
+call   18 never executed
+call   19 never executed
+call   20 never executed
+        1:   73-block  6
+call   21 returned 1
+    $$$$$:   73-block  7
+call   22 never executed
+    $$$$$:   73-block  8
+call   23 never executed
+    $$$$$:   73-block  9
+    $$$$$:   73-block 10
+    $$$$$:   73-block 11
+call   24 never executed
+    $$$$$:   73-block 12
+    $$$$$:   73-block 13
+call   25 never executed
+       1*:   74:    EXPECT_TRUE(c < a);
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 1
+    %%%%%:   74-block  0
+call    5 never executed
+branch  6 never executed (fallthrough)
+branch  7 never executed (throw)
+    %%%%%:   74-block  1
+call    8 never executed
+branch  9 never executed (fallthrough)
+branch 10 never executed (throw)
+    %%%%%:   74-block  2
+call   11 never executed
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:   74-block  3
+call   15 never executed
+branch 16 never executed (fallthrough)
+branch 17 never executed (throw)
+    %%%%%:   74-block  4
+call   18 never executed
+call   19 never executed
+call   20 never executed
+        1:   74-block  5
+call   21 returned 1
+    $$$$$:   74-block  6
+call   22 never executed
+    $$$$$:   74-block  7
+call   23 never executed
+    $$$$$:   74-block  8
+    $$$$$:   74-block  9
+    $$$$$:   74-block 10
+call   24 never executed
+    $$$$$:   74-block 11
+    $$$$$:   74-block 12
+call   25 never executed
+       1*:   75:    EXPECT_TRUE(BigInt(0) > c);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   75-block  0
+call    3 returned 1
+call    4 returned 1
+call    5 returned 1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   75-block  1
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   75-block  2
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:   75-block  3
+call   15 never executed
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   75-block  4
+call   19 never executed
+branch 20 never executed (fallthrough)
+branch 21 never executed (throw)
+    %%%%%:   75-block  5
+call   22 never executed
+call   23 never executed
+call   24 never executed
+        1:   75-block  6
+call   25 returned 1
+    $$$$$:   75-block  7
+    $$$$$:   75-block  8
+    $$$$$:   75-block  9
+call   26 never executed
+    $$$$$:   75-block 10
+call   27 never executed
+    $$$$$:   75-block 11
+    $$$$$:   75-block 12
+    $$$$$:   75-block 13
+call   28 never executed
+    $$$$$:   75-block 14
+    $$$$$:   75-block 15
+call   29 never executed
+       1*:   76:    EXPECT_TRUE(a == BigInt(100));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   76-block  0
+call    3 returned 1
+call    4 returned 1
+call    5 returned 1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   76-block  1
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   76-block  2
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:   76-block  3
+call   15 never executed
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   76-block  4
+call   19 never executed
+branch 20 never executed (fallthrough)
+branch 21 never executed (throw)
+    %%%%%:   76-block  5
+call   22 never executed
+call   23 never executed
+call   24 never executed
+        1:   76-block  6
+call   25 returned 1
+    $$$$$:   76-block  7
+    $$$$$:   76-block  8
+    $$$$$:   76-block  9
+call   26 never executed
+    $$$$$:   76-block 10
+call   27 never executed
+    $$$$$:   76-block 11
+    $$$$$:   76-block 12
+    $$$$$:   76-block 13
+call   28 never executed
+    $$$$$:   76-block 14
+    $$$$$:   76-block 15
+call   29 never executed
+       1*:   77:    EXPECT_TRUE(b != a);
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 1
+    %%%%%:   77-block  0
+call    5 never executed
+branch  6 never executed (fallthrough)
+branch  7 never executed (throw)
+    %%%%%:   77-block  1
+call    8 never executed
+branch  9 never executed (fallthrough)
+branch 10 never executed (throw)
+    %%%%%:   77-block  2
+call   11 never executed
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:   77-block  3
+call   15 never executed
+branch 16 never executed (fallthrough)
+branch 17 never executed (throw)
+    %%%%%:   77-block  4
+call   18 never executed
+call   19 never executed
+call   20 never executed
+        1:   77-block  5
+call   21 returned 1
+    $$$$$:   77-block  6
+call   22 never executed
+    $$$$$:   77-block  7
+call   23 never executed
+    $$$$$:   77-block  8
+    $$$$$:   77-block  9
+    $$$$$:   77-block 10
+call   24 never executed
+    $$$$$:   77-block 11
+    $$$$$:   77-block 12
+call   25 never executed
+        1:   78:}
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+    $$$$$:   78-block  0
+call    3 never executed
+    $$$$$:   78-block  1
+call    4 never executed
+    $$$$$:   78-block  2
+call    5 never executed
+------------------
+        -:   79:
+        4:   80:TEST(BigIntTests, EdgeCases) {
+        -:   81:    // Максимальное значение
+        1:   82:    BigInt maxVal("99999999999999999999");
+       1*:   83:    EXPECT_EQ(maxVal.size(), 4); // Для base=100000
+        -:   84:
+        -:   85:    // Ноль
+        2:   86:    BigInt zero;
+       1*:   87:    EXPECT_FALSE(zero.is_negative());
+        -:   88:
+        -:   89:    // Смена знака
+        2:   90:    BigInt a(123);
+        2:   91:    BigInt b = -a;
+       1*:   92:    EXPECT_EQ(b, BigInt(-123));
+        1:   93:}
+------------------
+_ZN26BigIntTests_EdgeCases_TestC2Ev:
+function _ZN26BigIntTests_EdgeCases_TestC2Ev called 1 returned 100% blocks executed 100%
+        1:   80:TEST(BigIntTests, EdgeCases) {
+        1:   80-block  0
+call    0 returned 1
+------------------
+_ZN26BigIntTests_EdgeCases_TestD0Ev:
+function _ZN26BigIntTests_EdgeCases_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:   80:TEST(BigIntTests, EdgeCases) {
+        1:   80-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN26BigIntTests_EdgeCases_TestD2Ev:
+function _ZN26BigIntTests_EdgeCases_TestD2Ev called 1 returned 100% blocks executed 100%
+        1:   80:TEST(BigIntTests, EdgeCases) {
+        1:   80-block  0
+call    0 returned 1
+------------------
+_ZN26BigIntTests_EdgeCases_Test8TestBodyEv:
+function _ZN26BigIntTests_EdgeCases_Test8TestBodyEv called 1 returned 100% blocks executed 30%
+        1:   80:TEST(BigIntTests, EdgeCases) {
+        1:   80-block  0
+        -:   81:    // Максимальное значение
+        1:   82:    BigInt maxVal("99999999999999999999");
+        1:   82-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   82-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   82-block  2
+call    6 returned 1
+    $$$$$:   82-block  3
+call    7 never executed
+    $$$$$:   82-block  4
+    $$$$$:   82-block  5
+       1*:   83:    EXPECT_EQ(maxVal.size(), 4); // Для base=100000
+        1:   83-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:   83-block  1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:   83-block  2
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   83-block  3
+call   10 never executed
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    %%%%%:   83-block  4
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   83-block  5
+call   17 never executed
+call   18 never executed
+        1:   83-block  6
+call   19 returned 1
+    $$$$$:   83-block  7
+    $$$$$:   83-block  8
+    $$$$$:   83-block  9
+call   20 never executed
+    $$$$$:   83-block 10
+    $$$$$:   83-block 11
+call   21 never executed
+    $$$$$:   83-block 12
+    $$$$$:   83-block 13
+call   22 never executed
+        -:   84:
+        -:   85:    // Ноль
+        2:   86:    BigInt zero;
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+call    3 returned 1
+    $$$$$:   86-block  0
+call    4 never executed
+       1*:   87:    EXPECT_FALSE(zero.is_negative());
+        1:   87-block  0
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 1
+    %%%%%:   87-block  1
+call    5 never executed
+branch  6 never executed (fallthrough)
+branch  7 never executed (throw)
+    %%%%%:   87-block  2
+call    8 never executed
+branch  9 never executed (fallthrough)
+branch 10 never executed (throw)
+    %%%%%:   87-block  3
+call   11 never executed
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:   87-block  4
+call   15 never executed
+branch 16 never executed (fallthrough)
+branch 17 never executed (throw)
+    %%%%%:   87-block  5
+call   18 never executed
+call   19 never executed
+call   20 never executed
+        1:   87-block  6
+call   21 returned 1
+    $$$$$:   87-block  7
+call   22 never executed
+    $$$$$:   87-block  8
+call   23 never executed
+    $$$$$:   87-block  9
+    $$$$$:   87-block 10
+    $$$$$:   87-block 11
+call   24 never executed
+    $$$$$:   87-block 12
+    $$$$$:   87-block 13
+call   25 never executed
+        -:   88:
+        -:   89:    // Смена знака
+        2:   90:    BigInt a(123);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+call    3 returned 1
+    $$$$$:   90-block  0
+call    4 never executed
+        2:   91:    BigInt b = -a;
+        1:   91-block  0
+call    0 returned 1
+call    1 returned 1
+    $$$$$:   91-block  1
+call    2 never executed
+       1*:   92:    EXPECT_EQ(b, BigInt(-123));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   92-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   92-block  1
+call    6 returned 1
+call    7 returned 1
+branch  8 taken 0 (fallthrough)
+branch  9 taken 1
+    %%%%%:   92-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   92-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:   92-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   92-block  5
+call   20 never executed
+call   21 never executed
+        1:   92-block  6
+call   22 returned 1
+    $$$$$:   92-block  7
+call   23 never executed
+    $$$$$:   92-block  8
+    $$$$$:   92-block  9
+call   24 never executed
+    $$$$$:   92-block 10
+    $$$$$:   92-block 11
+call   25 never executed
+    $$$$$:   92-block 12
+    $$$$$:   92-block 13
+call   26 never executed
+        1:   93:}
+call    0 returned 1
+    $$$$$:   93-block  0
+call    1 never executed
+------------------
+        -:   94:
+        4:   95:TEST(BigIntTests, SpecialOperations) {
+        1:   96:    BigInt a(1000);
+        1:   97:    BigInt b(3);
+        1:   98:    BigInt quotient = a / b;
+        1:   99:    BigInt remainder = a - (quotient * b);
+       1*:  100:    EXPECT_EQ(remainder, BigInt(1));
+        3:  101:    BigInt c("1000000000");
+        3:  102:    BigInt d("2000000000");
+       2*:  103:    EXPECT_EQ(c * d, BigInt("2000000000000000000"));
+        1:  104:}
+------------------
+_ZN34BigIntTests_SpecialOperations_TestC2Ev:
+function _ZN34BigIntTests_SpecialOperations_TestC2Ev called 1 returned 100% blocks executed 100%
+        1:   95:TEST(BigIntTests, SpecialOperations) {
+        1:   95-block  0
+call    0 returned 1
+------------------
+_ZN34BigIntTests_SpecialOperations_TestD0Ev:
+function _ZN34BigIntTests_SpecialOperations_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:   95:TEST(BigIntTests, SpecialOperations) {
+        1:   95-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN34BigIntTests_SpecialOperations_TestD2Ev:
+function _ZN34BigIntTests_SpecialOperations_TestD2Ev called 1 returned 100% blocks executed 100%
+        1:   95:TEST(BigIntTests, SpecialOperations) {
+        1:   95-block  0
+call    0 returned 1
+------------------
+_ZN34BigIntTests_SpecialOperations_Test8TestBodyEv:
+function _ZN34BigIntTests_SpecialOperations_Test8TestBodyEv called 1 returned 100% blocks executed 38%
+        1:   95:TEST(BigIntTests, SpecialOperations) {
+        1:   96:    BigInt a(1000);
+        1:   96-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   97:    BigInt b(3);
+        1:   97-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   98:    BigInt quotient = a / b;
+        1:   98-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   99:    BigInt remainder = a - (quotient * b);
+        1:   99-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   99-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   99-block  2
+call    6 returned 1
+    $$$$$:   99-block  3
+call    7 never executed
+    $$$$$:   99-block  4
+       1*:  100:    EXPECT_EQ(remainder, BigInt(1));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  100-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  100-block  1
+call    6 returned 1
+call    7 returned 1
+branch  8 taken 0 (fallthrough)
+branch  9 taken 1
+    %%%%%:  100-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  100-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  100-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  100-block  5
+call   20 never executed
+call   21 never executed
+        1:  100-block  6
+call   22 returned 1
+    $$$$$:  100-block  7
+call   23 never executed
+    $$$$$:  100-block  8
+    $$$$$:  100-block  9
+call   24 never executed
+    $$$$$:  100-block 10
+    $$$$$:  100-block 11
+call   25 never executed
+    $$$$$:  100-block 12
+    $$$$$:  100-block 13
+call   26 never executed
+        3:  101:    BigInt c("1000000000");
+        1:  101-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  101-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  101-block  2
+call    6 returned 1
+        1:  101-block  3
+call    7 returned 1
+    $$$$$:  101-block  4
+call    8 never executed
+    $$$$$:  101-block  5
+    $$$$$:  101-block  6
+    $$$$$:  101-block  7
+call    9 never executed
+        3:  102:    BigInt d("2000000000");
+        1:  102-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  102-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  102-block  2
+call    6 returned 1
+        1:  102-block  3
+call    7 returned 1
+    $$$$$:  102-block  4
+call    8 never executed
+    $$$$$:  102-block  5
+    $$$$$:  102-block  6
+    $$$$$:  102-block  7
+call    9 never executed
+       2*:  103:    EXPECT_EQ(c * d, BigInt("2000000000000000000"));
+        1:  103-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  103-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  103-block  2
+call    6 returned 1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0 (throw)
+        1:  103-block  3
+call    9 returned 1
+branch 10 taken 1 (fallthrough)
+branch 11 taken 0 (throw)
+        1:  103-block  4
+call   12 returned 1
+call   13 returned 1
+call   14 returned 1
+        1:  103-block  5
+call   15 returned 1
+branch 16 taken 0 (fallthrough)
+branch 17 taken 1
+    %%%%%:  103-block  6
+call   18 never executed
+branch 19 never executed (fallthrough)
+branch 20 never executed (throw)
+    %%%%%:  103-block  7
+call   21 never executed
+call   22 never executed
+branch 23 never executed (fallthrough)
+branch 24 never executed (throw)
+    %%%%%:  103-block  8
+call   25 never executed
+branch 26 never executed (fallthrough)
+branch 27 never executed (throw)
+    %%%%%:  103-block  9
+call   28 never executed
+call   29 never executed
+        1:  103-block 10
+call   30 returned 1
+    $$$$$:  103-block 11
+call   31 never executed
+    $$$$$:  103-block 12
+    $$$$$:  103-block 13
+call   32 never executed
+    $$$$$:  103-block 14
+call   33 never executed
+    $$$$$:  103-block 15
+    $$$$$:  103-block 16
+    $$$$$:  103-block 17
+    $$$$$:  103-block 18
+call   34 never executed
+    $$$$$:  103-block 19
+    $$$$$:  103-block 20
+call   35 never executed
+    $$$$$:  103-block 21
+    $$$$$:  103-block 22
+call   36 never executed
+        1:  104:}
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+call    3 returned 1
+    $$$$$:  104-block  0
+call    4 never executed
+    $$$$$:  104-block  1
+call    5 never executed
+    $$$$$:  104-block  2
+call    6 never executed
+    $$$$$:  104-block  3
+call    7 never executed
+------------------
+        -:  105:
+        4:  106:TEST(BigIntTests, StringConversion) {
+        1:  107:    BigInt a("12345678901234567890");
+        1:  108:    std::stringstream ss;
+        1:  109:    ss << a;
+       1*:  110:    EXPECT_EQ(ss.str(), "12345678901234567890");
+        2:  111:    BigInt b("-12");
+        2:  112:    std::stringstream sps;
+        1:  113:    sps << b;
+       1*:  114:    EXPECT_EQ(sps.str(), "-12");
+        1:  115:}
+------------------
+_ZN33BigIntTests_StringConversion_TestC2Ev:
+function _ZN33BigIntTests_StringConversion_TestC2Ev called 1 returned 100% blocks executed 100%
+        1:  106:TEST(BigIntTests, StringConversion) {
+        1:  106-block  0
+call    0 returned 1
+------------------
+_ZN33BigIntTests_StringConversion_TestD0Ev:
+function _ZN33BigIntTests_StringConversion_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:  106:TEST(BigIntTests, StringConversion) {
+        1:  106-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN33BigIntTests_StringConversion_TestD2Ev:
+function _ZN33BigIntTests_StringConversion_TestD2Ev called 1 returned 100% blocks executed 100%
+        1:  106:TEST(BigIntTests, StringConversion) {
+        1:  106-block  0
+call    0 returned 1
+------------------
+_ZN33BigIntTests_StringConversion_Test8TestBodyEv:
+function _ZN33BigIntTests_StringConversion_Test8TestBodyEv called 1 returned 100% blocks executed 37%
+        1:  106:TEST(BigIntTests, StringConversion) {
+        1:  106-block  0
+        1:  107:    BigInt a("12345678901234567890");
+        1:  107-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  107-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  107-block  2
+call    6 returned 1
+    $$$$$:  107-block  3
+call    7 never executed
+    $$$$$:  107-block  4
+    $$$$$:  107-block  5
+        1:  108:    std::stringstream ss;
+        1:  108-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  109:    ss << a;
+        1:  109-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:  110:    EXPECT_EQ(ss.str(), "12345678901234567890");
+        1:  110-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  110-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  110-block  2
+call    6 returned 1
+call    7 returned 1
+branch  8 taken 0 (fallthrough)
+branch  9 taken 1
+    %%%%%:  110-block  3
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  110-block  4
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  110-block  5
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  110-block  6
+call   20 never executed
+call   21 never executed
+        1:  110-block  7
+call   22 returned 1
+    $$$$$:  110-block  8
+call   23 never executed
+    $$$$$:  110-block  9
+    $$$$$:  110-block 10
+call   24 never executed
+    $$$$$:  110-block 11
+    $$$$$:  110-block 12
+call   25 never executed
+    $$$$$:  110-block 13
+    $$$$$:  110-block 14
+call   26 never executed
+        2:  111:    BigInt b("-12");
+        1:  111-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  111-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  111-block  2
+call    6 returned 1
+call    7 returned 1
+    $$$$$:  111-block  3
+call    8 never executed
+    $$$$$:  111-block  4
+    $$$$$:  111-block  5
+    $$$$$:  111-block  6
+call    9 never executed
+        2:  112:    std::stringstream sps;
+        1:  112-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+call    3 returned 1
+    $$$$$:  112-block  1
+call    4 never executed
+        1:  113:    sps << b;
+        1:  113-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:  114:    EXPECT_EQ(sps.str(), "-12");
+        1:  114-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  114-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  114-block  2
+call    6 returned 1
+call    7 returned 1
+branch  8 taken 0 (fallthrough)
+branch  9 taken 1
+    %%%%%:  114-block  3
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  114-block  4
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  114-block  5
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  114-block  6
+call   20 never executed
+call   21 never executed
+        1:  114-block  7
+call   22 returned 1
+    $$$$$:  114-block  8
+call   23 never executed
+    $$$$$:  114-block  9
+    $$$$$:  114-block 10
+call   24 never executed
+    $$$$$:  114-block 11
+    $$$$$:  114-block 12
+call   25 never executed
+    $$$$$:  114-block 13
+    $$$$$:  114-block 14
+call   26 never executed
+        1:  115:}
+call    0 returned 1
+call    1 returned 1
+    $$$$$:  115-block  0
+call    2 never executed
+    $$$$$:  115-block  1
+call    3 never executed
+------------------
+        -:  116:
+        4:  117:TEST(BigIntTests, FromStringTest){
+        1:  118:    BigInt a{1234};
+        1:  119:    BigInt c{-1234};
+        1:  120:    BigInt b;
+        1:  121:    std::stringstream ss;
+        1:  122:    std::stringstream ss2;
+        1:  123:    ss << "1234";
+        1:  124:    ss >> b;
+        1:  125:    ss2 << "-1234";
+       1*:  126:    EXPECT_EQ(a, b);
+        1:  127:    ss2 >> b;
+       1*:  128:    EXPECT_EQ(c, b);
+        1:  129:}
+------------------
+_ZN31BigIntTests_FromStringTest_TestC2Ev:
+function _ZN31BigIntTests_FromStringTest_TestC2Ev called 1 returned 100% blocks executed 100%
+        1:  117:TEST(BigIntTests, FromStringTest){
+        1:  117-block  0
+call    0 returned 1
+------------------
+_ZN31BigIntTests_FromStringTest_TestD0Ev:
+function _ZN31BigIntTests_FromStringTest_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:  117:TEST(BigIntTests, FromStringTest){
+        1:  117-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN31BigIntTests_FromStringTest_TestD2Ev:
+function _ZN31BigIntTests_FromStringTest_TestD2Ev called 1 returned 100% blocks executed 100%
+        1:  117:TEST(BigIntTests, FromStringTest){
+        1:  117-block  0
+call    0 returned 1
+------------------
+_ZN31BigIntTests_FromStringTest_Test8TestBodyEv:
+function _ZN31BigIntTests_FromStringTest_Test8TestBodyEv called 1 returned 100% blocks executed 36%
+        1:  117:TEST(BigIntTests, FromStringTest){
+        1:  118:    BigInt a{1234};
+        1:  118-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  119:    BigInt c{-1234};
+        1:  119-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  120:    BigInt b;
+        1:  120-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  121:    std::stringstream ss;
+        1:  121-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  122:    std::stringstream ss2;
+        1:  122-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  123:    ss << "1234";
+        1:  123-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  124:    ss >> b;
+        1:  124-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  125:    ss2 << "-1234";
+        1:  125-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:  126:    EXPECT_EQ(a, b);
+        1:  126-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  126-block  1
+call    3 returned 1
+branch  4 taken 0 (fallthrough)
+branch  5 taken 1
+    %%%%%:  126-block  2
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:  126-block  3
+call    9 never executed
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  126-block  4
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:  126-block  5
+call   16 never executed
+call   17 never executed
+        1:  126-block  6
+call   18 returned 1
+    $$$$$:  126-block  7
+call   19 never executed
+    $$$$$:  126-block  8
+    $$$$$:  126-block  9
+call   20 never executed
+    $$$$$:  126-block 10
+    $$$$$:  126-block 11
+call   21 never executed
+        1:  127:    ss2 >> b;
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:  128:    EXPECT_EQ(c, b);
+        1:  128-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  128-block  1
+call    3 returned 1
+branch  4 taken 0 (fallthrough)
+branch  5 taken 1
+    %%%%%:  128-block  2
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:  128-block  3
+call    9 never executed
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  128-block  4
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:  128-block  5
+call   16 never executed
+call   17 never executed
+        1:  128-block  6
+call   18 returned 1
+    $$$$$:  128-block  7
+call   19 never executed
+    $$$$$:  128-block  8
+    $$$$$:  128-block  9
+call   20 never executed
+    $$$$$:  128-block 10
+    $$$$$:  128-block 11
+call   21 never executed
+        1:  129:}
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+call    3 returned 1
+call    4 returned 1
+    $$$$$:  129-block  0
+call    5 never executed
+    $$$$$:  129-block  1
+call    6 never executed
+    $$$$$:  129-block  2
+call    7 never executed
+    $$$$$:  129-block  3
+call    8 never executed
+    $$$$$:  129-block  4
+call    9 never executed
+------------------
+        -:  130:
+        4:  131:TEST(BigIntTests, AbsAndSign) {
+        1:  132:    BigInt a(-123);
+       1*:  133:    EXPECT_EQ(a.abs(), BigInt(123));
+       1*:  134:    EXPECT_TRUE(a.is_negative());
+        -:  135:
+        2:  136:    BigInt b(456);
+       1*:  137:    EXPECT_FALSE(b.abs().is_negative());
+        1:  138:}
+------------------
+_ZN27BigIntTests_AbsAndSign_TestC2Ev:
+function _ZN27BigIntTests_AbsAndSign_TestC2Ev called 1 returned 100% blocks executed 100%
+        1:  131:TEST(BigIntTests, AbsAndSign) {
+        1:  131-block  0
+call    0 returned 1
+------------------
+_ZN27BigIntTests_AbsAndSign_TestD0Ev:
+function _ZN27BigIntTests_AbsAndSign_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:  131:TEST(BigIntTests, AbsAndSign) {
+        1:  131-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN27BigIntTests_AbsAndSign_TestD2Ev:
+function _ZN27BigIntTests_AbsAndSign_TestD2Ev called 1 returned 100% blocks executed 100%
+        1:  131:TEST(BigIntTests, AbsAndSign) {
+        1:  131-block  0
+call    0 returned 1
+------------------
+_ZN27BigIntTests_AbsAndSign_Test8TestBodyEv:
+function _ZN27BigIntTests_AbsAndSign_Test8TestBodyEv called 1 returned 100% blocks executed 28%
+        1:  131:TEST(BigIntTests, AbsAndSign) {
+        1:  132:    BigInt a(-123);
+        1:  132-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:  133:    EXPECT_EQ(a.abs(), BigInt(123));
+        1:  133-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  133-block  1
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+        1:  133-block  2
+call    7 returned 1
+call    8 returned 1
+call    9 returned 1
+branch 10 taken 0 (fallthrough)
+branch 11 taken 1
+    %%%%%:  133-block  3
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:  133-block  4
+call   15 never executed
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:  133-block  5
+call   19 never executed
+branch 20 never executed (fallthrough)
+branch 21 never executed (throw)
+    %%%%%:  133-block  6
+call   22 never executed
+call   23 never executed
+        1:  133-block  7
+call   24 returned 1
+    $$$$$:  133-block  8
+call   25 never executed
+    $$$$$:  133-block  9
+    $$$$$:  133-block 10
+call   26 never executed
+    $$$$$:  133-block 11
+    $$$$$:  133-block 12
+call   27 never executed
+    $$$$$:  133-block 13
+    $$$$$:  133-block 14
+call   28 never executed
+    $$$$$:  133-block 15
+    $$$$$:  133-block 16
+call   29 never executed
+       1*:  134:    EXPECT_TRUE(a.is_negative());
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 1
+    %%%%%:  134-block  0
+call    5 never executed
+branch  6 never executed (fallthrough)
+branch  7 never executed (throw)
+    %%%%%:  134-block  1
+call    8 never executed
+branch  9 never executed (fallthrough)
+branch 10 never executed (throw)
+    %%%%%:  134-block  2
+call   11 never executed
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:  134-block  3
+call   15 never executed
+branch 16 never executed (fallthrough)
+branch 17 never executed (throw)
+    %%%%%:  134-block  4
+call   18 never executed
+call   19 never executed
+call   20 never executed
+        1:  134-block  5
+call   21 returned 1
+    $$$$$:  134-block  6
+call   22 never executed
+    $$$$$:  134-block  7
+call   23 never executed
+    $$$$$:  134-block  8
+    $$$$$:  134-block  9
+    $$$$$:  134-block 10
+call   24 never executed
+    $$$$$:  134-block 11
+    $$$$$:  134-block 12
+call   25 never executed
+        -:  135:
+        2:  136:    BigInt b(456);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+call    3 returned 1
+    $$$$$:  136-block  0
+call    4 never executed
+       1*:  137:    EXPECT_FALSE(b.abs().is_negative());
+        1:  137-block  0
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+call    3 returned 1
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    %%%%%:  137-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:  137-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  137-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  137-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  137-block  5
+call   20 never executed
+call   21 never executed
+call   22 never executed
+        1:  137-block  6
+call   23 returned 1
+    $$$$$:  137-block  7
+call   24 never executed
+    $$$$$:  137-block  8
+call   25 never executed
+    $$$$$:  137-block  9
+    $$$$$:  137-block 10
+    $$$$$:  137-block 11
+call   26 never executed
+    $$$$$:  137-block 12
+    $$$$$:  137-block 13
+call   27 never executed
+        1:  138:}
+call    0 returned 1
+    $$$$$:  138-block  0
+call    1 never executed
+------------------
+        -:  139:
+        4:  140:TEST(BigIntTests, ZeroHandling) {
+        1:  141:    BigInt a(0);
+        1:  142:    BigInt b(0);
+       1*:  143:    EXPECT_EQ(a + b, BigInt(0));
+       1*:  144:    EXPECT_EQ(a * b, BigInt(0));
+       1*:  145:    EXPECT_THROW(a / b, std::invalid_argument);
+        1:  146:}
+------------------
+_ZN29BigIntTests_ZeroHandling_TestC2Ev:
+function _ZN29BigIntTests_ZeroHandling_TestC2Ev called 1 returned 100% blocks executed 100%
+        1:  140:TEST(BigIntTests, ZeroHandling) {
+        1:  140-block  0
+call    0 returned 1
+------------------
+_ZN29BigIntTests_ZeroHandling_TestD0Ev:
+function _ZN29BigIntTests_ZeroHandling_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:  140:TEST(BigIntTests, ZeroHandling) {
+        1:  140-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN29BigIntTests_ZeroHandling_TestD2Ev:
+function _ZN29BigIntTests_ZeroHandling_TestD2Ev called 1 returned 100% blocks executed 100%
+        1:  140:TEST(BigIntTests, ZeroHandling) {
+        1:  140-block  0
+call    0 returned 1
+------------------
+_ZN29BigIntTests_ZeroHandling_Test8TestBodyEv:
+function _ZN29BigIntTests_ZeroHandling_Test8TestBodyEv called 1 returned 100% blocks executed 27%
+        1:  140:TEST(BigIntTests, ZeroHandling) {
+        1:  141:    BigInt a(0);
+        1:  141-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  142:    BigInt b(0);
+        1:  142-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:  143:    EXPECT_EQ(a + b, BigInt(0));
+        1:  143-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  143-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  143-block  2
+call    6 returned 1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0 (throw)
+        1:  143-block  3
+call    9 returned 1
+call   10 returned 1
+call   11 returned 1
+branch 12 taken 0 (fallthrough)
+branch 13 taken 1
+    %%%%%:  143-block  4
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  143-block  5
+call   17 never executed
+call   18 never executed
+branch 19 never executed (fallthrough)
+branch 20 never executed (throw)
+    %%%%%:  143-block  6
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:  143-block  7
+call   24 never executed
+call   25 never executed
+        1:  143-block  8
+call   26 returned 1
+    $$$$$:  143-block  9
+call   27 never executed
+    $$$$$:  143-block 10
+    $$$$$:  143-block 11
+call   28 never executed
+    $$$$$:  143-block 12
+    $$$$$:  143-block 13
+call   29 never executed
+    $$$$$:  143-block 14
+    $$$$$:  143-block 15
+call   30 never executed
+    $$$$$:  143-block 16
+    $$$$$:  143-block 17
+call   31 never executed
+       1*:  144:    EXPECT_EQ(a * b, BigInt(0));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  144-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  144-block  1
+call    6 returned 1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0 (throw)
+        1:  144-block  2
+call    9 returned 1
+call   10 returned 1
+call   11 returned 1
+branch 12 taken 0 (fallthrough)
+branch 13 taken 1
+    %%%%%:  144-block  3
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  144-block  4
+call   17 never executed
+call   18 never executed
+branch 19 never executed (fallthrough)
+branch 20 never executed (throw)
+    %%%%%:  144-block  5
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:  144-block  6
+call   24 never executed
+call   25 never executed
+        1:  144-block  7
+call   26 returned 1
+    $$$$$:  144-block  8
+call   27 never executed
+    $$$$$:  144-block  9
+    $$$$$:  144-block 10
+call   28 never executed
+    $$$$$:  144-block 11
+    $$$$$:  144-block 12
+call   29 never executed
+    $$$$$:  144-block 13
+    $$$$$:  144-block 14
+call   30 never executed
+    $$$$$:  144-block 15
+    $$$$$:  144-block 16
+call   31 never executed
+       1*:  145:    EXPECT_THROW(a / b, std::invalid_argument);
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0
+        1:  145-block  0
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+        1:  145-block  1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0
+        1:  145-block  2
+call    9 returned 1
+branch 10 taken 0 (fallthrough)
+branch 11 taken 1 (throw)
+    %%%%%:  145-block  3
+call   12 never executed
+        1:  145-block  4
+branch 13 taken 0 (fallthrough)
+branch 14 taken 1
+    %%%%%:  145-block  5
+call   15 never executed
+branch 16 never executed (fallthrough)
+branch 17 never executed (throw)
+    %%%%%:  145-block  6
+    %%%%%:  145-block  7
+call   18 never executed
+branch 19 never executed (fallthrough)
+branch 20 never executed (throw)
+    %%%%%:  145-block  8
+call   21 never executed
+call   22 never executed
+branch 23 never executed (fallthrough)
+branch 24 never executed (throw)
+    %%%%%:  145-block  9
+call   25 never executed
+branch 26 never executed (fallthrough)
+branch 27 never executed (throw)
+    %%%%%:  145-block 10
+call   28 never executed
+call   29 never executed
+        1:  145-block 11
+call   30 returned 1
+        1:  145-block 12
+        1:  145-block 13
+branch 31 taken 1
+branch 32 taken 0
+branch 33 taken 0
+        1:  145-block 14
+call   34 returned 1
+call   35 returned 1
+    $$$$$:  145-block 15
+call   36 never executed
+call   37 never executed
+branch 38 never executed (fallthrough)
+branch 39 never executed (throw)
+    $$$$$:  145-block 16
+call   40 never executed
+branch 41 never executed (fallthrough)
+branch 42 never executed (throw)
+    $$$$$:  145-block 17
+call   43 never executed
+branch 44 never executed (fallthrough)
+branch 45 never executed (throw)
+    $$$$$:  145-block 18
+call   46 never executed
+call   47 never executed
+branch 48 never executed (fallthrough)
+branch 49 never executed (throw)
+    $$$$$:  145-block 19
+call   50 never executed
+call   51 never executed
+branch 52 never executed (fallthrough)
+branch 53 never executed (throw)
+    $$$$$:  145-block 20
+call   54 never executed
+branch 55 never executed (fallthrough)
+branch 56 never executed (throw)
+    $$$$$:  145-block 21
+    $$$$$:  145-block 22
+call   57 never executed
+    $$$$$:  145-block 23
+call   58 never executed
+call   59 never executed
+branch 60 never executed (fallthrough)
+branch 61 never executed (throw)
+    $$$$$:  145-block 24
+    $$$$$:  145-block 25
+call   62 never executed
+branch 63 never executed (fallthrough)
+branch 64 never executed (throw)
+    $$$$$:  145-block 26
+call   65 never executed
+    $$$$$:  145-block 27
+    $$$$$:  145-block 28
+call   66 never executed
+    $$$$$:  145-block 29
+call   67 never executed
+    $$$$$:  145-block 30
+call   68 never executed
+    $$$$$:  145-block 31
+    $$$$$:  145-block 32
+call   69 never executed
+    $$$$$:  145-block 33
+    $$$$$:  145-block 34
+call   70 never executed
+        1:  146:}
+call    0 returned 1
+call    1 returned 1
+    $$$$$:  146-block  0
+call    2 never executed
+    $$$$$:  146-block  1
+call    3 never executed
+------------------
+        -:  147:
+        4:  148:TEST(ModExpTest, TestingFunction){
+        1:  149:    BigInt first("100");
+        1:  150:    BigInt b = mod_exp(first, BigInt(2), BigInt(1));
+        1:  151:    BigInt c = mod_exp(first, BigInt(2), BigInt(3));
+        1:  152:    BigInt d = mod_exp(-first, BigInt(2), BigInt(6));
+       1*:  153:    EXPECT_EQ(b, BigInt(0));
+       1*:  154:    EXPECT_EQ(c, BigInt(1));
+       1*:  155:    EXPECT_EQ(d, BigInt(4));
+       3*:  156:    EXPECT_THROW(mod_exp(first, BigInt(-7), BigInt(1)), std::invalid_argument);
+        1:  157:}
+------------------
+_ZN31ModExpTest_TestingFunction_TestC2Ev:
+function _ZN31ModExpTest_TestingFunction_TestC2Ev called 1 returned 100% blocks executed 100%
+        1:  148:TEST(ModExpTest, TestingFunction){
+        1:  148-block  0
+call    0 returned 1
+------------------
+_ZN31ModExpTest_TestingFunction_TestD0Ev:
+function _ZN31ModExpTest_TestingFunction_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:  148:TEST(ModExpTest, TestingFunction){
+        1:  148-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN31ModExpTest_TestingFunction_TestD2Ev:
+function _ZN31ModExpTest_TestingFunction_TestD2Ev called 1 returned 100% blocks executed 100%
+        1:  148:TEST(ModExpTest, TestingFunction){
+        1:  148-block  0
+call    0 returned 1
+------------------
+_ZN31ModExpTest_TestingFunction_Test8TestBodyEv:
+function _ZN31ModExpTest_TestingFunction_Test8TestBodyEv called 1 returned 100% blocks executed 33%
+        1:  148:TEST(ModExpTest, TestingFunction){
+        1:  148-block  0
+        1:  149:    BigInt first("100");
+        1:  149-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  149-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  149-block  2
+call    6 returned 1
+    $$$$$:  149-block  3
+call    7 never executed
+    $$$$$:  149-block  4
+    $$$$$:  149-block  5
+        1:  150:    BigInt b = mod_exp(first, BigInt(2), BigInt(1));
+        1:  150-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  150-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  150-block  2
+call    6 returned 1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0 (throw)
+        1:  150-block  3
+call    9 returned 1
+call   10 returned 1
+    $$$$$:  150-block  4
+call   11 never executed
+    $$$$$:  150-block  5
+    $$$$$:  150-block  6
+call   12 never executed
+    $$$$$:  150-block  7
+        1:  151:    BigInt c = mod_exp(first, BigInt(2), BigInt(3));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  151-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  151-block  1
+call    6 returned 1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0 (throw)
+        1:  151-block  2
+call    9 returned 1
+call   10 returned 1
+    $$$$$:  151-block  3
+call   11 never executed
+    $$$$$:  151-block  4
+    $$$$$:  151-block  5
+call   12 never executed
+    $$$$$:  151-block  6
+        1:  152:    BigInt d = mod_exp(-first, BigInt(2), BigInt(6));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  152-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  152-block  1
+call    6 returned 1
+call    7 returned 1
+branch  8 taken 1 (fallthrough)
+branch  9 taken 0 (throw)
+        1:  152-block  2
+call   10 returned 1
+call   11 returned 1
+call   12 returned 1
+    $$$$$:  152-block  3
+call   13 never executed
+    $$$$$:  152-block  4
+    $$$$$:  152-block  5
+call   14 never executed
+    $$$$$:  152-block  6
+    $$$$$:  152-block  7
+call   15 never executed
+    $$$$$:  152-block  8
+       1*:  153:    EXPECT_EQ(b, BigInt(0));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  153-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  153-block  1
+call    6 returned 1
+call    7 returned 1
+branch  8 taken 0 (fallthrough)
+branch  9 taken 1
+    %%%%%:  153-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  153-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  153-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  153-block  5
+call   20 never executed
+call   21 never executed
+        1:  153-block  6
+call   22 returned 1
+    $$$$$:  153-block  7
+call   23 never executed
+    $$$$$:  153-block  8
+    $$$$$:  153-block  9
+call   24 never executed
+    $$$$$:  153-block 10
+    $$$$$:  153-block 11
+call   25 never executed
+    $$$$$:  153-block 12
+    $$$$$:  153-block 13
+call   26 never executed
+       1*:  154:    EXPECT_EQ(c, BigInt(1));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  154-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  154-block  1
+call    6 returned 1
+call    7 returned 1
+branch  8 taken 0 (fallthrough)
+branch  9 taken 1
+    %%%%%:  154-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  154-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  154-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  154-block  5
+call   20 never executed
+call   21 never executed
+        1:  154-block  6
+call   22 returned 1
+    $$$$$:  154-block  7
+call   23 never executed
+    $$$$$:  154-block  8
+    $$$$$:  154-block  9
+call   24 never executed
+    $$$$$:  154-block 10
+    $$$$$:  154-block 11
+call   25 never executed
+    $$$$$:  154-block 12
+    $$$$$:  154-block 13
+call   26 never executed
+       1*:  155:    EXPECT_EQ(d, BigInt(4));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  155-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  155-block  1
+call    6 returned 1
+call    7 returned 1
+branch  8 taken 0 (fallthrough)
+branch  9 taken 1
+    %%%%%:  155-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  155-block  3
+call   13 never executed
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  155-block  4
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  155-block  5
+call   20 never executed
+call   21 never executed
+        1:  155-block  6
+call   22 returned 1
+    $$$$$:  155-block  7
+call   23 never executed
+    $$$$$:  155-block  8
+    $$$$$:  155-block  9
+call   24 never executed
+    $$$$$:  155-block 10
+    $$$$$:  155-block 11
+call   25 never executed
+    $$$$$:  155-block 12
+    $$$$$:  155-block 13
+call   26 never executed
+       3*:  156:    EXPECT_THROW(mod_exp(first, BigInt(-7), BigInt(1)), std::invalid_argument);
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0
+        1:  156-block  0
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+        1:  156-block  1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0
+        1:  156-block  2
+call    9 returned 1
+branch 10 taken 1 (fallthrough)
+branch 11 taken 0 (throw)
+        1:  156-block  3
+call   12 returned 1
+branch 13 taken 1 (fallthrough)
+branch 14 taken 0 (throw)
+        1:  156-block  4
+call   15 returned 1
+branch 16 taken 0 (fallthrough)
+branch 17 taken 1 (throw)
+    %%%%%:  156-block  5
+call   18 never executed
+call   19 never executed
+call   20 never executed
+        1:  156-block  6
+branch 21 taken 0 (fallthrough)
+branch 22 taken 1
+    %%%%%:  156-block  7
+call   23 never executed
+branch 24 never executed (fallthrough)
+branch 25 never executed (throw)
+    %%%%%:  156-block  8
+    %%%%%:  156-block  9
+call   26 never executed
+branch 27 never executed (fallthrough)
+branch 28 never executed (throw)
+    %%%%%:  156-block 10
+call   29 never executed
+call   30 never executed
+branch 31 never executed (fallthrough)
+branch 32 never executed (throw)
+    %%%%%:  156-block 11
+call   33 never executed
+branch 34 never executed (fallthrough)
+branch 35 never executed (throw)
+    %%%%%:  156-block 12
+call   36 never executed
+call   37 never executed
+        1:  156-block 13
+call   38 returned 1
+        1:  156-block 14
+call   39 returned 1
+        1:  156-block 15
+        1:  156-block 16
+call   40 returned 1
+        1:  156-block 17
+        1:  156-block 18
+        1:  156-block 19
+branch 41 taken 1
+branch 42 taken 0
+branch 43 taken 0
+        1:  156-block 20
+call   44 returned 1
+call   45 returned 1
+    $$$$$:  156-block 21
+call   46 never executed
+call   47 never executed
+branch 48 never executed (fallthrough)
+branch 49 never executed (throw)
+    $$$$$:  156-block 22
+call   50 never executed
+branch 51 never executed (fallthrough)
+branch 52 never executed (throw)
+    $$$$$:  156-block 23
+call   53 never executed
+branch 54 never executed (fallthrough)
+branch 55 never executed (throw)
+    $$$$$:  156-block 24
+call   56 never executed
+call   57 never executed
+branch 58 never executed (fallthrough)
+branch 59 never executed (throw)
+    $$$$$:  156-block 25
+call   60 never executed
+call   61 never executed
+branch 62 never executed (fallthrough)
+branch 63 never executed (throw)
+    $$$$$:  156-block 26
+call   64 never executed
+branch 65 never executed (fallthrough)
+branch 66 never executed (throw)
+    $$$$$:  156-block 27
+    $$$$$:  156-block 28
+call   67 never executed
+    $$$$$:  156-block 29
+call   68 never executed
+call   69 never executed
+branch 70 never executed (fallthrough)
+branch 71 never executed (throw)
+    $$$$$:  156-block 30
+    $$$$$:  156-block 31
+call   72 never executed
+branch 73 never executed (fallthrough)
+branch 74 never executed (throw)
+    $$$$$:  156-block 32
+call   75 never executed
+    $$$$$:  156-block 33
+    $$$$$:  156-block 34
+call   76 never executed
+    $$$$$:  156-block 35
+call   77 never executed
+    $$$$$:  156-block 36
+call   78 never executed
+    $$$$$:  156-block 37
+    $$$$$:  156-block 38
+call   79 never executed
+    $$$$$:  156-block 39
+    $$$$$:  156-block 40
+call   80 never executed
+        1:  157:}
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+call    3 returned 1
+    $$$$$:  157-block  0
+call    4 never executed
+    $$$$$:  157-block  1
+call    5 never executed
+    $$$$$:  157-block  2
+call    6 never executed
+    $$$$$:  157-block  3
+call    7 never executed
+------------------
+        -:  158:
+        4:  159:TEST(FftTest, TestComparing){
+        2:  160:    BigInt a("19238120480129840129301230912830912804981290849012840981209481204");
+        1:  161:    BigInt b("12049312809412049122390503280923804832084032809483209480932840923");
+       1*:  162:    EXPECT_EQ(BigInt::multiply_fft(a, b), a * b);
+        1:  163:}
+------------------
+_ZN26FftTest_TestComparing_TestC2Ev:
+function _ZN26FftTest_TestComparing_TestC2Ev called 1 returned 100% blocks executed 100%
+        1:  159:TEST(FftTest, TestComparing){
+        1:  159-block  0
+call    0 returned 1
+------------------
+_ZN26FftTest_TestComparing_TestD0Ev:
+function _ZN26FftTest_TestComparing_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:  159:TEST(FftTest, TestComparing){
+        1:  159-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN26FftTest_TestComparing_TestD2Ev:
+function _ZN26FftTest_TestComparing_TestD2Ev called 1 returned 100% blocks executed 100%
+        1:  159:TEST(FftTest, TestComparing){
+        1:  159-block  0
+call    0 returned 1
+------------------
+_ZN26FftTest_TestComparing_Test8TestBodyEv:
+function _ZN26FftTest_TestComparing_Test8TestBodyEv called 1 returned 100% blocks executed 39%
+        1:  159:TEST(FftTest, TestComparing){
+        1:  159-block  0
+        2:  160:    BigInt a("19238120480129840129301230912830912804981290849012840981209481204");
+        1:  160-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  160-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  160-block  2
+call    6 returned 1
+        1:  160-block  3
+    $$$$$:  160-block  4
+call    7 never executed
+    $$$$$:  160-block  5
+    $$$$$:  160-block  6
+        1:  161:    BigInt b("12049312809412049122390503280923804832084032809483209480932840923");
+        1:  161-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  161-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  161-block  2
+call    6 returned 1
+    $$$$$:  161-block  3
+call    7 never executed
+    $$$$$:  161-block  4
+    $$$$$:  161-block  5
+       1*:  162:    EXPECT_EQ(BigInt::multiply_fft(a, b), a * b);
+        1:  162-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  162-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  162-block  2
+call    6 returned 1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0 (throw)
+        1:  162-block  3
+call    9 returned 1
+call   10 returned 1
+call   11 returned 1
+branch 12 taken 0 (fallthrough)
+branch 13 taken 1
+    %%%%%:  162-block  4
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  162-block  5
+call   17 never executed
+call   18 never executed
+branch 19 never executed (fallthrough)
+branch 20 never executed (throw)
+    %%%%%:  162-block  6
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:  162-block  7
+call   24 never executed
+call   25 never executed
+        1:  162-block  8
+call   26 returned 1
+    $$$$$:  162-block  9
+call   27 never executed
+    $$$$$:  162-block 10
+    $$$$$:  162-block 11
+call   28 never executed
+    $$$$$:  162-block 12
+    $$$$$:  162-block 13
+call   29 never executed
+    $$$$$:  162-block 14
+    $$$$$:  162-block 15
+call   30 never executed
+    $$$$$:  162-block 16
+    $$$$$:  162-block 17
+call   31 never executed
+        1:  163:}
+call    0 returned 1
+call    1 returned 1
+    $$$$$:  163-block  0
+call    2 never executed
+    $$$$$:  163-block  1
+call    3 never executed
+------------------
+        -:  164:
+        4:  165:TEST(KaratsubaTest, TestComparing){
+        2:  166:    BigInt a("19238120480129840129301230912830912804981290849012840981209481204");
+        1:  167:    BigInt b("12049312809412049122390503280923804832084032809483209480932840923");
+       1*:  168:    EXPECT_EQ(BigInt::karatsuba_multiply(a, b), a * b);
+        1:  169:}
+------------------
+_ZN32KaratsubaTest_TestComparing_TestC2Ev:
+function _ZN32KaratsubaTest_TestComparing_TestC2Ev called 1 returned 100% blocks executed 100%
+        1:  165:TEST(KaratsubaTest, TestComparing){
+        1:  165-block  0
+call    0 returned 1
+------------------
+_ZN32KaratsubaTest_TestComparing_TestD0Ev:
+function _ZN32KaratsubaTest_TestComparing_TestD0Ev called 1 returned 100% blocks executed 100%
+        1:  165:TEST(KaratsubaTest, TestComparing){
+        1:  165-block  0
+call    0 returned 1
+call    1 returned 1
+------------------
+_ZN32KaratsubaTest_TestComparing_TestD2Ev:
+function _ZN32KaratsubaTest_TestComparing_TestD2Ev called 1 returned 100% blocks executed 100%
+        1:  165:TEST(KaratsubaTest, TestComparing){
+        1:  165-block  0
+call    0 returned 1
+------------------
+_ZN32KaratsubaTest_TestComparing_Test8TestBodyEv:
+function _ZN32KaratsubaTest_TestComparing_Test8TestBodyEv called 1 returned 100% blocks executed 39%
+        1:  165:TEST(KaratsubaTest, TestComparing){
+        1:  165-block  0
+        2:  166:    BigInt a("19238120480129840129301230912830912804981290849012840981209481204");
+        1:  166-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  166-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  166-block  2
+call    6 returned 1
+        1:  166-block  3
+    $$$$$:  166-block  4
+call    7 never executed
+    $$$$$:  166-block  5
+    $$$$$:  166-block  6
+        1:  167:    BigInt b("12049312809412049122390503280923804832084032809483209480932840923");
+        1:  167-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  167-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  167-block  2
+call    6 returned 1
+    $$$$$:  167-block  3
+call    7 never executed
+    $$$$$:  167-block  4
+    $$$$$:  167-block  5
+       1*:  168:    EXPECT_EQ(BigInt::karatsuba_multiply(a, b), a * b);
+        1:  168-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  168-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  168-block  2
+call    6 returned 1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0 (throw)
+        1:  168-block  3
+call    9 returned 1
+call   10 returned 1
+call   11 returned 1
+branch 12 taken 0 (fallthrough)
+branch 13 taken 1
+    %%%%%:  168-block  4
+call   14 never executed
+branch 15 never executed (fallthrough)
+branch 16 never executed (throw)
+    %%%%%:  168-block  5
+call   17 never executed
+call   18 never executed
+branch 19 never executed (fallthrough)
+branch 20 never executed (throw)
+    %%%%%:  168-block  6
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:  168-block  7
+call   24 never executed
+call   25 never executed
+        1:  168-block  8
+call   26 returned 1
+    $$$$$:  168-block  9
+call   27 never executed
+    $$$$$:  168-block 10
+    $$$$$:  168-block 11
+call   28 never executed
+    $$$$$:  168-block 12
+    $$$$$:  168-block 13
+call   29 never executed
+    $$$$$:  168-block 14
+    $$$$$:  168-block 15
+call   30 never executed
+    $$$$$:  168-block 16
+    $$$$$:  168-block 17
+call   31 never executed
+        1:  169:}
+call    0 returned 1
+call    1 returned 1
+    $$$$$:  169-block  0
+call    2 never executed
+    $$$$$:  169-block  1
+call    3 never executed
+------------------
+        -:  170:
+function main called 1 returned 100% blocks executed 100%
+        1:  171:int main(){
+        1:  172:    ::testing::InitGoogleTest();
+        1:  172-block  0
+call    0 returned 1
+        1:  173:    return RUN_ALL_TESTS();
+call    0 returned 1
+        -:  174:}

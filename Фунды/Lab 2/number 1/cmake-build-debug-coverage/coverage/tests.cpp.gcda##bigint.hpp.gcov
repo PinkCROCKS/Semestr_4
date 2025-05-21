@@ -1,0 +1,2032 @@
+        -:    0:Source:/mnt/d/Уник/4 сем/Фунды/Lab 2/number 1/include/bigint.hpp
+        -:    0:Graph:/mnt/d/Уник/4 сем/Фунды/Lab 2/number 1/cmake-build-debug-coverage/CMakeFiles/tests.dir/tests/tests.cpp.gcno
+        -:    0:Data:/mnt/d/Уник/4 сем/Фунды/Lab 2/number 1/cmake-build-debug-coverage/CMakeFiles/tests.dir/tests/tests.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include <iostream>
+        -:    2:#include <utility>
+        -:    3:#include <vector>
+        -:    4:#include <cmath>
+        -:    5:#include <iomanip>
+        -:    6:#include "complex"
+        -:    7:#include <vector>
+        -:    8:#include <utility>
+        -:    9:
+        -:   10:class BigInt {
+        -:   11:private:
+        -:   12:    using ftype = std::complex<double>;
+        -:   13:    const int _size_base = 5;
+        -:   14:    unsigned long long _base = 100000;
+        -:   15:    std::vector<unsigned long long> data;
+        -:   16:    bool negative = false;
+        -:   17:
+function _ZN6BigInt17is_correct_stringERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE called 365 returned 100% blocks executed 100%
+      365:   18:    static bool is_correct_string(const std::string& string) noexcept{
+      365:   19:        int i = 0;
+      365:   20:        if (string[0] == '-'){
+      365:   20-block  0
+call    0 returned 365
+branch  1 taken 6 (fallthrough)
+branch  2 taken 359
+        6:   21:            i++;
+        6:   21-block  0
+        -:   22:        }
+     1104:   23:        for (;i < string.size(); i++){
+      365:   23-block  0
+      739:   23-block  1
+     1104:   23-block  2
+call    0 returned 1104
+branch  1 taken 741
+branch  2 taken 363 (fallthrough)
+      741:   24:            if ('0' > string[i] || string[i]> '9'){
+      741:   24-block  0
+call    0 returned 741
+branch  1 taken 740 (fallthrough)
+branch  2 taken 1
+      740:   24-block  1
+call    3 returned 740
+branch  4 taken 1 (fallthrough)
+branch  5 taken 739
+        2:   24-block  2
+      739:   24-block  3
+      741:   24-block  4
+branch  6 taken 2 (fallthrough)
+branch  7 taken 739
+        2:   25:                return false;
+        2:   25-block  0
+        -:   26:            }
+        -:   27:        }
+      363:   28:        return true;
+      363:   28-block  0
+        -:   29:    }
+        -:   30:
+        -:   31:    static std::pair<std::string, std::string> splitArray(const std::vector<unsigned long long int>& arr) {
+        -:   32:        size_t mid = (arr.size() + 1) / 2;
+        -:   33:        auto convert = [](const std::vector<unsigned long long int> &vec) {
+        -:   34:            if (vec.empty()) {
+        -:   35:                return std::string("0");
+        -:   36:            }
+        -:   37:            std::ostringstream oss;
+        -:   38:            for (size_t i = 0; i < vec.size(); ++i) {
+        -:   39:                oss << vec[i];
+        -:   40:            }
+        -:   41:            return oss.str();
+        -:   42:        };
+        -:   43:
+        -:   44:        std::vector<unsigned long long int> first_part(arr.begin(), arr.begin() + mid);
+        -:   45:        std::vector<unsigned long long int> second_part(arr.begin() + mid, arr.end());
+        -:   46:
+        -:   47:        return {convert(first_part), convert(second_part)};
+        -:   48:    }
+        -:   49:
+function _ZN6BigInt12delete_zerosEv called 526 returned 100% blocks executed 100%
+      526:   50:    void delete_zeros(){
+      869:   51:        for (int i = size() - 1; i > 0; --i) {
+      526:   51-block  0
+call    0 returned 526
+      869:   51-block  1
+branch  1 taken 533
+branch  2 taken 336 (fallthrough)
+      533:   52:            if (data[i] == 0) {
+      533:   52-block  0
+call    0 returned 533
+branch  1 taken 343 (fallthrough)
+branch  2 taken 190
+      343:   53:                data.pop_back();
+      343:   53-block  0
+call    0 returned 343
+        -:   54:            } else {
+      190:   55:                return;
+      190:   55-block  0
+        -:   56:            }
+        -:   57:        }
+        -:   58:    }
+        -:   59:
+function _ZN6BigInt10shift_leftEm called 148 returned 100% blocks executed 70%
+      148:   60:    void shift_left(size_t n_blocks) {
+     148*:   61:        if (n_blocks == 0) return;
+      148:   61-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 148
+    %%%%%:   61-block  1
+      148:   62:        data.insert(data.begin(), n_blocks, 0);
+      148:   62-block  0
+call    0 returned 148
+call    1 returned 148
+call    2 returned 148
+branch  3 taken 148 (fallthrough)
+branch  4 taken 0 (throw)
+      148:   62-block  1
+    $$$$$:   62-block  2
+    $$$$$:   62-block  3
+        -:   63://        for (;n_blocks > 0; n_blocks--){
+        -:   64://            *this *= BigInt(_base);
+        -:   65://        }
+        -:   66:    }
+        -:   67:
+        -:   68:public:
+function _ZNK6BigIntixEm called 2126 returned 100% blocks executed 100%
+     2126:   69:    unsigned long long operator[](size_t index) const noexcept{
+     2126:   70:        return data[index];
+     2126:   70-block  0
+call    0 returned 2126
+        -:   71:    }
+        -:   72:
+function _ZN6BigIntC2Ev called 400 returned 100% blocks executed 67%
+      400:   73:    BigInt() {
+      400:   73-block  0
+call    0 returned 400
+      400:   74:        data.push_back(0);
+call    0 returned 400
+branch  1 taken 400 (fallthrough)
+branch  2 taken 0 (throw)
+    $$$$$:   74-block  0
+      400:   75:    }
+      400:   75-block  0
+    $$$$$:   75-block  1
+call    0 never executed
+        -:   76:
+function _ZN6BigIntC2ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE called 366 returned 99% blocks executed 78%
+      366:   77:    explicit BigInt(const std::string& input) {
+      366:   77-block  0
+call    0 returned 366
+      366:   78:        if (input.empty()) {
+call    0 returned 366
+branch  1 taken 1 (fallthrough)
+branch  2 taken 365
+        1:   79:            data = {0};
+        1:   79-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+    $$$$$:   79-block  1
+      346:   80:            return;
+        1:   80-block  0
+      346:   80-block  1
+        -:   81:        }
+      365:   82:        if (!is_correct_string(input)){
+      365:   82-block  0
+call    0 returned 365
+branch  1 taken 2 (fallthrough)
+branch  2 taken 363
+        2:   83:            throw std::invalid_argument("Invalid BigInt string: " + input);
+        2:   83-block  0
+call    0 returned 2
+call    1 returned 2
+branch  2 taken 2 (fallthrough)
+branch  3 taken 0 (throw)
+        2:   83-block  1
+call    4 returned 2
+branch  5 taken 2 (fallthrough)
+branch  6 taken 0 (throw)
+        2:   83-block  2
+call    7 returned 2
+call    8 returned 2
+    $$$$$:   83-block  3
+call    9 never executed
+    $$$$$:   83-block  4
+    $$$$$:   83-block  5
+call   10 never executed
+        -:   84:        }
+        -:   85:
+      363:   86:        size_t start = 0;
+      363:   87:        if (!input.empty() && (input[0] == '-' || input[0] == '+')) {
+      363:   87-block  0
+call    0 returned 363
+branch  1 taken 363 (fallthrough)
+branch  2 taken 0
+      363:   87-block  1
+call    3 returned 363
+branch  4 taken 358 (fallthrough)
+branch  5 taken 5
+      358:   87-block  2
+call    6 returned 358
+branch  7 taken 0 (fallthrough)
+branch  8 taken 358
+        5:   87-block  3
+      358:   87-block  4
+      363:   87-block  5
+branch  9 taken 5 (fallthrough)
+branch 10 taken 358
+        5:   88:            negative = (input[0] == '-');
+        5:   88-block  0
+call    0 returned 5
+        5:   89:            start = 1;
+        -:   90:        }
+        -:   91:
+      363:   92:        std::string num_str = input.substr(start);
+      363:   92-block  0
+call    0 returned 363
+branch  1 taken 363 (fallthrough)
+branch  2 taken 0 (throw)
+        -:   93:
+      363:   94:        size_t first_non_zero = num_str.find_first_not_of('0');
+      363:   94-block  0
+call    0 returned 363
+      363:   95:        if (first_non_zero == std::string::npos) {
+branch  0 taken 345 (fallthrough)
+branch  1 taken 18
+      345:   96:            data = {0};
+      345:   96-block  0
+call    0 returned 345
+branch  1 taken 345 (fallthrough)
+branch  2 taken 0 (throw)
+    $$$$$:   96-block  1
+      345:   97:            negative = false;
+      345:   98:            return;
+      345:   98-block  0
+        -:   99:        }
+       18:  100:        num_str = num_str.substr(first_non_zero);
+       18:  100-block  0
+call    0 returned 18
+branch  1 taken 18 (fallthrough)
+branch  2 taken 0 (throw)
+       18:  100-block  1
+call    3 returned 18
+call    4 returned 18
+    $$$$$:  100-block  2
+        -:  101:
+       18:  102:        int length = num_str.length();
+call    0 returned 18
+        -:  103:
+       98:  104:        for (int i = length; i > 0; i -= _size_base) {
+       98:  104-block  0
+branch  0 taken 80
+branch  1 taken 18 (fallthrough)
+       80:  105:            int start_pos = std::max(i - _size_base, 0);
+       80:  105-block  0
+call    0 returned 80
+       80:  106:            std::string block = num_str.substr(start_pos, i - start_pos);
+call    0 returned 80
+branch  1 taken 80 (fallthrough)
+branch  2 taken 0 (throw)
+       80:  107:            data.push_back(std::stoull(block));
+       80:  107-block  0
+call    0 returned 80
+branch  1 taken 80 (fallthrough)
+branch  2 taken 0 (throw)
+       80:  107-block  1
+call    3 returned 80
+branch  4 taken 80 (fallthrough)
+branch  5 taken 0 (throw)
+    $$$$$:  107-block  2
+       80:  108:        }
+       80:  108-block  0
+call    0 returned 80
+    $$$$$:  108-block  1
+call    1 never executed
+      365:  109:    }
+       18:  109-block  0
+      363:  109-block  1
+call    0 returned 363
+branch  1 taken 18 (fallthrough)
+branch  2 taken 345
+    $$$$$:  109-block  2
+call    3 never executed
+        2:  109-block  3
+call    4 returned 2
+        -:  110:
+function _ZN6BigIntC2Ex called 1257 returned 100% blocks executed 81%
+     1257:  111:    explicit BigInt(long long number){
+     1257:  111-block  0
+call    0 returned 1257
+     1257:  112:        if (number == 0){
+branch  0 taken 961 (fallthrough)
+branch  1 taken 296
+      961:  113:            data.push_back(0);
+      961:  113-block  0
+call    0 returned 961
+branch  1 taken 961 (fallthrough)
+branch  2 taken 0 (throw)
+    $$$$$:  113-block  1
+      961:  114:            return;
+      961:  114-block  0
+        -:  115:        }
+      296:  116:        if (number < 0) {
+      296:  116-block  0
+branch  0 taken 12 (fallthrough)
+branch  1 taken 284
+       12:  117:            negative = true;
+       12:  118:            number = -number;
+       12:  118-block  0
+        -:  119:        }
+      296:  120:        unsigned long long carry = number % _base;
+      611:  121:        while (number > 0){
+      296:  121-block  0
+      611:  121-block  1
+branch  0 taken 315
+branch  1 taken 296 (fallthrough)
+      315:  122:            data.push_back(carry);
+      315:  122-block  0
+call    0 returned 315
+branch  1 taken 315 (fallthrough)
+branch  2 taken 0 (throw)
+      315:  123:            number /= _base;
+      315:  124:            carry = number % _base;
+      315:  124-block  0
+        -:  125:        }
+    =====:  126:    }
+    $$$$$:  126-block  0
+call    0 never executed
+        -:  127:
+function _ZN6BigIntC2ERKS_ called 1808 returned 100% blocks executed 100%
+     1808:  128:    BigInt(const BigInt& other) noexcept{
+     1808:  128-block  0
+call    0 returned 1808
+     1808:  129:        negative = other.negative;
+     1808:  130:        data = other.data;
+call    0 returned 1808
+     1808:  131:    }
+        -:  132:
+function _ZN6BigIntC2EOS_ called 75 returned 100% blocks executed 100%
+       75:  133:    BigInt(BigInt&& other) noexcept : BigInt(){
+       75:  133-block  0
+call    0 returned 75
+       75:  134:        if (this != &other) {
+branch  0 taken 75 (fallthrough)
+branch  1 taken 0
+       75:  135:            std::swap(this->data, other.data);
+       75:  135-block  0
+call    0 returned 75
+       75:  136:            std::swap(this->negative, other.negative);
+call    0 returned 75
+        -:  137:        }
+       75:  138:    }
+        -:  139:
+function _ZNK6BigInt3absEv called 505 returned 100% blocks executed 100%
+      505:  140:    [[nodiscard]] BigInt abs() const{
+      505:  141:        BigInt temp(*this);
+      505:  141-block  0
+call    0 returned 505
+      505:  142:        temp.negative = false;
+      505:  143:        return temp;
+        -:  144:    }
+        -:  145:
+function _ZN6BigIntaSERKS_ called 850 returned 100% blocks executed 100%
+      850:  146:    BigInt& operator=(const BigInt& other) noexcept{
+      850:  147:        negative = other.negative;
+      850:  148:        data.resize(other.data.size());
+      850:  148-block  0
+call    0 returned 850
+call    1 returned 850
+      850:  149:        std::copy(other.data.begin(), other.data.end(), data.begin());
+call    0 returned 850
+call    1 returned 850
+call    2 returned 850
+call    3 returned 850
+      850:  150:        return *this;
+        -:  151:    }
+        -:  152:
+function _ZN6BigIntaSEOS_ called 105 returned 100% blocks executed 100%
+      105:  153:    BigInt& operator=(BigInt&& other) noexcept {
+      105:  154:        if (this != &other) {
+      105:  154-block  0
+branch  0 taken 105 (fallthrough)
+branch  1 taken 0
+      105:  155:            *this = other;
+      105:  155-block  0
+call    0 returned 105
+      105:  156:            other.data.clear();
+call    0 returned 105
+      105:  157:            other.negative = false;
+        -:  158:        }
+      105:  159:        return *this;
+      105:  159-block  0
+        -:  160:    }
+        -:  161:
+function _ZN6BigIntpLERKS_ called 310 returned 100% blocks executed 78%
+      310:  162:    BigInt& operator+=(const BigInt& other){
+      310:  163:        auto length = std::max(size(), other.size());
+      310:  163-block  0
+call    0 returned 310
+call    1 returned 310
+call    2 returned 310
+      310:  164:        bool flag = false;
+      310:  165:        if (negative){
+branch  0 taken 1 (fallthrough)
+branch  1 taken 309
+        1:  166:            *this = -*this;
+        1:  166-block  0
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+        1:  167:            *this += -other;
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:  167-block  0
+call    4 returned 1
+    $$$$$:  167-block  1
+call    5 never executed
+    $$$$$:  167-block  2
+        1:  168:            *this = -*this;
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+        1:  169:            return *this;
+        -:  170:        }
+      309:  171:        if (other.negative) {
+      309:  171-block  0
+branch  0 taken 2 (fallthrough)
+branch  1 taken 307
+        2:  172:            return *this -= -other;
+        2:  172-block  0
+call    0 returned 2
+call    1 returned 2
+branch  2 taken 2 (fallthrough)
+branch  3 taken 0 (throw)
+        2:  172-block  1
+        2:  172-block  2
+call    4 returned 2
+    $$$$$:  172-block  3
+call    5 never executed
+    $$$$$:  172-block  4
+        -:  173:        }
+      307:  174:        BigInt result{"0"};
+      307:  174-block  0
+call    0 returned 307
+branch  1 taken 307 (fallthrough)
+branch  2 taken 0 (throw)
+      307:  174-block  1
+call    3 returned 307
+branch  4 taken 307 (fallthrough)
+branch  5 taken 0 (throw)
+      307:  174-block  2
+call    6 returned 307
+    $$$$$:  174-block  3
+call    7 never executed
+    $$$$$:  174-block  4
+    $$$$$:  174-block  5
+      307:  175:        result.data.pop_back();
+      307:  175-block  0
+call    0 returned 307
+      307:  176:        size_t carry = 0;
+      307:  177:        size_t i = 0;
+     1257:  178:        for (; i < length; ++i) {
+      950:  178-block  0
+     1257:  178-block  1
+branch  0 taken 950
+branch  1 taken 307 (fallthrough)
+      950:  179:            if (i < other.size() && i < data.size()) {
+      950:  179-block  0
+call    0 returned 950
+branch  1 taken 898 (fallthrough)
+branch  2 taken 52
+      898:  179-block  1
+call    3 returned 898
+branch  4 taken 729 (fallthrough)
+branch  5 taken 169
+      729:  179-block  2
+      221:  179-block  3
+      950:  179-block  4
+branch  6 taken 729 (fallthrough)
+branch  7 taken 221
+      729:  180:                result.data.push_back((other.data[i] + data[i] + carry) % _base);
+      729:  180-block  0
+call    0 returned 729
+call    1 returned 729
+call    2 returned 729
+branch  3 taken 729 (fallthrough)
+branch  4 taken 0 (throw)
+    $$$$$:  180-block  1
+      729:  181:                carry = (other.data[i] + data[i] + carry) / _base;
+      729:  181-block  0
+call    0 returned 729
+call    1 returned 729
+      221:  182:            } else if (i < data.size()) {
+      221:  182-block  0
+call    0 returned 221
+branch  1 taken 52 (fallthrough)
+branch  2 taken 169
+       52:  183:                result.data.push_back((data[i] + carry) % _base);
+       52:  183-block  0
+call    0 returned 52
+call    1 returned 52
+branch  2 taken 52 (fallthrough)
+branch  3 taken 0 (throw)
+    $$$$$:  183-block  1
+       52:  184:                carry = (data[i] + carry) / _base;
+       52:  184-block  0
+call    0 returned 52
+        -:  185:            } else {
+      169:  186:                result.data.push_back((other.data[i] + carry) % _base);
+      169:  186-block  0
+call    0 returned 169
+call    1 returned 169
+branch  2 taken 169 (fallthrough)
+branch  3 taken 0 (throw)
+    $$$$$:  186-block  1
+      169:  187:                carry = (other.data[i] + carry) / _base;
+      169:  187-block  0
+call    0 returned 169
+        -:  188:            }
+        -:  189:        }
+        -:  190:
+      339:  191:        while (carry > 0){
+      307:  191-block  0
+      339:  191-block  1
+branch  0 taken 32
+branch  1 taken 307 (fallthrough)
+       32:  192:            result.data.push_back((carry) % _base);
+       32:  192-block  0
+call    0 returned 32
+branch  1 taken 32 (fallthrough)
+branch  2 taken 0 (throw)
+    $$$$$:  192-block  1
+       32:  193:            carry = (carry) / _base;
+       32:  193-block  0
+        -:  194:        }
+      307:  195:        *this = result;
+      307:  195-block  0
+call    0 returned 307
+      307:  196:        return *this;
+      307:  197:    }
+call    0 returned 307
+    $$$$$:  197-block  0
+call    1 never executed
+        -:  198:
+function _ZNK6BigIntplERKS_ called 305 returned 100% blocks executed 83%
+      305:  199:    BigInt operator+(const BigInt& other) const{
+      305:  200:        BigInt temp{*this};
+      305:  200-block  0
+call    0 returned 305
+      305:  201:        temp += other;
+call    0 returned 305
+branch  1 taken 305 (fallthrough)
+branch  2 taken 0 (throw)
+      305:  202:        return temp;
+      305:  202-block  0
+      305:  202-block  1
+    =====:  203:    }
+    $$$$$:  203-block  0
+call    0 never executed
+        -:  204:
+function _ZN6BigIntmIERKS_ called 199 returned 100% blocks executed 76%
+      199:  205:    BigInt& operator-=(const BigInt& other){
+      199:  206:        if (*this == other) {
+      199:  206-block  0
+call    0 returned 199
+branch  1 taken 38 (fallthrough)
+branch  2 taken 161
+       38:  207:            *this = BigInt("0");
+       38:  207-block  0
+call    0 returned 38
+branch  1 taken 38 (fallthrough)
+branch  2 taken 0 (throw)
+       38:  207-block  1
+call    3 returned 38
+branch  4 taken 38 (fallthrough)
+branch  5 taken 0 (throw)
+       38:  207-block  2
+call    6 returned 38
+call    7 returned 38
+call    8 returned 38
+    $$$$$:  207-block  3
+call    9 never executed
+    $$$$$:  207-block  4
+    $$$$$:  207-block  5
+    $$$$$:  207-block  6
+call   10 never executed
+       38:  208:            return *this;
+       38:  208-block  0
+        -:  209:        }
+      161:  210:        if (negative) {
+      161:  210-block  0
+branch  0 taken 6 (fallthrough)
+branch  1 taken 155
+        6:  211:            *this = -((-*this) + other);
+        6:  211-block  0
+call    0 returned 6
+call    1 returned 6
+branch  2 taken 6 (fallthrough)
+branch  3 taken 0 (throw)
+        6:  211-block  1
+call    4 returned 6
+call    5 returned 6
+call    6 returned 6
+call    7 returned 6
+call    8 returned 6
+    $$$$$:  211-block  2
+call    9 never executed
+    $$$$$:  211-block  3
+    $$$$$:  211-block  4
+    $$$$$:  211-block  5
+call   10 never executed
+        6:  212:            return *this;
+      155:  213:        } else if (other.negative) {
+      155:  213-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 154
+        1:  214:            return *this += (-other);
+        1:  214-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:  214-block  1
+        1:  214-block  2
+call    4 returned 1
+    $$$$$:  214-block  3
+call    5 never executed
+        -:  215:        }
+        -:  216://        if (other > *this) {
+        -:  217://            BigInt result = other - *this;
+        -:  218://            result.negative = true;
+        -:  219://            *this = result;
+        -:  220://            return *this;
+        -:  221://        }
+      154:  222:        long long carry = 0;
+      528:  223:        for (size_t i = 0; i < other.data.size() || carry; ++i) {
+      154:  223-block  0
+      528:  223-block  1
+call    0 returned 528
+branch  1 taken 174 (fallthrough)
+branch  2 taken 354
+      174:  223-block  2
+branch  3 taken 20 (fallthrough)
+branch  4 taken 154
+      374:  223-block  3
+      154:  223-block  4
+      528:  223-block  5
+branch  5 taken 374
+branch  6 taken 154 (fallthrough)
+      374:  224:            long long temp = 0;
+      374:  225:            if (i < other.size()){
+      374:  225-block  0
+call    0 returned 374
+branch  1 taken 354 (fallthrough)
+branch  2 taken 20
+      354:  226:                temp = other[i];
+      354:  226-block  0
+call    0 returned 354
+        -:  227:            }
+      374:  228:            long long diff = data[i] - temp - carry;
+      374:  228-block  0
+call    0 returned 374
+      374:  229:            carry = 0;
+      374:  230:            if (diff < 0) {
+branch  0 taken 119 (fallthrough)
+branch  1 taken 255
+      119:  231:                diff += _base;
+      119:  232:                carry = 1;
+      119:  232-block  0
+        -:  233:            }
+      374:  234:            data[i] = diff;
+      374:  234-block  0
+call    0 returned 374
+        -:  235:        }
+      154:  236:        return *this;
+      154:  236-block  0
+        -:  237:    }
+        -:  238:
+function _ZNK6BigIntngEv called 20 returned 100% blocks executed 100%
+       20:  239:    BigInt operator-() const{
+       20:  240:        BigInt temp{*this};
+       20:  240-block  0
+call    0 returned 20
+       20:  241:        temp.negative = !temp.negative;
+       20:  242:        return temp;
+        -:  243:    }
+        -:  244:
+function _ZNK6BigIntmiERKS_ called 181 returned 100% blocks executed 83%
+      181:  245:    BigInt operator-(const BigInt& other) const{
+      181:  246:        BigInt temp{*this};
+      181:  246-block  0
+call    0 returned 181
+      181:  247:        temp -= other;
+call    0 returned 181
+branch  1 taken 181 (fallthrough)
+branch  2 taken 0 (throw)
+      181:  248:        return temp;
+      181:  248-block  0
+      181:  248-block  1
+    =====:  249:    }
+    $$$$$:  249-block  0
+call    0 never executed
+        -:  250:
+function _ZN6BigIntmLERKS_ called 425 returned 100% blocks executed 83%
+      425:  251:    BigInt& operator*=(const BigInt& other){
+      425:  252:        BigInt result(0);
+      425:  252-block  0
+call    0 returned 425
+branch  1 taken 425 (fallthrough)
+branch  2 taken 0 (throw)
+      425:  253:        result.data.resize(size() + other.size());
+      425:  253-block  0
+call    0 returned 425
+call    1 returned 425
+call    2 returned 425
+branch  3 taken 425 (fallthrough)
+branch  4 taken 0 (throw)
+      425:  254:        long long carry = 0;
+      876:  255:        for (size_t i = 0; i < size(); ++i) {
+      425:  255-block  0
+      451:  255-block  1
+      876:  255-block  2
+call    0 returned 876
+branch  1 taken 451
+branch  2 taken 425 (fallthrough)
+     1360:  256:            for (size_t j = 0; j < other.size() or carry; ++j) {
+      451:  256-block  0
+     1360:  256-block  1
+call    0 returned 1360
+branch  1 taken 595 (fallthrough)
+branch  2 taken 765
+      595:  256-block  2
+branch  3 taken 144 (fallthrough)
+branch  4 taken 451
+      909:  256-block  3
+      451:  256-block  4
+     1360:  256-block  5
+branch  5 taken 909
+branch  6 taken 451 (fallthrough)
+      909:  257:                long long current = 0;
+      909:  258:                if (j < other.size()) {
+      909:  258-block  0
+call    0 returned 909
+branch  1 taken 765 (fallthrough)
+branch  2 taken 144
+      765:  259:                    current = result.data[i + j] + data[i] * other[j] + carry;
+      765:  259-block  0
+call    0 returned 765
+call    1 returned 765
+call    2 returned 765
+        -:  260:                } else {
+      144:  261:                    current = result.data[i + j] + carry;
+      144:  261-block  0
+call    0 returned 144
+        -:  262:                }
+      909:  263:                result.data[i + j] = current % _base;
+      909:  263-block  0
+call    0 returned 909
+      909:  264:                carry = current / _base;
+        -:  265:            }
+        -:  266:        }
+      425:  267:        if (negative == other.negative){
+      425:  267-block  0
+branch  0 taken 419 (fallthrough)
+branch  1 taken 6
+      419:  268:            result.negative = false;
+      419:  268-block  0
+        -:  269:        } else {
+        6:  270:            result.negative = true;
+        6:  270-block  0
+        -:  271:        }
+      425:  272:        result.delete_zeros();
+      425:  272-block  0
+call    0 returned 425
+      425:  273:        if (result.abs() == BigInt(0) && result.is_negative()){
+call    0 returned 425
+branch  1 taken 425 (fallthrough)
+branch  2 taken 0 (throw)
+      425:  273-block  0
+call    3 returned 425
+call    4 returned 425
+branch  5 taken 63 (fallthrough)
+branch  6 taken 362
+       63:  273-block  1
+call    7 returned 63
+branch  8 taken 4 (fallthrough)
+branch  9 taken 59
+        4:  273-block  2
+      421:  273-block  3
+      425:  273-block  4
+branch 10 taken 425 (fallthrough)
+branch 11 taken 0
+      425:  273-block  5
+call   12 returned 425
+      425:  273-block  6
+branch 13 taken 425 (fallthrough)
+branch 14 taken 0
+      425:  273-block  7
+call   15 returned 425
+      425:  273-block  8
+branch 16 taken 4 (fallthrough)
+branch 17 taken 421
+    $$$$$:  273-block  9
+branch 18 never executed (fallthrough)
+branch 19 never executed
+    $$$$$:  273-block 10
+call   20 never executed
+    $$$$$:  273-block 11
+    $$$$$:  273-block 12
+branch 21 never executed (fallthrough)
+branch 22 never executed
+    $$$$$:  273-block 13
+call   23 never executed
+    $$$$$:  273-block 14
+        4:  274:            result.negative = false;
+        4:  274-block  0
+        -:  275:        }
+      425:  276:        *this = result;
+      425:  276-block  0
+call    0 returned 425
+      425:  277:        return *this;
+      425:  277-block  0
+      425:  278:    }
+call    0 returned 425
+    $$$$$:  278-block  0
+call    1 never executed
+        -:  279:
+function _ZNK6BigIntmlERKS_ called 425 returned 100% blocks executed 83%
+      425:  280:    BigInt operator*(const BigInt& other) const{
+      425:  281:        BigInt temp{*this};
+      425:  281-block  0
+call    0 returned 425
+      425:  282:        temp *= other;
+call    0 returned 425
+branch  1 taken 425 (fallthrough)
+branch  2 taken 0 (throw)
+      425:  283:        return temp;
+      425:  283-block  0
+      425:  283-block  1
+    =====:  284:    }
+    $$$$$:  284-block  0
+call    0 never executed
+        -:  285:
+function _ZN6BigIntdVERKS_ called 41 returned 95% blocks executed 69%
+       41:  286:    BigInt& operator/=(const BigInt& other) {
+       41:  287:        if (other.size() == 1 && other[0] == 0) {
+       41:  287-block  0
+call    0 returned 41
+branch  1 taken 40 (fallthrough)
+branch  2 taken 1
+       40:  287-block  1
+call    3 returned 40
+branch  4 taken 2 (fallthrough)
+branch  5 taken 38
+        2:  287-block  2
+       39:  287-block  3
+       41:  287-block  4
+branch  6 taken 2 (fallthrough)
+branch  7 taken 39
+        2:  288:            throw std::invalid_argument("Division by zero");
+        2:  288-block  0
+call    0 returned 2
+call    1 returned 2
+branch  2 taken 2 (fallthrough)
+branch  3 taken 0 (throw)
+        2:  288-block  1
+call    4 returned 2
+    $$$$$:  288-block  2
+call    5 never executed
+        -:  289:        }
+       39:  290:        bool result_negative = negative ^ other.negative;
+       39:  291:        BigInt dividend = this->abs();
+       39:  291-block  0
+call    0 returned 39
+       39:  292:        BigInt divisor = other.abs();
+call    0 returned 39
+       39:  293:        if (dividend < divisor) {
+call    0 returned 39
+branch  1 taken 26 (fallthrough)
+branch  2 taken 13
+       26:  294:            *this = BigInt{0};
+       26:  294-block  0
+call    0 returned 26
+branch  1 taken 26 (fallthrough)
+branch  2 taken 0 (throw)
+       26:  294-block  1
+call    3 returned 26
+call    4 returned 26
+    $$$$$:  294-block  2
+       26:  295:            negative = result_negative;
+       26:  296:            return *this;
+        -:  297:        }
+       13:  298:        BigInt quotient;
+       13:  298-block  0
+call    0 returned 13
+branch  1 taken 13 (fallthrough)
+branch  2 taken 0 (throw)
+       13:  299:        quotient.data.clear();
+       13:  299-block  0
+call    0 returned 13
+       13:  300:        BigInt current;
+call    0 returned 13
+branch  1 taken 13 (fallthrough)
+branch  2 taken 0 (throw)
+       13:  301:        current.data.pop_back();
+       13:  301-block  0
+call    0 returned 13
+        -:  302:
+       26:  303:        for (int i = dividend.size() - 1; i >= 0; --i) {
+call    0 returned 13
+       26:  303-block  0
+branch  1 taken 13
+branch  2 taken 13 (fallthrough)
+       13:  304:            current.data.insert(current.data.begin(), dividend.data[i]);
+       13:  304-block  0
+call    0 returned 13
+call    1 returned 13
+call    2 returned 13
+call    3 returned 13
+branch  4 taken 13 (fallthrough)
+branch  5 taken 0 (throw)
+    $$$$$:  304-block  1
+    $$$$$:  304-block  2
+       13:  305:            current.delete_zeros();
+       13:  305-block  0
+call    0 returned 13
+        -:  306:
+       13:  307:            unsigned long long q = 0;
+       13:  308:            unsigned long long left = 0, right = _base - 1;
+      231:  309:            while (left <= right) {
+      231:  309-block  0
+branch  0 taken 218
+branch  1 taken 13 (fallthrough)
+      218:  310:                unsigned long long mid = (left + right) / 2;
+      218:  311:                BigInt temp = divisor * BigInt(mid);
+      218:  311-block  0
+call    0 returned 218
+branch  1 taken 218 (fallthrough)
+branch  2 taken 0 (throw)
+      218:  311-block  1
+call    3 returned 218
+branch  4 taken 218 (fallthrough)
+branch  5 taken 0 (throw)
+      218:  311-block  2
+call    6 returned 218
+    $$$$$:  311-block  3
+call    7 never executed
+    $$$$$:  311-block  4
+      218:  312:                if (temp <= current) {
+call    0 returned 218
+branch  1 taken 36 (fallthrough)
+branch  2 taken 182
+       36:  313:                    q = mid;
+       36:  314:                    left = mid + 1;
+       36:  314-block  0
+        -:  315:                } else {
+      182:  316:                    right = mid - 1;
+      182:  316-block  0
+        -:  317:                }
+      218:  318:            }
+      218:  318-block  0
+call    0 returned 218
+       13:  319:            quotient.data.insert(quotient.data.begin(), q);
+       13:  319-block  0
+call    0 returned 13
+call    1 returned 13
+call    2 returned 13
+branch  3 taken 13 (fallthrough)
+branch  4 taken 0 (throw)
+    $$$$$:  319-block  1
+    $$$$$:  319-block  2
+       13:  320:            current -= divisor * BigInt(q);
+       13:  320-block  0
+call    0 returned 13
+branch  1 taken 13 (fallthrough)
+branch  2 taken 0 (throw)
+       13:  320-block  1
+call    3 returned 13
+branch  4 taken 13 (fallthrough)
+branch  5 taken 0 (throw)
+       13:  320-block  2
+call    6 returned 13
+branch  7 taken 13 (fallthrough)
+branch  8 taken 0 (throw)
+       13:  320-block  3
+call    9 returned 13
+call   10 returned 13
+    $$$$$:  320-block  4
+call   11 never executed
+    $$$$$:  320-block  5
+call   12 never executed
+    $$$$$:  320-block  6
+    $$$$$:  320-block  7
+        -:  321:        }
+        -:  322:
+       13:  323:        quotient.delete_zeros();
+       13:  323-block  0
+call    0 returned 13
+       13:  324:        quotient.negative = result_negative;
+       13:  325:        *this = quotient;
+call    0 returned 13
+        -:  326:
+       13:  327:        return *this;
+       39:  328:    }
+call    0 returned 13
+call    1 returned 13
+       39:  328-block  0
+call    2 returned 39
+call    3 returned 39
+    $$$$$:  328-block  1
+call    4 never executed
+    $$$$$:  328-block  2
+call    5 never executed
+    $$$$$:  328-block  3
+call    6 never executed
+    $$$$$:  328-block  4
+call    7 never executed
+        -:  329:
+function _ZNK6BigIntdvERKS_ called 41 returned 95% blocks executed 100%
+       41:  330:    BigInt operator/(const BigInt& other) const{
+       41:  331:        BigInt temp{*this};
+       41:  331-block  0
+call    0 returned 41
+       41:  332:        temp /= other;
+call    0 returned 41
+branch  1 taken 39 (fallthrough)
+branch  2 taken 2 (throw)
+       39:  333:        return temp;
+       39:  333-block  0
+       39:  333-block  1
+        2:  334:    }
+        2:  334-block  0
+call    0 returned 2
+        -:  335:
+function _ZN6BigIntrMERKS_ called 30 returned 100% blocks executed 64%
+       30:  336:    BigInt& operator%=(const BigInt &num) {
+       30:  337:        if (num == BigInt(0)){
+       30:  337-block  0
+call    0 returned 30
+branch  1 taken 30 (fallthrough)
+branch  2 taken 0 (throw)
+       30:  337-block  1
+call    3 returned 30
+call    4 returned 30
+branch  5 taken 0 (fallthrough)
+branch  6 taken 30
+    $$$$$:  337-block  2
+    #####:  338:            return *this;
+    %%%%%:  338-block  0
+        -:  339:        }
+       30:  340:        BigInt tmp = *this / num;
+       30:  340-block  0
+call    0 returned 30
+branch  1 taken 30 (fallthrough)
+branch  2 taken 0 (throw)
+       30:  341:        *this = *this - tmp * num;
+       30:  341-block  0
+call    0 returned 30
+branch  1 taken 30 (fallthrough)
+branch  2 taken 0 (throw)
+       30:  341-block  1
+call    3 returned 30
+branch  4 taken 30 (fallthrough)
+branch  5 taken 0 (throw)
+       30:  341-block  2
+call    6 returned 30
+call    7 returned 30
+call    8 returned 30
+    $$$$$:  341-block  3
+call    9 never executed
+    $$$$$:  341-block  4
+    $$$$$:  341-block  5
+       30:  342:        if(negative and num.negative) {
+branch  0 taken 5 (fallthrough)
+branch  1 taken 25
+        5:  342-block  0
+branch  2 taken 0 (fallthrough)
+branch  3 taken 5
+    #####:  343:            negative = false;
+    %%%%%:  343-block  0
+        -:  344:        }
+       30:  345:        return *this;
+       30:  346:    }
+       30:  346-block  0
+call    0 returned 30
+    $$$$$:  346-block  1
+call    1 never executed
+        -:  347:
+function _ZNK6BigIntrmERKS_ called 30 returned 100% blocks executed 83%
+       30:  348:    BigInt operator%(const BigInt &num) const {
+       30:  349:        BigInt temp{*this};
+       30:  349-block  0
+call    0 returned 30
+       30:  350:        temp %= num;
+call    0 returned 30
+branch  1 taken 30 (fallthrough)
+branch  2 taken 0 (throw)
+       30:  351:        return temp;
+       30:  351-block  0
+       30:  351-block  1
+    =====:  352:    }
+    $$$$$:  352-block  0
+call    0 never executed
+        -:  353:
+function _ZNK6BigIntgtERKS_ called 279 returned 100% blocks executed 100%
+      279:  354:    bool operator>(const BigInt& other) const{
+      279:  355:        if (negative && !other.negative){
+      279:  355-block  0
+branch  0 taken 2 (fallthrough)
+branch  1 taken 277
+        2:  355-block  1
+branch  2 taken 2 (fallthrough)
+branch  3 taken 0
+        2:  356:            return false;
+        2:  356-block  0
+        -:  357:        }
+      277:  358:        if (!negative && other.negative){
+      277:  358-block  0
+branch  0 taken 277 (fallthrough)
+branch  1 taken 0
+      277:  358-block  1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 276
+        1:  359:            return true;
+        1:  359-block  0
+        -:  360:        }
+      276:  361:        if (size() > other.size()){
+      276:  361-block  0
+call    0 returned 276
+call    1 returned 276
+branch  2 taken 7 (fallthrough)
+branch  3 taken 269
+        7:  362:            return !negative;
+        7:  362-block  0
+        -:  363:        }
+      269:  364:        if (size() < other.size()){
+      269:  364-block  0
+call    0 returned 269
+call    1 returned 269
+branch  2 taken 1 (fallthrough)
+branch  3 taken 268
+        1:  365:            return negative;
+        1:  365-block  0
+        -:  366:        }
+      286:  367:        for (int i = 0; i < size(); i++){
+      268:  367-block  0
+       18:  367-block  1
+      286:  367-block  2
+call    0 returned 286
+branch  1 taken 268
+branch  2 taken 18 (fallthrough)
+      268:  368:            if (data[i] > other[i]){
+      268:  368-block  0
+call    0 returned 268
+call    1 returned 268
+branch  2 taken 196 (fallthrough)
+branch  3 taken 72
+      196:  369:                return !negative;
+      196:  369-block  0
+        -:  370:            }
+       72:  371:            if (data[i] < other[i]){
+       72:  371-block  0
+call    0 returned 72
+call    1 returned 72
+branch  2 taken 54 (fallthrough)
+branch  3 taken 18
+       54:  372:                return negative;
+       54:  372-block  0
+        -:  373:            }
+        -:  374:        }
+       18:  375:        return negative;
+       18:  375-block  0
+        -:  376:    }
+        -:  377:
+function _ZNK6BigInteqERKS_ called 746 returned 100% blocks executed 100%
+      746:  378:    bool operator==(const BigInt& other) const{
+      746:  379:        if (size() != other.size() || negative != other.negative){
+      746:  379-block  0
+call    0 returned 746
+call    1 returned 746
+branch  2 taken 563 (fallthrough)
+branch  3 taken 183
+      563:  379-block  1
+branch  4 taken 8 (fallthrough)
+branch  5 taken 555
+      191:  379-block  2
+      555:  379-block  3
+      746:  379-block  4
+branch  6 taken 191 (fallthrough)
+branch  7 taken 555
+      191:  380:            return false;
+      191:  380-block  0
+        -:  381:        }
+      774:  382:        for (int i = 0; i < size(); i++){
+      555:  382-block  0
+      219:  382-block  1
+      774:  382-block  2
+call    0 returned 774
+branch  1 taken 622
+branch  2 taken 152 (fallthrough)
+      622:  383:            if (data[i] != other[i]){
+      622:  383-block  0
+call    0 returned 622
+call    1 returned 622
+branch  2 taken 403 (fallthrough)
+branch  3 taken 219
+      403:  384:                return false;
+      403:  384-block  0
+        -:  385:            }
+        -:  386:        }
+      152:  387:        return true;
+      152:  387-block  0
+        -:  388:    }
+        -:  389:
+function _ZNK6BigIntgeERKS_ called 60 returned 100% blocks executed 100%
+       60:  390:    bool operator>=(const BigInt& other) const{
+       60:  391:        return (*this > other || *this == other);
+       60:  391-block  0
+call    0 returned 60
+branch  1 taken 39 (fallthrough)
+branch  2 taken 21
+       39:  391-block  1
+call    3 returned 39
+branch  4 taken 10 (fallthrough)
+branch  5 taken 29
+       31:  391-block  2
+       29:  391-block  3
+       60:  391-block  4
+        -:  392:    }
+        -:  393:
+function _ZNK6BigIntltERKS_ called 60 returned 100% blocks executed 100%
+       60:  394:    bool operator<(const BigInt& other) const{
+       60:  395:        return !(*this >= other);
+       60:  395-block  0
+call    0 returned 60
+        -:  396:    }
+        -:  397:
+function _ZNK6BigIntleERKS_ called 218 returned 100% blocks executed 100%
+      218:  398:    bool operator<=(const BigInt& other) const{
+      218:  399:        return !(*this > other);
+      218:  399-block  0
+call    0 returned 218
+        -:  400:    }
+        -:  401:
+function _ZNK6BigIntneERKS_ called 1 returned 100% blocks executed 100%
+        1:  402:    bool operator!=(const BigInt& other) const{
+        1:  403:        return !(*this == other);
+        1:  403-block  0
+call    0 returned 1
+        -:  404:    }
+        -:  405:
+function _ZNK6BigInt4sizeEv called 10169 returned 100% blocks executed 100%
+    10169:  406:    [[nodiscard]] size_t size() const noexcept{
+    10169:  407:        return data.size();
+    10169:  407-block  0
+call    0 returned 10169
+        -:  408:    }
+        -:  409:
+function _ZNK6BigInt4baseEv called 3 returned 100% blocks executed 100%
+        3:  410:    [[nodiscard]] unsigned long long base() const noexcept{
+        3:  411:        return _base;
+        3:  411-block  0
+        -:  412:    }
+        -:  413:
+function _ZNK6BigInt5emptyEv called 3 returned 100% blocks executed 100%
+        3:  414:    [[nodiscard]] bool empty() const noexcept{
+        3:  415:        return data.empty();
+        3:  415-block  0
+call    0 returned 3
+        -:  416:    }
+        -:  417:
+function _ZNK6BigInt11is_negativeEv called 72 returned 100% blocks executed 100%
+       72:  418:    [[nodiscard]] bool is_negative() const noexcept{
+       72:  419:        return negative;
+       72:  419-block  0
+        -:  420:    }
+        -:  421:
+function _ZNK6BigInt7is_evenEv called 6 returned 100% blocks executed 100%
+        6:  422:    [[nodiscard]] bool is_even() const noexcept {
+        6:  423:        return (*this % BigInt(2)) == BigInt(0);
+        6:  423-block  0
+call    0 returned 6
+call    1 returned 6
+call    2 returned 6
+call    3 returned 6
+call    4 returned 6
+call    5 returned 6
+call    6 returned 6
+        -:  424:    }
+        -:  425:
+function _ZNK6BigInt5arrayEv called 0 returned 0% blocks executed 0%
+    #####:  426:    [[nodiscard]] std::vector<unsigned long long> array() const{
+    #####:  427:        return data;
+    %%%%%:  427-block  0
+call    0 never executed
+        -:  428:    }
+        -:  429:
+function _ZN6BigInt3fftERSt6vectorISt7complexIdESaIS2_EEb called 3 returned 100% blocks executed 95%
+        3:  430:    static void fft(std::vector<ftype>& a, bool invert) {
+        3:  431:        int n = a.size();
+        3:  431-block  0
+call    0 returned 3
+       96:  432:        for(int i = 1, j = 0; i < n; i++) {
+       93:  432-block  0
+       96:  432-block  1
+branch  0 taken 93
+branch  1 taken 3 (fallthrough)
+       93:  433:            int bit = n >> 1;
+      171:  434:            for(; j >= bit; bit >>= 1)
+       93:  434-block  0
+      171:  434-block  1
+branch  0 taken 78
+branch  1 taken 93 (fallthrough)
+       78:  435:                j -= bit;
+       78:  435-block  0
+       93:  436:            j += bit;
+       93:  437:            if(i < j)
+       93:  437-block  0
+branch  0 taken 36 (fallthrough)
+branch  1 taken 57
+       36:  438:                std::swap(a[i], a[j]);
+       36:  438-block  0
+call    0 returned 36
+call    1 returned 36
+call    2 returned 36
+        -:  439:        }
+        -:  440:
+       18:  441:        for(int len = 2; len <= n; len <<= 1) {
+        3:  441-block  0
+       15:  441-block  1
+       18:  441-block  2
+branch  0 taken 15
+branch  1 taken 3 (fallthrough)
+       15:  442:            double ang = 2 * acos(-1) / len * (invert ? -1 : 1);
+       15:  442-block  0
+branch  0 taken 5 (fallthrough)
+branch  1 taken 10
+        5:  442-block  1
+       10:  442-block  2
+       15:  443:            ftype wlen(cos(ang), sin(ang));
+       15:  443-block  0
+call    0 returned 15
+      108:  444:            for(int i = 0; i < n; i += len) {
+       93:  444-block  0
+      108:  444-block  1
+branch  0 taken 93
+branch  1 taken 15 (fallthrough)
+       93:  445:                ftype w(1);
+      333:  446:                for(int j = 0; j < len/2; j++) {
+       93:  446-block  0
+      333:  446-block  1
+branch  0 taken 240
+branch  1 taken 93 (fallthrough)
+      240:  447:                    ftype u = a[i+j], v = a[i+j+len/2] * w;
+      240:  447-block  0
+call    0 returned 240
+call    1 returned 240
+call    2 returned 240
+branch  3 taken 240 (fallthrough)
+branch  4 taken 0 (throw)
+      240:  448:                    a[i+j] = u + v;
+      240:  448-block  0
+call    0 returned 240
+branch  1 taken 240 (fallthrough)
+branch  2 taken 0 (throw)
+      240:  448-block  1
+call    3 returned 240
+      240:  449:                    a[i+j+len/2] = u - v;
+call    0 returned 240
+branch  1 taken 240 (fallthrough)
+branch  2 taken 0 (throw)
+      240:  449-block  0
+call    3 returned 240
+      240:  450:                    w *= wlen;
+call    0 returned 240
+        -:  451:                }
+        -:  452:            }
+        -:  453:        }
+        -:  454:
+        3:  455:        if(invert)
+        3:  455-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 2
+       33:  456:            for(int i = 0; i < n; i++) {
+        1:  456-block  0
+       33:  456-block  1
+branch  0 taken 32
+branch  1 taken 1 (fallthrough)
+       32:  457:                a[i] /= n;
+       32:  457-block  0
+call    0 returned 32
+call    1 returned 32
+        -:  458:            }
+        3:  459:    }
+        3:  459-block  0
+        -:  460:
+function _ZN6BigInt12multiply_fftERKS_S1_ called 1 returned 100% blocks executed 70%
+        1:  461:    static BigInt multiply_fft(const BigInt& a, const BigInt& b) {
+        1:  461-block  0
+        2:  462:        std::vector<ftype> fa(a.data.begin(), a.data.end());
+        1:  462-block  0
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+branch  3 taken 1 (fallthrough)
+branch  4 taken 0 (throw)
+        1:  462-block  1
+    $$$$$:  462-block  2
+        1:  463:        std::vector<ftype> fb(b.data.begin(), b.data.end());
+        1:  463-block  0
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+branch  3 taken 1 (fallthrough)
+branch  4 taken 0 (throw)
+    $$$$$:  463-block  1
+        -:  464:
+        1:  465:        size_t n = 1;
+        6:  466:        while (n < fa.size() + fb.size())
+        1:  466-block  0
+        6:  466-block  1
+call    0 returned 6
+call    1 returned 6
+branch  2 taken 5
+branch  3 taken 1 (fallthrough)
+        5:  467:            n <<= 1;
+        5:  467-block  0
+        1:  468:        fa.resize(n);
+        1:  468-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  469:        fb.resize(n);
+        1:  469-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        -:  470:
+        1:  471:        fft(fa, false);
+        1:  471-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  472:        fft(fb, false);
+        1:  472-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        -:  473:
+       33:  474:        for (size_t i = 0; i < n; i++)
+        1:  474-block  0
+       33:  474-block  1
+branch  0 taken 32
+branch  1 taken 1 (fallthrough)
+       32:  475:            fa[i] *= fb[i];
+       32:  475-block  0
+call    0 returned 32
+call    1 returned 32
+call    2 returned 32
+        -:  476:
+        1:  477:        fft(fa, true);
+        1:  477-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  478:        BigInt result;
+        1:  478-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  479:        result.data.clear();
+        1:  479-block  0
+call    0 returned 1
+        1:  480:        unsigned long long carry = 0;
+        1:  481:        const unsigned long long base = a.base();
+call    0 returned 1
+        -:  482:        unsigned long long current;
+       33:  483:        for (size_t i = 0; i < n; i++) {
+       33:  483-block  0
+branch  0 taken 32
+branch  1 taken 1 (fallthrough)
+       32:  484:            current = static_cast<unsigned long long>(round(fa[i].real())) + carry;
+       32:  484-block  0
+call    0 returned 32
+call    1 returned 32
+       32:  485:            carry = current / base;
+       32:  486:            result.data.push_back(current % base);
+call    0 returned 32
+branch  1 taken 32 (fallthrough)
+branch  2 taken 0 (throw)
+       32:  486-block  0
+    $$$$$:  486-block  1
+        -:  487:        }
+        -:  488:
+        1:  489:        while (carry) {
+        1:  489-block  0
+        1:  489-block  1
+branch  0 taken 0
+branch  1 taken 1 (fallthrough)
+    #####:  490:            result.array().push_back(carry % base);
+    %%%%%:  490-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  490-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:  490-block  2
+call    6 never executed
+    $$$$$:  490-block  3
+    $$$$$:  490-block  4
+call    7 never executed
+    $$$$$:  490-block  5
+    #####:  491:            carry /= base;
+        -:  492:        }
+        -:  493:
+        1:  494:        result.delete_zeros();
+        1:  494-block  0
+call    0 returned 1
+        1:  495:        result.negative = a.is_negative() != b.is_negative();
+call    0 returned 1
+call    1 returned 1
+        2:  496:        return result;
+        1:  496-block  0
+        1:  497:    }
+        1:  497-block  0
+call    0 returned 1
+call    1 returned 1
+    $$$$$:  497-block  1
+call    2 never executed
+    $$$$$:  497-block  2
+call    3 never executed
+    $$$$$:  497-block  3
+call    4 never executed
+        -:  498:
+function _ZN6BigInt18karatsuba_multiplyERKS_S1_ called 1 returned 100% blocks executed 57%
+        1:  499:    static BigInt karatsuba_multiply(const BigInt &a, const BigInt& b) {
+       1*:  500:        if(a == BigInt(0) or b == BigInt(0)) {
+        1:  500-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  500-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0
+        1:  500-block  2
+call    6 returned 1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0 (throw)
+        1:  500-block  3
+call    9 returned 1
+branch 10 taken 0 (fallthrough)
+branch 11 taken 1
+    %%%%%:  500-block  4
+        1:  500-block  5
+        1:  500-block  6
+branch 12 taken 1 (fallthrough)
+branch 13 taken 0
+        1:  500-block  7
+call   14 returned 1
+        1:  500-block  8
+branch 15 taken 1 (fallthrough)
+branch 16 taken 0
+        1:  500-block  9
+call   17 returned 1
+        1:  500-block 10
+branch 18 taken 0 (fallthrough)
+branch 19 taken 1
+    $$$$$:  500-block 11
+branch 20 never executed (fallthrough)
+branch 21 never executed
+    $$$$$:  500-block 12
+call   22 never executed
+    $$$$$:  500-block 13
+    $$$$$:  500-block 14
+branch 23 never executed (fallthrough)
+branch 24 never executed
+    $$$$$:  500-block 15
+call   25 never executed
+    $$$$$:  500-block 16
+    #####:  501:            return BigInt{0};
+    %%%%%:  501-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+        -:  502:        }
+        1:  503:        BigInt lhs{b};
+        1:  503-block  0
+call    0 returned 1
+        1:  504:        BigInt rhs{a};
+call    0 returned 1
+        1:  505:        lhs.negative = false;
+        1:  506:        rhs.negative = false;
+        -:  507:
+        1:  508:        BigInt res = karatsuba(lhs, rhs);
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+branch  3 taken 1 (fallthrough)
+branch  4 taken 0 (throw)
+        1:  508-block  0
+call    5 returned 1
+call    6 returned 1
+    $$$$$:  508-block  1
+call    7 never executed
+    $$$$$:  508-block  2
+    $$$$$:  508-block  3
+call    8 never executed
+    $$$$$:  508-block  4
+        1:  509:        res.negative = a.is_negative() != b.is_negative();
+call    0 returned 1
+call    1 returned 1
+        1:  510:        return res;
+call    0 returned 1
+        1:  511:    }
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+    $$$$$:  511-block  0
+call    3 never executed
+    $$$$$:  511-block  1
+call    4 never executed
+        -:  512:
+function _ZN6BigInt9karatsubaES_S_ called 223 returned 100% blocks executed 60%
+      223:  513:    static BigInt karatsuba(BigInt a, BigInt b) {
+      223:  514:        size_t n = 1;
+      223:  515:        size_t max_size = std::max(a.data.size(), b.data.size());
+      223:  515-block  0
+call    0 returned 223
+call    1 returned 223
+call    2 returned 223
+      320:  516:        while (n < max_size) n <<= 1;
+       97:  516-block  0
+      320:  516-block  1
+branch  0 taken 97
+branch  1 taken 223 (fallthrough)
+      223:  517:        a.data.resize(n, 0);
+      223:  517-block  0
+call    0 returned 223
+branch  1 taken 223 (fallthrough)
+branch  2 taken 0 (throw)
+    $$$$$:  517-block  1
+      223:  518:        b.data.resize(n, 0);
+      223:  518-block  0
+call    0 returned 223
+branch  1 taken 223 (fallthrough)
+branch  2 taken 0 (throw)
+    $$$$$:  518-block  1
+        -:  519:
+      223:  520:        if (n == 1) {
+      223:  520-block  0
+branch  0 taken 149 (fallthrough)
+branch  1 taken 74
+      149:  521:            return a * b;
+      149:  521-block  0
+call    0 returned 149
+branch  1 taken 149 (fallthrough)
+branch  2 taken 0 (throw)
+        -:  522:        }
+        -:  523:
+       74:  524:        BigInt A1, A2, B1, B2;
+       74:  524-block  0
+call    0 returned 74
+branch  1 taken 74 (fallthrough)
+branch  2 taken 0 (throw)
+       74:  524-block  1
+call    3 returned 74
+branch  4 taken 74 (fallthrough)
+branch  5 taken 0 (throw)
+       74:  524-block  2
+call    6 returned 74
+branch  7 taken 74 (fallthrough)
+branch  8 taken 0 (throw)
+       74:  524-block  3
+call    9 returned 74
+branch 10 taken 74 (fallthrough)
+branch 11 taken 0 (throw)
+       74:  525:        A1.data.erase(A1.data.begin());
+       74:  525-block  0
+call    0 returned 74
+call    1 returned 74
+call    2 returned 74
+branch  3 taken 74 (fallthrough)
+branch  4 taken 0 (throw)
+    $$$$$:  525-block  1
+    $$$$$:  525-block  2
+       74:  526:        A2.data.erase(A2.data.begin());
+       74:  526-block  0
+call    0 returned 74
+call    1 returned 74
+call    2 returned 74
+branch  3 taken 74 (fallthrough)
+branch  4 taken 0 (throw)
+    $$$$$:  526-block  1
+    $$$$$:  526-block  2
+       74:  527:        B1.data.erase(B1.data.begin());
+       74:  527-block  0
+call    0 returned 74
+call    1 returned 74
+call    2 returned 74
+branch  3 taken 74 (fallthrough)
+branch  4 taken 0 (throw)
+    $$$$$:  527-block  1
+    $$$$$:  527-block  2
+       74:  528:        B2.data.erase(B2.data.begin());
+       74:  528-block  0
+call    0 returned 74
+call    1 returned 74
+call    2 returned 74
+branch  3 taken 74 (fallthrough)
+branch  4 taken 0 (throw)
+    $$$$$:  528-block  1
+    $$$$$:  528-block  2
+      178:  529:        for (size_t i = 0; i < n / 2; ++i) {
+       74:  529-block  0
+      104:  529-block  1
+      178:  529-block  2
+branch  0 taken 104
+branch  1 taken 74 (fallthrough)
+      104:  530:            A1.data.push_back(a.data[i]);
+      104:  530-block  0
+call    0 returned 104
+call    1 returned 104
+branch  2 taken 104 (fallthrough)
+branch  3 taken 0 (throw)
+      104:  531:            A2.data.push_back(a.data[i + n / 2]);
+      104:  531-block  0
+call    0 returned 104
+call    1 returned 104
+branch  2 taken 104 (fallthrough)
+branch  3 taken 0 (throw)
+      104:  532:            B1.data.push_back(b.data[i]);
+      104:  532-block  0
+call    0 returned 104
+call    1 returned 104
+branch  2 taken 104 (fallthrough)
+branch  3 taken 0 (throw)
+      104:  533:            B2.data.push_back(b.data[i + n / 2]);
+      104:  533-block  0
+call    0 returned 104
+call    1 returned 104
+branch  2 taken 104 (fallthrough)
+branch  3 taken 0 (throw)
+        -:  534:        }
+       74:  535:        BigInt X = karatsuba(A1, B1);
+       74:  535-block  0
+call    0 returned 74
+call    1 returned 74
+call    2 returned 74
+branch  3 taken 74 (fallthrough)
+branch  4 taken 0 (throw)
+       74:  535-block  1
+call    5 returned 74
+call    6 returned 74
+    $$$$$:  535-block  2
+call    7 never executed
+    $$$$$:  535-block  3
+    $$$$$:  535-block  4
+call    8 never executed
+    $$$$$:  535-block  5
+       74:  536:        BigInt Y = karatsuba(A2, B2);
+call    0 returned 74
+call    1 returned 74
+call    2 returned 74
+branch  3 taken 74 (fallthrough)
+branch  4 taken 0 (throw)
+       74:  536-block  0
+call    5 returned 74
+call    6 returned 74
+    $$$$$:  536-block  1
+call    7 never executed
+    $$$$$:  536-block  2
+    $$$$$:  536-block  3
+call    8 never executed
+    $$$$$:  536-block  4
+       74:  537:        BigInt Z = karatsuba(A1 + A2, B1 + B2) - X - Y;
+call    0 returned 74
+branch  1 taken 74 (fallthrough)
+branch  2 taken 0 (throw)
+       74:  537-block  0
+call    3 returned 74
+branch  4 taken 74 (fallthrough)
+branch  5 taken 0 (throw)
+       74:  537-block  1
+call    6 returned 74
+branch  7 taken 74 (fallthrough)
+branch  8 taken 0 (throw)
+       74:  537-block  2
+call    9 returned 74
+branch 10 taken 74 (fallthrough)
+branch 11 taken 0 (throw)
+       74:  537-block  3
+call   12 returned 74
+branch 13 taken 74 (fallthrough)
+branch 14 taken 0 (throw)
+       74:  537-block  4
+call   15 returned 74
+call   16 returned 74
+call   17 returned 74
+call   18 returned 74
+    $$$$$:  537-block  5
+call   19 never executed
+    $$$$$:  537-block  6
+call   20 never executed
+    $$$$$:  537-block  7
+call   21 never executed
+    $$$$$:  537-block  8
+    $$$$$:  537-block  9
+call   22 never executed
+    $$$$$:  537-block 10
+    $$$$$:  537-block 11
+    $$$$$:  537-block 12
+       74:  538:        Z.shift_left((int) n / 2);
+call    0 returned 74
+branch  1 taken 74 (fallthrough)
+branch  2 taken 0 (throw)
+       74:  539:        Y.shift_left((int) n);
+       74:  539-block  0
+call    0 returned 74
+branch  1 taken 74 (fallthrough)
+branch  2 taken 0 (throw)
+       74:  540:        BigInt res = X + Y + Z;
+       74:  540-block  0
+call    0 returned 74
+branch  1 taken 74 (fallthrough)
+branch  2 taken 0 (throw)
+       74:  540-block  1
+call    3 returned 74
+branch  4 taken 74 (fallthrough)
+branch  5 taken 0 (throw)
+       74:  540-block  2
+call    6 returned 74
+    $$$$$:  540-block  3
+call    7 never executed
+    $$$$$:  540-block  4
+       74:  541:        res.delete_zeros();
+call    0 returned 74
+       74:  542:        return res;
+call    0 returned 74
+       74:  543:    }
+call    0 returned 74
+call    1 returned 74
+call    2 returned 74
+call    3 returned 74
+call    4 returned 74
+call    5 returned 74
+call    6 returned 74
+call    7 returned 74
+    $$$$$:  543-block  0
+call    8 never executed
+    $$$$$:  543-block  1
+call    9 never executed
+    $$$$$:  543-block  2
+call   10 never executed
+    $$$$$:  543-block  3
+call   11 never executed
+    $$$$$:  543-block  4
+call   12 never executed
+    $$$$$:  543-block  5
+call   13 never executed
+    $$$$$:  543-block  6
+call   14 never executed
+        -:  544:};
+        -:  545:
+function _ZlsRSoRK6BigInt called 2 returned 100% blocks executed 96%
+        2:  546:std::ostream& operator<< (std::ostream& output, const BigInt& element){
+        2:  547:    if (element.empty()){
+        2:  547-block  0
+call    0 returned 2
+branch  1 taken 0 (fallthrough)
+branch  2 taken 2
+    #####:  548:        return output;
+    %%%%%:  548-block  0
+        -:  549:    }
+        2:  550:    if (element.is_negative()){
+        2:  550-block  0
+call    0 returned 2
+branch  1 taken 1 (fallthrough)
+branch  2 taken 1
+        1:  551:        output << "-";
+        1:  551-block  0
+call    0 returned 1
+        -:  552:    }
+        2:  553:    auto len_base = (int) log10l(element.base());
+        2:  553-block  0
+call    0 returned 2
+        7:  554:    for (long long int i = element.size() - 1; i >= 0; --i) {
+call    0 returned 2
+        5:  554-block  0
+        7:  554-block  1
+branch  1 taken 5
+branch  2 taken 2 (fallthrough)
+        5:  555:        if ((size_t) i != element.size() - 1) {
+        5:  555-block  0
+call    0 returned 5
+branch  1 taken 3 (fallthrough)
+branch  2 taken 2
+        3:  556:            output << std::setw(len_base) << std::setfill('0') << element[i];
+        3:  556-block  0
+call    0 returned 3
+call    1 returned 3
+call    2 returned 3
+call    3 returned 3
+call    4 returned 3
+call    5 returned 3
+        -:  557:        } else {
+        2:  558:            output << element[i];
+        2:  558-block  0
+call    0 returned 2
+call    1 returned 2
+        -:  559:        }
+        -:  560:    }
+        2:  561:    return output;
+        2:  561-block  0
+        -:  562:}
+        -:  563:
+        -:  564:
+function _ZrsRSiR6BigInt called 2 returned 100% blocks executed 76%
+        2:  565:std::istream& operator>>(std::istream& is, BigInt& bigInt) {
+        2:  566:    std::string input;
+        2:  566-block  0
+call    0 returned 2
+        -:  567:    char c;
+        2:  568:    is >> std::ws;
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        2:  569:    c = is.peek();
+        2:  569-block  0
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        2:  570:    if (c == '-' || c == '+') {
+        2:  570-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 1
+        1:  570-block  1
+branch  2 taken 0 (fallthrough)
+branch  3 taken 1
+        1:  571:        input += c;
+        1:  571-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  572:        is.get();
+        1:  572-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        -:  573:    }
+       10:  574:    while (is.peek() != EOF && std::isdigit(is.peek())) {
+        2:  574-block  0
+       10:  574-block  1
+call    0 returned 10
+branch  1 taken 10 (fallthrough)
+branch  2 taken 0 (throw)
+       10:  574-block  2
+branch  3 taken 8 (fallthrough)
+branch  4 taken 2
+        8:  574-block  3
+call    5 returned 8
+branch  6 taken 8 (fallthrough)
+branch  7 taken 0 (throw)
+        8:  574-block  4
+branch  8 taken 8 (fallthrough)
+branch  9 taken 0
+        8:  574-block  5
+        2:  574-block  6
+       10:  574-block  7
+branch 10 taken 8
+branch 11 taken 2 (fallthrough)
+        8:  575:        input += is.get();
+        8:  575-block  0
+call    0 returned 8
+branch  1 taken 8 (fallthrough)
+branch  2 taken 0 (throw)
+        8:  575-block  1
+call    3 returned 8
+branch  4 taken 8 (fallthrough)
+branch  5 taken 0 (throw)
+        -:  576:    }
+       4*:  577:    if (input.empty() ||
+        2:  577-block  0
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0
+branch  3 taken 0 (fallthrough)
+branch  4 taken 2
+    %%%%%:  577-block  1
+        2:  577-block  2
+        2:  577-block  3
+branch  5 taken 0 (fallthrough)
+branch  6 taken 2
+       2*:  578:        (input.size() == 1 && (input[0] == '+' || input[0] == '-'))) {
+        2:  578-block  0
+call    0 returned 2
+    %%%%%:  578-block  1
+call    1 never executed
+branch  2 never executed (fallthrough)
+branch  3 never executed
+    %%%%%:  578-block  2
+call    4 never executed
+branch  5 never executed (fallthrough)
+branch  6 never executed
+    #####:  579:        is.setstate(std::ios::failbit);
+    %%%%%:  579-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:  580:        return is;
+    %%%%%:  580-block  0
+        -:  581:    }
+        2:  582:    bigInt = BigInt(input);
+        2:  582-block  0
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        2:  582-block  1
+call    3 returned 2
+call    4 returned 2
+    $$$$$:  582-block  2
+        2:  583:    return is;
+        2:  584:}
+        2:  584-block  0
+call    0 returned 2
+    $$$$$:  584-block  1
+call    1 never executed

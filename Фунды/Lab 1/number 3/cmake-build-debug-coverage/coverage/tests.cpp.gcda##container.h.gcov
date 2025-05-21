@@ -1,0 +1,62 @@
+        -:    0:Source:/mnt/d/Уник/4 сем/Фунды/number 3/include/container.h
+        -:    0:Graph:/mnt/d/Уник/4 сем/Фунды/number 3/cmake-build-debug-coverage/CMakeFiles/tests.dir/tests/tests.cpp.gcno
+        -:    0:Data:/mnt/d/Уник/4 сем/Фунды/number 3/cmake-build-debug-coverage/CMakeFiles/tests.dir/tests/tests.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#ifndef NUMBER_1_CONTAINER_H
+        -:    2:#define NUMBER_1_CONTAINER_H
+        -:    3:
+        -:    4:#pragma once
+        -:    5:
+        -:    6:#include <iostream>
+        -:    7:
+        -:    8:template <typename T>
+        -:    9:class Container {
+        -:   10:public:
+        -:   11:    using iterator = T *;
+        -:   12:    using const_iterator = const T *;
+       54:   13:    Container() = default;
+------------------
+_ZN9ContainerINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEC2Ev:
+function _ZN9ContainerINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEC2Ev called 15 returned 100% blocks executed 100%
+       15:   13:    Container() = default;
+------------------
+_ZN9ContainerIiEC2Ev:
+function _ZN9ContainerIiEC2Ev called 39 returned 100% blocks executed 100%
+       39:   13:    Container() = default;
+------------------
+        -:   14:    Container(const Container &container) = default;
+        -:   15:    Container &operator=(const Container &container) = default;
+      54*:   16:    virtual ~Container() = default;
+------------------
+_ZN9ContainerINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEED0Ev:
+function _ZN9ContainerINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEED0Ev called 0 returned 0% blocks executed 0%
+    #####:   16:    virtual ~Container() = default;
+    %%%%%:   16-block  0
+call    0 never executed
+call    1 never executed
+------------------
+_ZN9ContainerINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEED2Ev:
+function _ZN9ContainerINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEED2Ev called 15 returned 100% blocks executed 100%
+       15:   16:    virtual ~Container() = default;
+------------------
+_ZN9ContainerIiED0Ev:
+function _ZN9ContainerIiED0Ev called 0 returned 0% blocks executed 0%
+    #####:   16:    virtual ~Container() = default;
+    %%%%%:   16-block  0
+call    0 never executed
+call    1 never executed
+------------------
+_ZN9ContainerIiED2Ev:
+function _ZN9ContainerIiED2Ev called 39 returned 100% blocks executed 100%
+       39:   16:    virtual ~Container() = default;
+------------------
+        -:   17:
+        -:   18:    bool operator==(const Container &other) const = default;
+        -:   19:    bool operator!=(const Container &other) const = default;
+        -:   20:
+        -:   21:    virtual size_t size() const = 0;
+        -:   22:    virtual size_t max_size() const = 0;
+        -:   23:    virtual bool empty() const = 0;
+        -:   24:};
+        -:   25:
+        -:   26:#endif //NUMBER_1_CONTAINER_H

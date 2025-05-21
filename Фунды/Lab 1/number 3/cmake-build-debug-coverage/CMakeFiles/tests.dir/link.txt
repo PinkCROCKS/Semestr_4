@@ -1,0 +1,1 @@
+/usr/bin/c++ --coverage -g CMakeFiles/tests.dir/tests/tests.cpp.o CMakeFiles/tests.dir/src/functions.cpp.o -o tests  lib/libgtest.a lib/libgtest_main.a lib/libgtest.a 

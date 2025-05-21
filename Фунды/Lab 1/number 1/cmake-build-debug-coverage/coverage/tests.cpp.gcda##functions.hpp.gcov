@@ -1,0 +1,566 @@
+        -:    0:Source:/mnt/d/Уник/4 сем/Фунды/mun 1.1/include/functions.hpp
+        -:    0:Graph:/mnt/d/Уник/4 сем/Фунды/mun 1.1/cmake-build-debug-coverage/CMakeFiles/tests.dir/tests/tests.cpp.gcno
+        -:    0:Data:/mnt/d/Уник/4 сем/Фунды/mun 1.1/cmake-build-debug-coverage/CMakeFiles/tests.dir/tests/tests.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#ifndef MUN_1_1_FUNCTIONS_HPP
+        -:    2:#define MUN_1_1_FUNCTIONS_HPP
+        -:    3:
+        -:    4:
+        -:    5:#include <cstddef>
+        -:    6:#include <stdexcept>
+        -:    7:#include <algorithm>
+        -:    8:#include <iterator>
+        -:    9:#include <compare>
+        -:   10:#include <iostream>
+        -:   11:#include "container.hpp"
+        -:   12:
+        -:   13:namespace my_container {
+        -:   14:
+        -:   15:    template <typename type, size_t N>
+        -:   16:    class Array final : public Container<type> {
+        -:   17:        type data_[N]{};
+        -:   18:
+        -:   19:    public:
+        -:   20:        Array() = default;
+        -:   21:
+       13:   22:        Array(std::initializer_list<type> init) {
+       13:   23:            std::copy_n(init.begin(), std::min(N, init.size()), data_);
+       13:   24:        }
+------------------
+_ZN12my_container5ArrayIiLm2EEC2ESt16initializer_listIiE:
+function _ZN12my_container5ArrayIiLm2EEC2ESt16initializer_listIiE called 3 returned 100% blocks executed 70%
+        3:   22:        Array(std::initializer_list<type> init) {
+        3:   22-block  0
+call    0 returned 3
+        3:   23:            std::copy_n(init.begin(), std::min(N, init.size()), data_);
+call    0 returned 3
+call    1 returned 3
+call    2 returned 3
+call    3 returned 3
+branch  4 taken 3 (fallthrough)
+branch  5 taken 0 (throw)
+    $$$$$:   23-block  0
+    $$$$$:   23-block  1
+        3:   24:        }
+        3:   24-block  0
+    $$$$$:   24-block  1
+call    0 never executed
+------------------
+_ZN12my_container5ArrayIiLm4EEC2ESt16initializer_listIiE:
+function _ZN12my_container5ArrayIiLm4EEC2ESt16initializer_listIiE called 1 returned 100% blocks executed 70%
+        1:   22:        Array(std::initializer_list<type> init) {
+        1:   22-block  0
+call    0 returned 1
+        1:   23:            std::copy_n(init.begin(), std::min(N, init.size()), data_);
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+    $$$$$:   23-block  0
+    $$$$$:   23-block  1
+        1:   24:        }
+        1:   24-block  0
+    $$$$$:   24-block  1
+call    0 never executed
+------------------
+_ZN12my_container5ArrayIiLm3EEC2ESt16initializer_listIiE:
+function _ZN12my_container5ArrayIiLm3EEC2ESt16initializer_listIiE called 9 returned 100% blocks executed 70%
+        9:   22:        Array(std::initializer_list<type> init) {
+        9:   22-block  0
+call    0 returned 9
+        9:   23:            std::copy_n(init.begin(), std::min(N, init.size()), data_);
+call    0 returned 9
+call    1 returned 9
+call    2 returned 9
+call    3 returned 9
+branch  4 taken 9 (fallthrough)
+branch  5 taken 0 (throw)
+    $$$$$:   23-block  0
+    $$$$$:   23-block  1
+        9:   24:        }
+        9:   24-block  0
+    $$$$$:   24-block  1
+call    0 never executed
+------------------
+function _ZN12my_container5ArrayIiLm3EEC2ERKS1_ called 1 returned 100% blocks executed 100%
+        1:   25:        Array(const Array&) = default;
+        1:   25-block  0
+call    0 returned 1
+        -:   26:        Array& operator=(const Array&) = default;
+        -:   27:
+        -:   28:        Array(Array&&) noexcept = default;
+        -:   29:        Array& operator=(Array&&) noexcept = default;
+        -:   30:
+      17*:   31:        ~Array() override = default;
+------------------
+_ZN12my_container5ArrayIiLm4EED0Ev:
+function _ZN12my_container5ArrayIiLm4EED0Ev called 0 returned 0% blocks executed 0%
+    #####:   31:        ~Array() override = default;
+    %%%%%:   31-block  0
+call    0 never executed
+call    1 never executed
+------------------
+_ZN12my_container5ArrayIiLm4EED2Ev:
+function _ZN12my_container5ArrayIiLm4EED2Ev called 2 returned 100% blocks executed 100%
+        2:   31:        ~Array() override = default;
+        2:   31-block  0
+call    0 returned 2
+------------------
+_ZN12my_container5ArrayIiLm2EED0Ev:
+function _ZN12my_container5ArrayIiLm2EED0Ev called 0 returned 0% blocks executed 0%
+    #####:   31:        ~Array() override = default;
+    %%%%%:   31-block  0
+call    0 never executed
+call    1 never executed
+------------------
+_ZN12my_container5ArrayIiLm2EED2Ev:
+function _ZN12my_container5ArrayIiLm2EED2Ev called 4 returned 100% blocks executed 100%
+        4:   31:        ~Array() override = default;
+        4:   31-block  0
+call    0 returned 4
+------------------
+_ZN12my_container5ArrayIiLm3EED0Ev:
+function _ZN12my_container5ArrayIiLm3EED0Ev called 0 returned 0% blocks executed 0%
+    #####:   31:        ~Array() override = default;
+    %%%%%:   31-block  0
+call    0 never executed
+call    1 never executed
+------------------
+_ZN12my_container5ArrayIiLm3EED2Ev:
+function _ZN12my_container5ArrayIiLm3EED2Ev called 10 returned 100% blocks executed 100%
+       10:   31:        ~Array() override = default;
+       10:   31-block  0
+call    0 returned 10
+------------------
+_ZN12my_container5ArrayIiLm5EED0Ev:
+function _ZN12my_container5ArrayIiLm5EED0Ev called 0 returned 0% blocks executed 0%
+    #####:   31:        ~Array() override = default;
+    %%%%%:   31-block  0
+call    0 never executed
+call    1 never executed
+------------------
+_ZN12my_container5ArrayIiLm5EED2Ev:
+function _ZN12my_container5ArrayIiLm5EED2Ev called 1 returned 100% blocks executed 100%
+        1:   31:        ~Array() override = default;
+        1:   31-block  0
+call    0 returned 1
+------------------
+        -:   32:
+function _ZN12my_container5ArrayIiLm2EE2atEm called 2 returned 50% blocks executed 88%
+        2:   33:        type& at(size_t pos) {
+        2:   34:            if (pos >= N) throw std::out_of_range("Array index out of range");
+        2:   34-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 1
+        1:   34-block  1
+call    2 returned 1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   34-block  2
+call    6 returned 0
+    $$$$$:   34-block  3
+call    7 never executed
+        1:   35:            return data_[pos];
+        1:   35-block  0
+        1:   35-block  1
+        -:   36:        }
+        -:   37:
+        -:   38:        const type& at(size_t pos) const {
+        -:   39:            if (pos >= N) throw std::out_of_range("Array index out of range");
+        -:   40:            return data_[pos];
+        -:   41:        }
+        -:   42:
+       10:   43:        type& operator[](size_t pos) noexcept { return data_[pos]; }
+------------------
+_ZN12my_container5ArrayIiLm4EEixEm:
+function _ZN12my_container5ArrayIiLm4EEixEm called 2 returned 100% blocks executed 100%
+        2:   43:        type& operator[](size_t pos) noexcept { return data_[pos]; }
+        2:   43-block  0
+------------------
+_ZN12my_container5ArrayIiLm2EEixEm:
+function _ZN12my_container5ArrayIiLm2EEixEm called 2 returned 100% blocks executed 100%
+        2:   43:        type& operator[](size_t pos) noexcept { return data_[pos]; }
+        2:   43-block  0
+------------------
+_ZN12my_container5ArrayIiLm3EEixEm:
+function _ZN12my_container5ArrayIiLm3EEixEm called 6 returned 100% blocks executed 100%
+        6:   43:        type& operator[](size_t pos) noexcept { return data_[pos]; }
+        6:   43-block  0
+------------------
+        -:   44:        const type& operator[](size_t pos) const noexcept { return data_[pos]; }
+        -:   45:
+function _ZN12my_container5ArrayIiLm3EE5frontEv called 1 returned 100% blocks executed 100%
+        1:   46:        type& front() noexcept { return data_[0]; }
+        1:   46-block  0
+        -:   47:        const type& front() const noexcept { return data_[0]; }
+        -:   48:
+function _ZN12my_container5ArrayIiLm3EE4backEv called 1 returned 100% blocks executed 100%
+        1:   49:        type& back() noexcept { return data_[N-1]; }
+        1:   49-block  0
+        -:   50:        const type& back() const noexcept { return data_[N-1]; }
+        -:   51:
+function _ZN12my_container5ArrayIiLm3EE4dataEv called 1 returned 100% blocks executed 100%
+        1:   52:        type* data() noexcept { return data_; }
+        1:   52-block  0
+        -:   53:        const type* data() const noexcept { return data_; }
+        -:   54:
+function _ZN12my_container5ArrayIiLm3EE5beginEv called 1 returned 100% blocks executed 100%
+        1:   55:        auto begin() noexcept { return data_; }
+        1:   55-block  0
+       4*:   56:        auto begin() const noexcept { return data_; }
+------------------
+_ZNK12my_container5ArrayIiLm5EE5beginEv:
+function _ZNK12my_container5ArrayIiLm5EE5beginEv called 0 returned 0% blocks executed 0%
+    #####:   56:        auto begin() const noexcept { return data_; }
+    %%%%%:   56-block  0
+------------------
+_ZNK12my_container5ArrayIiLm3EE5beginEv:
+function _ZNK12my_container5ArrayIiLm3EE5beginEv called 0 returned 0% blocks executed 0%
+    #####:   56:        auto begin() const noexcept { return data_; }
+    %%%%%:   56-block  0
+------------------
+_ZNK12my_container5ArrayIiLm4EE5beginEv:
+function _ZNK12my_container5ArrayIiLm4EE5beginEv called 0 returned 0% blocks executed 0%
+    #####:   56:        auto begin() const noexcept { return data_; }
+    %%%%%:   56-block  0
+------------------
+_ZNK12my_container5ArrayIiLm2EE5beginEv:
+function _ZNK12my_container5ArrayIiLm2EE5beginEv called 4 returned 100% blocks executed 100%
+        4:   56:        auto begin() const noexcept { return data_; }
+        4:   56-block  0
+------------------
+function _ZNK12my_container5ArrayIiLm3EE6cbeginEv called 10 returned 100% blocks executed 100%
+       10:   57:        auto cbegin() const noexcept { return data_; }
+       10:   57-block  0
+        -:   58:
+function _ZN12my_container5ArrayIiLm3EE3endEv called 4 returned 100% blocks executed 100%
+        4:   59:        auto end() noexcept { return data_ + N; }
+        4:   59-block  0
+       2*:   60:        auto end() const noexcept { return data_ + N; }
+------------------
+_ZNK12my_container5ArrayIiLm5EE3endEv:
+function _ZNK12my_container5ArrayIiLm5EE3endEv called 0 returned 0% blocks executed 0%
+    #####:   60:        auto end() const noexcept { return data_ + N; }
+    %%%%%:   60-block  0
+------------------
+_ZNK12my_container5ArrayIiLm3EE3endEv:
+function _ZNK12my_container5ArrayIiLm3EE3endEv called 0 returned 0% blocks executed 0%
+    #####:   60:        auto end() const noexcept { return data_ + N; }
+    %%%%%:   60-block  0
+------------------
+_ZNK12my_container5ArrayIiLm4EE3endEv:
+function _ZNK12my_container5ArrayIiLm4EE3endEv called 0 returned 0% blocks executed 0%
+    #####:   60:        auto end() const noexcept { return data_ + N; }
+    %%%%%:   60-block  0
+------------------
+_ZNK12my_container5ArrayIiLm2EE3endEv:
+function _ZNK12my_container5ArrayIiLm2EE3endEv called 2 returned 100% blocks executed 100%
+        2:   60:        auto end() const noexcept { return data_ + N; }
+        2:   60-block  0
+------------------
+function _ZNK12my_container5ArrayIiLm3EE4cendEv called 10 returned 100% blocks executed 100%
+       10:   61:        auto cend() const noexcept { return data_ + N; }
+       10:   61-block  0
+        -:   62:
+        -:   63:        auto rbegin() noexcept { return std::reverse_iterator(end()); }
+        -:   64:        auto rbegin() const noexcept { return std::reverse_iterator(end()); }
+        -:   65:        auto crbegin() const noexcept { return std::reverse_iterator(cend()); }
+        -:   66:
+        -:   67:        auto rend() noexcept { return std::reverse_iterator(begin()); }
+        -:   68:        auto rend() const noexcept { return std::reverse_iterator(begin()); }
+        -:   69:        auto crend() const noexcept { return std::reverse_iterator(cbegin()); }
+        -:   70:
+function _ZN12my_container5ArrayIiLm4EE4fillERKi called 1 returned 100% blocks executed 100%
+        1:   71:        void fill(const type& value) {
+        1:   72:            std::fill_n(data_, N, value);
+        1:   72-block  0
+call    0 returned 1
+        1:   73:        }
+        -:   74:
+function _ZN12my_container5ArrayIiLm4EE4swapERS1_ called 1 returned 100% blocks executed 100%
+        1:   75:        void swap(Array& other) noexcept {
+        1:   76:            std::swap_ranges(data_, data_ + N, other.data_);
+        1:   76-block  0
+call    0 returned 1
+        1:   77:        }
+        -:   78:
+       2*:   79:        bool operator==(const Container<type>& other) const override {
+       2*:   80:            const Array* p = dynamic_cast<const Array*>(&other);
+       2*:   81:            return p && std::equal(begin(), end(), p->begin());
+        -:   82:        }
+------------------
+_ZNK12my_container5ArrayIiLm5EEeqERKNS_9ContainerIiEE:
+function _ZNK12my_container5ArrayIiLm5EEeqERKNS_9ContainerIiEE called 0 returned 0% blocks executed 0%
+    #####:   79:        bool operator==(const Container<type>& other) const override {
+    #####:   80:            const Array* p = dynamic_cast<const Array*>(&other);
+    %%%%%:   80-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    %%%%%:   80-block  1
+    %%%%%:   80-block  2
+    #####:   81:            return p && std::equal(begin(), end(), p->begin());
+    %%%%%:   81-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    %%%%%:   81-block  1
+call    2 never executed
+call    3 never executed
+call    4 never executed
+call    5 never executed
+branch  6 never executed (fallthrough)
+branch  7 never executed
+    %%%%%:   81-block  2
+    %%%%%:   81-block  3
+    %%%%%:   81-block  4
+        -:   82:        }
+------------------
+_ZNK12my_container5ArrayIiLm3EEeqERKNS_9ContainerIiEE:
+function _ZNK12my_container5ArrayIiLm3EEeqERKNS_9ContainerIiEE called 0 returned 0% blocks executed 0%
+    #####:   79:        bool operator==(const Container<type>& other) const override {
+    #####:   80:            const Array* p = dynamic_cast<const Array*>(&other);
+    %%%%%:   80-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    %%%%%:   80-block  1
+    %%%%%:   80-block  2
+    #####:   81:            return p && std::equal(begin(), end(), p->begin());
+    %%%%%:   81-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    %%%%%:   81-block  1
+call    2 never executed
+call    3 never executed
+call    4 never executed
+call    5 never executed
+branch  6 never executed (fallthrough)
+branch  7 never executed
+    %%%%%:   81-block  2
+    %%%%%:   81-block  3
+    %%%%%:   81-block  4
+        -:   82:        }
+------------------
+_ZNK12my_container5ArrayIiLm4EEeqERKNS_9ContainerIiEE:
+function _ZNK12my_container5ArrayIiLm4EEeqERKNS_9ContainerIiEE called 0 returned 0% blocks executed 0%
+    #####:   79:        bool operator==(const Container<type>& other) const override {
+    #####:   80:            const Array* p = dynamic_cast<const Array*>(&other);
+    %%%%%:   80-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    %%%%%:   80-block  1
+    %%%%%:   80-block  2
+    #####:   81:            return p && std::equal(begin(), end(), p->begin());
+    %%%%%:   81-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    %%%%%:   81-block  1
+call    2 never executed
+call    3 never executed
+call    4 never executed
+call    5 never executed
+branch  6 never executed (fallthrough)
+branch  7 never executed
+    %%%%%:   81-block  2
+    %%%%%:   81-block  3
+    %%%%%:   81-block  4
+        -:   82:        }
+------------------
+_ZNK12my_container5ArrayIiLm2EEeqERKNS_9ContainerIiEE:
+function _ZNK12my_container5ArrayIiLm2EEeqERKNS_9ContainerIiEE called 2 returned 100% blocks executed 92%
+        2:   79:        bool operator==(const Container<type>& other) const override {
+       2*:   80:            const Array* p = dynamic_cast<const Array*>(&other);
+        2:   80-block  0
+branch  0 taken 2 (fallthrough)
+branch  1 taken 0
+        2:   80-block  1
+    %%%%%:   80-block  2
+        2:   81:            return p && std::equal(begin(), end(), p->begin());
+        2:   81-block  0
+branch  0 taken 2 (fallthrough)
+branch  1 taken 0
+        2:   81-block  1
+call    2 returned 2
+call    3 returned 2
+call    4 returned 2
+call    5 returned 2
+branch  6 taken 1 (fallthrough)
+branch  7 taken 1
+        1:   81-block  2
+        1:   81-block  3
+        2:   81-block  4
+        -:   82:        }
+------------------
+        -:   83:
+       1*:   84:        bool operator!=(const Container<type>& other) const override {
+       1*:   85:            return !(*this == other);
+        -:   86:        }
+------------------
+_ZNK12my_container5ArrayIiLm5EEneERKNS_9ContainerIiEE:
+function _ZNK12my_container5ArrayIiLm5EEneERKNS_9ContainerIiEE called 0 returned 0% blocks executed 0%
+    #####:   84:        bool operator!=(const Container<type>& other) const override {
+    #####:   85:            return !(*this == other);
+    %%%%%:   85-block  0
+call    0 never executed
+        -:   86:        }
+------------------
+_ZNK12my_container5ArrayIiLm3EEneERKNS_9ContainerIiEE:
+function _ZNK12my_container5ArrayIiLm3EEneERKNS_9ContainerIiEE called 0 returned 0% blocks executed 0%
+    #####:   84:        bool operator!=(const Container<type>& other) const override {
+    #####:   85:            return !(*this == other);
+    %%%%%:   85-block  0
+call    0 never executed
+        -:   86:        }
+------------------
+_ZNK12my_container5ArrayIiLm4EEneERKNS_9ContainerIiEE:
+function _ZNK12my_container5ArrayIiLm4EEneERKNS_9ContainerIiEE called 0 returned 0% blocks executed 0%
+    #####:   84:        bool operator!=(const Container<type>& other) const override {
+    #####:   85:            return !(*this == other);
+    %%%%%:   85-block  0
+call    0 never executed
+        -:   86:        }
+------------------
+_ZNK12my_container5ArrayIiLm2EEneERKNS_9ContainerIiEE:
+function _ZNK12my_container5ArrayIiLm2EEneERKNS_9ContainerIiEE called 1 returned 100% blocks executed 100%
+        1:   84:        bool operator!=(const Container<type>& other) const override {
+        1:   85:            return !(*this == other);
+        1:   85-block  0
+call    0 returned 1
+        -:   86:        }
+------------------
+        -:   87:
+        -:   88:        bool operator<(const Container<type>& other) const {
+        -:   89:            if (this->size() == other.size()){
+        -:   90:                for (int i = 0; i < other.size();i++){
+        -:   91:                    if (this[i] != other[i]) {
+        -:   92:                        return this[i] < other[i];
+        -:   93:                    }
+        -:   94:                }
+        -:   95:                return false;
+        -:   96:            }
+        -:   97:            return this->size() < other.size();
+        -:   98:        }
+        -:   99:
+        -:  100:        bool operator>=(const Container<type>& other) const {
+        -:  101:            return !(this < other);
+        -:  102:        }
+        -:  103:
+        -:  104:        bool operator<=(const Container<type>& other) const {
+        -:  105:            if (this->size() == other.size()){
+        -:  106:                for (int i = 0; i < other.size();i++){
+        -:  107:                    if (this[i] != other[i]) {
+        -:  108:                        return this[i] < other[i];
+        -:  109:                    }
+        -:  110:                }
+        -:  111:                return true;
+        -:  112:            }
+        -:  113:            return this->size() < other.size();
+        -:  114:        }
+        -:  115:
+        -:  116:        bool operator>(const Container<type>& other) const{
+        -:  117:            return !(this <= other);
+        -:  118:        }
+        -:  119:
+function _ZNK12my_container5ArrayIiLm3EEssERKS1_ called 5 returned 100% blocks executed 100%
+        5:  120:        std::strong_ordering operator<=>(const Array<type, N>& rhs) const {
+        5:  121:            return std::lexicographical_compare_three_way(cbegin(), cend(), rhs.cbegin(), rhs.cend());
+        5:  121-block  0
+call    0 returned 5
+call    1 returned 5
+call    2 returned 5
+call    3 returned 5
+call    4 returned 5
+        -:  122:        }
+        -:  123:
+       6*:  124:        size_t size() const noexcept override { return N; }
+------------------
+_ZNK12my_container5ArrayIiLm2EE4sizeEv:
+function _ZNK12my_container5ArrayIiLm2EE4sizeEv called 0 returned 0% blocks executed 0%
+    #####:  124:        size_t size() const noexcept override { return N; }
+    %%%%%:  124-block  0
+------------------
+_ZNK12my_container5ArrayIiLm4EE4sizeEv:
+function _ZNK12my_container5ArrayIiLm4EE4sizeEv called 0 returned 0% blocks executed 0%
+    #####:  124:        size_t size() const noexcept override { return N; }
+    %%%%%:  124-block  0
+------------------
+_ZNK12my_container5ArrayIiLm3EE4sizeEv:
+function _ZNK12my_container5ArrayIiLm3EE4sizeEv called 5 returned 100% blocks executed 100%
+        5:  124:        size_t size() const noexcept override { return N; }
+        5:  124-block  0
+------------------
+_ZNK12my_container5ArrayIiLm5EE4sizeEv:
+function _ZNK12my_container5ArrayIiLm5EE4sizeEv called 1 returned 100% blocks executed 100%
+        1:  124:        size_t size() const noexcept override { return N; }
+        1:  124-block  0
+------------------
+    #####:  125:        size_t max_size() const noexcept override { return N; }
+------------------
+_ZNK12my_container5ArrayIiLm5EE8max_sizeEv:
+function _ZNK12my_container5ArrayIiLm5EE8max_sizeEv called 0 returned 0% blocks executed 0%
+    #####:  125:        size_t max_size() const noexcept override { return N; }
+    %%%%%:  125-block  0
+------------------
+_ZNK12my_container5ArrayIiLm3EE8max_sizeEv:
+function _ZNK12my_container5ArrayIiLm3EE8max_sizeEv called 0 returned 0% blocks executed 0%
+    #####:  125:        size_t max_size() const noexcept override { return N; }
+    %%%%%:  125-block  0
+------------------
+_ZNK12my_container5ArrayIiLm2EE8max_sizeEv:
+function _ZNK12my_container5ArrayIiLm2EE8max_sizeEv called 0 returned 0% blocks executed 0%
+    #####:  125:        size_t max_size() const noexcept override { return N; }
+    %%%%%:  125-block  0
+------------------
+_ZNK12my_container5ArrayIiLm4EE8max_sizeEv:
+function _ZNK12my_container5ArrayIiLm4EE8max_sizeEv called 0 returned 0% blocks executed 0%
+    #####:  125:        size_t max_size() const noexcept override { return N; }
+    %%%%%:  125-block  0
+------------------
+       1*:  126:        bool empty() const noexcept override { return N == 0; }
+------------------
+_ZNK12my_container5ArrayIiLm3EE5emptyEv:
+function _ZNK12my_container5ArrayIiLm3EE5emptyEv called 0 returned 0% blocks executed 0%
+    #####:  126:        bool empty() const noexcept override { return N == 0; }
+    %%%%%:  126-block  0
+------------------
+_ZNK12my_container5ArrayIiLm2EE5emptyEv:
+function _ZNK12my_container5ArrayIiLm2EE5emptyEv called 0 returned 0% blocks executed 0%
+    #####:  126:        bool empty() const noexcept override { return N == 0; }
+    %%%%%:  126-block  0
+------------------
+_ZNK12my_container5ArrayIiLm4EE5emptyEv:
+function _ZNK12my_container5ArrayIiLm4EE5emptyEv called 0 returned 0% blocks executed 0%
+    #####:  126:        bool empty() const noexcept override { return N == 0; }
+    %%%%%:  126-block  0
+------------------
+_ZNK12my_container5ArrayIiLm5EE5emptyEv:
+function _ZNK12my_container5ArrayIiLm5EE5emptyEv called 1 returned 100% blocks executed 100%
+        1:  126:        bool empty() const noexcept override { return N == 0; }
+        1:  126-block  0
+------------------
+        -:  127:    };
+        -:  128:
+        -:  129:    template<typename type, size_t n>
+function _ZN12my_containerlsIiLm3EEERSoS1_NS_5ArrayIT_XT0_EEE called 1 returned 100% blocks executed 100%
+        1:  130:    std::ostream &operator<<(std::ostream &out, my_container::Array<type, n> el) {
+        4:  131:        for (int i = 0; i < el.size(); i++) {
+        1:  131-block  0
+        4:  131-block  1
+call    0 returned 4
+branch  1 taken 3
+branch  2 taken 1 (fallthrough)
+        3:  132:            out << el[i] << " ";
+        3:  132-block  0
+call    0 returned 3
+call    1 returned 3
+call    2 returned 3
+        -:  133:        }
+        1:  134:        return out;
+        1:  134-block  0
+        -:  135:    }
+        -:  136:
+        -:  137:}
+        -:  138:
+        -:  139:int add(int, int);
+        -:  140:#endif //MUN_1_1_FUNCTIONS_HPP

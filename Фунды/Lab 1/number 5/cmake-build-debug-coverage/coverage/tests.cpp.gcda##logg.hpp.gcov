@@ -1,0 +1,13 @@
+        -:    0:Source:/mnt/d/Ярослав/Desktop/logg.hpp
+        -:    0:Graph:/mnt/d/Уник/4 сем/Фунды/number 5/cmake-build-debug-coverage/CMakeFiles/tests.dir/tests/tests.cpp.gcno
+        -:    0:Data:/mnt/d/Уник/4 сем/Фунды/number 5/cmake-build-debug-coverage/CMakeFiles/tests.dir/tests/tests.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include <iostream>
+        -:    2:
+        -:    3:
+function _Z8resize_vv called 4 returned 100% blocks executed 100%
+        4:    4:void resize_v() {
+        4:    5:    std::cout << "hui";
+        4:    5-block  0
+call    0 returned 4
+        4:    6:}

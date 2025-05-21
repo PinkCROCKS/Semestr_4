@@ -1,0 +1,844 @@
+        -:    0:Source:/mnt/d/Уник/4 сем/Фунды/number 5/include/vector.hpp
+        -:    0:Graph:/mnt/d/Уник/4 сем/Фунды/number 5/cmake-build-debug-coverage/CMakeFiles/tests.dir/tests/tests.cpp.gcno
+        -:    0:Data:/mnt/d/Уник/4 сем/Фунды/number 5/cmake-build-debug-coverage/CMakeFiles/tests.dir/tests/tests.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#ifndef NUMBER_5_VECTOR_H
+        -:    2:#define NUMBER_5_VECTOR_H
+        -:    3:
+        -:    4:#include <algorithm>
+        -:    5:#include <compare>
+        -:    6:#include "container.hpp"
+        -:    7:#include "../../../../../Ярослав/Desktop/logg.hpp"
+        -:    8:
+        -:    9:namespace my_container {
+        -:   10:    template <typename T>
+        -:   11:    class Vector : public Container<T>{
+        -:   12:    private:
+        -:   13:        T* array = nullptr;
+        -:   14:        size_t size_;
+        -:   15:        size_t capacity_;
+        -:   16:    public:
+        -:   17:        using iterator = typename Container<T>::iterator;
+        -:   18:        using const_iterator = typename Container<T>::const_iterator;
+        -:   19:
+       26:   20:        explicit Vector(size_t capacity_ = 2) : capacity_{capacity_} {
+      42*:   21:            array = new T[capacity_];
+       26:   22:            size_ = 0;
+       26:   23:        }
+------------------
+_ZN12my_container6VectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEC2Em:
+function _ZN12my_container6VectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEC2Em called 8 returned 100% blocks executed 83%
+        8:   20:        explicit Vector(size_t capacity_ = 2) : capacity_{capacity_} {
+        8:   20-block  0
+call    0 returned 8
+      24*:   21:            array = new T[capacity_];
+branch  0 taken 8 (fallthrough)
+branch  1 taken 0
+        8:   21-block  0
+    %%%%%:   21-block  1
+        8:   21-block  2
+call    2 returned 8
+branch  3 taken 8 (fallthrough)
+branch  4 taken 0 (throw)
+        8:   21-block  3
+       16:   21-block  4
+call    5 returned 16
+       24:   21-block  5
+branch  6 taken 16
+branch  7 taken 8 (fallthrough)
+        8:   22:            size_ = 0;
+        8:   23:        }
+        8:   23-block  0
+    $$$$$:   23-block  1
+call    0 never executed
+------------------
+_ZN12my_container6VectorIiEC2Em:
+function _ZN12my_container6VectorIiEC2Em called 18 returned 100% blocks executed 75%
+       18:   20:        explicit Vector(size_t capacity_ = 2) : capacity_{capacity_} {
+       18:   20-block  0
+call    0 returned 18
+      18*:   21:            array = new T[capacity_];
+branch  0 taken 18 (fallthrough)
+branch  1 taken 0
+       18:   21-block  0
+    %%%%%:   21-block  1
+call    2 never executed
+       18:   21-block  2
+call    3 returned 18
+branch  4 taken 18 (fallthrough)
+branch  5 taken 0 (throw)
+       18:   22:            size_ = 0;
+       18:   23:        }
+       18:   23-block  0
+    $$$$$:   23-block  1
+call    0 never executed
+------------------
+function _ZN12my_container6VectorIiEC2ERKS1_ called 1 returned 100% blocks executed 89%
+        1:   24:        Vector(const Vector<T>& other) noexcept : Vector(other.capacity_) {
+        1:   24-block  0
+call    0 returned 1
+        1:   25:            if (this != &other) {
+branch  0 taken 1 (fallthrough)
+branch  1 taken 0
+       1*:   26:                new T[other.capacity_];
+        1:   26-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 0
+        1:   26-block  1
+    %%%%%:   26-block  2
+call    2 never executed
+        1:   26-block  3
+call    3 returned 1
+        1:   27:                capacity_ = other.capacity_;
+        1:   28:                size_ = other.size_;
+        1:   29:                std::copy_n(other.array, other.size(), array);
+call    0 returned 1
+call    1 returned 1
+        -:   30:            }
+        1:   31:        }
+        -:   32:
+function _ZN12my_container6VectorIiEC2ESt16initializer_listIiE called 5 returned 100% blocks executed 86%
+       5*:   33:        Vector(std::initializer_list<T> init) : array(new T[init.size()]), size_(init.size()),
+branch  0 taken 5 (fallthrough)
+branch  1 taken 0
+        5:   33-block  0
+    %%%%%:   33-block  1
+call    2 never executed
+        5:   33-block  2
+call    3 returned 5
+branch  4 taken 5 (fallthrough)
+branch  5 taken 0 (throw)
+        5:   33-block  3
+call    6 returned 5
+       10:   34:            capacity_(init.size()) {
+        5:   34-block  0
+call    0 returned 5
+call    1 returned 5
+call    2 returned 5
+        5:   35:            std::copy(init.begin(), init.end(), array);
+call    0 returned 5
+call    1 returned 5
+call    2 returned 5
+branch  3 taken 5 (fallthrough)
+branch  4 taken 0 (throw)
+        5:   36:        }
+        5:   36-block  0
+    $$$$$:   36-block  1
+call    0 never executed
+        -:   37:
+        -:   38:        Vector(const Vector<T>&& list) noexcept: array(list.array){
+        -:   39:            size_ = list.size_;
+        -:   40:            capacity_ = list.capacity_;
+        -:   41:            list.size_ = 0;
+        -:   42:            list.capacity_ = 0;
+        -:   43:            list.array = nullptr;
+        -:   44:        }
+        -:   45:
+function _ZN12my_container6VectorIiEaSERKS1_ called 1 returned 100% blocks executed 100%
+        1:   46:        Vector& operator=(const Vector<T>& other) noexcept{
+        1:   47:            if (this != &other){
+        1:   47-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 0
+        -:   48:                T temp;
+        1:   49:                resize(other.capacity_, temp);
+        1:   49-block  0
+call    0 returned 1
+        1:   50:                std::copy_n(other.array, other.size_, array);
+call    0 returned 1
+        1:   51:                size_ = other.size_;
+        -:   52:            }
+        1:   53:            return *this;
+        1:   53-block  0
+        -:   54:        }
+        -:   55:
+        -:   56:        Vector& operator=(Vector<T>&& other) noexcept{
+        -:   57:            if (this != &other){
+        -:   58:                reserve(other.capacity_);
+        -:   59:                std::swap(array, other.array);
+        -:   60:                std::swap(capacity_, other.capacity_);
+        -:   61:                std::swap(size_, other.size_);
+        -:   62:                other.clear;
+        -:   63:            }
+        -:   64:            return *this;
+        -:   65:        }
+        -:   66:
+        -:   67:        Vector& operator=(std::initializer_list<T>& other) {
+        -:   68:            reserve(other.size());
+        -:   69:            std::copy(other.begin(), other.end(), array);
+        -:   70:            size_ = other.size();
+        -:   71:            return *this;
+        -:   72:        };
+        -:   73:
+       16:   74:        Vector& operator=(std::initializer_list<T>&& other) {
+       16:   75:            reserve(other.size());
+       16:   76:            std::copy(other.begin(), other.end(), array);
+       16:   77:            size_ = other.size();
+       16:   78:            return *this;
+        -:   79:        };
+------------------
+_ZN12my_container6VectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEaSEOSt16initializer_listIS6_E:
+function _ZN12my_container6VectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEaSEOSt16initializer_listIS6_E called 8 returned 100% blocks executed 100%
+        8:   74:        Vector& operator=(std::initializer_list<T>&& other) {
+        8:   75:            reserve(other.size());
+        8:   75-block  0
+call    0 returned 8
+call    1 returned 8
+        8:   76:            std::copy(other.begin(), other.end(), array);
+call    0 returned 8
+call    1 returned 8
+call    2 returned 8
+        8:   77:            size_ = other.size();
+call    0 returned 8
+        8:   78:            return *this;
+        -:   79:        };
+------------------
+_ZN12my_container6VectorIiEaSEOSt16initializer_listIiE:
+function _ZN12my_container6VectorIiEaSEOSt16initializer_listIiE called 8 returned 100% blocks executed 100%
+        8:   74:        Vector& operator=(std::initializer_list<T>&& other) {
+        8:   75:            reserve(other.size());
+        8:   75-block  0
+call    0 returned 8
+call    1 returned 8
+        8:   76:            std::copy(other.begin(), other.end(), array);
+call    0 returned 8
+call    1 returned 8
+call    2 returned 8
+        8:   77:            size_ = other.size();
+call    0 returned 8
+        8:   78:            return *this;
+        -:   79:        };
+------------------
+        -:   80:
+      31*:   81:        ~Vector(){
+       55:   82:            delete[] array;
+       31:   83:            size_ = 0;
+       31:   84:            capacity_ = 0;
+      62*:   85:        }
+------------------
+_ZN12my_container6VectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEED0Ev:
+function _ZN12my_container6VectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEED0Ev called 0 returned 0% blocks executed 0%
+    #####:   81:        ~Vector(){
+        -:   82:            delete[] array;
+        -:   83:            size_ = 0;
+        -:   84:            capacity_ = 0;
+    #####:   85:        }
+    %%%%%:   85-block  0
+call    0 never executed
+call    1 never executed
+------------------
+_ZN12my_container6VectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEED2Ev:
+function _ZN12my_container6VectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEED2Ev called 8 returned 100% blocks executed 100%
+        8:   81:        ~Vector(){
+       32:   82:            delete[] array;
+        8:   82-block  0
+       32:   82-block  1
+branch  0 taken 24 (fallthrough)
+branch  1 taken 8
+       24:   82-block  2
+call    2 returned 24
+        8:   82-block  3
+call    3 returned 8
+        8:   83:            size_ = 0;
+        8:   84:            capacity_ = 0;
+       16:   85:        }
+        8:   85-block  0
+branch  0 taken 8 (fallthrough)
+branch  1 taken 0
+        8:   85-block  1
+call    2 returned 8
+------------------
+_ZN12my_container6VectorIiED0Ev:
+function _ZN12my_container6VectorIiED0Ev called 0 returned 0% blocks executed 0%
+    #####:   81:        ~Vector(){
+        -:   82:            delete[] array;
+        -:   83:            size_ = 0;
+        -:   84:            capacity_ = 0;
+    #####:   85:        }
+    %%%%%:   85-block  0
+call    0 never executed
+call    1 never executed
+------------------
+_ZN12my_container6VectorIiED2Ev:
+function _ZN12my_container6VectorIiED2Ev called 23 returned 100% blocks executed 100%
+       23:   81:        ~Vector(){
+       23:   82:            delete[] array;
+       23:   82-block  0
+call    0 returned 23
+       23:   83:            size_ = 0;
+       23:   84:            capacity_ = 0;
+       46:   85:        }
+       23:   85-block  0
+branch  0 taken 23 (fallthrough)
+branch  1 taken 0
+       23:   85-block  1
+call    2 returned 23
+------------------
+        -:   86:
+       1*:   87:        [[nodiscard]] bool empty() const noexcept override{
+       1*:   88:            return size_ == 0;
+        -:   89:        }
+------------------
+_ZNK12my_container6VectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE5emptyEv:
+function _ZNK12my_container6VectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE5emptyEv called 0 returned 0% blocks executed 0%
+    #####:   87:        [[nodiscard]] bool empty() const noexcept override{
+    #####:   88:            return size_ == 0;
+    %%%%%:   88-block  0
+        -:   89:        }
+------------------
+_ZNK12my_container6VectorIiE5emptyEv:
+function _ZNK12my_container6VectorIiE5emptyEv called 1 returned 100% blocks executed 100%
+        1:   87:        [[nodiscard]] bool empty() const noexcept override{
+        1:   88:            return size_ == 0;
+        1:   88-block  0
+        -:   89:        }
+------------------
+        -:   90:        
+      13*:   91:        [[nodiscard]] size_t size() const noexcept override{
+      13*:   92:            return size_;
+        -:   93:        }
+------------------
+_ZNK12my_container6VectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE4sizeEv:
+function _ZNK12my_container6VectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE4sizeEv called 0 returned 0% blocks executed 0%
+    #####:   91:        [[nodiscard]] size_t size() const noexcept override{
+    #####:   92:            return size_;
+    %%%%%:   92-block  0
+        -:   93:        }
+------------------
+_ZNK12my_container6VectorIiE4sizeEv:
+function _ZNK12my_container6VectorIiE4sizeEv called 13 returned 100% blocks executed 100%
+       13:   91:        [[nodiscard]] size_t size() const noexcept override{
+       13:   92:            return size_;
+       13:   92-block  0
+        -:   93:        }
+------------------
+        -:   94:        
+function _ZNK12my_container6VectorIiE8capacityEv called 3 returned 100% blocks executed 100%
+        3:   95:        [[nodiscard]] size_t capacity() const noexcept{
+        3:   96:            return capacity_;
+        3:   96-block  0
+        -:   97:        }
+        -:   98:
+       19:   99:        void reserve(const size_t new_capacity) noexcept {
+       19:  100:            if (capacity_ < new_capacity){
+      43*:  101:                T* temp = new T[new_capacity];
+       19:  102:                std::copy_n(array, size_, temp);
+       35:  103:                delete[] array;
+       19:  104:                array = temp;
+       19:  105:                capacity_ = new_capacity;
+        -:  106:            }
+       19:  107:        }
+------------------
+_ZN12my_container6VectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE7reserveEm:
+function _ZN12my_container6VectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE7reserveEm called 8 returned 100% blocks executed 94%
+        8:   99:        void reserve(const size_t new_capacity) noexcept {
+        8:  100:            if (capacity_ < new_capacity){
+        8:  100-block  0
+branch  0 taken 8 (fallthrough)
+branch  1 taken 0
+      32*:  101:                T* temp = new T[new_capacity];
+        8:  101-block  0
+branch  0 taken 8 (fallthrough)
+branch  1 taken 0
+        8:  101-block  1
+    %%%%%:  101-block  2
+        8:  101-block  3
+call    2 returned 8
+       24:  101-block  4
+call    3 returned 24
+       32:  101-block  5
+branch  4 taken 24
+branch  5 taken 8 (fallthrough)
+        8:  102:                std::copy_n(array, size_, temp);
+        8:  102-block  0
+call    0 returned 8
+       24:  103:                delete[] array;
+branch  0 taken 8 (fallthrough)
+branch  1 taken 0
+        8:  103-block  0
+       24:  103-block  1
+branch  2 taken 16 (fallthrough)
+branch  3 taken 8
+       16:  103-block  2
+call    4 returned 16
+        8:  103-block  3
+call    5 returned 8
+        8:  104:                array = temp;
+        8:  105:                capacity_ = new_capacity;
+        8:  105-block  0
+        -:  106:            }
+        8:  107:        }
+------------------
+_ZN12my_container6VectorIiE7reserveEm:
+function _ZN12my_container6VectorIiE7reserveEm called 11 returned 100% blocks executed 90%
+       11:   99:        void reserve(const size_t new_capacity) noexcept {
+       11:  100:            if (capacity_ < new_capacity){
+       11:  100-block  0
+branch  0 taken 11 (fallthrough)
+branch  1 taken 0
+      11*:  101:                T* temp = new T[new_capacity];
+       11:  101-block  0
+branch  0 taken 11 (fallthrough)
+branch  1 taken 0
+       11:  101-block  1
+    %%%%%:  101-block  2
+call    2 never executed
+       11:  101-block  3
+call    3 returned 11
+       11:  102:                std::copy_n(array, size_, temp);
+call    0 returned 11
+       11:  103:                delete[] array;
+branch  0 taken 11 (fallthrough)
+branch  1 taken 0
+       11:  103-block  0
+call    2 returned 11
+       11:  104:                array = temp;
+       11:  105:                capacity_ = new_capacity;
+       11:  105-block  0
+        -:  106:            }
+       11:  107:        }
+------------------
+        -:  108:
+function _ZN12my_container6VectorIiE13shrink_to_fitEv called 1 returned 100% blocks executed 20%
+        1:  109:        void shrink_to_fit() noexcept{
+        1:  110:            if (size_ < capacity_){
+        1:  110-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    #####:  111:                T* temp = new T[size_];
+    %%%%%:  111-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    %%%%%:  111-block  1
+    %%%%%:  111-block  2
+call    2 never executed
+    %%%%%:  111-block  3
+call    3 never executed
+    #####:  112:                std::copy_n(array, size_, temp);
+call    0 never executed
+    #####:  113:                delete[] array;
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    %%%%%:  113-block  0
+call    2 never executed
+    #####:  114:                array = temp;
+    #####:  115:                capacity_ = size_;
+    %%%%%:  115-block  0
+        -:  116:            }
+        1:  117:        }
+        -:  118:
+function _ZN12my_container6VectorIiE5clearEv called 1 returned 100% blocks executed 100%
+        1:  119:        void clear() noexcept{
+        1:  120:            size_ = 0;
+        1:  121:        }
+        -:  122:
+function _ZN12my_container6VectorIiE9push_backERKi called 1 returned 100% blocks executed 80%
+        1:  123:        void push_back(const T& element) noexcept {
+        1:  124:            if (size_ < capacity_) {
+        1:  124-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    #####:  125:                array[size_++] = element;
+    %%%%%:  125-block  0
+        -:  126:            } else {
+        1:  127:                reserve(capacity_ * 2);
+        1:  127-block  0
+call    0 returned 1
+        1:  128:                array[size_++] = element;
+        -:  129:            }
+        1:  130:        }
+        -:  131:
+function _ZN12my_container6VectorIiE8pop_backEv called 1 returned 100% blocks executed 100%
+        1:  132:        void pop_back() noexcept {
+        1:  133:            if (size_ > 0){
+        1:  133-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 0
+        1:  134:                size_--;
+        1:  134-block  0
+        -:  135:            }
+        1:  136:        }
+        -:  137:
+function _ZN12my_container6VectorIiE6insertEmRKi called 1 returned 100% blocks executed 60%
+        1:  138:        void insert(const size_t index,const T& element){
+        1:  139:            if (index == size_ - 1) {
+        1:  139-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    #####:  140:                push_back(element);
+    %%%%%:  140-block  0
+call    0 never executed
+    #####:  141:                return;
+        1:  142:            } else if (index < size_) {
+        1:  142-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 0
+        1:  143:                if (size_ == capacity_) {
+        1:  143-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    #####:  144:                    reserve(capacity_ * 2);
+    %%%%%:  144-block  0
+call    0 never executed
+        -:  145:                }
+        3:  146:                for (size_t i = size_ - 1; i >= index; i--) {
+        1:  146-block  0
+        3:  146-block  1
+branch  0 taken 2
+branch  1 taken 1 (fallthrough)
+        2:  147:                    array[i + 1] = array[i];
+        2:  147-block  0
+        -:  148:                }
+        1:  149:                array[index] = element;
+        1:  149-block  0
+        -:  150:            } else {
+    #####:  151:                if (index >= capacity_) {
+    %%%%%:  151-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    #####:  152:                    reserve(index * 2);
+    %%%%%:  152-block  0
+call    0 never executed
+        -:  153:                }
+    #####:  154:                array[index] = element;
+    %%%%%:  154-block  0
+        -:  155:            }
+        1:  156:            size_++;
+        1:  156-block  0
+        -:  157:        }
+        -:  158:
+function _ZN12my_container6VectorIiE5eraseEm called 2 returned 50% blocks executed 90%
+        2:  159:        void erase(size_t index) {
+        2:  160:            if (index >= size_) {
+        2:  160-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 1
+        1:  161:                throw std::range_error("Incorrect index");
+        1:  161-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:  161-block  1
+call    4 returned 0
+    $$$$$:  161-block  2
+call    5 never executed
+        -:  162:            }
+        -:  163:
+        3:  164:            for (size_t i = index + 1; i < size_; ++i) {
+        1:  164-block  0
+        3:  164-block  1
+branch  0 taken 2
+branch  1 taken 1 (fallthrough)
+        2:  165:                array[i - 1] = array[i];
+        2:  165-block  0
+        -:  166:            }
+        1:  167:            size_--;
+        1:  168:        }
+        1:  168-block  0
+        -:  169:
+function _ZN12my_container6VectorIiE6resizeEmRi called 1 returned 100% blocks executed 78%
+        1:  170:        void resize(const size_t size, T& elem) {
+        1:  171:            if (size > size_) {
+        1:  171-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 0
+        1:  172:                reserve(size);
+        1:  172-block  0
+call    0 returned 1
+        4:  173:                for (size_t i = size_; i < size; ++i) {
+        4:  173-block  0
+branch  0 taken 3
+branch  1 taken 1 (fallthrough)
+        3:  174:                    array[i] = elem;
+        3:  174-block  0
+        -:  175:                }
+        1:  176:                size_ = capacity_;
+        1:  176-block  0
+    #####:  177:            } else if (size < size_) {
+    %%%%%:  177-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    #####:  178:                size_ = size;
+    %%%%%:  178-block  0
+        -:  179:            }
+        1:  180:        }
+        -:  181:
+function _ZN12my_container6VectorIiE4swapERS1_ called 1 returned 100% blocks executed 100%
+        1:  182:        void swap(Vector& other) {
+        -:  183:            using std::swap;
+        1:  184:            swap(array, other.array);
+        1:  184-block  0
+call    0 returned 1
+        1:  185:            swap(size_, other.size_);
+call    0 returned 1
+        1:  186:            swap(capacity_, other.capacity_);
+call    0 returned 1
+        1:  187:        }
+        -:  188:
+function _ZNK12my_container6VectorIiEixERKm called 9 returned 100% blocks executed 50%
+        9:  189:        T& operator[](const size_t& index) const{
+        9:  190:            if (index >= size_) {
+        9:  190-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 9
+    #####:  191:                throw std::out_of_range("Limits!!!!!!!!");
+    %%%%%:  191-block  0
+call    0 never executed
+call    1 never executed
+branch  2 never executed (fallthrough)
+branch  3 never executed (throw)
+    %%%%%:  191-block  1
+call    4 never executed
+    $$$$$:  191-block  2
+call    5 never executed
+        -:  192:            }
+        9:  193:            return array[index];
+        9:  193-block  0
+        9:  193-block  1
+        -:  194:        };
+        -:  195:
+        3:  196:        T& at(size_t index){
+        3:  197:            if (index >= size_) {
+        2:  198:                throw std::out_of_range("Limits!!!!!!!!");
+        -:  199:            }
+       1*:  200:            return array[index];
+        -:  201:        }
+------------------
+_ZN12my_container6VectorIiE2atEm:
+function _ZN12my_container6VectorIiE2atEm called 1 returned 0% blocks executed 62%
+        1:  196:        T& at(size_t index){
+        1:  197:            if (index >= size_) {
+        1:  197-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 0
+        1:  198:                throw std::out_of_range("Limits!!!!!!!!");
+        1:  198-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:  198-block  1
+call    4 returned 0
+    $$$$$:  198-block  2
+call    5 never executed
+        -:  199:            }
+    #####:  200:            return array[index];
+    %%%%%:  200-block  0
+    %%%%%:  200-block  1
+        -:  201:        }
+------------------
+_ZN12my_container6VectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE2atEm:
+function _ZN12my_container6VectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE2atEm called 2 returned 50% blocks executed 88%
+        2:  196:        T& at(size_t index){
+        2:  197:            if (index >= size_) {
+        2:  197-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 1
+        1:  198:                throw std::out_of_range("Limits!!!!!!!!");
+        1:  198-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:  198-block  1
+call    4 returned 0
+    $$$$$:  198-block  2
+call    5 never executed
+        -:  199:            }
+        1:  200:            return array[index];
+        1:  200-block  0
+        1:  200-block  1
+        -:  201:        }
+------------------
+        -:  202:
+        -:  203:        const T& at(size_t index) const{
+        -:  204:            if (index >= size_) {
+        -:  205:                throw std::out_of_range("Limits!!!!!!!!");
+        -:  206:            }
+        -:  207:            resize_v();
+        -:  208:            return array[index];
+        -:  209:        }
+        -:  210:
+        -:  211:        const T& front() const {
+        -:  212:            if (size_ == 0){
+        -:  213:                throw std::out_of_range("Vector is empty");
+        -:  214:            }
+        -:  215:            return array[0];
+        -:  216:        }
+        -:  217:
+function _ZN12my_container6VectorIiE5frontEv called 2 returned 50% blocks executed 88%
+        2:  218:        T& front() {
+        2:  219:            if (size_ == 0){
+        2:  219-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 1
+        1:  220:                throw std::out_of_range("Vector is empty");
+        1:  220-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:  220-block  1
+call    4 returned 0
+    $$$$$:  220-block  2
+call    5 never executed
+        -:  221:            }
+        1:  222:            return array[0];
+        1:  222-block  0
+        1:  222-block  1
+        -:  223:        }
+        -:  224:
+        -:  225:
+function _ZN12my_container6VectorIiE4backEv called 2 returned 50% blocks executed 88%
+        2:  226:        T& back() {
+        2:  227:            if (size_ == 0){
+        2:  227-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 1
+        1:  228:                throw std::out_of_range("Vector is empty");
+        1:  228-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:  228-block  1
+call    4 returned 0
+    $$$$$:  228-block  2
+call    5 never executed
+        -:  229:            }
+        1:  230:            return array[size_ - 1];
+        1:  230-block  0
+        1:  230-block  1
+        -:  231:        }
+        -:  232:
+        -:  233:        const T& back() const{
+        -:  234:            if (size_ == 0){
+        -:  235:                throw std::out_of_range("Vector is empty");
+        -:  236:            }
+        -:  237:            return array[size_ - 1];
+        -:  238:        }
+        -:  239:
+        -:  240:        T* data() noexcept{
+        -:  241:            return array;
+        -:  242:        }
+        -:  243:
+function _ZNK12my_container6VectorIiE4dataEv called 8 returned 100% blocks executed 100%
+        8:  244:        const T* data() const noexcept {
+        8:  245:            return array;
+        8:  245-block  0
+        -:  246:        }
+        -:  247:
+       1*:  248:        [[nodiscard]] size_t max_size() const noexcept override{
+       1*:  249:            return capacity_;
+        -:  250:        }
+------------------
+_ZNK12my_container6VectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE8max_sizeEv:
+function _ZNK12my_container6VectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE8max_sizeEv called 0 returned 0% blocks executed 0%
+    #####:  248:        [[nodiscard]] size_t max_size() const noexcept override{
+    #####:  249:            return capacity_;
+    %%%%%:  249-block  0
+        -:  250:        }
+------------------
+_ZNK12my_container6VectorIiE8max_sizeEv:
+function _ZNK12my_container6VectorIiE8max_sizeEv called 1 returned 100% blocks executed 100%
+        1:  248:        [[nodiscard]] size_t max_size() const noexcept override{
+        1:  249:            return capacity_;
+        1:  249-block  0
+        -:  250:        }
+------------------
+        -:  251:
+function _ZNK12my_container6VectorIiEssERKS1_ called 6 returned 100% blocks executed 93%
+        6:  252:        std::strong_ordering operator<=> (const Vector<T>& other) const noexcept{
+       6*:  253:            if (auto cmp = size_ <=> other.size_; cmp != 0) {
+        6:  253-block  0
+branch  0 taken 2 (fallthrough)
+branch  1 taken 4
+        2:  253-block  1
+branch  2 taken 2 (fallthrough)
+branch  3 taken 0
+        2:  253-block  2
+    %%%%%:  253-block  3
+        4:  253-block  4
+        6:  253-block  5
+call    4 returned 6
+branch  5 taken 2 (fallthrough)
+branch  6 taken 4
+        2:  254:                return cmp;
+        2:  254-block  0
+        -:  255:            }
+        4:  256:            resize_v();
+        4:  256-block  0
+call    0 returned 4
+        8:  257:            return std::lexicographical_compare_three_way(
+        4:  258:                    array,
+        4:  259:                    array + size_,
+call    0 returned 4
+        -:  260:                    other.data(),
+        4:  261:                    other.data() + other.size_
+call    0 returned 4
+call    1 returned 4
+        4:  262:            );
+        -:  263:        }
+        -:  264:
+        -:  265://        friend bool operator==(const Vector<T>& a, const Vector<T>& b) noexcept {
+        -:  266://            return (a <=> b) == 0;
+        -:  267://        }
+        -:  268:
+function _ZNK12my_container6VectorIiEeqERKS1_ called 2 returned 100% blocks executed 100%
+        2:  269:        bool operator==(const Vector<T>& other) const noexcept{
+        2:  270:            return ((*this) <=> other) == 0;
+        2:  270-block  0
+call    0 returned 2
+call    1 returned 2
+        -:  271:        }
+        -:  272:
+function _ZNK12my_container6VectorIiEneERKS1_ called 1 returned 100% blocks executed 100%
+        1:  273:        bool operator!=(const Vector<T>& other) const noexcept{
+        1:  274:            return !((*this) == other);
+        1:  274-block  0
+call    0 returned 1
+        -:  275:        }
+        -:  276:
+function _ZNK12my_container6VectorIiEltERKS1_ called 2 returned 100% blocks executed 100%
+        2:  277:        bool operator<(const Vector<T>& other) const noexcept{
+        2:  278:            return ((*this) <=> other) == std::strong_ordering::less;
+        2:  278-block  0
+call    0 returned 2
+call    1 returned 2
+        -:  279:        }
+        -:  280:
+function _ZNK12my_container6VectorIiEgtERKS1_ called 2 returned 100% blocks executed 100%
+        2:  281:        bool operator>(const Vector<T>& other) const noexcept{
+        2:  282:            return (*this <=> other) == std::strong_ordering::greater;
+        2:  282-block  0
+call    0 returned 2
+call    1 returned 2
+        -:  283:        }
+        -:  284:
+function _ZNK12my_container6VectorIiEleERKS1_ called 1 returned 100% blocks executed 100%
+        1:  285:        bool operator<=(const Vector<T>& other) const noexcept{
+        1:  286:            return !((*this) > other);
+        1:  286-block  0
+call    0 returned 1
+        -:  287:        }
+        -:  288:
+function _ZNK12my_container6VectorIiEgeERKS1_ called 1 returned 100% blocks executed 100%
+        1:  289:        bool operator>=(const Vector<T>& other) const noexcept{
+        1:  290:            return !((*this) < other);
+        1:  290-block  0
+call    0 returned 1
+        -:  291:        }
+        -:  292:
+        -:  293://        void resize(const size_t i) {
+        -:  294://            if (this != &other){
+        -:  295://                resize(other.capacity_);
+        -:  296://                std::copy_n(other.array, other.size_, array);
+        -:  297://                size_ = other.size_;
+        -:  298://            }
+        -:  299://            return *this;
+        -:  300://        }
+        -:  301:    };
+        -:  302:}
+        -:  303:
+        -:  304:#endif

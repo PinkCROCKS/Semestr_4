@@ -1,0 +1,1111 @@
+        -:    0:Source:/mnt/d/Уник/4 сем/Фунды/number 2/googletest/googletest/include/gtest/internal/gtest-param-util.h
+        -:    0:Graph:/mnt/d/Уник/4 сем/Фунды/number 2/cmake-build-debug-coverage/googletest/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.gcno
+        -:    0:Data:/mnt/d/Уник/4 сем/Фунды/number 2/cmake-build-debug-coverage/googletest/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.gcda
+        -:    0:Runs:1
+        -:    1:// Copyright 2008 Google Inc.
+        -:    2:// All Rights Reserved.
+        -:    3://
+        -:    4:// Redistribution and use in source and binary forms, with or without
+        -:    5:// modification, are permitted provided that the following conditions are
+        -:    6:// met:
+        -:    7://
+        -:    8://     * Redistributions of source code must retain the above copyright
+        -:    9:// notice, this list of conditions and the following disclaimer.
+        -:   10://     * Redistributions in binary form must reproduce the above
+        -:   11:// copyright notice, this list of conditions and the following disclaimer
+        -:   12:// in the documentation and/or other materials provided with the
+        -:   13:// distribution.
+        -:   14://     * Neither the name of Google Inc. nor the names of its
+        -:   15:// contributors may be used to endorse or promote products derived from
+        -:   16:// this software without specific prior written permission.
+        -:   17://
+        -:   18:// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+        -:   19:// "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+        -:   20:// LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+        -:   21:// A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+        -:   22:// OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+        -:   23:// SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+        -:   24:// LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+        -:   25:// DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+        -:   26:// THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+        -:   27:// (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+        -:   28:// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+        -:   29:
+        -:   30:// Type and function utilities for implementing parameterized tests.
+        -:   31:
+        -:   32:// IWYU pragma: private, include "gtest/gtest.h"
+        -:   33:// IWYU pragma: friend gtest/.*
+        -:   34:// IWYU pragma: friend gmock/.*
+        -:   35:
+        -:   36:#ifndef GOOGLETEST_INCLUDE_GTEST_INTERNAL_GTEST_PARAM_UTIL_H_
+        -:   37:#define GOOGLETEST_INCLUDE_GTEST_INTERNAL_GTEST_PARAM_UTIL_H_
+        -:   38:
+        -:   39:#include <ctype.h>
+        -:   40:
+        -:   41:#include <cassert>
+        -:   42:#include <functional>
+        -:   43:#include <iterator>
+        -:   44:#include <map>
+        -:   45:#include <memory>
+        -:   46:#include <ostream>
+        -:   47:#include <set>
+        -:   48:#include <string>
+        -:   49:#include <tuple>
+        -:   50:#include <type_traits>
+        -:   51:#include <unordered_map>
+        -:   52:#include <utility>
+        -:   53:#include <vector>
+        -:   54:
+        -:   55:#include "gtest/gtest-printers.h"
+        -:   56:#include "gtest/gtest-test-part.h"
+        -:   57:#include "gtest/internal/gtest-internal.h"
+        -:   58:#include "gtest/internal/gtest-port.h"
+        -:   59:
+        -:   60:namespace testing {
+        -:   61:// Input to a parameterized test name generator, describing a test parameter.
+        -:   62:// Consists of the parameter value and the integer parameter index.
+        -:   63:template <class ParamType>
+        -:   64:struct TestParamInfo {
+        -:   65:  TestParamInfo(const ParamType& a_param, size_t an_index)
+        -:   66:      : param(a_param), index(an_index) {}
+        -:   67:  ParamType param;
+        -:   68:  size_t index;
+        -:   69:};
+        -:   70:
+        -:   71:// A builtin parameterized test name generator which returns the result of
+        -:   72:// testing::PrintToString.
+        -:   73:struct PrintToStringParamName {
+        -:   74:  template <class ParamType>
+        -:   75:  std::string operator()(const TestParamInfo<ParamType>& info) const {
+        -:   76:    return PrintToString(info.param);
+        -:   77:  }
+        -:   78:};
+        -:   79:
+        -:   80:namespace internal {
+        -:   81:
+        -:   82:// INTERNAL IMPLEMENTATION - DO NOT USE IN USER CODE.
+        -:   83:// Utility Functions
+        -:   84:
+        -:   85:// Outputs a message explaining invalid registration of different
+        -:   86:// fixture class for the same test suite. This may happen when
+        -:   87:// TEST_P macro is used to define two tests with the same name
+        -:   88:// but in different namespaces.
+        -:   89:GTEST_API_ void ReportInvalidTestSuiteType(const char* test_suite_name,
+        -:   90:                                           const CodeLocation& code_location);
+        -:   91:
+        -:   92:template <typename>
+        -:   93:class ParamGeneratorInterface;
+        -:   94:template <typename>
+        -:   95:class ParamGenerator;
+        -:   96:
+        -:   97:// Interface for iterating over elements provided by an implementation
+        -:   98:// of ParamGeneratorInterface<T>.
+        -:   99:template <typename T>
+        -:  100:class ParamIteratorInterface {
+        -:  101: public:
+        -:  102:  virtual ~ParamIteratorInterface() = default;
+        -:  103:  // A pointer to the base generator instance.
+        -:  104:  // Used only for the purposes of iterator comparison
+        -:  105:  // to make sure that two iterators belong to the same generator.
+        -:  106:  virtual const ParamGeneratorInterface<T>* BaseGenerator() const = 0;
+        -:  107:  // Advances iterator to point to the next element
+        -:  108:  // provided by the generator. The caller is responsible
+        -:  109:  // for not calling Advance() on an iterator equal to
+        -:  110:  // BaseGenerator()->End().
+        -:  111:  virtual void Advance() = 0;
+        -:  112:  // Clones the iterator object. Used for implementing copy semantics
+        -:  113:  // of ParamIterator<T>.
+        -:  114:  virtual ParamIteratorInterface* Clone() const = 0;
+        -:  115:  // Dereferences the current iterator and provides (read-only) access
+        -:  116:  // to the pointed value. It is the caller's responsibility not to call
+        -:  117:  // Current() on an iterator equal to BaseGenerator()->End().
+        -:  118:  // Used for implementing ParamGenerator<T>::operator*().
+        -:  119:  virtual const T* Current() const = 0;
+        -:  120:  // Determines whether the given iterator and other point to the same
+        -:  121:  // element in the sequence generated by the generator.
+        -:  122:  // Used for implementing ParamGenerator<T>::operator==().
+        -:  123:  virtual bool Equals(const ParamIteratorInterface& other) const = 0;
+        -:  124:};
+        -:  125:
+        -:  126:// Class iterating over elements provided by an implementation of
+        -:  127:// ParamGeneratorInterface<T>. It wraps ParamIteratorInterface<T>
+        -:  128:// and implements the const forward iterator concept.
+        -:  129:template <typename T>
+        -:  130:class ParamIterator {
+        -:  131: public:
+        -:  132:  typedef T value_type;
+        -:  133:  typedef const T& reference;
+        -:  134:  typedef ptrdiff_t difference_type;
+        -:  135:
+        -:  136:  // ParamIterator assumes ownership of the impl_ pointer.
+        -:  137:  ParamIterator(const ParamIterator& other) : impl_(other.impl_->Clone()) {}
+        -:  138:  ParamIterator& operator=(const ParamIterator& other) {
+        -:  139:    if (this != &other) impl_.reset(other.impl_->Clone());
+        -:  140:    return *this;
+        -:  141:  }
+        -:  142:
+        -:  143:  const T& operator*() const { return *impl_->Current(); }
+        -:  144:  const T* operator->() const { return impl_->Current(); }
+        -:  145:  // Prefix version of operator++.
+        -:  146:  ParamIterator& operator++() {
+        -:  147:    impl_->Advance();
+        -:  148:    return *this;
+        -:  149:  }
+        -:  150:  // Postfix version of operator++.
+        -:  151:  ParamIterator operator++(int /*unused*/) {
+        -:  152:    ParamIteratorInterface<T>* clone = impl_->Clone();
+        -:  153:    impl_->Advance();
+        -:  154:    return ParamIterator(clone);
+        -:  155:  }
+        -:  156:  bool operator==(const ParamIterator& other) const {
+        -:  157:    return impl_.get() == other.impl_.get() || impl_->Equals(*other.impl_);
+        -:  158:  }
+        -:  159:  bool operator!=(const ParamIterator& other) const {
+        -:  160:    return !(*this == other);
+        -:  161:  }
+        -:  162:
+        -:  163: private:
+        -:  164:  friend class ParamGenerator<T>;
+        -:  165:  explicit ParamIterator(ParamIteratorInterface<T>* impl) : impl_(impl) {}
+        -:  166:  std::unique_ptr<ParamIteratorInterface<T>> impl_;
+        -:  167:};
+        -:  168:
+        -:  169:// ParamGeneratorInterface<T> is the binary interface to access generators
+        -:  170:// defined in other translation units.
+        -:  171:template <typename T>
+        -:  172:class ParamGeneratorInterface {
+        -:  173: public:
+        -:  174:  typedef T ParamType;
+        -:  175:
+        -:  176:  virtual ~ParamGeneratorInterface() = default;
+        -:  177:
+        -:  178:  // Generator interface definition
+        -:  179:  virtual ParamIteratorInterface<T>* Begin() const = 0;
+        -:  180:  virtual ParamIteratorInterface<T>* End() const = 0;
+        -:  181:};
+        -:  182:
+        -:  183:// Wraps ParamGeneratorInterface<T> and provides general generator syntax
+        -:  184:// compatible with the STL Container concept.
+        -:  185:// This class implements copy initialization semantics and the contained
+        -:  186:// ParamGeneratorInterface<T> instance is shared among all copies
+        -:  187:// of the original object. This is possible because that instance is immutable.
+        -:  188:template <typename T>
+        -:  189:class ParamGenerator {
+        -:  190: public:
+        -:  191:  typedef ParamIterator<T> iterator;
+        -:  192:
+        -:  193:  explicit ParamGenerator(ParamGeneratorInterface<T>* impl) : impl_(impl) {}
+        -:  194:  ParamGenerator(const ParamGenerator& other) : impl_(other.impl_) {}
+        -:  195:
+        -:  196:  ParamGenerator& operator=(const ParamGenerator& other) {
+        -:  197:    impl_ = other.impl_;
+        -:  198:    return *this;
+        -:  199:  }
+        -:  200:
+        -:  201:  iterator begin() const { return iterator(impl_->Begin()); }
+        -:  202:  iterator end() const { return iterator(impl_->End()); }
+        -:  203:
+        -:  204: private:
+        -:  205:  std::shared_ptr<const ParamGeneratorInterface<T>> impl_;
+        -:  206:};
+        -:  207:
+        -:  208:// Generates values from a range of two comparable values. Can be used to
+        -:  209:// generate sequences of user-defined types that implement operator+() and
+        -:  210:// operator<().
+        -:  211:// This class is used in the Range() function.
+        -:  212:template <typename T, typename IncrementT>
+        -:  213:class RangeGenerator : public ParamGeneratorInterface<T> {
+        -:  214: public:
+        -:  215:  RangeGenerator(T begin, T end, IncrementT step)
+        -:  216:      : begin_(begin),
+        -:  217:        end_(end),
+        -:  218:        step_(step),
+        -:  219:        end_index_(CalculateEndIndex(begin, end, step)) {}
+        -:  220:  ~RangeGenerator() override = default;
+        -:  221:
+        -:  222:  ParamIteratorInterface<T>* Begin() const override {
+        -:  223:    return new Iterator(this, begin_, 0, step_);
+        -:  224:  }
+        -:  225:  ParamIteratorInterface<T>* End() const override {
+        -:  226:    return new Iterator(this, end_, end_index_, step_);
+        -:  227:  }
+        -:  228:
+        -:  229: private:
+        -:  230:  class Iterator : public ParamIteratorInterface<T> {
+        -:  231:   public:
+        -:  232:    Iterator(const ParamGeneratorInterface<T>* base, T value, int index,
+        -:  233:             IncrementT step)
+        -:  234:        : base_(base), value_(value), index_(index), step_(step) {}
+        -:  235:    ~Iterator() override = default;
+        -:  236:
+        -:  237:    const ParamGeneratorInterface<T>* BaseGenerator() const override {
+        -:  238:      return base_;
+        -:  239:    }
+        -:  240:    void Advance() override {
+        -:  241:      value_ = static_cast<T>(value_ + step_);
+        -:  242:      index_++;
+        -:  243:    }
+        -:  244:    ParamIteratorInterface<T>* Clone() const override {
+        -:  245:      return new Iterator(*this);
+        -:  246:    }
+        -:  247:    const T* Current() const override { return &value_; }
+        -:  248:    bool Equals(const ParamIteratorInterface<T>& other) const override {
+        -:  249:      // Having the same base generator guarantees that the other
+        -:  250:      // iterator is of the same type and we can downcast.
+        -:  251:      GTEST_CHECK_(BaseGenerator() == other.BaseGenerator())
+        -:  252:          << "The program attempted to compare iterators "
+        -:  253:          << "from different generators." << std::endl;
+        -:  254:      const int other_index =
+        -:  255:          CheckedDowncastToActualType<const Iterator>(&other)->index_;
+        -:  256:      return index_ == other_index;
+        -:  257:    }
+        -:  258:
+        -:  259:   private:
+        -:  260:    Iterator(const Iterator& other)
+        -:  261:        : ParamIteratorInterface<T>(),
+        -:  262:          base_(other.base_),
+        -:  263:          value_(other.value_),
+        -:  264:          index_(other.index_),
+        -:  265:          step_(other.step_) {}
+        -:  266:
+        -:  267:    // No implementation - assignment is unsupported.
+        -:  268:    void operator=(const Iterator& other);
+        -:  269:
+        -:  270:    const ParamGeneratorInterface<T>* const base_;
+        -:  271:    T value_;
+        -:  272:    int index_;
+        -:  273:    const IncrementT step_;
+        -:  274:  };  // class RangeGenerator::Iterator
+        -:  275:
+        -:  276:  static int CalculateEndIndex(const T& begin, const T& end,
+        -:  277:                               const IncrementT& step) {
+        -:  278:    int end_index = 0;
+        -:  279:    for (T i = begin; i < end; i = static_cast<T>(i + step)) end_index++;
+        -:  280:    return end_index;
+        -:  281:  }
+        -:  282:
+        -:  283:  // No implementation - assignment is unsupported.
+        -:  284:  void operator=(const RangeGenerator& other);
+        -:  285:
+        -:  286:  const T begin_;
+        -:  287:  const T end_;
+        -:  288:  const IncrementT step_;
+        -:  289:  // The index for the end() iterator. All the elements in the generated
+        -:  290:  // sequence are indexed (0-based) to aid iterator comparison.
+        -:  291:  const int end_index_;
+        -:  292:};  // class RangeGenerator
+        -:  293:
+        -:  294:// Generates values from a pair of STL-style iterators. Used in the
+        -:  295:// ValuesIn() function. The elements are copied from the source range
+        -:  296:// since the source can be located on the stack, and the generator
+        -:  297:// is likely to persist beyond that stack frame.
+        -:  298:template <typename T>
+        -:  299:class ValuesInIteratorRangeGenerator : public ParamGeneratorInterface<T> {
+        -:  300: public:
+        -:  301:  template <typename ForwardIterator>
+        -:  302:  ValuesInIteratorRangeGenerator(ForwardIterator begin, ForwardIterator end)
+        -:  303:      : container_(begin, end) {}
+        -:  304:  ~ValuesInIteratorRangeGenerator() override = default;
+        -:  305:
+        -:  306:  ParamIteratorInterface<T>* Begin() const override {
+        -:  307:    return new Iterator(this, container_.begin());
+        -:  308:  }
+        -:  309:  ParamIteratorInterface<T>* End() const override {
+        -:  310:    return new Iterator(this, container_.end());
+        -:  311:  }
+        -:  312:
+        -:  313: private:
+        -:  314:  typedef typename ::std::vector<T> ContainerType;
+        -:  315:
+        -:  316:  class Iterator : public ParamIteratorInterface<T> {
+        -:  317:   public:
+        -:  318:    Iterator(const ParamGeneratorInterface<T>* base,
+        -:  319:             typename ContainerType::const_iterator iterator)
+        -:  320:        : base_(base), iterator_(iterator) {}
+        -:  321:    ~Iterator() override = default;
+        -:  322:
+        -:  323:    const ParamGeneratorInterface<T>* BaseGenerator() const override {
+        -:  324:      return base_;
+        -:  325:    }
+        -:  326:    void Advance() override {
+        -:  327:      ++iterator_;
+        -:  328:      value_.reset();
+        -:  329:    }
+        -:  330:    ParamIteratorInterface<T>* Clone() const override {
+        -:  331:      return new Iterator(*this);
+        -:  332:    }
+        -:  333:    // We need to use cached value referenced by iterator_ because *iterator_
+        -:  334:    // can return a temporary object (and of type other then T), so just
+        -:  335:    // having "return &*iterator_;" doesn't work.
+        -:  336:    // value_ is updated here and not in Advance() because Advance()
+        -:  337:    // can advance iterator_ beyond the end of the range, and we cannot
+        -:  338:    // detect that fact. The client code, on the other hand, is
+        -:  339:    // responsible for not calling Current() on an out-of-range iterator.
+        -:  340:    const T* Current() const override {
+        -:  341:      if (value_.get() == nullptr) value_.reset(new T(*iterator_));
+        -:  342:      return value_.get();
+        -:  343:    }
+        -:  344:    bool Equals(const ParamIteratorInterface<T>& other) const override {
+        -:  345:      // Having the same base generator guarantees that the other
+        -:  346:      // iterator is of the same type and we can downcast.
+        -:  347:      GTEST_CHECK_(BaseGenerator() == other.BaseGenerator())
+        -:  348:          << "The program attempted to compare iterators "
+        -:  349:          << "from different generators." << std::endl;
+        -:  350:      return iterator_ ==
+        -:  351:             CheckedDowncastToActualType<const Iterator>(&other)->iterator_;
+        -:  352:    }
+        -:  353:
+        -:  354:   private:
+        -:  355:    Iterator(const Iterator& other)
+        -:  356:        // The explicit constructor call suppresses a false warning
+        -:  357:        // emitted by gcc when supplied with the -Wextra option.
+        -:  358:        : ParamIteratorInterface<T>(),
+        -:  359:          base_(other.base_),
+        -:  360:          iterator_(other.iterator_) {}
+        -:  361:
+        -:  362:    const ParamGeneratorInterface<T>* const base_;
+        -:  363:    typename ContainerType::const_iterator iterator_;
+        -:  364:    // A cached value of *iterator_. We keep it here to allow access by
+        -:  365:    // pointer in the wrapping iterator's operator->().
+        -:  366:    // value_ needs to be mutable to be accessed in Current().
+        -:  367:    // Use of std::unique_ptr helps manage cached value's lifetime,
+        -:  368:    // which is bound by the lifespan of the iterator itself.
+        -:  369:    mutable std::unique_ptr<const T> value_;
+        -:  370:  };  // class ValuesInIteratorRangeGenerator::Iterator
+        -:  371:
+        -:  372:  // No implementation - assignment is unsupported.
+        -:  373:  void operator=(const ValuesInIteratorRangeGenerator& other);
+        -:  374:
+        -:  375:  const ContainerType container_;
+        -:  376:};  // class ValuesInIteratorRangeGenerator
+        -:  377:
+        -:  378:// INTERNAL IMPLEMENTATION - DO NOT USE IN USER CODE.
+        -:  379://
+        -:  380:// Default parameterized test name generator, returns a string containing the
+        -:  381:// integer test parameter index.
+        -:  382:template <class ParamType>
+        -:  383:std::string DefaultParamName(const TestParamInfo<ParamType>& info) {
+        -:  384:  return std::to_string(info.index);
+        -:  385:}
+        -:  386:
+        -:  387:template <typename T = int>
+        -:  388:void TestNotEmpty() {
+        -:  389:  static_assert(sizeof(T) == 0, "Empty arguments are not allowed.");
+        -:  390:}
+        -:  391:template <typename T = int>
+        -:  392:void TestNotEmpty(const T&) {}
+        -:  393:
+        -:  394:// INTERNAL IMPLEMENTATION - DO NOT USE IN USER CODE.
+        -:  395://
+        -:  396:// Stores a parameter value and later creates tests parameterized with that
+        -:  397:// value.
+        -:  398:template <class TestClass>
+        -:  399:class ParameterizedTestFactory : public TestFactoryBase {
+        -:  400: public:
+        -:  401:  typedef typename TestClass::ParamType ParamType;
+        -:  402:  explicit ParameterizedTestFactory(ParamType parameter)
+        -:  403:      : parameter_(parameter) {}
+        -:  404:  Test* CreateTest() override {
+        -:  405:    TestClass::SetParam(&parameter_);
+        -:  406:    return new TestClass();
+        -:  407:  }
+        -:  408:
+        -:  409: private:
+        -:  410:  const ParamType parameter_;
+        -:  411:
+        -:  412:  ParameterizedTestFactory(const ParameterizedTestFactory&) = delete;
+        -:  413:  ParameterizedTestFactory& operator=(const ParameterizedTestFactory&) = delete;
+        -:  414:};
+        -:  415:
+        -:  416:// INTERNAL IMPLEMENTATION - DO NOT USE IN USER CODE.
+        -:  417://
+        -:  418:// TestMetaFactoryBase is a base class for meta-factories that create
+        -:  419:// test factories for passing into MakeAndRegisterTestInfo function.
+        -:  420:template <class ParamType>
+        -:  421:class TestMetaFactoryBase {
+        -:  422: public:
+        -:  423:  virtual ~TestMetaFactoryBase() = default;
+        -:  424:
+        -:  425:  virtual TestFactoryBase* CreateTestFactory(ParamType parameter) = 0;
+        -:  426:};
+        -:  427:
+        -:  428:// INTERNAL IMPLEMENTATION - DO NOT USE IN USER CODE.
+        -:  429://
+        -:  430:// TestMetaFactory creates test factories for passing into
+        -:  431:// MakeAndRegisterTestInfo function. Since MakeAndRegisterTestInfo receives
+        -:  432:// ownership of test factory pointer, same factory object cannot be passed
+        -:  433:// into that method twice. But ParameterizedTestSuiteInfo is going to call
+        -:  434:// it for each Test/Parameter value combination. Thus it needs meta factory
+        -:  435:// creator class.
+        -:  436:template <class TestSuite>
+        -:  437:class TestMetaFactory
+        -:  438:    : public TestMetaFactoryBase<typename TestSuite::ParamType> {
+        -:  439: public:
+        -:  440:  using ParamType = typename TestSuite::ParamType;
+        -:  441:
+        -:  442:  TestMetaFactory() = default;
+        -:  443:
+        -:  444:  TestFactoryBase* CreateTestFactory(ParamType parameter) override {
+        -:  445:    return new ParameterizedTestFactory<TestSuite>(parameter);
+        -:  446:  }
+        -:  447:
+        -:  448: private:
+        -:  449:  TestMetaFactory(const TestMetaFactory&) = delete;
+        -:  450:  TestMetaFactory& operator=(const TestMetaFactory&) = delete;
+        -:  451:};
+        -:  452:
+        -:  453:// INTERNAL IMPLEMENTATION - DO NOT USE IN USER CODE.
+        -:  454://
+        -:  455:// ParameterizedTestSuiteInfoBase is a generic interface
+        -:  456:// to ParameterizedTestSuiteInfo classes. ParameterizedTestSuiteInfoBase
+        -:  457:// accumulates test information provided by TEST_P macro invocations
+        -:  458:// and generators provided by INSTANTIATE_TEST_SUITE_P macro invocations
+        -:  459:// and uses that information to register all resulting test instances
+        -:  460:// in RegisterTests method. The ParameterizeTestSuiteRegistry class holds
+        -:  461:// a collection of pointers to the ParameterizedTestSuiteInfo objects
+        -:  462:// and calls RegisterTests() on each of them when asked.
+        -:  463:class ParameterizedTestSuiteInfoBase {
+        -:  464: public:
+        -:  465:  virtual ~ParameterizedTestSuiteInfoBase() = default;
+        -:  466:
+        -:  467:  // Base part of test suite name for display purposes.
+        -:  468:  virtual const std::string& GetTestSuiteName() const = 0;
+        -:  469:  // Test suite id to verify identity.
+        -:  470:  virtual TypeId GetTestSuiteTypeId() const = 0;
+        -:  471:  // UnitTest class invokes this method to register tests in this
+        -:  472:  // test suite right before running them in RUN_ALL_TESTS macro.
+        -:  473:  // This method should not be called more than once on any single
+        -:  474:  // instance of a ParameterizedTestSuiteInfoBase derived class.
+        -:  475:  virtual void RegisterTests() = 0;
+        -:  476:
+        -:  477: protected:
+        -:  478:  ParameterizedTestSuiteInfoBase() {}
+        -:  479:
+        -:  480: private:
+        -:  481:  ParameterizedTestSuiteInfoBase(const ParameterizedTestSuiteInfoBase&) =
+        -:  482:      delete;
+        -:  483:  ParameterizedTestSuiteInfoBase& operator=(
+        -:  484:      const ParameterizedTestSuiteInfoBase&) = delete;
+        -:  485:};
+        -:  486:
+        -:  487:// INTERNAL IMPLEMENTATION - DO NOT USE IN USER CODE.
+        -:  488://
+        -:  489:// Report a the name of a test_suit as safe to ignore
+        -:  490:// as the side effect of construction of this type.
+        -:  491:struct GTEST_API_ MarkAsIgnored {
+        -:  492:  explicit MarkAsIgnored(const char* test_suite);
+        -:  493:};
+        -:  494:
+        -:  495:GTEST_API_ void InsertSyntheticTestCase(const std::string& name,
+        -:  496:                                        CodeLocation location, bool has_test_p);
+        -:  497:
+        -:  498:// INTERNAL IMPLEMENTATION - DO NOT USE IN USER CODE.
+        -:  499://
+        -:  500:// ParameterizedTestSuiteInfo accumulates tests obtained from TEST_P
+        -:  501:// macro invocations for a particular test suite and generators
+        -:  502:// obtained from INSTANTIATE_TEST_SUITE_P macro invocations for that
+        -:  503:// test suite. It registers tests with all values generated by all
+        -:  504:// generators when asked.
+        -:  505:template <class TestSuite>
+        -:  506:class ParameterizedTestSuiteInfo : public ParameterizedTestSuiteInfoBase {
+        -:  507: public:
+        -:  508:  // ParamType and GeneratorCreationFunc are private types but are required
+        -:  509:  // for declarations of public methods AddTestPattern() and
+        -:  510:  // AddTestSuiteInstantiation().
+        -:  511:  using ParamType = typename TestSuite::ParamType;
+        -:  512:  // A function that returns an instance of appropriate generator type.
+        -:  513:  typedef ParamGenerator<ParamType>(GeneratorCreationFunc)();
+        -:  514:  using ParamNameGeneratorFunc = std::string(const TestParamInfo<ParamType>&);
+        -:  515:
+        -:  516:  explicit ParameterizedTestSuiteInfo(std::string name,
+        -:  517:                                      CodeLocation code_location)
+        -:  518:      : test_suite_name_(std::move(name)),
+        -:  519:        code_location_(std::move(code_location)) {}
+        -:  520:
+        -:  521:  // Test suite base name for display purposes.
+        -:  522:  const std::string& GetTestSuiteName() const override {
+        -:  523:    return test_suite_name_;
+        -:  524:  }
+        -:  525:  // Test suite id to verify identity.
+        -:  526:  TypeId GetTestSuiteTypeId() const override { return GetTypeId<TestSuite>(); }
+        -:  527:  // TEST_P macro uses AddTestPattern() to record information
+        -:  528:  // about a single test in a LocalTestInfo structure.
+        -:  529:  // test_suite_name is the base name of the test suite (without invocation
+        -:  530:  // prefix). test_base_name is the name of an individual test without
+        -:  531:  // parameter index. For the test SequenceA/FooTest.DoBar/1 FooTest is
+        -:  532:  // test suite base name and DoBar is test base name.
+        -:  533:  void AddTestPattern(const char*, const char* test_base_name,
+        -:  534:                      TestMetaFactoryBase<ParamType>* meta_factory,
+        -:  535:                      CodeLocation code_location) {
+        -:  536:    tests_.emplace_back(
+        -:  537:        new TestInfo(test_base_name, meta_factory, std::move(code_location)));
+        -:  538:  }
+        -:  539:  // INSTANTIATE_TEST_SUITE_P macro uses AddGenerator() to record information
+        -:  540:  // about a generator.
+        -:  541:  int AddTestSuiteInstantiation(std::string instantiation_name,
+        -:  542:                                GeneratorCreationFunc* func,
+        -:  543:                                ParamNameGeneratorFunc* name_func,
+        -:  544:                                const char* file, int line) {
+        -:  545:    instantiations_.emplace_back(std::move(instantiation_name), func, name_func,
+        -:  546:                                 file, line);
+        -:  547:    return 0;  // Return value used only to run this method in namespace scope.
+        -:  548:  }
+        -:  549:  // UnitTest class invokes this method to register tests in this test suite
+        -:  550:  // right before running tests in RUN_ALL_TESTS macro.
+        -:  551:  // This method should not be called more than once on any single
+        -:  552:  // instance of a ParameterizedTestSuiteInfoBase derived class.
+        -:  553:  // UnitTest has a guard to prevent from calling this method more than once.
+        -:  554:  void RegisterTests() override {
+        -:  555:    bool generated_instantiations = false;
+        -:  556:
+        -:  557:    std::string test_suite_name;
+        -:  558:    std::string test_name;
+        -:  559:    for (const std::shared_ptr<TestInfo>& test_info : tests_) {
+        -:  560:      for (const InstantiationInfo& instantiation : instantiations_) {
+        -:  561:        const std::string& instantiation_name = instantiation.name;
+        -:  562:        ParamGenerator<ParamType> generator((*instantiation.generator)());
+        -:  563:        ParamNameGeneratorFunc* name_func = instantiation.name_func;
+        -:  564:        const char* file = instantiation.file;
+        -:  565:        int line = instantiation.line;
+        -:  566:
+        -:  567:        if (!instantiation_name.empty())
+        -:  568:          test_suite_name = instantiation_name + "/";
+        -:  569:        else
+        -:  570:          test_suite_name.clear();
+        -:  571:        test_suite_name += test_suite_name_;
+        -:  572:
+        -:  573:        size_t i = 0;
+        -:  574:        std::set<std::string> test_param_names;
+        -:  575:        for (const auto& param : generator) {
+        -:  576:          generated_instantiations = true;
+        -:  577:
+        -:  578:          test_name.clear();
+        -:  579:
+        -:  580:          std::string param_name =
+        -:  581:              name_func(TestParamInfo<ParamType>(param, i));
+        -:  582:
+        -:  583:          GTEST_CHECK_(IsValidParamName(param_name))
+        -:  584:              << "Parameterized test name '" << param_name
+        -:  585:              << "' is invalid (contains spaces, dashes, or any "
+        -:  586:                 "non-alphanumeric characters other than underscores), in "
+        -:  587:              << file << " line " << line << "" << std::endl;
+        -:  588:
+        -:  589:          GTEST_CHECK_(test_param_names.count(param_name) == 0)
+        -:  590:              << "Duplicate parameterized test name '" << param_name << "', in "
+        -:  591:              << file << " line " << line << std::endl;
+        -:  592:
+        -:  593:          if (!test_info->test_base_name.empty()) {
+        -:  594:            test_name.append(test_info->test_base_name).append("/");
+        -:  595:          }
+        -:  596:          test_name += param_name;
+        -:  597:
+        -:  598:          test_param_names.insert(std::move(param_name));
+        -:  599:
+        -:  600:          MakeAndRegisterTestInfo(
+        -:  601:              test_suite_name, test_name.c_str(),
+        -:  602:              nullptr,  // No type parameter.
+        -:  603:              PrintToString(param).c_str(), test_info->code_location,
+        -:  604:              GetTestSuiteTypeId(),
+        -:  605:              SuiteApiResolver<TestSuite>::GetSetUpCaseOrSuite(file, line),
+        -:  606:              SuiteApiResolver<TestSuite>::GetTearDownCaseOrSuite(file, line),
+        -:  607:              test_info->test_meta_factory->CreateTestFactory(param));
+        -:  608:          ++i;
+        -:  609:        }  // for param
+        -:  610:      }  // for instantiation
+        -:  611:    }  // for test_info
+        -:  612:
+        -:  613:    if (!generated_instantiations) {
+        -:  614:      // There are no generaotrs, or they all generate nothing ...
+        -:  615:      InsertSyntheticTestCase(GetTestSuiteName(), code_location_,
+        -:  616:                              !tests_.empty());
+        -:  617:    }
+        -:  618:  }  // RegisterTests
+        -:  619:
+        -:  620: private:
+        -:  621:  // LocalTestInfo structure keeps information about a single test registered
+        -:  622:  // with TEST_P macro.
+        -:  623:  struct TestInfo {
+        -:  624:    TestInfo(const char* a_test_base_name,
+        -:  625:             TestMetaFactoryBase<ParamType>* a_test_meta_factory,
+        -:  626:             CodeLocation a_code_location)
+        -:  627:        : test_base_name(a_test_base_name),
+        -:  628:          test_meta_factory(a_test_meta_factory),
+        -:  629:          code_location(std::move(a_code_location)) {}
+        -:  630:
+        -:  631:    const std::string test_base_name;
+        -:  632:    const std::unique_ptr<TestMetaFactoryBase<ParamType>> test_meta_factory;
+        -:  633:    const CodeLocation code_location;
+        -:  634:  };
+        -:  635:  using TestInfoContainer = ::std::vector<std::shared_ptr<TestInfo>>;
+        -:  636:  // Records data received from INSTANTIATE_TEST_SUITE_P macros:
+        -:  637:  //  <Instantiation name, Sequence generator creation function,
+        -:  638:  //     Name generator function, Source file, Source line>
+        -:  639:  struct InstantiationInfo {
+        -:  640:    InstantiationInfo(std::string name_in, GeneratorCreationFunc* generator_in,
+        -:  641:                      ParamNameGeneratorFunc* name_func_in, const char* file_in,
+        -:  642:                      int line_in)
+        -:  643:        : name(std::move(name_in)),
+        -:  644:          generator(generator_in),
+        -:  645:          name_func(name_func_in),
+        -:  646:          file(file_in),
+        -:  647:          line(line_in) {}
+        -:  648:
+        -:  649:    std::string name;
+        -:  650:    GeneratorCreationFunc* generator;
+        -:  651:    ParamNameGeneratorFunc* name_func;
+        -:  652:    const char* file;
+        -:  653:    int line;
+        -:  654:  };
+        -:  655:  typedef ::std::vector<InstantiationInfo> InstantiationContainer;
+        -:  656:
+        -:  657:  static bool IsValidParamName(const std::string& name) {
+        -:  658:    // Check for empty string
+        -:  659:    if (name.empty()) return false;
+        -:  660:
+        -:  661:    // Check for invalid characters
+        -:  662:    for (std::string::size_type index = 0; index < name.size(); ++index) {
+        -:  663:      if (!IsAlNum(name[index]) && name[index] != '_') return false;
+        -:  664:    }
+        -:  665:
+        -:  666:    return true;
+        -:  667:  }
+        -:  668:
+        -:  669:  const std::string test_suite_name_;
+        -:  670:  CodeLocation code_location_;
+        -:  671:  TestInfoContainer tests_;
+        -:  672:  InstantiationContainer instantiations_;
+        -:  673:
+        -:  674:  ParameterizedTestSuiteInfo(const ParameterizedTestSuiteInfo&) = delete;
+        -:  675:  ParameterizedTestSuiteInfo& operator=(const ParameterizedTestSuiteInfo&) =
+        -:  676:      delete;
+        -:  677:};  // class ParameterizedTestSuiteInfo
+        -:  678:
+        -:  679://  Legacy API is deprecated but still available
+        -:  680:#ifndef GTEST_REMOVE_LEGACY_TEST_CASEAPI_
+        -:  681:template <class TestCase>
+        -:  682:using ParameterizedTestCaseInfo = ParameterizedTestSuiteInfo<TestCase>;
+        -:  683:#endif  //  GTEST_REMOVE_LEGACY_TEST_CASEAPI_
+        -:  684:
+        -:  685:// INTERNAL IMPLEMENTATION - DO NOT USE IN USER CODE.
+        -:  686://
+        -:  687:// ParameterizedTestSuiteRegistry contains a map of
+        -:  688:// ParameterizedTestSuiteInfoBase classes accessed by test suite names. TEST_P
+        -:  689:// and INSTANTIATE_TEST_SUITE_P macros use it to locate their corresponding
+        -:  690:// ParameterizedTestSuiteInfo descriptors.
+        -:  691:class ParameterizedTestSuiteRegistry {
+        -:  692: public:
+function _ZN7testing8internal30ParameterizedTestSuiteRegistryC2Ev called 1 returned 100% blocks executed 100%
+        1:  693:  ParameterizedTestSuiteRegistry() = default;
+        1:  693-block  0
+call    0 returned 1
+call    1 returned 1
+function _ZN7testing8internal30ParameterizedTestSuiteRegistryD2Ev called 1 returned 100% blocks executed 64%
+        1:  694:  ~ParameterizedTestSuiteRegistry() {
+       1*:  695:    for (auto& test_suite_info : test_suite_infos_) {
+        1:  695-block  0
+call    0 returned 1
+call    1 returned 1
+    %%%%%:  695-block  1
+call    2 never executed
+    %%%%%:  695-block  2
+call    3 never executed
+        1:  695-block  3
+call    4 returned 1
+branch  5 taken 0
+branch  6 taken 1 (fallthrough)
+    #####:  696:      delete test_suite_info;
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    %%%%%:  696-block  0
+call    2 never executed
+        -:  697:    }
+        1:  698:  }
+        1:  698-block  0
+call    0 returned 1
+call    1 returned 1
+        -:  699:
+        -:  700:  // Looks up or creates and returns a structure containing information about
+        -:  701:  // tests and instantiations of a particular test suite.
+        -:  702:  template <class TestSuite>
+        -:  703:  ParameterizedTestSuiteInfo<TestSuite>* GetTestSuitePatternHolder(
+        -:  704:      std::string test_suite_name, CodeLocation code_location) {
+        -:  705:    ParameterizedTestSuiteInfo<TestSuite>* typed_test_info = nullptr;
+        -:  706:
+        -:  707:    auto item_it = suite_name_to_info_index_.find(test_suite_name);
+        -:  708:    if (item_it != suite_name_to_info_index_.end()) {
+        -:  709:      auto* test_suite_info = test_suite_infos_[item_it->second];
+        -:  710:      if (test_suite_info->GetTestSuiteTypeId() != GetTypeId<TestSuite>()) {
+        -:  711:        // Complain about incorrect usage of Google Test facilities
+        -:  712:        // and terminate the program since we cannot guaranty correct
+        -:  713:        // test suite setup and tear-down in this case.
+        -:  714:        ReportInvalidTestSuiteType(test_suite_name.c_str(), code_location);
+        -:  715:        posix::Abort();
+        -:  716:      } else {
+        -:  717:        // At this point we are sure that the object we found is of the same
+        -:  718:        // type we are looking for, so we downcast it to that type
+        -:  719:        // without further checks.
+        -:  720:        typed_test_info =
+        -:  721:            CheckedDowncastToActualType<ParameterizedTestSuiteInfo<TestSuite>>(
+        -:  722:                test_suite_info);
+        -:  723:      }
+        -:  724:    }
+        -:  725:    if (typed_test_info == nullptr) {
+        -:  726:      typed_test_info = new ParameterizedTestSuiteInfo<TestSuite>(
+        -:  727:          test_suite_name, std::move(code_location));
+        -:  728:      suite_name_to_info_index_.emplace(std::move(test_suite_name),
+        -:  729:                                        test_suite_infos_.size());
+        -:  730:      test_suite_infos_.push_back(typed_test_info);
+        -:  731:    }
+        -:  732:    return typed_test_info;
+        -:  733:  }
+function _ZN7testing8internal30ParameterizedTestSuiteRegistry13RegisterTestsEv called 1 returned 100% blocks executed 67%
+        1:  734:  void RegisterTests() {
+       1*:  735:    for (auto& test_suite_info : test_suite_infos_) {
+        1:  735-block  0
+call    0 returned 1
+call    1 returned 1
+    %%%%%:  735-block  1
+call    2 never executed
+    %%%%%:  735-block  2
+call    3 never executed
+        1:  735-block  3
+call    4 returned 1
+branch  5 taken 0
+branch  6 taken 1 (fallthrough)
+    #####:  736:      test_suite_info->RegisterTests();
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+        -:  737:    }
+        1:  738:  }
+        1:  738-block  0
+        -:  739://  Legacy API is deprecated but still available
+        -:  740:#ifndef GTEST_REMOVE_LEGACY_TEST_CASEAPI_
+        -:  741:  template <class TestCase>
+        -:  742:  ParameterizedTestCaseInfo<TestCase>* GetTestCasePatternHolder(
+        -:  743:      std::string test_case_name, CodeLocation code_location) {
+        -:  744:    return GetTestSuitePatternHolder<TestCase>(std::move(test_case_name),
+        -:  745:                                               std::move(code_location));
+        -:  746:  }
+        -:  747:
+        -:  748:#endif  //  GTEST_REMOVE_LEGACY_TEST_CASEAPI_
+        -:  749:
+        -:  750: private:
+        -:  751:  using TestSuiteInfoContainer = ::std::vector<ParameterizedTestSuiteInfoBase*>;
+        -:  752:
+        -:  753:  TestSuiteInfoContainer test_suite_infos_;
+        -:  754:  ::std::unordered_map<std::string, size_t> suite_name_to_info_index_;
+        -:  755:
+        -:  756:  ParameterizedTestSuiteRegistry(const ParameterizedTestSuiteRegistry&) =
+        -:  757:      delete;
+        -:  758:  ParameterizedTestSuiteRegistry& operator=(
+        -:  759:      const ParameterizedTestSuiteRegistry&) = delete;
+        -:  760:};
+        -:  761:
+        -:  762:// Keep track of what type-parameterized test suite are defined and
+        -:  763:// where as well as which are intatiated. This allows susequently
+        -:  764:// identifying suits that are defined but never used.
+        -:  765:class TypeParameterizedTestSuiteRegistry {
+        -:  766: public:
+        -:  767:  // Add a suite definition
+        -:  768:  void RegisterTestSuite(const char* test_suite_name,
+        -:  769:                         CodeLocation code_location);
+        -:  770:
+        -:  771:  // Add an instantiation of a suit.
+        -:  772:  void RegisterInstantiation(const char* test_suite_name);
+        -:  773:
+        -:  774:  // For each suit repored as defined but not reported as instantiation,
+        -:  775:  // emit a test that reports that fact (configurably, as an error).
+        -:  776:  void CheckForInstantiations();
+        -:  777:
+        -:  778: private:
+        -:  779:  struct TypeParameterizedTestSuiteInfo {
+function _ZN7testing8internal34TypeParameterizedTestSuiteRegistry30TypeParameterizedTestSuiteInfoC2ENS0_12CodeLocationE called 0 returned 0% blocks executed 0%
+    #####:  780:    explicit TypeParameterizedTestSuiteInfo(CodeLocation c)
+    #####:  781:        : code_location(std::move(c)), instantiated(false) {}
+    %%%%%:  781-block  0
+call    0 never executed
+call    1 never executed
+        -:  782:
+        -:  783:    CodeLocation code_location;
+        -:  784:    bool instantiated;
+        -:  785:  };
+        -:  786:
+        -:  787:  std::map<std::string, TypeParameterizedTestSuiteInfo> suites_;
+        -:  788:};
+        -:  789:
+        -:  790:}  // namespace internal
+        -:  791:
+        -:  792:// Forward declarations of ValuesIn(), which is implemented in
+        -:  793:// include/gtest/gtest-param-test.h.
+        -:  794:template <class Container>
+        -:  795:internal::ParamGenerator<typename Container::value_type> ValuesIn(
+        -:  796:    const Container& container);
+        -:  797:
+        -:  798:namespace internal {
+        -:  799:// Used in the Values() function to provide polymorphic capabilities.
+        -:  800:
+        -:  801:GTEST_DISABLE_MSC_WARNINGS_PUSH_(4100)
+        -:  802:
+        -:  803:template <typename... Ts>
+        -:  804:class ValueArray {
+        -:  805: public:
+        -:  806:  explicit ValueArray(Ts... v) : v_(FlatTupleConstructTag{}, std::move(v)...) {}
+        -:  807:
+        -:  808:  template <typename T>
+        -:  809:  operator ParamGenerator<T>() const {  // NOLINT
+        -:  810:    return ValuesIn(MakeVector<T>(std::make_index_sequence<sizeof...(Ts)>()));
+        -:  811:  }
+        -:  812:
+        -:  813: private:
+        -:  814:  template <typename T, size_t... I>
+        -:  815:  std::vector<T> MakeVector(std::index_sequence<I...>) const {
+        -:  816:    return std::vector<T>{static_cast<T>(v_.template Get<I>())...};
+        -:  817:  }
+        -:  818:
+        -:  819:  FlatTuple<Ts...> v_;
+        -:  820:};
+        -:  821:
+        -:  822:GTEST_DISABLE_MSC_WARNINGS_POP_()  // 4100
+        -:  823:
+        -:  824:template <typename... T>
+        -:  825:class CartesianProductGenerator
+        -:  826:    : public ParamGeneratorInterface<::std::tuple<T...>> {
+        -:  827: public:
+        -:  828:  typedef ::std::tuple<T...> ParamType;
+        -:  829:
+        -:  830:  CartesianProductGenerator(const std::tuple<ParamGenerator<T>...>& g)
+        -:  831:      : generators_(g) {}
+        -:  832:  ~CartesianProductGenerator() override = default;
+        -:  833:
+        -:  834:  ParamIteratorInterface<ParamType>* Begin() const override {
+        -:  835:    return new Iterator(this, generators_, false);
+        -:  836:  }
+        -:  837:  ParamIteratorInterface<ParamType>* End() const override {
+        -:  838:    return new Iterator(this, generators_, true);
+        -:  839:  }
+        -:  840:
+        -:  841: private:
+        -:  842:  template <class I>
+        -:  843:  class IteratorImpl;
+        -:  844:  template <size_t... I>
+        -:  845:  class IteratorImpl<std::index_sequence<I...>>
+        -:  846:      : public ParamIteratorInterface<ParamType> {
+        -:  847:   public:
+        -:  848:    IteratorImpl(const ParamGeneratorInterface<ParamType>* base,
+        -:  849:                 const std::tuple<ParamGenerator<T>...>& generators,
+        -:  850:                 bool is_end)
+        -:  851:        : base_(base),
+        -:  852:          begin_(std::get<I>(generators).begin()...),
+        -:  853:          end_(std::get<I>(generators).end()...),
+        -:  854:          current_(is_end ? end_ : begin_) {
+        -:  855:      ComputeCurrentValue();
+        -:  856:    }
+        -:  857:    ~IteratorImpl() override = default;
+        -:  858:
+        -:  859:    const ParamGeneratorInterface<ParamType>* BaseGenerator() const override {
+        -:  860:      return base_;
+        -:  861:    }
+        -:  862:    // Advance should not be called on beyond-of-range iterators
+        -:  863:    // so no component iterators must be beyond end of range, either.
+        -:  864:    void Advance() override {
+        -:  865:      assert(!AtEnd());
+        -:  866:      // Advance the last iterator.
+        -:  867:      ++std::get<sizeof...(T) - 1>(current_);
+        -:  868:      // if that reaches end, propagate that up.
+        -:  869:      AdvanceIfEnd<sizeof...(T) - 1>();
+        -:  870:      ComputeCurrentValue();
+        -:  871:    }
+        -:  872:    ParamIteratorInterface<ParamType>* Clone() const override {
+        -:  873:      return new IteratorImpl(*this);
+        -:  874:    }
+        -:  875:
+        -:  876:    const ParamType* Current() const override { return current_value_.get(); }
+        -:  877:
+        -:  878:    bool Equals(const ParamIteratorInterface<ParamType>& other) const override {
+        -:  879:      // Having the same base generator guarantees that the other
+        -:  880:      // iterator is of the same type and we can downcast.
+        -:  881:      GTEST_CHECK_(BaseGenerator() == other.BaseGenerator())
+        -:  882:          << "The program attempted to compare iterators "
+        -:  883:          << "from different generators." << std::endl;
+        -:  884:      const IteratorImpl* typed_other =
+        -:  885:          CheckedDowncastToActualType<const IteratorImpl>(&other);
+        -:  886:
+        -:  887:      // We must report iterators equal if they both point beyond their
+        -:  888:      // respective ranges. That can happen in a variety of fashions,
+        -:  889:      // so we have to consult AtEnd().
+        -:  890:      if (AtEnd() && typed_other->AtEnd()) return true;
+        -:  891:
+        -:  892:      bool same = true;
+        -:  893:      bool dummy[] = {
+        -:  894:          (same = same && std::get<I>(current_) ==
+        -:  895:                              std::get<I>(typed_other->current_))...};
+        -:  896:      (void)dummy;
+        -:  897:      return same;
+        -:  898:    }
+        -:  899:
+        -:  900:   private:
+        -:  901:    template <size_t ThisI>
+        -:  902:    void AdvanceIfEnd() {
+        -:  903:      if (std::get<ThisI>(current_) != std::get<ThisI>(end_)) return;
+        -:  904:
+        -:  905:      bool last = ThisI == 0;
+        -:  906:      if (last) {
+        -:  907:        // We are done. Nothing else to propagate.
+        -:  908:        return;
+        -:  909:      }
+        -:  910:
+        -:  911:      constexpr size_t NextI = ThisI - (ThisI != 0);
+        -:  912:      std::get<ThisI>(current_) = std::get<ThisI>(begin_);
+        -:  913:      ++std::get<NextI>(current_);
+        -:  914:      AdvanceIfEnd<NextI>();
+        -:  915:    }
+        -:  916:
+        -:  917:    void ComputeCurrentValue() {
+        -:  918:      if (!AtEnd())
+        -:  919:        current_value_ = std::make_shared<ParamType>(*std::get<I>(current_)...);
+        -:  920:    }
+        -:  921:    bool AtEnd() const {
+        -:  922:      bool at_end = false;
+        -:  923:      bool dummy[] = {
+        -:  924:          (at_end = at_end || std::get<I>(current_) == std::get<I>(end_))...};
+        -:  925:      (void)dummy;
+        -:  926:      return at_end;
+        -:  927:    }
+        -:  928:
+        -:  929:    const ParamGeneratorInterface<ParamType>* const base_;
+        -:  930:    std::tuple<typename ParamGenerator<T>::iterator...> begin_;
+        -:  931:    std::tuple<typename ParamGenerator<T>::iterator...> end_;
+        -:  932:    std::tuple<typename ParamGenerator<T>::iterator...> current_;
+        -:  933:    std::shared_ptr<ParamType> current_value_;
+        -:  934:  };
+        -:  935:
+        -:  936:  using Iterator = IteratorImpl<std::make_index_sequence<sizeof...(T)>>;
+        -:  937:
+        -:  938:  std::tuple<ParamGenerator<T>...> generators_;
+        -:  939:};
+        -:  940:
+        -:  941:template <class... Gen>
+        -:  942:class CartesianProductHolder {
+        -:  943: public:
+        -:  944:  CartesianProductHolder(const Gen&... g) : generators_(g...) {}
+        -:  945:  template <typename... T>
+        -:  946:  operator ParamGenerator<::std::tuple<T...>>() const {
+        -:  947:    return ParamGenerator<::std::tuple<T...>>(
+        -:  948:        new CartesianProductGenerator<T...>(generators_));
+        -:  949:  }
+        -:  950:
+        -:  951: private:
+        -:  952:  std::tuple<Gen...> generators_;
+        -:  953:};
+        -:  954:
+        -:  955:template <typename From, typename To, typename Func>
+        -:  956:class ParamGeneratorConverter : public ParamGeneratorInterface<To> {
+        -:  957: public:
+        -:  958:  ParamGeneratorConverter(ParamGenerator<From> gen, Func converter)  // NOLINT
+        -:  959:      : generator_(std::move(gen)), converter_(std::move(converter)) {}
+        -:  960:
+        -:  961:  ParamIteratorInterface<To>* Begin() const override {
+        -:  962:    return new Iterator(this, generator_.begin(), generator_.end());
+        -:  963:  }
+        -:  964:  ParamIteratorInterface<To>* End() const override {
+        -:  965:    return new Iterator(this, generator_.end(), generator_.end());
+        -:  966:  }
+        -:  967:
+        -:  968:  // Returns the std::function wrapping the user-supplied converter callable. It
+        -:  969:  // is used by the iterator (see class Iterator below) to convert the object
+        -:  970:  // (of type FROM) returned by the ParamGenerator to an object of a type that
+        -:  971:  // can be static_cast to type TO.
+        -:  972:  const Func& TypeConverter() const { return converter_; }
+        -:  973:
+        -:  974: private:
+        -:  975:  class Iterator : public ParamIteratorInterface<To> {
+        -:  976:   public:
+        -:  977:    Iterator(const ParamGeneratorConverter* base, ParamIterator<From> it,
+        -:  978:             ParamIterator<From> end)
+        -:  979:        : base_(base), it_(it), end_(end) {
+        -:  980:      if (it_ != end_)
+        -:  981:        value_ =
+        -:  982:            std::make_shared<To>(static_cast<To>(base->TypeConverter()(*it_)));
+        -:  983:    }
+        -:  984:    ~Iterator() override = default;
+        -:  985:
+        -:  986:    const ParamGeneratorInterface<To>* BaseGenerator() const override {
+        -:  987:      return base_;
+        -:  988:    }
+        -:  989:    void Advance() override {
+        -:  990:      ++it_;
+        -:  991:      if (it_ != end_)
+        -:  992:        value_ =
+        -:  993:            std::make_shared<To>(static_cast<To>(base_->TypeConverter()(*it_)));
+        -:  994:    }
+        -:  995:    ParamIteratorInterface<To>* Clone() const override {
+        -:  996:      return new Iterator(*this);
+        -:  997:    }
+        -:  998:    const To* Current() const override { return value_.get(); }
+        -:  999:    bool Equals(const ParamIteratorInterface<To>& other) const override {
+        -: 1000:      // Having the same base generator guarantees that the other
+        -: 1001:      // iterator is of the same type and we can downcast.
+        -: 1002:      GTEST_CHECK_(BaseGenerator() == other.BaseGenerator())
+        -: 1003:          << "The program attempted to compare iterators "
+        -: 1004:          << "from different generators." << std::endl;
+        -: 1005:      const ParamIterator<From> other_it =
+        -: 1006:          CheckedDowncastToActualType<const Iterator>(&other)->it_;
+        -: 1007:      return it_ == other_it;
+        -: 1008:    }
+        -: 1009:
+        -: 1010:   private:
+        -: 1011:    Iterator(const Iterator& other) = default;
+        -: 1012:
+        -: 1013:    const ParamGeneratorConverter* const base_;
+        -: 1014:    ParamIterator<From> it_;
+        -: 1015:    ParamIterator<From> end_;
+        -: 1016:    std::shared_ptr<To> value_;
+        -: 1017:  };  // class ParamGeneratorConverter::Iterator
+        -: 1018:
+        -: 1019:  ParamGenerator<From> generator_;
+        -: 1020:  Func converter_;
+        -: 1021:};  // class ParamGeneratorConverter
+        -: 1022:
+        -: 1023:template <class GeneratedT,
+        -: 1024:          typename StdFunction =
+        -: 1025:              std::function<const GeneratedT&(const GeneratedT&)>>
+        -: 1026:class ParamConverterGenerator {
+        -: 1027: public:
+        -: 1028:  ParamConverterGenerator(ParamGenerator<GeneratedT> g)  // NOLINT
+        -: 1029:      : generator_(std::move(g)), converter_(Identity) {}
+        -: 1030:
+        -: 1031:  ParamConverterGenerator(ParamGenerator<GeneratedT> g, StdFunction converter)
+        -: 1032:      : generator_(std::move(g)), converter_(std::move(converter)) {}
+        -: 1033:
+        -: 1034:  template <typename T>
+        -: 1035:  operator ParamGenerator<T>() const {  // NOLINT
+        -: 1036:    return ParamGenerator<T>(
+        -: 1037:        new ParamGeneratorConverter<GeneratedT, T, StdFunction>(generator_,
+        -: 1038:                                                                converter_));
+        -: 1039:  }
+        -: 1040:
+        -: 1041: private:
+        -: 1042:  static const GeneratedT& Identity(const GeneratedT& v) { return v; }
+        -: 1043:
+        -: 1044:  ParamGenerator<GeneratedT> generator_;
+        -: 1045:  StdFunction converter_;
+        -: 1046:};
+        -: 1047:
+        -: 1048:// Template to determine the param type of a single-param std::function.
+        -: 1049:template <typename T>
+        -: 1050:struct FuncSingleParamType;
+        -: 1051:template <typename R, typename P>
+        -: 1052:struct FuncSingleParamType<std::function<R(P)>> {
+        -: 1053:  using type = std::remove_cv_t<std::remove_reference_t<P>>;
+        -: 1054:};
+        -: 1055:
+        -: 1056:template <typename T>
+        -: 1057:struct IsSingleArgStdFunction : public std::false_type {};
+        -: 1058:template <typename R, typename P>
+        -: 1059:struct IsSingleArgStdFunction<std::function<R(P)>> : public std::true_type {};
+        -: 1060:
+        -: 1061:}  // namespace internal
+        -: 1062:}  // namespace testing
+        -: 1063:
+        -: 1064:#endif  // GOOGLETEST_INCLUDE_GTEST_INTERNAL_GTEST_PARAM_UTIL_H_

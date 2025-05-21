@@ -1,0 +1,41 @@
+        -:    0:Source:/mnt/d/Уник/4 сем/Фунды/number 4/include/Container.hpp
+        -:    0:Graph:/mnt/d/Уник/4 сем/Фунды/number 4/cmake-build-debug-coverage/CMakeFiles/tests.dir/tests/tests.cpp.gcno
+        -:    0:Data:/mnt/d/Уник/4 сем/Фунды/number 4/cmake-build-debug-coverage/CMakeFiles/tests.dir/tests/tests.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#ifndef NUMBER_4_CONTAINER_HPP
+        -:    2:#define NUMBER_4_CONTAINER_HPP
+        -:    3:
+        -:    4:#include <iostream>
+        -:    5:
+        -:    6:template <typename T>
+        -:    7:class Container {
+        -:    8:public:
+        -:    9:    using iterator = T *;
+        -:   10:    using const_iterator = const T *;
+function _ZN9ContainerIiEC2Ev called 17 returned 100% blocks executed 100%
+       17:   11:    Container() = default;
+        -:   12:    Container(const Container &container) = default;
+        -:   13:    Container &operator=(const Container &container) = default;
+      17*:   14:    virtual ~Container() = default;
+------------------
+_ZN9ContainerIiED0Ev:
+function _ZN9ContainerIiED0Ev called 0 returned 0% blocks executed 0%
+    #####:   14:    virtual ~Container() = default;
+    %%%%%:   14-block  0
+call    0 never executed
+call    1 never executed
+------------------
+_ZN9ContainerIiED2Ev:
+function _ZN9ContainerIiED2Ev called 17 returned 100% blocks executed 100%
+       17:   14:    virtual ~Container() = default;
+------------------
+        -:   15:
+        -:   16:    bool operator==(const Container &other) const = default;
+        -:   17:    bool operator!=(const Container &other) const = default;
+        -:   18:
+        -:   19:    virtual size_t size() const = 0;
+        -:   20:    virtual size_t max_size() const = 0;
+        -:   21:    virtual bool empty() const = 0;
+        -:   22:};
+        -:   23:
+        -:   24:#endif //NUMBER_4_CONTAINER_HPP

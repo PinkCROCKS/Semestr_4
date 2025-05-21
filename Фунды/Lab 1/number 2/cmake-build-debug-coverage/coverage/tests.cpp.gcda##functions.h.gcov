@@ -1,0 +1,924 @@
+        -:    0:Source:/mnt/d/Уник/4 сем/Фунды/number 2/include/functions.h
+        -:    0:Graph:/mnt/d/Уник/4 сем/Фунды/number 2/cmake-build-debug-coverage/CMakeFiles/tests.dir/tests/tests.cpp.gcno
+        -:    0:Data:/mnt/d/Уник/4 сем/Фунды/number 2/cmake-build-debug-coverage/CMakeFiles/tests.dir/tests/tests.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include <iostream>
+        -:    2:#include <algorithm>
+        -:    3:#include <initializer_list>
+        -:    4:#include <iterator>
+        -:    5:#include <memory>
+        -:    6:#include <stdexcept>
+        -:    7:#include <limits>
+        -:    8:#include "container.h"
+        -:    9:
+        -:   10:namespace my_container {
+        -:   11:
+        -:   12:    template <typename T>
+        -:   13:    class List : public Container<T> {
+        -:   14:    protected:
+        -:   15:        struct Node {
+        -:   16:            T data;
+        -:   17:            Node* prev;
+        -:   18:            Node* next;
+        -:   19:
+      228:   20:            explicit Node(const T& d, Node* prev = nullptr, Node* next = nullptr)
+      228:   21:                    : data(d), prev(prev), next(next) {}
+------------------
+_ZN12my_container4ListINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE4NodeC2ERKS6_PS8_SB_:
+function _ZN12my_container4ListINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE4NodeC2ERKS6_PS8_SB_ called 70 returned 100% blocks executed 100%
+       70:   20:            explicit Node(const T& d, Node* prev = nullptr, Node* next = nullptr)
+       70:   21:                    : data(d), prev(prev), next(next) {}
+       70:   21-block  0
+call    0 returned 70
+------------------
+_ZN12my_container4ListIiE4NodeC2ERKiPS2_S5_:
+function _ZN12my_container4ListIiE4NodeC2ERKiPS2_S5_ called 158 returned 100% blocks executed 100%
+      158:   20:            explicit Node(const T& d, Node* prev = nullptr, Node* next = nullptr)
+      158:   21:                    : data(d), prev(prev), next(next) {}
+------------------
+        -:   22:        };
+        -:   23:
+        -:   24:        size_t size_ = 0;
+        -:   25:        Node* head = nullptr;
+        -:   26:        Node* tail = nullptr;
+        -:   27:
+       52:   28:        void init_sentinels() {
+       52:   29:            head = new Node(T{});
+       52:   30:            tail = new Node(T{});
+       52:   31:            head->next = tail;
+       52:   32:            tail->prev = head;
+       52:   33:        }
+------------------
+_ZN12my_container4ListINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE14init_sentinelsEv:
+function _ZN12my_container4ListINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE14init_sentinelsEv called 14 returned 100% blocks executed 48%
+       14:   28:        void init_sentinels() {
+       14:   29:            head = new Node(T{});
+       14:   29-block  0
+call    0 returned 14
+call    1 returned 14
+call    2 returned 14
+branch  3 taken 14 (fallthrough)
+branch  4 taken 0 (throw)
+       14:   29-block  1
+call    5 returned 14
+    $$$$$:   29-block  2
+call    6 never executed
+    $$$$$:   29-block  3
+    $$$$$:   29-block  4
+branch  7 never executed (fallthrough)
+branch  8 never executed
+    $$$$$:   29-block  5
+call    9 never executed
+       14:   30:            tail = new Node(T{});
+call    0 returned 14
+call    1 returned 14
+call    2 returned 14
+branch  3 taken 14 (fallthrough)
+branch  4 taken 0 (throw)
+       14:   30-block  0
+call    5 returned 14
+    $$$$$:   30-block  1
+call    6 never executed
+    $$$$$:   30-block  2
+    $$$$$:   30-block  3
+branch  7 never executed (fallthrough)
+branch  8 never executed
+    $$$$$:   30-block  4
+call    9 never executed
+       14:   31:            head->next = tail;
+       14:   32:            tail->prev = head;
+       14:   33:        }
+------------------
+_ZN12my_container4ListIiE14init_sentinelsEv:
+function _ZN12my_container4ListIiE14init_sentinelsEv called 38 returned 100% blocks executed 100%
+       38:   28:        void init_sentinels() {
+       38:   29:            head = new Node(T{});
+       38:   29-block  0
+call    0 returned 38
+call    1 returned 38
+       38:   30:            tail = new Node(T{});
+call    0 returned 38
+call    1 returned 38
+       38:   31:            head->next = tail;
+       38:   32:            tail->prev = head;
+       38:   33:        }
+------------------
+        -:   34:
+        -:   35:    public:
+        -:   36:        class iterator {
+        -:   37:        public:
+        -:   38:            using iterator_category = std::bidirectional_iterator_tag;
+        -:   39:            using value_type = T;
+        -:   40:            using difference_type = std::ptrdiff_t;
+        -:   41:            using pointer = T*;
+        -:   42:            using reference = T&;
+        -:   43:
+        -:   44:            Node* node;
+        -:   45:
+      501:   46:            explicit iterator(Node* node = nullptr) : node(node) {}
+------------------
+_ZN12my_container4ListINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE8iteratorC2EPNS7_4NodeE:
+function _ZN12my_container4ListINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE8iteratorC2EPNS7_4NodeE called 168 returned 100% blocks executed 100%
+      168:   46:            explicit iterator(Node* node = nullptr) : node(node) {}
+------------------
+_ZN12my_container4ListIiE8iteratorC2EPNS1_4NodeE:
+function _ZN12my_container4ListIiE8iteratorC2EPNS1_4NodeE called 333 returned 100% blocks executed 100%
+      333:   46:            explicit iterator(Node* node = nullptr) : node(node) {}
+------------------
+        -:   47:
+function _ZN12my_container4ListIiE8iteratordeEv called 5 returned 100% blocks executed 100%
+        5:   48:            reference operator*() { return node->data; }
+        5:   48-block  0
+        -:   49:            pointer operator->() { return &node->data; }
+        -:   50:
+function _ZN12my_container4ListIiE8iteratorppEv called 3 returned 100% blocks executed 100%
+        3:   51:            iterator& operator++() {
+        3:   52:                node = node->next;
+        3:   53:                return *this;
+        3:   53-block  0
+        -:   54:            }
+        -:   55:
+        -:   56:            iterator operator++(int) {
+        -:   57:                iterator tmp = *this;
+        -:   58:                ++(*this);
+        -:   59:                return tmp;
+        -:   60:            }
+        -:   61:
+function _ZN12my_container4ListIiE8iteratormmEv called 3 returned 100% blocks executed 100%
+        3:   62:            iterator& operator--() {
+        3:   63:                node = node->prev;
+        3:   64:                return *this;
+        3:   64-block  0
+        -:   65:            }
+        -:   66:
+        -:   67:            iterator operator--(int) {
+        -:   68:                iterator tmp = *this;
+        -:   69:                --(*this);
+        -:   70:                return tmp;
+        -:   71:            }
+        -:   72:
+function _ZNK12my_container4ListIiE8iteratoreqERKS2_ called 1 returned 100% blocks executed 100%
+        1:   73:            bool operator==(const iterator& other) const { return node == other.node; }
+        1:   73-block  0
+function _ZNK12my_container4ListIiE8iteratorneERKS2_ called 1 returned 100% blocks executed 100%
+        1:   74:            bool operator!=(const iterator& other) const { return node != other.node; }
+        1:   74-block  0
+        -:   75:        };
+        -:   76:
+        -:   77:        class const_iterator {
+        -:   78:        public:
+        -:   79:            using iterator_category = std::bidirectional_iterator_tag;
+        -:   80:            using value_type = const T;
+        -:   81:            using difference_type = std::ptrdiff_t;
+        -:   82:            using pointer = const T*;
+        -:   83:            using reference = const T&;
+        -:   84:
+        -:   85:            const Node* node;
+        -:   86:
+       29:   87:            explicit const_iterator(const Node* node = nullptr) : node(node) {}
+------------------
+_ZN12my_container4ListINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE14const_iteratorC2EPKNS7_4NodeE:
+function _ZN12my_container4ListINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE14const_iteratorC2EPKNS7_4NodeE called 1 returned 100% blocks executed 100%
+        1:   87:            explicit const_iterator(const Node* node = nullptr) : node(node) {}
+------------------
+_ZN12my_container4ListIiE14const_iteratorC2EPKNS1_4NodeE:
+function _ZN12my_container4ListIiE14const_iteratorC2EPKNS1_4NodeE called 28 returned 100% blocks executed 100%
+       28:   87:            explicit const_iterator(const Node* node = nullptr) : node(node) {}
+------------------
+        -:   88:
+        -:   89:            const_iterator(const iterator& it) : node(it.node) {} // Конвертация
+        -:   90:
+       69:   91:            reference operator*() const { return node->data; }
+------------------
+_ZNK12my_container4ListINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE14const_iteratordeEv:
+function _ZNK12my_container4ListINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE14const_iteratordeEv called 3 returned 100% blocks executed 100%
+        3:   91:            reference operator*() const { return node->data; }
+        3:   91-block  0
+------------------
+_ZNK12my_container4ListIiE14const_iteratordeEv:
+function _ZNK12my_container4ListIiE14const_iteratordeEv called 66 returned 100% blocks executed 100%
+       66:   91:            reference operator*() const { return node->data; }
+       66:   91-block  0
+------------------
+        -:   92:            pointer operator->() const { return &node->data; }
+        -:   93:
+       69:   94:            const_iterator& operator++() {
+       69:   95:                node = node->next;
+       69:   96:                return *this;
+        -:   97:            }
+------------------
+_ZN12my_container4ListINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE14const_iteratorppEv:
+function _ZN12my_container4ListINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE14const_iteratorppEv called 3 returned 100% blocks executed 100%
+        3:   94:            const_iterator& operator++() {
+        3:   95:                node = node->next;
+        3:   96:                return *this;
+        3:   96-block  0
+        -:   97:            }
+------------------
+_ZN12my_container4ListIiE14const_iteratorppEv:
+function _ZN12my_container4ListIiE14const_iteratorppEv called 66 returned 100% blocks executed 100%
+       66:   94:            const_iterator& operator++() {
+       66:   95:                node = node->next;
+       66:   96:                return *this;
+       66:   96-block  0
+        -:   97:            }
+------------------
+        -:   98:
+        -:   99:            const_iterator operator++(int) {
+        -:  100:                const_iterator tmp = *this;
+        -:  101:                ++(*this);
+        -:  102:                return tmp;
+        -:  103:            }
+        -:  104:
+        -:  105:            const_iterator& operator--() {
+        -:  106:                node = node->prev;
+        -:  107:                return *this;
+        -:  108:            }
+        -:  109:
+        -:  110:            const_iterator operator--(int) {
+        -:  111:                const_iterator tmp = *this;
+        -:  112:                --(*this);
+        -:  113:                return tmp;
+        -:  114:            }
+        -:  115:
+function _ZNK12my_container4ListIiE14const_iteratoreqERKS2_ called 10 returned 100% blocks executed 100%
+       10:  116:            bool operator==(const const_iterator& other) const { return node == other.node; }
+       10:  116-block  0
+function _ZNK12my_container4ListIiE14const_iteratorneERKS2_ called 20 returned 100% blocks executed 100%
+       20:  117:            bool operator!=(const const_iterator& other) const { return node != other.node; }
+       20:  117-block  0
+        -:  118:        };
+        -:  119:
+       51:  120:        List() { init_sentinels(); }
+------------------
+_ZN12my_container4ListINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEC2Ev:
+function _ZN12my_container4ListINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEC2Ev called 14 returned 100% blocks executed 80%
+       14:  120:        List() { init_sentinels(); }
+       14:  120-block  0
+call    0 returned 14
+call    1 returned 14
+branch  2 taken 14 (fallthrough)
+branch  3 taken 0 (throw)
+       14:  120-block  1
+    $$$$$:  120-block  2
+call    4 never executed
+------------------
+_ZN12my_container4ListIiEC2Ev:
+function _ZN12my_container4ListIiEC2Ev called 37 returned 100% blocks executed 80%
+       37:  120:        List() { init_sentinels(); }
+       37:  120-block  0
+call    0 returned 37
+call    1 returned 37
+branch  2 taken 37 (fallthrough)
+branch  3 taken 0 (throw)
+       37:  120-block  1
+    $$$$$:  120-block  2
+call    4 never executed
+------------------
+        -:  121:
+function _ZN12my_container4ListIiEC2ERKS1_ called 2 returned 100% blocks executed 83%
+        2:  122:        List(const List<T>& other) : List() {
+        2:  122-block  0
+call    0 returned 2
+       10:  123:            for (const auto& elem : other) {
+call    0 returned 2
+call    1 returned 2
+        8:  123-block  0
+call    2 returned 8
+        8:  123-block  1
+call    3 returned 8
+       10:  123-block  2
+call    4 returned 10
+branch  5 taken 8
+branch  6 taken 2 (fallthrough)
+        8:  124:                push_back(elem);
+call    0 returned 8
+branch  1 taken 8 (fallthrough)
+branch  2 taken 0 (throw)
+        -:  125:            }
+        2:  126:        }
+        2:  126-block  0
+    $$$$$:  126-block  1
+call    0 never executed
+        -:  127:
+function _ZN12my_container4ListIiEC2EOS1_ called 1 returned 100% blocks executed 100%
+        1:  128:        List(List<T>&& other) noexcept {
+        1:  128-block  0
+call    0 returned 1
+        1:  129:            init_sentinels();
+call    0 returned 1
+        1:  130:            swap(other);
+call    0 returned 1
+        1:  131:        }
+        -:  132:
+       34:  133:        List(const std::initializer_list<T>& t) : List() {
+      148:  134:            for (auto& elem : t) {
+      114:  135:                push_back(elem);
+        -:  136:            }
+       34:  137:        }
+------------------
+_ZN12my_container4ListINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEC2ERKSt16initializer_listIS6_E:
+function _ZN12my_container4ListINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEC2ERKSt16initializer_listIS6_E called 14 returned 100% blocks executed 89%
+       14:  133:        List(const std::initializer_list<T>& t) : List() {
+       14:  133-block  0
+call    0 returned 14
+       56:  134:            for (auto& elem : t) {
+call    0 returned 14
+call    1 returned 14
+       42:  134-block  0
+       56:  134-block  1
+branch  2 taken 42
+branch  3 taken 14 (fallthrough)
+       42:  135:                push_back(elem);
+       42:  135-block  0
+call    0 returned 42
+branch  1 taken 42 (fallthrough)
+branch  2 taken 0 (throw)
+        -:  136:            }
+       14:  137:        }
+       14:  137-block  0
+    $$$$$:  137-block  1
+call    0 never executed
+------------------
+_ZN12my_container4ListIiEC2ERKSt16initializer_listIiE:
+function _ZN12my_container4ListIiEC2ERKSt16initializer_listIiE called 20 returned 100% blocks executed 89%
+       20:  133:        List(const std::initializer_list<T>& t) : List() {
+       20:  133-block  0
+call    0 returned 20
+       92:  134:            for (auto& elem : t) {
+call    0 returned 20
+call    1 returned 20
+       72:  134-block  0
+       92:  134-block  1
+branch  2 taken 72
+branch  3 taken 20 (fallthrough)
+       72:  135:                push_back(elem);
+       72:  135-block  0
+call    0 returned 72
+branch  1 taken 72 (fallthrough)
+branch  2 taken 0 (throw)
+        -:  136:            }
+       20:  137:        }
+       20:  137-block  0
+    $$$$$:  137-block  1
+call    0 never executed
+------------------
+        -:  138:
+      52*:  139:        ~List() override {
+       52:  140:            clear();
+       52:  141:            delete head;
+       52:  142:            delete tail;
+     104*:  143:        }
+------------------
+_ZN12my_container4ListINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEED0Ev:
+function _ZN12my_container4ListINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEED0Ev called 0 returned 0% blocks executed 0%
+    #####:  139:        ~List() override {
+        -:  140:            clear();
+        -:  141:            delete head;
+        -:  142:            delete tail;
+    #####:  143:        }
+    %%%%%:  143-block  0
+call    0 never executed
+call    1 never executed
+------------------
+_ZN12my_container4ListINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEED2Ev:
+function _ZN12my_container4ListINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEED2Ev called 14 returned 100% blocks executed 100%
+       14:  139:        ~List() override {
+       14:  140:            clear();
+       14:  141:            delete head;
+branch  0 taken 14 (fallthrough)
+branch  1 taken 0
+       14:  141-block  0
+call    2 returned 14
+call    3 returned 14
+       14:  142:            delete tail;
+       14:  142-block  0
+branch  0 taken 14 (fallthrough)
+branch  1 taken 0
+       14:  142-block  1
+call    2 returned 14
+call    3 returned 14
+       28:  143:        }
+       14:  143-block  0
+call    0 returned 14
+       14:  143-block  1
+call    1 returned 14
+------------------
+_ZN12my_container4ListIiED0Ev:
+function _ZN12my_container4ListIiED0Ev called 0 returned 0% blocks executed 0%
+    #####:  139:        ~List() override {
+        -:  140:            clear();
+        -:  141:            delete head;
+        -:  142:            delete tail;
+    #####:  143:        }
+    %%%%%:  143-block  0
+call    0 never executed
+call    1 never executed
+------------------
+_ZN12my_container4ListIiED2Ev:
+function _ZN12my_container4ListIiED2Ev called 38 returned 100% blocks executed 100%
+       38:  139:        ~List() override {
+       38:  140:            clear();
+       38:  141:            delete head;
+branch  0 taken 38 (fallthrough)
+branch  1 taken 0
+       38:  141-block  0
+call    2 returned 38
+       38:  142:            delete tail;
+       38:  142-block  0
+branch  0 taken 38 (fallthrough)
+branch  1 taken 0
+       38:  142-block  1
+call    2 returned 38
+       76:  143:        }
+       38:  143-block  0
+call    0 returned 38
+       38:  143-block  1
+call    1 returned 38
+------------------
+        -:  144:
+function _ZN12my_container4ListIiEaSERKS1_ called 1 returned 100% blocks executed 100%
+        1:  145:        List<T>& operator=(const List<T>& other) {
+        1:  146:            List tmp(other);
+        1:  146-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  147:            swap(tmp);
+        1:  147-block  0
+call    0 returned 1
+        1:  148:            return *this;
+        1:  148-block  0
+        1:  149:        }
+call    0 returned 1
+        -:  150:
+        -:  151:        List<T>& operator=(List<T>&& other) noexcept {
+        -:  152:            swap(other);
+        -:  153:            return *this;
+        -:  154:        }
+        -:  155:
+      127:  156:        iterator begin() noexcept { return iterator(head->next); }
+------------------
+_ZN12my_container4ListINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE5beginEv:
+function _ZN12my_container4ListINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE5beginEv called 42 returned 100% blocks executed 100%
+       42:  156:        iterator begin() noexcept { return iterator(head->next); }
+       42:  156-block  0
+call    0 returned 42
+       42:  156-block  1
+------------------
+_ZN12my_container4ListIiE5beginEv:
+function _ZN12my_container4ListIiE5beginEv called 85 returned 100% blocks executed 100%
+       85:  156:        iterator begin() noexcept { return iterator(head->next); }
+       85:  156-block  0
+call    0 returned 85
+       85:  156-block  1
+------------------
+       21:  157:        const_iterator begin() const noexcept { return const_iterator(head->next); }
+------------------
+_ZNK12my_container4ListINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE5beginEv:
+function _ZNK12my_container4ListINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE5beginEv called 1 returned 100% blocks executed 100%
+        1:  157:        const_iterator begin() const noexcept { return const_iterator(head->next); }
+        1:  157-block  0
+call    0 returned 1
+        1:  157-block  1
+------------------
+_ZNK12my_container4ListIiE5beginEv:
+function _ZNK12my_container4ListIiE5beginEv called 20 returned 100% blocks executed 100%
+       20:  157:        const_iterator begin() const noexcept { return const_iterator(head->next); }
+       20:  157-block  0
+call    0 returned 20
+       20:  157-block  1
+------------------
+        -:  158:        const_iterator cbegin() const noexcept { return const_iterator(head->next); }
+        -:  159:
+      126:  160:        iterator end() noexcept { return iterator(tail); }
+------------------
+_ZN12my_container4ListINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE3endEv:
+function _ZN12my_container4ListINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE3endEv called 42 returned 100% blocks executed 100%
+       42:  160:        iterator end() noexcept { return iterator(tail); }
+       42:  160-block  0
+call    0 returned 42
+       42:  160-block  1
+------------------
+_ZN12my_container4ListIiE3endEv:
+function _ZN12my_container4ListIiE3endEv called 84 returned 100% blocks executed 100%
+       84:  160:        iterator end() noexcept { return iterator(tail); }
+       84:  160-block  0
+call    0 returned 84
+       84:  160-block  1
+------------------
+function _ZNK12my_container4ListIiE3endEv called 8 returned 100% blocks executed 100%
+        8:  161:        const_iterator end() const noexcept { return const_iterator(tail); }
+        8:  161-block  0
+call    0 returned 8
+        8:  161-block  1
+        -:  162:        const_iterator cend() const noexcept { return const_iterator(tail); }
+        -:  163:
+function _ZN12my_container4ListIiE6rbeginEv called 1 returned 100% blocks executed 100%
+        1:  164:        std::reverse_iterator<iterator> rbegin() { return std::reverse_iterator(end()); }
+        1:  164-block  0
+call    0 returned 1
+call    1 returned 1
+        -:  165:        std::reverse_iterator<const_iterator> crbegin() const {
+        -:  166:            return std::reverse_iterator(cend());
+        -:  167:        }
+        -:  168:
+        -:  169:        std::reverse_iterator<iterator> rend() { return std::reverse_iterator(begin()); }
+        -:  170:        std::reverse_iterator<const_iterator> crend() const {
+        -:  171:            return std::reverse_iterator(cbegin());
+        -:  172:        }
+        -:  173:
+      301:  174:        bool empty() const noexcept override { return size_ == 0; }
+------------------
+_ZNK12my_container4ListINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE5emptyEv:
+function _ZNK12my_container4ListINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE5emptyEv called 98 returned 100% blocks executed 100%
+       98:  174:        bool empty() const noexcept override { return size_ == 0; }
+       98:  174-block  0
+------------------
+_ZNK12my_container4ListIiE5emptyEv:
+function _ZNK12my_container4ListIiE5emptyEv called 203 returned 100% blocks executed 100%
+      203:  174:        bool empty() const noexcept override { return size_ == 0; }
+      203:  174-block  0
+------------------
+       19:  175:        size_t size() const noexcept override { return size_; }
+------------------
+_ZNK12my_container4ListINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE4sizeEv:
+function _ZNK12my_container4ListINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE4sizeEv called 1 returned 100% blocks executed 100%
+        1:  175:        size_t size() const noexcept override { return size_; }
+        1:  175-block  0
+------------------
+_ZNK12my_container4ListIiE4sizeEv:
+function _ZNK12my_container4ListIiE4sizeEv called 18 returned 100% blocks executed 100%
+       18:  175:        size_t size() const noexcept override { return size_; }
+       18:  175-block  0
+------------------
+       1*:  176:        size_t max_size() const noexcept override {
+       1*:  177:            return 145674;
+        -:  178:        }
+------------------
+_ZNK12my_container4ListINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE8max_sizeEv:
+function _ZNK12my_container4ListINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE8max_sizeEv called 0 returned 0% blocks executed 0%
+    #####:  176:        size_t max_size() const noexcept override {
+    #####:  177:            return 145674;
+    %%%%%:  177-block  0
+        -:  178:        }
+------------------
+_ZNK12my_container4ListIiE8max_sizeEv:
+function _ZNK12my_container4ListIiE8max_sizeEv called 1 returned 100% blocks executed 100%
+        1:  176:        size_t max_size() const noexcept override {
+        1:  177:            return 145674;
+        1:  177-block  0
+        -:  178:        }
+------------------
+        -:  179:
+       52:  180:        void clear() {
+      173:  181:            while (!empty()) {
+      121:  182:                pop_front();
+        -:  183:            }
+       52:  184:        }
+------------------
+_ZN12my_container4ListINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE5clearEv:
+function _ZN12my_container4ListINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE5clearEv called 14 returned 100% blocks executed 100%
+       14:  180:        void clear() {
+       56:  181:            while (!empty()) {
+       14:  181-block  0
+       56:  181-block  1
+call    0 returned 56
+branch  1 taken 42
+branch  2 taken 14 (fallthrough)
+       42:  182:                pop_front();
+       42:  182-block  0
+call    0 returned 42
+        -:  183:            }
+       14:  184:        }
+------------------
+_ZN12my_container4ListIiE5clearEv:
+function _ZN12my_container4ListIiE5clearEv called 38 returned 100% blocks executed 100%
+       38:  180:        void clear() {
+      117:  181:            while (!empty()) {
+       38:  181-block  0
+      117:  181-block  1
+call    0 returned 117
+branch  1 taken 79
+branch  2 taken 38 (fallthrough)
+       79:  182:                pop_front();
+       79:  182-block  0
+call    0 returned 79
+        -:  183:            }
+       38:  184:        }
+------------------
+        -:  185:
+      122:  186:        iterator insert(iterator pos, const T& value) {
+      122:  187:            Node* new_node = new Node(value, pos.node->prev, pos.node);
+      122:  188:            pos.node->prev->next = new_node;
+      122:  189:            pos.node->prev = new_node;
+      122:  190:            ++size_;
+      122:  191:            return iterator(new_node);
+        -:  192:        }
+------------------
+_ZN12my_container4ListINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE6insertENS7_8iteratorERKS6_:
+function _ZN12my_container4ListINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE6insertENS7_8iteratorERKS6_ called 42 returned 100% blocks executed 78%
+       42:  186:        iterator insert(iterator pos, const T& value) {
+       42:  187:            Node* new_node = new Node(value, pos.node->prev, pos.node);
+       42:  187-block  0
+call    0 returned 42
+call    1 returned 42
+branch  2 taken 42 (fallthrough)
+branch  3 taken 0 (throw)
+    $$$$$:  187-block  1
+branch  4 never executed (fallthrough)
+branch  5 never executed
+    $$$$$:  187-block  2
+call    6 never executed
+       42:  188:            pos.node->prev->next = new_node;
+       42:  189:            pos.node->prev = new_node;
+       42:  190:            ++size_;
+       42:  191:            return iterator(new_node);
+       42:  191-block  0
+call    0 returned 42
+       42:  191-block  1
+       42:  191-block  2
+        -:  192:        }
+------------------
+_ZN12my_container4ListIiE6insertENS1_8iteratorERKi:
+function _ZN12my_container4ListIiE6insertENS1_8iteratorERKi called 80 returned 100% blocks executed 100%
+       80:  186:        iterator insert(iterator pos, const T& value) {
+       80:  187:            Node* new_node = new Node(value, pos.node->prev, pos.node);
+       80:  187-block  0
+call    0 returned 80
+call    1 returned 80
+       80:  188:            pos.node->prev->next = new_node;
+       80:  189:            pos.node->prev = new_node;
+       80:  190:            ++size_;
+       80:  191:            return iterator(new_node);
+call    0 returned 80
+       80:  191-block  0
+        -:  192:        }
+------------------
+        -:  193:
+function _ZN12my_container4ListIiE6insertENS1_8iteratorEOi called 2 returned 100% blocks executed 100%
+        2:  194:        iterator insert(iterator pos, T&& value) {
+        2:  195:            Node* new_node = new Node(std::move(value), pos.node->prev, pos.node);
+        2:  195-block  0
+call    0 returned 2
+call    1 returned 2
+call    2 returned 2
+        2:  196:            pos.node->prev->next = new_node;
+        2:  197:            pos.node->prev = new_node;
+        2:  198:            ++size_;
+        2:  199:            return iterator(new_node);
+call    0 returned 2
+        2:  199-block  0
+        -:  200:        }
+        -:  201:
+function _ZN12my_container4ListIiE5frontEv called 1 returned 100% blocks executed 100%
+        1:  202:        T& front() { return *begin(); }
+        1:  202-block  0
+call    0 returned 1
+call    1 returned 1
+function _ZN12my_container4ListIiE4backEv called 1 returned 100% blocks executed 100%
+        1:  203:        T& back() { return *(--end()); }
+        1:  203-block  0
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+        -:  204:
+        -:  205:        void push_front(const T& val) { insert(begin(), val); }
+        -:  206:        void push_front(T&& val) { insert(begin(), std::move(val)); }
+      122:  207:        void push_back(const T& val) { insert(end(), val); }
+------------------
+_ZN12my_container4ListINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE9push_backERKS6_:
+function _ZN12my_container4ListINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE9push_backERKS6_ called 42 returned 100% blocks executed 100%
+       42:  207:        void push_back(const T& val) { insert(end(), val); }
+       42:  207-block  0
+call    0 returned 42
+call    1 returned 42
+------------------
+_ZN12my_container4ListIiE9push_backERKi:
+function _ZN12my_container4ListIiE9push_backERKi called 80 returned 100% blocks executed 100%
+       80:  207:        void push_back(const T& val) { insert(end(), val); }
+       80:  207-block  0
+call    0 returned 80
+call    1 returned 80
+------------------
+function _ZN12my_container4ListIiE9push_backEOi called 1 returned 100% blocks executed 100%
+        1:  208:        void push_back(T&& val) { insert(end(), std::move(val)); }
+        1:  208-block  0
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+        -:  209:
+function _ZN12my_container4ListIiE8pop_backEv called 2 returned 50% blocks executed 83%
+        2:  210:        void pop_back() {
+        2:  211:            if (empty()){
+        2:  211-block  0
+call    0 returned 2
+branch  1 taken 1 (fallthrough)
+branch  2 taken 1
+        1:  212:                throw std::out_of_range{"Index out Of range"};
+        1:  212-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:  212-block  1
+call    4 returned 0
+    $$$$$:  212-block  2
+call    5 never executed
+        -:  213:            }
+        1:  214:            erase(--end());
+        1:  214-block  0
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+branch  3 taken 1 (fallthrough)
+branch  4 taken 0 (throw)
+        1:  215:        }
+        1:  215-block  0
+      123:  216:        void pop_front() {
+      123:  217:            if (empty()){
+       1*:  218:                throw std::out_of_range{"Index out Of range"};
+        -:  219:            }
+      122:  220:            erase(begin());
+      122:  221:        }
+------------------
+_ZN12my_container4ListINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE9pop_frontEv:
+function _ZN12my_container4ListINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE9pop_frontEv called 42 returned 100% blocks executed 60%
+       42:  216:        void pop_front() {
+       42:  217:            if (empty()){
+       42:  217-block  0
+call    0 returned 42
+branch  1 taken 0 (fallthrough)
+branch  2 taken 42
+    #####:  218:                throw std::out_of_range{"Index out Of range"};
+    %%%%%:  218-block  0
+call    0 never executed
+call    1 never executed
+branch  2 never executed (fallthrough)
+branch  3 never executed (throw)
+    %%%%%:  218-block  1
+call    4 never executed
+    $$$$$:  218-block  2
+call    5 never executed
+        -:  219:            }
+       42:  220:            erase(begin());
+       42:  220-block  0
+call    0 returned 42
+call    1 returned 42
+       42:  221:        }
+------------------
+_ZN12my_container4ListIiE9pop_frontEv:
+function _ZN12my_container4ListIiE9pop_frontEv called 81 returned 99% blocks executed 90%
+       81:  216:        void pop_front() {
+       81:  217:            if (empty()){
+       81:  217-block  0
+call    0 returned 81
+branch  1 taken 1 (fallthrough)
+branch  2 taken 80
+        1:  218:                throw std::out_of_range{"Index out Of range"};
+        1:  218-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:  218-block  1
+call    4 returned 0
+    $$$$$:  218-block  2
+call    5 never executed
+        -:  219:            }
+       80:  220:            erase(begin());
+       80:  220-block  0
+call    0 returned 80
+call    1 returned 80
+       80:  221:        }
+------------------
+        -:  222:
+      124:  223:        iterator erase(iterator pos) {
+      124:  224:            Node* target = pos.node;
+      124:  225:            iterator next = iterator(target->next);
+      124:  226:            target->prev->next = target->next;
+      124:  227:            target->next->prev = target->prev;
+      124:  228:            delete target;
+      124:  229:            --size_;
+      124:  230:            return next;
+        -:  231:        }
+------------------
+_ZN12my_container4ListINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE5eraseENS7_8iteratorE:
+function _ZN12my_container4ListINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE5eraseENS7_8iteratorE called 42 returned 100% blocks executed 100%
+       42:  223:        iterator erase(iterator pos) {
+       42:  224:            Node* target = pos.node;
+       42:  225:            iterator next = iterator(target->next);
+       42:  225-block  0
+call    0 returned 42
+       42:  226:            target->prev->next = target->next;
+       42:  227:            target->next->prev = target->prev;
+       42:  228:            delete target;
+branch  0 taken 42 (fallthrough)
+branch  1 taken 0
+       42:  228-block  0
+call    2 returned 42
+call    3 returned 42
+       42:  229:            --size_;
+       42:  230:            return next;
+       42:  230-block  0
+        -:  231:        }
+------------------
+_ZN12my_container4ListIiE5eraseENS1_8iteratorE:
+function _ZN12my_container4ListIiE5eraseENS1_8iteratorE called 82 returned 100% blocks executed 100%
+       82:  223:        iterator erase(iterator pos) {
+       82:  224:            Node* target = pos.node;
+       82:  225:            iterator next = iterator(target->next);
+       82:  225-block  0
+call    0 returned 82
+       82:  226:            target->prev->next = target->next;
+       82:  227:            target->next->prev = target->prev;
+       82:  228:            delete target;
+branch  0 taken 82 (fallthrough)
+branch  1 taken 0
+       82:  228-block  0
+call    2 returned 82
+       82:  229:            --size_;
+       82:  230:            return next;
+       82:  230-block  0
+        -:  231:        }
+------------------
+        -:  232:
+        -:  233:        iterator erase(iterator first, iterator last) {
+        -:  234:            while (first != last) {
+        -:  235:                first = erase(first);
+        -:  236:            }
+        -:  237:            return last;
+        -:  238:        }
+        -:  239:
+        -:  240:        void resize(size_t count, const T& value = T()) {
+        -:  241:            while (size_ > count) pop_back();
+        -:  242:            while (size_ < count) push_back(value);
+        -:  243:        }
+        -:  244:
+function _ZN12my_container4ListIiE4swapERS1_ called 4 returned 100% blocks executed 100%
+        4:  245:        void swap(List<T>& rhs) noexcept {
+        4:  246:            std::swap(head, rhs.head);
+        4:  246-block  0
+call    0 returned 4
+        4:  247:            std::swap(tail, rhs.tail);
+call    0 returned 4
+        4:  248:            std::swap(size_, rhs.size_);
+call    0 returned 4
+        4:  249:        }
+        -:  250:
+function _ZNK12my_container4ListIiEssERKS1_ called 3 returned 100% blocks executed 100%
+        3:  251:        std::strong_ordering operator<=>(const List<T>& rhs) const {
+        3:  252:            return std::lexicographical_compare_three_way(
+        3:  252-block  0
+call    0 returned 3
+call    1 returned 3
+call    2 returned 3
+call    3 returned 3
+call    4 returned 3
+        -:  253:                    begin(), end(), rhs.begin(), rhs.end()
+        3:  254:            );
+        -:  255:        }
+        -:  256:
+function _ZNK12my_container4ListIiEeqERKS1_ called 2 returned 100% blocks executed 100%
+        2:  257:        bool operator==(const List<T>& rhs) const {
+        2:  258:            return size_ == rhs.size_ && (*this <=> rhs) == std::strong_ordering::equal;
+        2:  258-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 1
+        1:  258-block  1
+call    2 returned 1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0
+        1:  258-block  2
+        1:  258-block  3
+        2:  258-block  4
+        -:  259:        }
+        -:  260:
+function _ZNK12my_container4ListIiEneERKS1_ called 1 returned 100% blocks executed 100%
+        1:  261:        bool operator!=(const List<T>& rhs) const { return !(*this == rhs); }
+        1:  261-block  0
+call    0 returned 1
+function _ZNK12my_container4ListIiEgtERKS1_ called 1 returned 100% blocks executed 100%
+        1:  262:        bool operator>(const List<T>& rhs) const { return (*this <=> rhs) > 0; }
+        1:  262-block  0
+call    0 returned 1
+call    1 returned 1
+        -:  263:        bool operator>=(const List<T>& rhs) const { return (*this <=> rhs) >= 0; }
+function _ZNK12my_container4ListIiEltERKS1_ called 1 returned 100% blocks executed 100%
+        1:  264:        bool operator<(const List<T>& rhs) const { return (*this <=> rhs) < 0; }
+        1:  264-block  0
+call    0 returned 1
+call    1 returned 1
+        -:  265:        bool operator<=(const List<T>& rhs) const { return (*this <=> rhs) <= 0; }
+        -:  266:    };
+        -:  267:
+        -:  268:    template <typename T>
+        -:  269:    std::ostream& operator<<(std::ostream& out, const List<T>& list) {
+        -:  270:        for (auto& el : list) {
+        -:  271:            out << el << " ";
+        -:  272:        }
+        -:  273:        return out << "\n";
+        -:  274:    }
+        -:  275:
+        -:  276:}

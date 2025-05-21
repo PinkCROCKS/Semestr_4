@@ -1,0 +1,188 @@
+        -:    0:Source:/mnt/d/Уник/4 сем/Фунды/Lab 2/number 1/src/functions.cpp
+        -:    0:Graph:/mnt/d/Уник/4 сем/Фунды/Lab 2/number 1/cmake-build-debug-coverage/CMakeFiles/tests.dir/tests/tests.cpp.gcno
+        -:    0:Data:/mnt/d/Уник/4 сем/Фунды/Lab 2/number 1/cmake-build-debug-coverage/CMakeFiles/tests.dir/tests/tests.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include "../include/bigint.hpp"
+        -:    2:
+function _Z7mod_expRK6BigIntS1_S1_ called 10 returned 90% blocks executed 57%
+       10:    3:BigInt mod_exp(const BigInt& base, const BigInt& exp, const BigInt& mod){
+       10:    4:    if (exp < BigInt(0) or mod< BigInt(0)){
+       10:    4-block  0
+call    0 returned 10
+branch  1 taken 10 (fallthrough)
+branch  2 taken 0 (throw)
+       10:    4-block  1
+call    3 returned 10
+branch  4 taken 9 (fallthrough)
+branch  5 taken 1
+        9:    4-block  2
+call    6 returned 9
+branch  7 taken 9 (fallthrough)
+branch  8 taken 0 (throw)
+        9:    4-block  3
+call    9 returned 9
+branch 10 taken 0 (fallthrough)
+branch 11 taken 9
+        1:    4-block  4
+        9:    4-block  5
+       10:    4-block  6
+branch 12 taken 9 (fallthrough)
+branch 13 taken 1
+        9:    4-block  7
+call   14 returned 9
+       10:    4-block  8
+branch 15 taken 10 (fallthrough)
+branch 16 taken 0
+       10:    4-block  9
+call   17 returned 10
+       10:    4-block 10
+branch 18 taken 1 (fallthrough)
+branch 19 taken 9
+    $$$$$:    4-block 11
+branch 20 never executed (fallthrough)
+branch 21 never executed
+    $$$$$:    4-block 12
+call   22 never executed
+    $$$$$:    4-block 13
+    $$$$$:    4-block 14
+branch 23 never executed (fallthrough)
+branch 24 never executed
+    $$$$$:    4-block 15
+call   25 never executed
+    $$$$$:    4-block 16
+        1:    5:        throw std::invalid_argument("Division by zero");
+        1:    5-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:    5-block  1
+call    4 returned 1
+    $$$$$:    5-block  2
+call    5 never executed
+        -:    6:    }
+        9:    7:    if (exp == BigInt(0)) {
+        9:    7-block  0
+call    0 returned 9
+branch  1 taken 9 (fallthrough)
+branch  2 taken 0 (throw)
+        9:    7-block  1
+call    3 returned 9
+call    4 returned 9
+branch  5 taken 3 (fallthrough)
+branch  6 taken 6
+    $$$$$:    7-block  2
+        3:    8:        return BigInt{1};
+        3:    8-block  0
+call    0 returned 3
+branch  1 taken 3 (fallthrough)
+branch  2 taken 0 (throw)
+        -:    9:    }
+        6:   10:    BigInt a = mod_exp(base % mod, exp / BigInt(2), mod) % mod;
+        6:   10-block  0
+call    0 returned 6
+branch  1 taken 6 (fallthrough)
+branch  2 taken 0 (throw)
+        6:   10-block  1
+call    3 returned 6
+branch  4 taken 6 (fallthrough)
+branch  5 taken 0 (throw)
+        6:   10-block  2
+call    6 returned 6
+branch  7 taken 6 (fallthrough)
+branch  8 taken 0 (throw)
+        6:   10-block  3
+call    9 returned 6
+branch 10 taken 6 (fallthrough)
+branch 11 taken 0 (throw)
+        6:   10-block  4
+call   12 returned 6
+branch 13 taken 6 (fallthrough)
+branch 14 taken 0 (throw)
+        6:   10-block  5
+call   15 returned 6
+call   16 returned 6
+call   17 returned 6
+call   18 returned 6
+    $$$$$:   10-block  6
+call   19 never executed
+    $$$$$:   10-block  7
+call   20 never executed
+    $$$$$:   10-block  8
+    $$$$$:   10-block  9
+call   21 never executed
+    $$$$$:   10-block 10
+call   22 never executed
+    $$$$$:   10-block 11
+    $$$$$:   10-block 12
+    $$$$$:   10-block 13
+        6:   11:    if (exp.is_even()){
+call    0 returned 6
+branch  1 taken 3 (fallthrough)
+branch  2 taken 3
+        3:   12:        return (a * a) % mod;
+        3:   12-block  0
+call    0 returned 3
+branch  1 taken 3 (fallthrough)
+branch  2 taken 0 (throw)
+        3:   12-block  1
+call    3 returned 3
+branch  4 taken 3 (fallthrough)
+branch  5 taken 0 (throw)
+        3:   12-block  2
+        3:   12-block  3
+call    6 returned 3
+    $$$$$:   12-block  4
+call    7 never executed
+    $$$$$:   12-block  5
+        -:   13:    } else {
+        3:   14:        return ((base % mod) * ((a * a) % mod)) % mod;
+        3:   14-block  0
+call    0 returned 3
+branch  1 taken 3 (fallthrough)
+branch  2 taken 0 (throw)
+        3:   14-block  1
+call    3 returned 3
+branch  4 taken 3 (fallthrough)
+branch  5 taken 0 (throw)
+        3:   14-block  2
+call    6 returned 3
+branch  7 taken 3 (fallthrough)
+branch  8 taken 0 (throw)
+        3:   14-block  3
+call    9 returned 3
+branch 10 taken 3 (fallthrough)
+branch 11 taken 0 (throw)
+        3:   14-block  4
+call   12 returned 3
+branch 13 taken 3 (fallthrough)
+branch 14 taken 0 (throw)
+        3:   14-block  5
+        3:   14-block  6
+call   15 returned 3
+call   16 returned 3
+call   17 returned 3
+call   18 returned 3
+    $$$$$:   14-block  7
+call   19 never executed
+    $$$$$:   14-block  8
+call   20 never executed
+    $$$$$:   14-block  9
+    $$$$$:   14-block 10
+call   21 never executed
+    $$$$$:   14-block 11
+call   22 never executed
+    $$$$$:   14-block 12
+    $$$$$:   14-block 13
+    $$$$$:   14-block 14
+        -:   15:    }
+        6:   16:}
+        6:   16-block  0
+call    0 returned 6
+    $$$$$:   16-block  1
+call    1 never executed
+        -:   17:
+        -:   18://int main(){
+        -:   19://    BigInt a("124");
+        -:   20://    std::cout << BigInt::karatsuba_multiply(a, BigInt("-1246879846354632135465798487"));
+        -:   21://}
